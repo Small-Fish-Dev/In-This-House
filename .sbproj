@@ -31,7 +31,7 @@
       {
         "Name": "DEV",
         "GameIdent": "local.2023_jam#local",
-        "MapName": "voximity.flat_plane",
+        "MapName": "mansion.vmap",
         "MaxPlayers": 1,
         "GameSettings": {},
         "Addons": "",
