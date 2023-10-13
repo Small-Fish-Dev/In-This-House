@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 //
 // You don't need to put things in a namespace, but it doesn't hurt.
 //
-namespace Sandbox;
+namespace BrickJam;
 
 /// <summary>
 /// This is your game class. This is an entity that is created serverside when
@@ -31,7 +31,7 @@ public partial class MyGame : GameManager
 		base.ClientJoined( client );
 
 		// Create a pawn for this client to play with
-		var pawn = new Pawn();
+		var pawn = new Player();
 		client.Pawn = pawn;
 
 		// Get all of the spawnpoints
