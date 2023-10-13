@@ -8,8 +8,8 @@ partial class Player : AnimatedEntity
 {
 	[Net] public float WalkSpeed { get; set; } = 200f;
 	[Net] public float RunSpeed { get; set; } = 350f;
-	[Net] public float AccelerationSpeed { get; set; } = 300f; // Units per second (Ex. 200f means that after 1 second you've reached 200f speed)
-	[Net] public float WishSpeed { get; private set; } = 0f;
+	[Net] public float AccelerationSpeed { get; set; } = 400f; // Units per second (Ex. 200f means that after 1 second you've reached 200f speed)
+	[Net, Predicted] public float WishSpeed { get; private set; } = 0f;
 
 	public float StepSize => 16f;
 	public float WalkAngle => 46f;
@@ -18,20 +18,21 @@ partial class Player : AnimatedEntity
 	{
 		if ( GroundEntity != null )
 		{
-			WishSpeed = Math.Clamp( WishSpeed + AccelerationSpeed * Time.Delta, 0f, IsRunning ? RunSpeed : WalkSpeed );
-			Log.Info( InputDirection );
-			Velocity = Vector3.Lerp( Velocity, InputDirection * Rotation.FromYaw( InputAngles.yaw ) * WishSpeed, 15f * Time.Delta )
+			if ( !InputDirection.IsNearlyZero() )
+				WishSpeed = Math.Clamp( WishSpeed + AccelerationSpeed * Time.Delta, 0f, IsRunning ? RunSpeed : WalkSpeed );
+			else
+				WishSpeed = Math.Clamp( WishSpeed - AccelerationSpeed * Time.Delta, 0f, IsRunning ? RunSpeed : WalkSpeed );
+
+			Velocity = Vector3.Lerp( Velocity, ( InputDirection.IsNearlyZero() ? ( Velocity.Normal / 3f ): ( InputDirection  * Rotation.FromYaw( InputAngles.yaw ) ) ) * WishSpeed, 15f * Time.Delta )
 				.WithZ( Velocity.z );
 		}
 
 		if ( Input.Down( "jump" ) )
-		{
 			if ( GroundEntity != null )
 			{
 				GroundEntity = null;
 				Velocity += Vector3.Up * 300f;
 			}
-		}
 
 		var helper = new MoveHelper( Position, Velocity );
 		helper.MaxStandableAngle = WalkAngle;
