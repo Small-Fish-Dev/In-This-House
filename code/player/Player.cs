@@ -42,8 +42,7 @@ partial class Player : AnimatedEntity
 		base.Simulate( cl );
 
 		SimulateController();
-
-		Rotation = Rotation.FromYaw( InputAngles.yaw );
+		SimulateAnimations();
 	}
 
 	public override void FrameSimulate( IClient cl )
@@ -55,5 +54,15 @@ partial class Player : AnimatedEntity
 
 		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Game.Preferences.FieldOfView );
 		Camera.FirstPersonViewer = this;
+	}
+
+	protected void SimulateAnimations()
+	{
+		Rotation = Rotation.FromYaw( InputAngles.yaw );
+
+		var animationHelper = new CitizenAnimationHelper( this );
+		animationHelper.WithVelocity( Velocity );
+
+		animationHelper.IsGrounded = GroundEntity != null;
 	}
 }
