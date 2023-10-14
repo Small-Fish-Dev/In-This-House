@@ -72,7 +72,7 @@ partial class Player : AnimatedEntity
 
 	public void Respawn()
 	{
-		var spawnpoints = Entity.All.OfType<SpawnPoint>();
+		var spawnpoints = Entity.All.OfType<PlayerSpawn>();
 
 		var randomSpawnPoint = spawnpoints.OrderBy( x => Guid.NewGuid() ).FirstOrDefault();
 

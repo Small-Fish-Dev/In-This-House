@@ -1,6 +1,6 @@
 ﻿namespace BrickJam;
 
-public partial class Mansion : GameManager
+public partial class MansionGame : GameManager
 {
 	[ConCmd.Admin( "set_state" )]
 	public static void SetState( string state )

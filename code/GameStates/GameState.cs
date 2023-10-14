@@ -20,7 +20,7 @@ public abstract partial class GameState : Entity // Easy replication to client
 	}
 }
 
-public partial class Mansion
+public partial class MansionGame
 {
 	[Net, Change] public GameState CurrentState { get; set; }
 

@@ -2,6 +2,7 @@
 
 public partial class DungeonLevel : Level
 {
+	public override LevelType Type { get; set; } = LevelType.Dungeon;
 
 	public async override Task Start()
 	{
