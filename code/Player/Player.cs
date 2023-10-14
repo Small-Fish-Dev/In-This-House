@@ -68,9 +68,10 @@ partial class Player : AnimatedEntity
 				v.Value( "vel", Game.LocalPawn.Velocity );
 				v.Value( "money", Money );
 				
-				v.Group( "inputs", () =>
+				v.Group( "movement", () =>
 				{
 					v.Value( "running?", IsRunning );
+					v.Value( "wish speed", WishSpeed );
 				} );
 			} );
 		} );
