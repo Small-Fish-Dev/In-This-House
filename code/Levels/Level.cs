@@ -12,6 +12,7 @@ public enum LevelType
 public abstract partial class Level : Entity // Easy replication to client
 {
 	public Level() => Transmit = TransmitType.Always;
+	[Net] public Trapdoor Trapdoor { get; set; } = null;
 	[Net] public TimeSince SinceStarted { get; set; } = 0f;
 
 	[GameEvent.Tick.Server]

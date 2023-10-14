@@ -9,6 +9,14 @@ public partial class MansionLevel : Level
 
 		// Spawn monster?
 
+		var allValidTrapdoors = Entity.All.OfType<ValidTrapdoorPosition>()
+			.Where( x => x.LevelType == LevelType.Mansion )
+			.ToList();
+		var randomValidTrapdoor = Game.Random.FromList( allValidTrapdoors );
+
+		Trapdoor = new Trapdoor();
+		Trapdoor.Position = randomValidTrapdoor.Position;
+
 		return;
 	}
 
