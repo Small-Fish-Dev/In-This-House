@@ -25,6 +25,21 @@ struct PS_INPUT
 	#endif
 };
 
+struct VS_INPUT
+{
+    float3 vPositionOs : POSITION < Semantic( PosXyz ); >;
+};
+
+VS
+{
+    PS_INPUT MainVs( VS_INPUT i )
+    {
+        PS_INPUT o;
+        o.vPositionPs = float4( i.vPositionOs.xyz, 1.0f );
+        return o;
+    }
+}
+
 PS
 {    
     CreateTexture2D( g_tFrameTexture ) < Attribute( "FrameTexture" ); SrgbRead( true ); Filter( POINT ); AddressU( MIRROR ); AddressV( MIRROR ); >;
