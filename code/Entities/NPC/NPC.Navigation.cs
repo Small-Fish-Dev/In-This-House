@@ -110,7 +110,9 @@ public partial class NPC
 			if ( startingCell == null || targetCell == null || startingCell == targetCell ) return;
 
 			var pathBuilder = new AStarPathBuilder( CurrentGrid )
-			.WithPathCreator( this );
+			.WithPathCreator( this )
+			.WithPartialEnabled()
+			.WithMaxDistance( 2000f );
 
 			if ( false && CurrentGrid.LineOfSight( startingCell, targetCell ) ) // If there's direct line of sight, move in a straight path from A to B
 			{
