@@ -5,10 +5,9 @@ namespace BrickJam;
 public partial class NPC : AnimatedEntity
 {
 	public Level Level { get; private set; }
-	public Vector2 TimeBetweenIdleMove => new Vector2( 2f, 4f );
-	internal TimeUntil nextIdleMode { get; set; } = 0f;
+	internal TimeUntil nextIdle { get; set; } = 0f;
 	public virtual string ModelPath { get; set; } = "models/citizen/citizen.vmdl";
-	public virtual BBox CollisionBox { get; set; } = new( new Vector3( -12f, -12f, 0f ), new Vector3( 12f, 12f, 72f ) );
+	public virtual BBox CollisionBox { get; set; } = new( new Vector3( -6f, -6f, 0f ), new Vector3( 6f, 6f, 72f ) );
 
 	public NPC() { }
 	public NPC( Level level ) : base()
@@ -25,19 +24,26 @@ public partial class NPC : AnimatedEntity
 		Tags.Add( "npc" );
 	}
 
-	[GameEvent.Tick]
+	[GameEvent.Tick.Server]
 	public virtual void Think()
 	{
 		if ( Target == null )
 		{
-			//var random = Vector3.Random;
-			//var targetPosition = random * 3000;
-			//var targetCell = CurrentGrid.GetCell( targetPosition, false );
+			if ( nextIdle && !IsFollowingPath )
+			{
+				var randomPosition = Level.WorldBox.RandomPointInside;
+				var targetCell = Level.Grid?.GetCell( randomPosition, false ) ?? null;
 
-			//NavigateTo( CurrentGrid.GetCell( Entity.All.OfType<Player>().First().Position ) );
-			//nextIdleMode = Game.Random.Float( TimeBetweenIdleMove.x, TimeBetweenIdleMove.y );
+				if ( targetCell != null )
+				{
+					NavigateTo( targetCell );
+					nextIdle = Game.Random.Float( 3f, 6f );
+				}
+			}
 
-			Target = Entity.All.OfType<Player>().First();
+			//foreach ( var player in Entity.All.OfType<Player>() ) // TODO: Line of Sight
+
+			//Target = Entity.All.OfType<Player>().First();
 		}
 
 

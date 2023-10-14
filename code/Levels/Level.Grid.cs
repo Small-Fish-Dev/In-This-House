@@ -14,7 +14,7 @@ public partial class Level
 			.WithStaticOnly( false )
 			.WithCellSize( 12f )
 			.WithHeightClearance( 72f )
-			.WithWidthClearance( 24f )
+			.WithWidthClearance( 32f )
 			.WithStepSize( 16f )
 			.WithStandableAngle( 46f )
 			.WithMaxDropHeight( 0f );
