@@ -1,6 +1,6 @@
 ﻿namespace BrickJam;
 
-public partial class Item : ModelEntity
+public partial class Item : UseableEntity
 {
 	public ItemPrefab Prefab;
 
