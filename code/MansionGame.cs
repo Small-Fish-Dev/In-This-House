@@ -8,11 +8,11 @@ global using System.IO;
 
 namespace BrickJam;
 
-public partial class Mansion : GameManager
+public partial class MansionGame : GameManager
 {
-	public static Mansion Instance { get; private set; }
+	public static MansionGame Instance { get; private set; }
 
-	public Mansion()
+	public MansionGame()
 	{
 		Instance = this;
 		

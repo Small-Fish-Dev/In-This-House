@@ -53,7 +53,7 @@ public abstract partial class Level : Entity // Easy replication to client
 	public static Type GetPreviousType( LevelType type ) => GetType( type - 1 );
 }
 
-public partial class Mansion
+public partial class MansionGame
 {
 	[Net, Change] public Level CurrentLevel { get; set; }
 
