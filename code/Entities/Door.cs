@@ -1,12 +1,13 @@
 ﻿using Editor;
+
 namespace BrickJam;
 
-public enum DoorState
+public enum DoorState : sbyte
 {
-	Open,
-	Closed,
-	Opening,
-	Closing
+	Opening = -1,
+	Closing = 1,
+	Open = 2,
+	Closed = 3,
 }
 
 [HammerEntity]
@@ -36,6 +37,7 @@ public partial class Door : UseableEntity
 
 		SetModel( "models/placeholders/placeholder_door.vmdl" );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
+		Tags.Add( "solid", "door" );
 		initialTransform = Transform;
 	}
 
@@ -67,41 +69,37 @@ public partial class Door : UseableEntity
 	void tick()
 	{
 		// No need to update if we are static.
-		if ( State == DoorState.Open || State == DoorState.Closed )
+		if ( State == DoorState.Open || State == DoorState.Closed || !IsAuthority )
 			return;
 
 		const float TIME = 0.25f;
 		const float ANGLE = 90f;
-		const float PUSH_FORCE = 100f;
+		const float PUSH_FORCE = 50f;
 
-		var direction = State == DoorState.Opening
-			? 1
-			: -1;
+		// Calculate desired angles.
+		var state = (int)State;
+		var yaw = initialTransform.Rotation.Yaw()
+			+ Math.Max( state, 0 ) * ANGLE;
 
-		// Check if we're already at the desired yaw.
-		var inverse = Rotation * initialTransform.Rotation.Inverse;
 		var targetRotation = initialTransform.Rotation
 			.Angles()
-			.WithYaw( direction == 1
-				? ANGLE
-				: 0 )
+			.WithYaw( yaw )
 			.ToRotation();
 
-		// Just reset the door.
-		if ( inverse.Distance( targetRotation ).AlmostEqual( 0, 1f ) )
+		// Snap the door.
+		if ( Rotation.Distance( targetRotation ).AlmostEqual( 0, 1f ) )
 		{
 			State = State == DoorState.Opening
 				? DoorState.Open
 				: DoorState.Closed;
 
-			Transform = initialTransform;
-			Transform = Transform.RotateAround( hinge, targetRotation );
-
+			Transform = Transform.WithRotation( targetRotation );
 			return;
 		}
 
 		// Prevent colliding with players.
-		var trace = Trace.Body( PhysicsBody, Position + Rotation.Right * 4f * direction )
+		var center = CollisionWorldSpaceCenter;
+		var trace = Trace.Body( PhysicsBody, center + Rotation.Left * 4f * state )
 			.WithAnyTags( "player" )
 			.Run();
 
@@ -109,14 +107,13 @@ public partial class Door : UseableEntity
 		if ( trace.Hit )
 		{
 			if ( trace.Entity != null && trace.Entity.IsValid )
-				trace.Entity.Velocity += (trace.StartPosition - trace.Entity.Position).Normal * PUSH_FORCE;
-
+				trace.Entity.Velocity += -trace.Normal * PUSH_FORCE;
+				
 			return;
 		}
 
-		// Rotate around the hinge.
-		var rot = Rotation.Lerp( inverse, targetRotation, 1f / TIME * Time.Delta );
-		Transform = initialTransform;
-		Transform = Transform.RotateAround( hinge, rot );
+		// Linear rotation for the door.
+		var rot = Rotation.Lerp( Rotation, targetRotation, 1f / TIME * Time.Delta );
+		Transform = Transform.WithRotation( rot );
 	}
 }
