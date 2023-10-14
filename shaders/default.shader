@@ -10,7 +10,7 @@ FEATURES
 {
     #include "vr_common_features.fxc"
 	Feature( F_TRANSPARENCY, 0..1, "Rendering" );
-	Feature( F_TINTED, 0..1, "Rendering" );
+	Feature( F_TINT_MASK, 0..1, "Rendering" );
     Feature( F_ADDITIVE_BLEND, 0..1, "Blending" );
 }
 
@@ -51,7 +51,7 @@ VS
 PS
 { 
 	StaticCombo( S_TRANSPARENCY, F_TRANSPARENCY, Sys( ALL ) );
-	StaticCombo( S_TINTED, F_TINTED, Sys( ALL ) );
+	StaticCombo( S_TINT_MASK, F_TINT_MASK, Sys( ALL ) );
 	
 	#define CUSTOM_TEXTURE_FILTERING
     SamplerState Sampler < Filter( POINT ); AddressU( WRAP ); AddressV( WRAP ); >;
@@ -62,21 +62,20 @@ PS
 	CreateInputTexture2D( Color, Srgb, 8, "", "_color", "Material,10/10", Default3( 1.0, 1.0, 1.0 ) );
 	CreateTexture2DWithoutSampler( g_tColor ) < Channel( RGB, Box( Color ), Srgb ); OutputFormat( BC7 ); SrgbRead( true ); Filter( POINT ); >;
 
-    CreateInputTexture2D( Normal, Linear, 8, "NormalizeNormals", "_normal", "Material,10/20", Default3( 0.5, 0.5, 1.0 ) );
+	float3 g_vColorTint < UiType( Color ); Default3( 1.0, 1.0, 1.0 ); UiGroup( "Material,10/20" ); >;
+
+    CreateInputTexture2D( Normal, Linear, 8, "NormalizeNormals", "_normal", "Material,10/30", Default3( 0.5, 0.5, 1.0 ) );
 	CreateTexture2DWithoutSampler( g_tNormal ) < Channel( RGB, Box( Normal ), Linear ); OutputFormat( DXT5 ); SrgbRead( false ); >;
 
-	CreateInputTexture2D( Roughness, Linear, 8, "", "_rough", "Material,10/30", Default( 1 ) );
+	CreateInputTexture2D( Roughness, Linear, 8, "", "_rough", "Material,10/40", Default( 1 ) );
 	CreateTexture2DWithoutSampler( g_tRoughness ) < Channel( R, Box( Roughness ), Linear ); OutputFormat( BC7 ); SrgbRead( false ); >;
 
     #include "sbox_pixel.fxc"
     #include "common/pixel.hlsl"
 
-	#if ( S_TINTED )
-		CreateInputTexture2D( Tint, Srgb, 8, "", "_color", "Material,10/40", Default3( 1.0, 1.0, 1.0 ) );
-		CreateTexture2DWithoutSampler( g_tTint ) < Channel( RGB, Box( Tint ), Srgb ); OutputFormat( BC7 ); SrgbRead( true ); Filter( POINT ); >;
-		
-		CreateInputTexture2D( TintMask, Srgb, 8, "", "_color", "Material,10/50", Default( 1 ) );
-		CreateTexture2DWithoutSampler( g_tTintMask ) < Channel( R, Box( Tint ), Linear ); OutputFormat( BC7 ); SrgbRead( false ); Filter( POINT ); >;
+	#if ( S_TINT_MASK )
+		CreateInputTexture2D( TintMask, Srgb, 8, "", "_tint", "Material,10/50", Default( 1 ) );
+		CreateTexture2DWithoutSampler( g_tTintMask ) < Channel( R, Box( TintMask ), Linear ); OutputFormat( BC7 ); SrgbRead( false ); Filter( POINT ); >;
 	#endif
     
 	#if ( S_TRANSPARENCY )
@@ -106,11 +105,13 @@ PS
 		float2 UV = i.vTextureCoords.xy;
 
         Material m;
-        m.Albedo = Tex2DS( g_tColor, Sampler, UV.xy ).rgb;
-		#if ( S_TINTED )
+		float3 color = Tex2DS( g_tColor, Sampler, UV.xy ).rgb;
+		m.Albedo = 0;
+		#if ( S_TINT_MASK )
 			float mask = Tex2DS( g_tTintMask, Sampler, UV.xy ).r;
-			float3 tint = Tex2DS( g_tTint, Sampler, UV.xy ).rgb; 
-			m.Albedo = lerp( m.Albedo.rgb, m.Albedo.rgb * tint, mask );
+			m.Albedo = lerp( color, color * g_vColorTint.rgb, mask );
+		#else
+			m.Albedo = color * g_vColorTint.rgb;
 		#endif
         m.Normal = TransformNormal( i, DecodeNormal( Tex2DS( g_tNormal, Sampler, UV.xy ).rgb ) );
 
