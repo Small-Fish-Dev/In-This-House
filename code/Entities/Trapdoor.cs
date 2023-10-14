@@ -1,6 +1,6 @@
 ﻿namespace BrickJam;
 
-public class Trapdoor : ModelEntity
+public class Trapdoor : UseableEntity
 {
 	public override void Spawn()
 	{

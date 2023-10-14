@@ -43,6 +43,7 @@ partial class Player : AnimatedEntity
 
 		SimulateController();
 		SimulateAnimations();
+		SimulateUse();
 	}
 
 	public override void FrameSimulate( IClient cl )
