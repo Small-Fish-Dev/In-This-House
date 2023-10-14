@@ -70,11 +70,11 @@ public partial class NPC
 
 		if ( IsFollowingPath )
 		{
-			for ( var i = 1; i < CurrentPath.Count; i++ )
+			/*for ( var i = 1; i < CurrentPath.Count; i++ )
 			{
-				//DebugOverlay.Line( CurrentPath.Nodes[i-1].EndPosition, CurrentPath.Nodes[i].EndPosition, Time.Delta, false );
-				//DebugOverlay.Text( CurrentPath.Nodes[i-1].MovementTag, CurrentPath.Nodes[i-1].EndPosition, Time.Delta, 5000f );
-			}
+				DebugOverlay.Line( CurrentPath.Nodes[i-1].EndPosition, CurrentPath.Nodes[i].EndPosition, Time.Delta, false );
+				DebugOverlay.Text( CurrentPath.Nodes[i-1].MovementTag, CurrentPath.Nodes[i-1].EndPosition, Time.Delta, 5000f );
+			}*/
 
 			Direction = IdealDirection;
 
@@ -84,15 +84,6 @@ public partial class NPC
 				if ( Math.Abs( Position.z - NextPathNode.EndPosition.z ) <= CurrentGrid.StepSize ) // Make sure it's within the stepsize
 				{
 					CurrentPath.Nodes.RemoveAt( 0 );
-
-					if ( NextMovementTag == "shortjump" )
-					{
-						Position = CurrentPathNode.EndPosition;
-						Direction = (NextPathNode.EndPosition.WithZ(0) - Position.WithZ(0)).Normal;
-						Velocity = (Direction * 200f).WithZ( 300f );
-						SetAnimParameter( "jump", true );
-						GroundEntity = null;
-					}
 
 					if ( CurrentPathNode == LastPathNode )
 						HasArrivedDestination = true;

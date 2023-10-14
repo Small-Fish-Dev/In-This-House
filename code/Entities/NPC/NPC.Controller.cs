@@ -12,7 +12,7 @@ public partial class NPC
 	{
 		if ( Direction.IsNearZeroLength ) return;
 
-		var speed = Target != null ? RunSpeed : WalkSpeed;
+		var speed = HasArrivedDestination ? 0f : ( Target != null ? RunSpeed : WalkSpeed );
 
 		Rotation = Rotation.Lerp( Rotation, Rotation.LookAt( Direction, Vector3.Up ), Time.Delta * 5f );
 
