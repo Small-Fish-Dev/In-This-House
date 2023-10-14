@@ -10,6 +10,7 @@ FEATURES
 {
     #include "vr_common_features.fxc"
 	Feature( F_TRANSPARENCY, 0..1, "Rendering" );
+	Feature( F_TINTED, 0..1, "Rendering" );
     Feature( F_ADDITIVE_BLEND, 0..1, "Blending" );
 }
 
@@ -50,6 +51,7 @@ VS
 PS
 { 
 	StaticCombo( S_TRANSPARENCY, F_TRANSPARENCY, Sys( ALL ) );
+	StaticCombo( S_TINTED, F_TINTED, Sys( ALL ) );
 	
 	#define CUSTOM_TEXTURE_FILTERING
     SamplerState Sampler < Filter( POINT ); AddressU( WRAP ); AddressV( WRAP ); >;
@@ -68,6 +70,14 @@ PS
 
     #include "sbox_pixel.fxc"
     #include "common/pixel.hlsl"
+
+	#if ( S_TINTED )
+		CreateInputTexture2D( Tint, Srgb, 8, "", "_color", "Material,10/40", Default3( 1.0, 1.0, 1.0 ) );
+		CreateTexture2DWithoutSampler( g_tTint ) < Channel( RGB, Box( Tint ), Srgb ); OutputFormat( BC7 ); SrgbRead( true ); Filter( POINT ); >;
+		
+		CreateInputTexture2D( TintMask, Srgb, 8, "", "_color", "Material,10/50", Default( 1 ) );
+		CreateTexture2DWithoutSampler( g_tTintMask ) < Channel( R, Box( Tint ), Linear ); OutputFormat( BC7 ); SrgbRead( false ); Filter( POINT ); >;
+	#endif
     
 	#if ( S_TRANSPARENCY )
 		#if( !F_RENDER_BACKFACES )
@@ -97,6 +107,11 @@ PS
 
         Material m;
         m.Albedo = Tex2DS( g_tColor, Sampler, UV.xy ).rgb;
+		#if ( S_TINTED )
+			float mask = Tex2DS( g_tTintMask, Sampler, UV.xy ).r;
+			float3 tint = Tex2DS( g_tTint, Sampler, UV.xy ).rgb; 
+			m.Albedo = lerp( m.Albedo.rgb, m.Albedo.rgb * tint, mask );
+		#endif
         m.Normal = TransformNormal( i, DecodeNormal( Tex2DS( g_tNormal, Sampler, UV.xy ).rgb ) );
 
         m.Roughness = Tex2DS( g_tRoughness, Sampler, UV.xy ).r;
