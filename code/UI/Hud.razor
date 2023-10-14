@@ -1,6 +1,5 @@
 ﻿@using Sandbox;
 @using Sandbox.UI;
-@using Player = BrickJam.Player
 
 @namespace BrickJam.UI
 @inherits RootPanel
@@ -15,6 +14,13 @@
 					<StunIndicator @Player=@player />
 					break;
 				}
+
+			case Spectator:
+				{
+					<div>yuo're dead lol lmao git gud</div>
+					break;
+				}
+				
 			default:
 				{
 					<div>TODO: unknown pawn type @(Game.LocalPawn.GetType())</div>

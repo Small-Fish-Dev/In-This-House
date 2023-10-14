@@ -15,4 +15,20 @@ public partial class MansionGame : GameManager
 		if ( level == "mansion" )
 			SetLevel<MansionLevel>();
 	}
+
+	[ConCmd.Server( "mansion_spectate" )]
+	public static void Spectate()
+	{
+		if ( ConsoleSystem.Caller is null )
+			return;
+
+		if ( ConsoleSystem.Caller.Pawn is Player player )
+		{
+			Log.Error( "TODO: kill the player instead" );
+			player.Delete();
+		}
+
+		var spectator = new Spectator();
+		ConsoleSystem.Caller.Pawn = spectator;
+	}
 }
