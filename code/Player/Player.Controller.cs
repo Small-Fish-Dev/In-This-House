@@ -16,23 +16,13 @@ public partial class Player : AnimatedEntity
 
 	protected void SimulateController()
 	{
-		if ( GroundEntity != null )
-		{
-			if ( !InputDirection.IsNearlyZero() )
-				WishSpeed = Math.Clamp( WishSpeed + AccelerationSpeed * Time.Delta, 0f, IsRunning ? RunSpeed : WalkSpeed );
-			else
-				WishSpeed = Math.Clamp( WishSpeed - AccelerationSpeed * Time.Delta, 0f, IsRunning ? RunSpeed : WalkSpeed );
+		if ( !InputDirection.IsNearlyZero() )
+			WishSpeed = Math.Clamp( WishSpeed + AccelerationSpeed * Time.Delta, 0f, IsRunning ? RunSpeed : WalkSpeed );
+		else
+			WishSpeed = Math.Clamp( WishSpeed - AccelerationSpeed * Time.Delta, 0f, IsRunning ? RunSpeed : WalkSpeed );
 
-			Velocity = Vector3.Lerp( Velocity, ( InputDirection.IsNearlyZero() ? ( Velocity.Normal / 3f ): ( InputDirection.Normal  * Rotation.FromYaw( InputAngles.yaw ) ) ) * WishSpeed, 15f * Time.Delta )
-				.WithZ( Velocity.z );
-		}
-
-		if ( Input.Down( "jump" ) )
-			if ( GroundEntity != null )
-			{
-				GroundEntity = null;
-				Velocity += Vector3.Up * 300f;
-			}
+		Velocity = Vector3.Lerp( Velocity, ( InputDirection.IsNearlyZero() ? ( Velocity.Normal / 3f ): ( InputDirection.Normal  * Rotation.FromYaw( InputAngles.yaw ) ) ) * WishSpeed, 15f * Time.Delta )
+			.WithZ( Velocity.z );
 
 		var helper = new MoveHelper( Position, Velocity );
 		helper.MaxStandableAngle = WalkAngle;
@@ -60,5 +50,12 @@ public partial class Player : AnimatedEntity
 			GroundEntity = null;
 			Velocity -= Vector3.Down * Game.PhysicsWorld.Gravity * Time.Delta;
 		}
+
+		if ( Input.Down( "jump" ) )
+			if ( GroundEntity != null )
+			{
+				GroundEntity = null;
+				Velocity += Vector3.Up * 300f;
+			}
 	}
 }

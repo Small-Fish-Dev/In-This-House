@@ -1,0 +1,14 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "models/items/paintings/wide_painting_color.png"
+	Normal "models/items/paintings/wide_painting_normal.png"
+	Roughness "models/items/paintings/wide_painting_rough.png"
+}
