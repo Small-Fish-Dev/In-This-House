@@ -1,5 +1,14 @@
 ﻿namespace BrickJam;
 
+public enum LevelType
+{
+	None,
+	Mansion,
+	Dungeon,
+	Office,
+	Library
+}
+
 public abstract partial class Level : Entity // Easy replication to client
 {
 	public Level() => Transmit = TransmitType.Always;

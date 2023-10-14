@@ -27,7 +27,8 @@
         "xenthio.tiles_brown#12811",
         "facepunch.office_ceiling_a#18747",
         "sundayservice.woodbrassfloor_01#27351",
-        "semxy.bowieceiling#24051"
+        "semxy.bowieceiling#24051",
+        "local.2023_jam#local"
       ],
       "Metadata": {
         "SingleAssetSource": "maps/mansion.vmap"
