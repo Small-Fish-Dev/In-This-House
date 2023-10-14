@@ -2,6 +2,7 @@
 
 public partial class LibraryLevel : Level
 {
+	public override LevelType Type { get; set; } = LevelType.Library;
 
 	public async override Task Start()
 	{

@@ -2,6 +2,7 @@
 
 public partial class MansionLevel : Level
 {
+	public override LevelType Type { get; set; } = LevelType.Mansion;
 
 	public async override Task Start()
 	{
