@@ -25,4 +25,12 @@ public partial class Item : UseableEntity
 		
 		return item;
 	}
+
+	public override void Use( Player user )
+	{
+		base.Use( user );
+
+		user.AddMoney( MonetaryValue );
+		Delete();
+	}
 }
