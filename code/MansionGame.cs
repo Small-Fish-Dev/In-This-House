@@ -17,7 +17,10 @@ public partial class MansionGame : GameManager
 		Instance = this;
 
 		if ( Game.IsClient )
+		{
+			InitializeEffects();
 			_ = new Hud();
+		}
 	}
 
 	public override void ClientJoined( IClient client )
