@@ -1,0 +1,14 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "models/items/paintings/notgaylien_color.png"
+	Normal "materials/default/default_normal.tga"
+	Roughness "models/items/paintings/canvas2_rough.png"
+}
