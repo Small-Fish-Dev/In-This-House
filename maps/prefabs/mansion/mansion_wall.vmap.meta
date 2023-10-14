@@ -16,7 +16,9 @@
       "HasCode": false,
       "CodePath": null,
       "PackageReferences": [],
-      "EditorReferences": [],
+      "EditorReferences": [
+        "fish.2023_jam"
+      ],
       "Metadata": {
         "SingleAssetSource": "maps/prefabs/mansion/mansion_wall.vmap"
       }
