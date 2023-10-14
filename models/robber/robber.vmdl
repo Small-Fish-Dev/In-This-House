@@ -113,10 +113,48 @@
 					},
 				]
 			},
+			{
+				_class = "PrefabList"
+				children = 
+				[
+					{
+						_class = "Prefab"
+						target_file = "models/citizen/prefabs/citizen_animconstraintlist.vmdl_prefab"
+					},
+					{
+						_class = "Prefab"
+						target_file = "models/citizen/prefabs/citizen_animationlist.vmdl_prefab"
+					},
+					{
+						_class = "Prefab"
+						target_file = "models/citizen/prefabs/citizen_poseparamlist.vmdl_prefab"
+					},
+					{
+						_class = "Prefab"
+						target_file = "models/citizen/prefabs/citizen_weightlistlist.vmdl_prefab"
+					},
+					{
+						_class = "Prefab"
+						target_file = "models/citizen/prefabs/citizen_attachmentlist.vmdl_prefab"
+					},
+					{
+						_class = "Prefab"
+						target_file = "models/citizen/prefabs/citizen_gamedatalist.vmdl_prefab"
+					},
+					{
+						_class = "Prefab"
+						target_file = "models/citizen/prefabs/citizen_bonemarkuplist.vmdl_prefab"
+					},
+					{
+						_class = "Prefab"
+						target_file = "models/citizen/prefabs/citizen_ikdata.vmdl_prefab"
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = ""
+		anim_graph_name = "models/citizen/citizen.vanmgrph"
 		base_model_name = ""
 	}
 }
