@@ -8,7 +8,7 @@ public partial class Player
 
 	public void Stun()
 	{
-		Log.Error( "TODO: play a loud thud!" );
+		PlaySound( "sounds/pipe.sound" );
 
 		StunLeft = StunDuration;
 	}
