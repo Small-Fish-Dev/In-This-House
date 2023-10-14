@@ -1,6 +1,6 @@
 ﻿namespace BrickJam;
 
-public partial class MansionLevel : Level
+public partial class LibraryLevel : Level
 {
 
 	public async override Task Start()
@@ -13,7 +13,7 @@ public partial class MansionLevel : Level
 		// Spawn monster?
 
 		var allValidTrapdoors = Entity.All.OfType<ValidTrapdoorPosition>()
-			.Where( x => x.LevelType == LevelType.Mansion )
+			.Where( x => x.LevelType == LevelType.Library )
 			.ToList();
 		var randomValidTrapdoor = Game.Random.FromList( allValidTrapdoors );
 

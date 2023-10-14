@@ -36,6 +36,8 @@ public partial class Mansion
 
 	public static async void SetLevel<T>() where T : Level
 	{
+		if ( !Game.IsServer ) return;
+
 		if ( Instance.CurrentLevel != null )
 		{
 			await Instance.CurrentLevel?.End();
@@ -44,6 +46,16 @@ public partial class Mansion
 
 		Instance.CurrentLevel = Activator.CreateInstance<T>();
 		await Instance.CurrentLevel.Start();
+	}
+
+	public static void NextLevel()
+	{
+		if ( Instance.CurrentLevel is MansionLevel )
+			SetLevel<DungeonLevel>();
+		else if ( Instance.CurrentLevel is DungeonLevel )
+			SetLevel<OfficeLevel>();
+		else if ( Instance.CurrentLevel is OfficeLevel )
+			SetLevel<LibraryLevel>();
 	}
 
 	public void OnCurrentLevelChanged()

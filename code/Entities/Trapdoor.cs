@@ -11,4 +11,11 @@ public class Trapdoor : UseableEntity
 		Tags.Add( "solid" );
 		Tags.Add( "trapdoor" );
 	}
+
+	public override void Use()
+	{
+		base.Use();
+
+		Mansion.NextLevel();
+	}
 }
