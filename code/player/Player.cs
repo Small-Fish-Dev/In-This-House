@@ -53,7 +53,8 @@ partial class Player : AnimatedEntity
 		Camera.Rotation = InputRotation;
 
 		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Game.Preferences.FieldOfView );
-		Camera.FirstPersonViewer = this;
+		Camera.FirstPersonViewer = this; // Doesn't work?
+		EnableDrawing = false; // Let's use this for now
 	}
 
 	protected void SimulateAnimations()
