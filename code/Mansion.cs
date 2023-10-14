@@ -15,7 +15,7 @@ public partial class Mansion : GameManager
 	public Mansion()
 	{
 		Instance = this;
-		
+
 		if ( Game.IsClient )
 			_ = new Hud();
 	}
@@ -27,5 +27,23 @@ public partial class Mansion : GameManager
 		var pawn = new Player();
 		client.Pawn = pawn;
 		pawn.Respawn();
+	}
+
+	public override void FrameSimulate( IClient cl )
+	{
+		base.FrameSimulate( cl );
+		
+		BugBug.Here( v =>
+		{
+			v.Text( "small fish jam game" );
+			v.Value( "time", DateTime.Now );
+			v.Space();
+			
+			v.Group( "local camera", () =>
+			{
+				v.Value( "pos", Camera.Position );
+				v.Value( "ang", Camera.Rotation.Angles() );
+			} );
+		} );
 	}
 }
