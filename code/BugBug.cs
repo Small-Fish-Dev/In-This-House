@@ -5,7 +5,7 @@
 /// </summary>
 public static class BugBug
 {
-	private static readonly Queue<Action<Builder>> BuildQueue = new();
+	private static readonly Stack<Action<Builder>> BuildStack = new();
 
 	public class Builder
 	{
@@ -62,18 +62,21 @@ public static class BugBug
 	private static void Draw()
 	{
 		var builder = new Builder();
-		foreach ( var f in BuildQueue ) f.Invoke( builder );
+		while ( BuildStack.Count != 0 )
+		{
+			BuildStack.Pop().Invoke( builder );
+		}
 
 		Reset();
 	}
 
 	private static void Reset()
 	{
-		BuildQueue.Clear();
+		BuildStack.Clear();
 	}
 
 	public static void Here( Action<Builder> f )
 	{
-		BuildQueue.Enqueue( f );
+		BuildStack.Push( f );
 	}
 }
