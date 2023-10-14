@@ -11,10 +11,11 @@ public enum LevelType // We need this to categorize hammer entities
 
 public abstract partial class Level : Entity // Easy replication to client
 {
-	public Level() => Transmit = TransmitType.Always;
 	public virtual LevelType Type { get; set; } = LevelType.None;
 	[Net] public Trapdoor Trapdoor { get; set; } = null;
 	[Net] public TimeSince SinceStarted { get; set; } = 0f;
+
+	public Level() => Transmit = TransmitType.Always;
 
 	[GameEvent.Tick.Server]
 	public virtual void Compute() { }
@@ -35,6 +36,8 @@ public abstract partial class Level : Entity // Easy replication to client
 
 		Trapdoor = new Trapdoor();
 		Trapdoor.Position = randomValidTrapdoor.Position;
+
+		await GenerateGrid();
 
 		return;
 	}
