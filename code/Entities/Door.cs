@@ -1,4 +1,5 @@
-﻿namespace BrickJam;
+﻿using Editor;
+namespace BrickJam;
 
 public enum DoorState
 {
@@ -8,6 +9,8 @@ public enum DoorState
 	Closing
 }
 
+[HammerEntity]
+[EditorModel( "models/placeholders/placeholder_door.vmdl" )]
 public partial class Door : UseableEntity
 {
 	[Net] public DoorState State { get; set; }
@@ -31,6 +34,7 @@ public partial class Door : UseableEntity
 	{
 		base.Spawn();
 
+		SetModel( "models/placeholders/placeholder_door.vmdl" );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		initialTransform = Transform;
 	}
