@@ -29,8 +29,8 @@
     "CsProjName": "",
     "LaunchConfigs": [
       {
-        "Name": "DEV",
-        "GameIdent": "local.2023_jam#local",
+        "Name": "DEV2",
+        "GameIdent": "fish.2023_jam#local",
         "MapName": "mansion.vmap",
         "MaxPlayers": 1,
         "GameSettings": {},
