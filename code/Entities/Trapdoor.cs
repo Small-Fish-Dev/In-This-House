@@ -8,6 +8,7 @@ public class Trapdoor : ModelEntity
 
 		SetModel( "models/placeholders/placeholder_trapdoor.vmdl" );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
+		Tags.Add( "solid" );
 		Tags.Add( "trapdoor" );
 	}
 }
