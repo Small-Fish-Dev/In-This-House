@@ -16,6 +16,7 @@ public partial class Player
 
 	public float StepSize => 16f;
 	public float WalkAngle => 46f;
+	public float StunBounceVelocity => 100f;
 
 	protected void SimulateController()
 	{
@@ -26,12 +27,12 @@ public partial class Player
 			? Vector3.Zero
 			: InputDirection.Normal * Rotation.FromYaw( InputAngles.yaw )) * WishSpeed;
 
-		Velocity = Vector3.Lerp( Velocity, wishVelocity,
+		var lerpVelocity = Vector3.Lerp( Velocity, wishVelocity,
 				(wishVelocity.LengthSquared > Velocity.LengthSquared ? 15f : 5f) // Accelerate faster than decelerate
 				* Time.Delta )
 			.WithZ( Velocity.z );
 
-		var helper = new MoveHelper( Position, Velocity );
+		var helper = new MoveHelper( Position, lerpVelocity );
 		helper.MaxStandableAngle = WalkAngle;
 
 		helper.Trace = helper.Trace
@@ -42,12 +43,15 @@ public partial class Player
 		helper.TryMoveWithStep( Time.Delta, StepSize );
 		helper.TryUnstuck();
 
+		Position = helper.Position;
+		Velocity = helper.Velocity;
+
 		// If:
 		// - the player is running
 		// - the velocity dropped from more than WalkSpeed to near zero
 		// - there is a wall in the direction of movement
 		// then the pawn has probably ran into a wall
-		if ( !Velocity.WithZ( 0 ).IsNearZeroLength
+		if ( !lerpVelocity.WithZ( 0 ).IsNearZeroLength
 		     && IsRunning
 		     && oldVelocity.WithZ( 0 ).Length > WalkSpeed
 		     && helper.Velocity.WithZ( 0 ).Length < 15f // TODO: hardcoded
@@ -56,19 +60,20 @@ public partial class Player
 			// Making the collision box a little bit shorter to prevent small items from triggering a concussion
 			var tr = helper.Trace
 				.Size( CollisionBox.Mins + Vector3.Up * StepSize, CollisionBox.Maxs )
-				.FromTo( helper.Position, helper.Position + Velocity.WithZ( 0 ).Normal ).Run();
+				.FromTo( helper.Position, helper.Position + lerpVelocity.WithZ( 0 ).Normal ).Run();
 
 			if ( tr.Hit )
+			{
 				Stun();
+
+				Velocity += tr.Normal * (CollisionBox.Size.WithZ( 0 ).Length + StunBounceVelocity); // TODO: hardcoded
+			}
 			else
 			{
 				Log.Error( "No lobotomy for today :(" );
 				Log.Trace( tr );
 			}
 		}
-
-		Position = helper.Position;
-		Velocity = helper.Velocity;
 
 		var traceDown = helper.TraceDirection( Vector3.Down );
 
