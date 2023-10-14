@@ -8,7 +8,14 @@ public partial class Player : AnimatedEntity
 {
 	[Net] public float WalkSpeed { get; set; } = 200f;
 	[Net] public float RunSpeed { get; set; } = 350f;
-	[Net] public float AccelerationSpeed { get; set; } = 400f; // Units per second (Ex. 200f means that after 1 second you've reached 200f speed)
+
+	/// <summary>
+	/// Acceleration speed in units per second (Ex. 200f means that after 1 second you've reached 200f speed)
+	/// </summary>
+	[Net]
+	public float AccelerationSpeed { get; set; } =
+		400f;
+
 	[Net, Predicted] public float WishSpeed { get; private set; } = 0f;
 
 	public float StepSize => 16f;
@@ -21,7 +28,11 @@ public partial class Player : AnimatedEntity
 		else
 			WishSpeed = Math.Clamp( WishSpeed - AccelerationSpeed * Time.Delta, 0f, IsRunning ? RunSpeed : WalkSpeed );
 
-		Velocity = Vector3.Lerp( Velocity, ( InputDirection.IsNearlyZero() ? ( Velocity.Normal / 3f ): ( InputDirection.Normal  * Rotation.FromYaw( InputAngles.yaw ) ) ) * WishSpeed, 15f * Time.Delta )
+		var oldVelocity = Velocity;
+		Velocity = Vector3.Lerp( Velocity,
+				(InputDirection.IsNearlyZero()
+					? (Velocity.Normal / 3f)
+					: (InputDirection.Normal * Rotation.FromYaw( InputAngles.yaw ))) * WishSpeed, 15f * Time.Delta )
 			.WithZ( Velocity.z );
 
 		var helper = new MoveHelper( Position, Velocity );
@@ -34,6 +45,24 @@ public partial class Player : AnimatedEntity
 
 		helper.TryMoveWithStep( Time.Delta, StepSize );
 		helper.TryUnstuck();
+
+		// If:
+		// - the player is running
+		// - the velocity dropped from more than WalkSpeed to near zero
+		// - there is a wall in the direction of movement
+		// then the pawn has probably ran into a wall
+		if ( !Velocity.IsNearZeroLength
+		     && IsRunning
+		     && oldVelocity.Length > WalkSpeed
+		     && helper.Velocity.Length < 15f // TODO: hardcoded
+		   )
+		{
+			var tr = helper.Trace
+				.Size( CollisionBox.Mins + Vector3.Up * StepSize, CollisionBox.Maxs )
+				.FromTo( helper.Position, helper.Position + Velocity.Normal ).Run();
+			if ( tr.Hit )
+				Log.Error( "Me after lobotomy!" );
+		}
 
 		Position = helper.Position;
 		Velocity = helper.Velocity;
