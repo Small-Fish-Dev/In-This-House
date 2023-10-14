@@ -1,0 +1,14 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "models/nyobo/nyobo_color.png"
+	Normal "models/nyobo/nyobo_normal.png"
+	Roughness "models/nyobo/nyobo_rough.png"
+}

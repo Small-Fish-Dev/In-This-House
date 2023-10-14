@@ -1,0 +1,7 @@
+{
+  "Name": "Debug Item",
+  "Description": "This item is meant for debugging",
+  "Rarity": "Rare",
+  "MonetaryValue": 1337,
+  "__references": []
+}
