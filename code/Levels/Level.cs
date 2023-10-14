@@ -15,6 +15,7 @@ public abstract partial class Level : Entity // Easy replication to client
 {
 	public virtual LevelType Type { get; set; } = LevelType.None;
 	[Net] public Trapdoor Trapdoor { get; set; } = null;
+	[Net] public NPC Monster { get; set; } = null;
 	[Net] public TimeSince SinceStarted { get; set; } = 0f;
 
 	public Level() => Transmit = TransmitType.Always;
@@ -51,6 +52,7 @@ public abstract partial class Level : Entity // Easy replication to client
 		await GameTask.DelaySeconds( 1f ); // Wait for the black screen to be fully black
 
 		Trapdoor?.Delete();
+		Monster?.Delete();
 
 		return;
 	}

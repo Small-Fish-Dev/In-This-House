@@ -4,8 +4,8 @@ namespace BrickJam;
 
 public partial class NPC
 {
-	public virtual float WalkSpeed { get; set; } = 200f;
-	public virtual float RunSpeed { get; set; } = 300f;
+	public virtual float WalkSpeed { get; set; } = 120f;
+	public virtual float RunSpeed { get; set; } = 250f;
 	public Vector3 Direction { get; set; } = Vector3.Zero;
 
 	public virtual void ComputeMotion()
@@ -14,7 +14,9 @@ public partial class NPC
 
 		var speed = Target != null ? RunSpeed : WalkSpeed;
 
-		var helper = new MoveHelper( Position, Direction * speed );
+		Rotation = Rotation.Lerp( Rotation, Rotation.LookAt( Direction, Vector3.Up ), Time.Delta * 5f );
+
+		var helper = new MoveHelper( Position, Rotation.Forward * speed );
 		helper.MaxStandableAngle = 60f;
 
 		helper.Trace = helper.Trace

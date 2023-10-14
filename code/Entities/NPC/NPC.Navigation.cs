@@ -72,8 +72,8 @@ public partial class NPC
 		{
 			for ( var i = 1; i < CurrentPath.Count; i++ )
 			{
-				DebugOverlay.Line( CurrentPath.Nodes[i-1].EndPosition, CurrentPath.Nodes[i].EndPosition, Time.Delta, false );
-				DebugOverlay.Text( CurrentPath.Nodes[i-1].MovementTag, CurrentPath.Nodes[i-1].EndPosition, Time.Delta, 5000f );
+				//DebugOverlay.Line( CurrentPath.Nodes[i-1].EndPosition, CurrentPath.Nodes[i].EndPosition, Time.Delta, false );
+				//DebugOverlay.Text( CurrentPath.Nodes[i-1].MovementTag, CurrentPath.Nodes[i-1].EndPosition, Time.Delta, 5000f );
 			}
 
 			Direction = IdealDirection;

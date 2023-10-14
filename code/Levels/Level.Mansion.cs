@@ -8,6 +8,9 @@ public partial class MansionLevel : Level
 	public async override Task Start()
 	{
 		await base.Start();
+
+		Monster = new AoNyobo( this );
+		Monster.Position = Trapdoor.Position;
 		return;
 	}
 
