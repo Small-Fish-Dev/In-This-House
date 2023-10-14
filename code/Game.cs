@@ -1,9 +1,9 @@
-﻿using Sandbox;
-using Sandbox.UI.Construct;
-using System;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿global using Sandbox;
+global using System.Linq;
+global using System.Threading.Tasks;
+global using System;
+global using Sandbox.UI.Construct;
+global using System.IO;
 
 //
 // You don't need to put things in a namespace, but it doesn't hurt.
