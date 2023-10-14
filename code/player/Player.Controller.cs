@@ -23,7 +23,7 @@ public partial class Player : AnimatedEntity
 			else
 				WishSpeed = Math.Clamp( WishSpeed - AccelerationSpeed * Time.Delta, 0f, IsRunning ? RunSpeed : WalkSpeed );
 
-			Velocity = Vector3.Lerp( Velocity, ( InputDirection.IsNearlyZero() ? ( Velocity.Normal / 3f ): ( InputDirection  * Rotation.FromYaw( InputAngles.yaw ) ) ) * WishSpeed, 15f * Time.Delta )
+			Velocity = Vector3.Lerp( Velocity, ( InputDirection.IsNearlyZero() ? ( Velocity.Normal / 3f ): ( InputDirection.Normal  * Rotation.FromYaw( InputAngles.yaw ) ) ) * WishSpeed, 15f * Time.Delta )
 				.WithZ( Velocity.z );
 		}
 
