@@ -19,7 +19,7 @@ public partial class Level
 			.WithStandableAngle( 46f )
 			.WithMaxDropHeight( 0f );
 
-		Grid = await builder.Create( 1, printInfo: true );
+		Grid = await builder.Create( 1, printInfo: false );
 
 		Event.Run( "UpdateSafeCells" );
 	}
