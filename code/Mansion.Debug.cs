@@ -8,4 +8,11 @@ public partial class Mansion : GameManager
 		if ( state == "play" || state == "playing" )
 			SetState<PlayingState>();
 	}
+
+	[ConCmd.Admin( "set_level" )]
+	public static void SetLevel( string level )
+	{
+		if ( level == "mansion" )
+			SetLevel<MansionLevel>();
+	}
 }
