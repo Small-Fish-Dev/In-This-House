@@ -1,0 +1,37 @@
+﻿@using Sandbox.UI;
+
+@namespace BrickJam.UI
+@inherits Panel
+
+<root style="background: conic-gradient(white 0%, white @ProgressWhitePercent, transparent @ProgressTransparentPercent)"></root>
+
+<style>
+	RadialProgress {
+		width: @(Radius);
+		height: @(Radius);
+		aspect-ratio: 1;
+		
+		border: 1px solid white;
+		border-radius: 100%;
+	}
+</style>
+
+@code {
+
+	public Length Radius = Length.Pixels( 128 ) ?? Length.Auto;
+	
+	/// <summary>
+	/// A function that must return a value in range [0; 1]
+	/// </summary>
+	public Func<float> Progress { get; set; }
+
+	private string ProgressWhitePercent => $"{Progress() * 100}%";
+	private string ProgressTransparentPercent => $"{Progress() * 100 + 0.01f}%";
+
+	protected override int BuildHash()
+	{
+		Log.Info( $"{ProgressWhitePercent} {ProgressTransparentPercent}" );
+		return HashCode.Combine( Progress() );
+	}
+
+}
