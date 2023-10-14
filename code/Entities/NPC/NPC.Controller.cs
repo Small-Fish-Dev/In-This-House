@@ -1,0 +1,45 @@
+﻿using GridAStar;
+
+namespace BrickJam;
+
+public partial class NPC
+{
+	public virtual float WalkSpeed { get; set; } = 200f;
+	public virtual float RunSpeed { get; set; } = 300f;
+	public Vector3 Direction { get; set; } = Vector3.Zero;
+
+	public virtual void ComputeMotion()
+	{
+		if ( Direction.IsNearZeroLength ) return;
+
+		var speed = Target != null ? RunSpeed : WalkSpeed;
+
+		var helper = new MoveHelper( Position, Direction * speed );
+		helper.MaxStandableAngle = 60f;
+
+		helper.Trace = helper.Trace
+			.Size( CollisionBox.Mins, CollisionBox.Maxs )
+			.WithoutTags( "player" )
+			.Ignore( this );
+
+		helper.TryMoveWithStep( Time.Delta, 20f );
+		helper.TryUnstuck();
+
+		Position = helper.Position;
+		Velocity = helper.Velocity;
+
+		var traceDown = helper.TraceDirection( Vector3.Down );
+
+		if ( traceDown.Entity != null )
+		{
+			GroundEntity = traceDown.Entity;
+			Position = traceDown.EndPosition;
+		}
+		else
+		{
+			GroundEntity = null;
+			Velocity -= Vector3.Down * Game.PhysicsWorld.Gravity * Time.Delta;
+		}
+	}
+}
+

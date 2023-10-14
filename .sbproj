@@ -45,7 +45,8 @@
       "Defaults": {
         "solid": "Collide",
         "trigger": "Trigger",
-        "player": "Unset"
+        "player": "Unset",
+        "npc": "Unset"
       },
       "Pairs": [
         {
@@ -82,6 +83,16 @@
           "a": "solid",
           "b": "player",
           "r": "Collide"
+        },
+        {
+          "a": "npc",
+          "b": "npc",
+          "r": "Trigger"
+        },
+        {
+          "a": "player",
+          "b": "npc",
+          "r": "Trigger"
         }
       ]
     },
