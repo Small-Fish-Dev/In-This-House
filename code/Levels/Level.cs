@@ -1,4 +1,6 @@
-﻿namespace BrickJam;
+﻿using BrickJam.UI;
+
+namespace BrickJam;
 
 public enum LevelType // We need this to categorize hammer entities
 {

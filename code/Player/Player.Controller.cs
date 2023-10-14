@@ -1,10 +1,6 @@
-﻿using Sandbox;
-using System;
-using System.Linq;
+﻿namespace BrickJam;
 
-namespace BrickJam;
-
-public partial class Player : AnimatedEntity
+public partial class Player
 {
 	[Net] public float WalkSpeed { get; set; } = 200f;
 	[Net] public float RunSpeed { get; set; } = 350f;
@@ -23,16 +19,16 @@ public partial class Player : AnimatedEntity
 
 	protected void SimulateController()
 	{
-		if ( !InputDirection.IsNearlyZero() )
-			WishSpeed = Math.Clamp( WishSpeed + AccelerationSpeed * Time.Delta, 0f, IsRunning ? RunSpeed : WalkSpeed );
-		else
-			WishSpeed = Math.Clamp( WishSpeed - AccelerationSpeed * Time.Delta, 0f, IsRunning ? RunSpeed : WalkSpeed );
+		WishSpeed = IsRunning ? RunSpeed : WalkSpeed;
 
 		var oldVelocity = Velocity;
-		Velocity = Vector3.Lerp( Velocity,
-				(InputDirection.IsNearlyZero()
-					? (Velocity.Normal / 3f)
-					: (InputDirection.Normal * Rotation.FromYaw( InputAngles.yaw ))) * WishSpeed, 15f * Time.Delta )
+		var wishVelocity = (InputDirection.IsNearlyZero() || IsStunned
+			? Vector3.Zero
+			: InputDirection.Normal * Rotation.FromYaw( InputAngles.yaw )) * WishSpeed;
+
+		Velocity = Vector3.Lerp( Velocity, wishVelocity,
+				(wishVelocity.LengthSquared > Velocity.LengthSquared ? 15f : 5f) // Accelerate faster than decelerate
+				* Time.Delta )
 			.WithZ( Velocity.z );
 
 		var helper = new MoveHelper( Position, Velocity );
@@ -51,17 +47,24 @@ public partial class Player : AnimatedEntity
 		// - the velocity dropped from more than WalkSpeed to near zero
 		// - there is a wall in the direction of movement
 		// then the pawn has probably ran into a wall
-		if ( !Velocity.IsNearZeroLength
+		if ( !Velocity.WithZ( 0 ).IsNearZeroLength
 		     && IsRunning
-		     && oldVelocity.Length > WalkSpeed
-		     && helper.Velocity.Length < 15f // TODO: hardcoded
+		     && oldVelocity.WithZ( 0 ).Length > WalkSpeed
+		     && helper.Velocity.WithZ( 0 ).Length < 15f // TODO: hardcoded
 		   )
 		{
+			// Making the collision box a little bit shorter to prevent small items from triggering a concussion
 			var tr = helper.Trace
 				.Size( CollisionBox.Mins + Vector3.Up * StepSize, CollisionBox.Maxs )
-				.FromTo( helper.Position, helper.Position + Velocity.Normal ).Run();
+				.FromTo( helper.Position, helper.Position + Velocity.WithZ( 0 ).Normal ).Run();
+
 			if ( tr.Hit )
-				Log.Error( "Me after lobotomy!" );
+				Stun();
+			else
+			{
+				Log.Error( "No lobotomy for today :(" );
+				Log.Trace( tr );
+			}
 		}
 
 		Position = helper.Position;
@@ -80,7 +83,7 @@ public partial class Player : AnimatedEntity
 			Velocity -= Vector3.Down * Game.PhysicsWorld.Gravity * Time.Delta;
 		}
 
-		if ( Input.Down( "jump" ) )
+		if ( Input.Down( "jump" ) && !IsStunned )
 			if ( GroundEntity != null )
 			{
 				GroundEntity = null;

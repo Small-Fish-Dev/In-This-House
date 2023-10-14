@@ -1,19 +1,41 @@
 ﻿@using Sandbox;
 @using Sandbox.UI;
+@using Player = BrickJam.Player
 
-@namespace BrickJam
+@namespace BrickJam.UI
 @inherits RootPanel
 @attribute [StyleSheet]
 
 <root>
+	@{
+		switch ( Game.LocalPawn )
+		{
+			case BrickJam.Player player:
+				{
+					<StunIndicator @Player=@player />
+					break;
+				}
+			default:
+				{
+					<div>TODO: unknown pawn type @(Game.LocalPawn.GetType())</div>
+					break;
+				}
+		}
+	}
 </root>
 
 @code {
-    public static Hud Instance { get; private set; }
+	public static Hud Instance { get; private set; }
 
-    public Hud()
-    {
-        Instance?.Delete(true);
-        Instance = this;
-    }
+	public Hud()
+	{
+		Instance?.Delete( true );
+		Instance = this;
+	}
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( Game.LocalPawn.GetType() );
+	}
+
 }

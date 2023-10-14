@@ -5,6 +5,7 @@ global using System.Collections.Generic;
 global using System;
 global using Sandbox.UI.Construct;
 global using System.IO;
+using BrickJam.UI;
 
 namespace BrickJam;
 
