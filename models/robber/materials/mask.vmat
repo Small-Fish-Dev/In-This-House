@@ -1,0 +1,17 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Rendering ----
+	F_RENDER_BACKFACES 1
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "models/robber/materials/mask_color.png"
+	Normal "models/robber/materials/mask_normal.png"
+	Roughness "models/robber/materials/mask_rough.png"
+}
