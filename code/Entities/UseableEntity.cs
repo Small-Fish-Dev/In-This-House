@@ -9,8 +9,8 @@ public class UseableEntity : ModelEntity
 		Tags.Add( "useable" );
 	}
 
-	public virtual void Use()
+	public virtual void Use( Player user )
 	{
-
+		Log.Info( $"I was used by {user.Name}" );
 	}
 }

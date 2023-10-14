@@ -6,6 +6,8 @@ namespace BrickJam;
 
 partial class Player : AnimatedEntity
 {
+	[Net, Change] public int Money { get; private set; }
+
 	public BBox CollisionBox => new( new Vector3( -12f, -12f, 0f ), new Vector3( 12f, 12f, 72f ) );
 	public override void Spawn()
 	{
@@ -81,4 +83,23 @@ partial class Player : AnimatedEntity
 			Transform = tx;
 		}
 	}
+
+	// Client callback for UI purposes
+	public void OnMoneyChanged( int oldValue, int newValue )
+	{
+		Event.Run( "MoneyChanged", this, oldValue, newValue );
+	}
+
+	// Set player's money
+	public void SetMoney( int value )
+	{
+		Event.Run( "MoneyChanged", this, Money, value );
+		Money = value;
+	}
+
+	// Add to the players money
+	public void AddMoney( int value ) => SetMoney( Money + value );
+
+	// Remove to the players money (Clamps to 0)
+	public void RemoveMoney( int value ) => SetMoney( Math.Max( Money + value, 0 ) );
 }

@@ -12,9 +12,9 @@ public class Trapdoor : UseableEntity
 		Tags.Add( "trapdoor" );
 	}
 
-	public override void Use()
+	public override void Use( Player user )
 	{
-		base.Use();
+		base.Use( user );
 
 		Mansion.NextLevel();
 	}

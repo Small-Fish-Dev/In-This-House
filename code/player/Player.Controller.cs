@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace BrickJam;
 
-partial class Player : AnimatedEntity
+public partial class Player : AnimatedEntity
 {
 	[Net] public float WalkSpeed { get; set; } = 200f;
 	[Net] public float RunSpeed { get; set; } = 350f;

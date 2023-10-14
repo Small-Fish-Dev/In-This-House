@@ -42,7 +42,7 @@ partial class Player : AnimatedEntity
 
 		if ( Input.Pressed( "use" ) && Input.Down( "use" ) )
 		{
-			UseableEntity?.Use();
+			UseableEntity?.Use( this );
 			Log.Warning( UseableEntity );
 		}
 	}
