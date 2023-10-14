@@ -4,6 +4,7 @@ public partial class Player
 {
 	[Net] public float WalkSpeed { get; set; } = 200f;
 	[Net] public float RunSpeed { get; set; } = 350f;
+	public float StunSpeed => (float)(WalkSpeed + (RunSpeed - WalkSpeed) * Math.Sin( 45f.DegreeToRadian() ));
 
 	/// <summary>
 	/// Acceleration speed in units per second (Ex. 200f means that after 1 second you've reached 200f speed)
@@ -54,7 +55,7 @@ public partial class Player
 		if ( !lerpVelocity.WithZ( 0 ).IsNearZeroLength
 		     && IsRunning
 		     && oldVelocity.WithZ( 0 ).Length > WalkSpeed
-		     && helper.Velocity.WithZ( 0 ).Length < 15f // TODO: hardcoded
+		     && helper.Velocity.WithZ( 0 ).Length < StunSpeed
 		   )
 		{
 			// Making the collision box a little bit shorter to prevent small items from triggering a concussion
@@ -66,12 +67,7 @@ public partial class Player
 			{
 				Stun();
 
-				Velocity += tr.Normal * (CollisionBox.Size.WithZ( 0 ).Length + StunBounceVelocity); // TODO: hardcoded
-			}
-			else
-			{
-				Log.Error( "No lobotomy for today :(" );
-				Log.Trace( tr );
+				Velocity += tr.Normal * (CollisionBox.Size.WithZ( 0 ).Length + StunBounceVelocity);
 			}
 		}
 
