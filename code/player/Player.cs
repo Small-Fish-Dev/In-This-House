@@ -66,6 +66,12 @@ partial class Player : AnimatedEntity
 				v.Value( "pos", Game.LocalPawn.Position );
 				v.Value( "ang", Game.LocalPawn.Rotation.Angles() );
 				v.Value( "vel", Game.LocalPawn.Velocity );
+				v.Value( "money", Money );
+				
+				v.Group( "inputs", () =>
+				{
+					v.Value( "running?", IsRunning );
+				} );
 			} );
 		} );
 	}
