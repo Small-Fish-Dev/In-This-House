@@ -70,16 +70,18 @@ partial class Player : AnimatedEntity
 		animationHelper.IsGrounded = GroundEntity != null;
 	}
 
-	public void Respawn()
+	public void Respawn( LevelType level )
 	{
-		var spawnpoints = Entity.All.OfType<PlayerSpawn>();
+		var spawnPoints = Entity.All.OfType<PlayerSpawn>()
+			.Where( x => x.LevelType == level )
+			.ToList();
 
-		var randomSpawnPoint = spawnpoints.OrderBy( x => Guid.NewGuid() ).FirstOrDefault();
+		var randomSpawnPoint = Game.Random.FromList( spawnPoints );
 
 		if ( randomSpawnPoint != null )
 		{
 			var tx = randomSpawnPoint.Transform;
-			tx.Position = tx.Position + Vector3.Up * 50.0f; // raise it up
+			tx.Position = tx.Position + Vector3.Up * 50.0f;
 			Transform = tx;
 		}
 	}

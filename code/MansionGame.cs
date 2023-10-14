@@ -26,6 +26,7 @@ public partial class MansionGame : GameManager
 
 		var pawn = new Player();
 		client.Pawn = pawn;
-		pawn.Respawn();
+		pawn.Respawn( Instance.CurrentLevel.Type );
+		// TODO: Have pawn dead for now
 	}
 }
