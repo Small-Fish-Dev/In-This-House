@@ -22,11 +22,31 @@ public abstract partial class Level : Entity // Easy replication to client
 	public virtual async Task Start()
 	{
 		await GameTask.NextPhysicsFrame();
+
+		foreach ( var player in Entity.All.OfType<Player>() )
+			player.Respawn( Type );
+
+		// Spawn monster?
+
+		var allValidTrapdoors = Entity.All.OfType<ValidTrapdoorPosition>()
+			.Where( x => x.LevelType == Type )
+			.ToList();
+		var randomValidTrapdoor = Game.Random.FromList( allValidTrapdoors );
+
+		Trapdoor = new Trapdoor();
+		Trapdoor.Position = randomValidTrapdoor.Position;
+
 		return;
 	}
 	public virtual async Task End()
 	{
 		await GameTask.NextPhysicsFrame();
+
+		BlackScreen.Start( To.Everyone, 2f, 1f, 1f );
+		await GameTask.DelaySeconds( 1f ); // Wait for the black screen to be fully black
+
+		Trapdoor?.Delete();
+
 		return;
 	}
 
