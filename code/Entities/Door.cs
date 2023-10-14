@@ -19,6 +19,7 @@ public partial class Door : UseableEntity
 
 	private Transform initialTransform;
 	private Vector3? _hinge;
+	private int side;
 
 	private Vector3 hinge
 	{
@@ -43,7 +44,8 @@ public partial class Door : UseableEntity
 
 	public override void Use( Player user )
 	{
-		base.Use( user );
+		if ( !IsAuthority )
+			return;
 
 		if ( Locked )
 		{
@@ -58,11 +60,18 @@ public partial class Door : UseableEntity
 		}
 
 		// Set the door state depending on current state.
-		State = State == DoorState.Open 
+		State = State == DoorState.Open || State == DoorState.Opening
 			? DoorState.Closing
-			: State == DoorState.Closed
-				? DoorState.Opening
-				: State;
+			: DoorState.Opening;
+
+		// I have no clue if this is right or not :DD 
+		var angle = Math.Abs( Rotation.LookAt( initialTransform.Position - user.Position ).Yaw() ) 
+			+ Math.Abs( initialTransform.Rotation.Yaw() - 90) 
+			- 90;
+
+		side = angle > 0 && angle < 180
+			? 1
+			: -1;
 	}
 
 	[GameEvent.Tick]
@@ -79,7 +88,7 @@ public partial class Door : UseableEntity
 		// Calculate desired angles.
 		var state = (int)State;
 		var yaw = initialTransform.Rotation.Yaw()
-			+ Math.Max( state, 0 ) * ANGLE;
+			+ Math.Max( state, 0 ) * ANGLE * side;
 
 		var targetRotation = initialTransform.Rotation
 			.Angles()
