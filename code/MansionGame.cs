@@ -15,7 +15,7 @@ public partial class MansionGame : GameManager
 	public MansionGame()
 	{
 		Instance = this;
-		
+
 		if ( Game.IsClient )
 			_ = new Hud();
 	}
@@ -28,5 +28,23 @@ public partial class MansionGame : GameManager
 		client.Pawn = pawn;
 		pawn.Respawn( Instance.CurrentLevel.Type );
 		// TODO: Have pawn dead for now
+	}
+
+	public override void FrameSimulate( IClient cl )
+	{
+		base.FrameSimulate( cl );
+		
+		BugBug.Here( v =>
+		{
+			v.Text( "small fish jam game" );
+			v.Value( "time", DateTime.Now );
+			v.Space();
+			
+			v.Group( "local camera", () =>
+			{
+				v.Value( "pos", Camera.Position );
+				v.Value( "ang", Camera.Rotation.Angles() );
+			} );
+		} );
 	}
 }

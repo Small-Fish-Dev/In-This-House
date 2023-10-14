@@ -58,6 +58,22 @@ partial class Player : AnimatedEntity
 		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Game.Preferences.FieldOfView );
 		Camera.FirstPersonViewer = this; // Doesn't work?
 		EnableDrawing = false; // Let's use this for now
+		
+		BugBug.Here( v =>
+		{
+			v.Group( "local player", () =>
+			{
+				v.Value( "pos", Game.LocalPawn.Position );
+				v.Value( "ang", Game.LocalPawn.Rotation.Angles() );
+				v.Value( "vel", Game.LocalPawn.Velocity );
+				v.Value( "money", Money );
+				
+				v.Group( "inputs", () =>
+				{
+					v.Value( "running?", IsRunning );
+				} );
+			} );
+		} );
 	}
 
 	protected void SimulateAnimations()
