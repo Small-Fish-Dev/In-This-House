@@ -42,7 +42,10 @@ public abstract partial class Level : Entity // Easy replication to client
 	{
 		await GameTask.NextPhysicsFrame();
 
-		BlackScreen.Start( To.Everyone );
+		BlackScreen.Start( To.Everyone, 2f, 1f, 1f );
+		await GameTask.DelaySeconds( 1f ); // Wait for the black screen to be fully black
+
+		Trapdoor?.Delete();
 
 		return;
 	}

@@ -18,9 +18,6 @@ public partial class MansionLevel : Level
 	public async override Task End()
 	{
 		await base.End();
-
-		Trapdoor?.Delete();
-
 		return;
 	}
 }

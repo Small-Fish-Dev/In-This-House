@@ -18,9 +18,6 @@ public partial class OfficeLevel : Level
 	public async override Task End()
 	{
 		await base.End();
-
-		Trapdoor?.Delete();
-
 		return;
 	}
 }
