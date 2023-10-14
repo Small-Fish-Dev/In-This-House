@@ -1,0 +1,84 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+
+@namespace BrickJam
+@inherits Panel
+
+<root></root>
+
+@code {
+    public enum State
+    {
+        Starting,
+        Black,
+        Ending,
+        Deleting
+    }
+
+    TimeUntil endTransition;
+    public State CurrentState;
+    public float StartingTransition;
+    public float BlackTransition;
+    public float EndingTransition;
+
+    public BlackScreen( float blackDuration = 2f, float startingTransition = 1f, float endingTransition = 1f )
+    {
+        StartingTransition = startingTransition;
+        BlackTransition = blackDuration;
+        EndingTransition = endingTransition;
+
+        CurrentState = State.Starting;
+        endTransition = StartingTransition;
+    }
+
+    protected override int BuildHash()
+    {
+        return HashCode.Combine( Style.Opacity.ToString() );
+    }
+
+    [Event.Client.Frame]
+    private void calculateOpacity()
+    {
+        Style.Opacity = CurrentState switch
+        {
+            State.Starting => MathE.Slerp( 0f, 1f, endTransition.Fraction ),
+            State.Black => 1f,
+            State.Ending => MathE.Slerp( 1f, 0f, endTransition.Fraction ),
+            _ => 0f
+        };
+
+        if ( endTransition <= 0f )
+        {
+            endTransition = CurrentState switch
+            {
+                State.Starting => BlackTransition,
+                State.Black => EndingTransition,
+                _ => 0f
+            };
+
+            CurrentState++;
+
+            if ( CurrentState == State.Deleting )
+                Delete();
+        }
+    }
+
+    /// <summary>
+    /// Creates a new black screen instance on the client/s
+    /// </summary>
+    /// <param name="clients"></param>
+    /// <param name="blackDuration"></param>
+    /// <param name="startingTransition"></param>
+    /// <param name="endingTransition"></param>
+    public static void Start( To clients, float blackDuration = 2f, float startingTransition = 1f, float endingTransition = 1f )
+    {
+        Game.AssertServer();
+        StartBlackScreenClient(clients, blackDuration, startingTransition, endingTransition);
+    }
+
+    [ClientRpc]
+    public static void StartBlackScreenClient( float blackDuration = 2f, float startingTransition = 1f, float endingTransition = 1f)
+    {
+        Hud.Instance?.AddChild(new BlackScreen(blackDuration, startingTransition, endingTransition));
+    }
+}

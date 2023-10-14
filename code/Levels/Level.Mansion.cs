@@ -17,6 +17,9 @@ public partial class MansionLevel : Level
 		Trapdoor = new Trapdoor();
 		Trapdoor.Position = randomValidTrapdoor.Position;
 
+		await GameTask.Delay( 2000 );
+		BlackScreen.Start( To.Everyone );
+
 		return;
 	}
 

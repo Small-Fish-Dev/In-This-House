@@ -15,6 +15,9 @@ public partial class Mansion : GameManager
 	public Mansion()
 	{
 		Instance = this;
+		
+		if ( Game.IsClient )
+			_ = new Hud();
 	}
 
 	/// <summary>
