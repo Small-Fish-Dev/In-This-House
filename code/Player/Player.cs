@@ -6,6 +6,9 @@ namespace BrickJam;
 
 partial class Player : AnimatedEntity
 {
+	[BindComponent]
+	public ContainerComponent Inventory { get; } 
+
 	[Net, Change] public int Money { get; private set; }
 
 	public BBox CollisionBox => new( new Vector3( -12f, -12f, 0f ), new Vector3( 12f, 12f, 72f ) );
@@ -20,6 +23,9 @@ partial class Player : AnimatedEntity
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;
+
+		// Remember to create the container component!!!
+		Components.GetOrCreate<ContainerComponent>();
 	}
 
 
