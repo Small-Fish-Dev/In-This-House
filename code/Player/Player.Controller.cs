@@ -52,7 +52,8 @@ public partial class Player
 		// - the velocity dropped from more than WalkSpeed to near zero
 		// - there is a wall in the direction of movement
 		// then the pawn has probably ran into a wall
-		if ( !lerpVelocity.WithZ( 0 ).IsNearZeroLength
+		if ( !IsStunned &&
+		     !lerpVelocity.WithZ( 0 ).IsNearZeroLength
 		     && IsRunning
 		     && oldVelocity.WithZ( 0 ).Length > WalkSpeed
 		     && helper.Velocity.WithZ( 0 ).Length < StunSpeed
