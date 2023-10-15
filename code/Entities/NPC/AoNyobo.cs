@@ -3,8 +3,8 @@
 public partial class AoNyobo : NPC
 {
 	public override string ModelPath { get; set; } = "models/nyobo/nyobo.vmdl";
-	public override float WalkSpeed { get; set; } = 120f;
-	public override float RunSpeed { get; set; } = 250f;
+	public override float WalkSpeed { get; set; } = 80f;
+	public override float RunSpeed { get; set; } = 300f;
 
 	public AoNyobo() { }
 	public AoNyobo( Level level ) : base( level ) { }
@@ -12,6 +12,7 @@ public partial class AoNyobo : NPC
 	public override void Spawn()
 	{
 		base.Spawn();
+		Scale = 1.1f;
 
 		//PlaySound( "sounds/wega.sound" );
 	}

@@ -69,6 +69,12 @@ public partial class NPC : AnimatedEntity
 		ComputeMotion();
 	}
 
+	[GameEvent.Tick]
+	public virtual void ComputeAnimations()
+	{
+		SetAnimParameter( "move_x", MathX.Remap( Velocity.Length, 0f, RunSpeed, 0, 3 ) );
+	}
+
 	public virtual void FindTargets()
 	{
 		foreach ( var player in Entity.All.OfType<Player>() )
