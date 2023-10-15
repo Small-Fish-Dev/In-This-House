@@ -14,13 +14,13 @@ public partial class NPC
 
 		var speed = HasArrivedDestination ? 0f : ( Target != null ? RunSpeed : WalkSpeed );
 
-		Rotation = Rotation.Lerp( Rotation, Rotation.LookAt( Direction, Vector3.Up ), Time.Delta * 5f );
+		Rotation = Rotation.Lerp( Rotation, Rotation.LookAt( LastTarget != null ? ( LastTarget.Position - Position ) : Direction, Vector3.Up ), Time.Delta * 5f );
 
 		var helper = new MoveHelper( Position, Direction * speed );
 		helper.MaxStandableAngle = 60f;
 
+		helper.Trace = Trace.Capsule( CollisionCapsule, Position, Position );
 		helper.Trace = helper.Trace
-			.Size( CollisionBox.Mins, CollisionBox.Maxs )
 			.WithoutTags( "player" )
 			.Ignore( this );
 

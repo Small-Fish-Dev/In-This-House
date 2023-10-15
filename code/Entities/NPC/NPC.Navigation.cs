@@ -19,7 +19,7 @@ public partial class NPC
 		}
 	}
 	public Grid CurrentGrid => MansionGame.Instance.CurrentLevel.Grid;
-	public virtual float PathRetraceFrequency { get; set; } = 0.5f; // How many seconds before it checks if the path is being followed or the target position changed
+	public virtual float PathRetraceFrequency { get; set; } = 0.1f; // How many seconds before it checks if the path is being followed or the target position changed
 	internal CancellationTokenSource CurrentPathToken { get; set; } = new();
 	public AStarNode CurrentPathNode => IsFollowingPath ? CurrentPath.Nodes[0] : null; // The latest cell crossed in the path
 	public AStarNode LastPathNode => IsFollowingPath ? CurrentPath.Nodes[^1] : null; // The final cell in the path
@@ -28,7 +28,6 @@ public partial class NPC
 	public bool IsFollowingPath => !HasArrivedDestination && CurrentPath.Count > 0; // Is the entity following a path
 	private Line CurrentPathLine => new( CurrentPathNode.EndPosition, NextPathNode.EndPosition );
 	public float DistanceFromIdealPath => CurrentPathLine.Distance( Position ); // How far the entity strayed off path, used to recalculate path
-	public Entity Target { get; set; } = null;
 	public Vector3 IdealDirection => IsFollowingPath ? (NextPathNode.EndPosition.WithZ( 0 ) - Position.WithZ( 0 )).Normal : Vector3.Zero;
 	public bool IsFollowingSomeone => IsFollowingPath && Target != null; // Is the entity following a moving target
 	public bool HasArrivedDestination { get; private set; } = true; // Has the entity successfully reached their destination

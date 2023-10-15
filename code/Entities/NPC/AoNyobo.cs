@@ -3,7 +3,6 @@
 public partial class AoNyobo : NPC
 {
 	public override string ModelPath { get; set; } = "models/nyobo/nyobo.vmdl";
-	public override BBox CollisionBox { get; set; } = new( new Vector3( -12f, -12f, 0f ), new Vector3( 12f, 12f, 72f ) );
 	public override float WalkSpeed { get; set; } = 120f;
 	public override float RunSpeed { get; set; } = 250f;
 
@@ -14,7 +13,7 @@ public partial class AoNyobo : NPC
 	{
 		base.Spawn();
 
-		PlaySound( "sounds/wega.sound" );
+		//PlaySound( "sounds/wega.sound" );
 	}
 
 
