@@ -39,7 +39,7 @@
 						{
 							_class = "CBlend2DItem"
 							m_tagSpans = [  ]
-							m_sequenceName = "walk1"
+							m_sequenceName = "chase"
 							m_blendValue = [ 0.0, 3.0 ]
 						},
 					]
