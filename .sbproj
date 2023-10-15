@@ -225,6 +225,11 @@
           "Name": "FollowPrevious",
           "KeyboardCode": "MOUSE3",
           "GroupName": "Spectator"
+        },
+        {
+          "Name": "Inventory",
+          "KeyboardCode": "q",
+          "GroupName": "Other"
         }
       ]
     },
