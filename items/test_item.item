@@ -1,7 +1,10 @@
 {
   "Name": "Debug Item",
   "Description": "This item is meant for debugging",
+  "Model": "models/sbox_props/watermelon/watermelon.vmdl",
   "Rarity": "Rare",
   "MonetaryValue": 1337,
-  "__references": []
+  "__references": [
+    "facepunch.watermelon"
+  ]
 }

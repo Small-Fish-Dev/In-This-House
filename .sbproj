@@ -46,7 +46,9 @@
         "solid": "Collide",
         "trigger": "Trigger",
         "player": "Unset",
-        "npc": "Unset"
+        "npc": "Unset",
+        "nocollide": "Ignore",
+        "world": "Unset"
       },
       "Pairs": [
         {
@@ -93,6 +95,11 @@
           "a": "player",
           "b": "npc",
           "r": "Trigger"
+        },
+        {
+          "a": "nocollide",
+          "b": "world",
+          "r": "Collide"
         }
       ]
     },

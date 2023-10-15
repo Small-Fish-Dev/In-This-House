@@ -2,8 +2,15 @@
 
 public partial class Player
 {
+	/// <summary>
+	/// This is the chance of dropping an item when you crash into a wall.
+	/// Value should range from 0 to 1.
+	/// </summary>
+	[Net] public float DropChance { get; set; } = 0.5f;
+
 	[Net] public float WalkSpeed { get; set; } = 200f;
 	[Net] public float RunSpeed { get; set; } = 350f;
+
 	public float StunSpeed => (float)(WalkSpeed + (RunSpeed - WalkSpeed) * Math.Sin( 45f.DegreeToRadian() ));
 
 	/// <summary>
@@ -69,6 +76,14 @@ public partial class Player
 				Stun();
 
 				Velocity += tr.Normal * (CollisionBox.Size.WithZ( 0 ).Length + StunBounceVelocity);
+
+				// Let's randomly throw out an item when we crash.
+				if ( Game.IsServer )
+				{
+					var random = Game.Random.Float( 0f, 1f );
+					if ( random < DropChance )
+						ThrowRandomItem();
+				}
 			}
 		}
 
@@ -91,5 +106,26 @@ public partial class Player
 				GroundEntity = null;
 				Velocity += Vector3.Up * 300f;
 			}
+	}
+
+	protected void ThrowRandomItem()
+	{
+		var items = Inventory.Items
+			.Keys
+			.ToList();
+
+		var randomItem = Game.Random.FromList( items, null );
+		if ( randomItem == null || !Inventory.Remove( randomItem ) )
+			return;
+
+		var force = 300f;
+		var normal = Vector3.Random.WithZ( 0 );
+		var entity = Item.CreateFromGameResource( 
+			randomItem, 
+			Position + Vector3.Up * CollisionBounds.Maxs.z / 2f, 
+			Rotation.FromYaw( Rotation.Inverse.Yaw() ) 
+		);
+
+		entity.ApplyAbsoluteImpulse( (normal + Vector3.Up) * force );
 	}
 }

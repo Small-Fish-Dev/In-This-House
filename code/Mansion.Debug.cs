@@ -2,6 +2,19 @@
 
 public partial class MansionGame : GameManager
 {
+	[ConCmd.Server( "give_item" )]
+	public static void GiveItem( string name, int amount = 1 )
+	{
+		if ( ConsoleSystem.Caller.Pawn is not Player pawn )
+			return;
+
+		var item = ItemPrefab.Get( name );
+		if ( item == null )
+			return;
+
+		pawn.Inventory.Add( item, amount );
+	}
+
 	[ConCmd.Admin( "set_state" )]
 	public static void SetState( string state )
 	{

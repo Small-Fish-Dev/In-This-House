@@ -10,6 +10,9 @@ public class ItemPrefab : GameResource
 	public string Name { get; set; }
 	public string Description { get; set; }
 
+	[ResourceType( "vmdl" )]
+	public string Model { get; set; }
+
 	public ItemRarity Rarity { get; set; }
 
 	// TODO: This could be a function of Rarity? 
