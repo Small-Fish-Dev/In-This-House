@@ -1,0 +1,14 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "materials/curtain/curtain_color.png"
+	Normal "materials/default/default_normal.tga"
+	Roughness "[1.000000 1.000000 1.000000 0.000000]"
+}
