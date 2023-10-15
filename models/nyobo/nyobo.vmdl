@@ -98,7 +98,6 @@
 							},
 							{
 								_class = "AnimEvent"
-								name = "Right"
 								event_class = "AE_FOOTSTEP"
 								event_frame = 7
 								event_keys = 
@@ -110,7 +109,6 @@
 							},
 							{
 								_class = "AnimEvent"
-								name = "Left"
 								event_class = "AE_FOOTSTEP"
 								event_frame = 21
 								event_keys = 
@@ -142,7 +140,7 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "walk1"
+						name = "chase"
 						children = 
 						[
 							{
@@ -163,7 +161,6 @@
 							},
 							{
 								_class = "AnimEvent"
-								name = "Right1"
 								event_class = "AE_FOOTSTEP"
 								event_frame = 7
 								event_keys = 
@@ -175,9 +172,8 @@
 							},
 							{
 								_class = "AnimEvent"
-								name = "Left1"
 								event_class = "AE_FOOTSTEP"
-								event_frame = 21
+								event_frame = 20
 								event_keys = 
 								{
 									Attachment = "foot_L"
@@ -191,17 +187,17 @@
 						weight_list_name = ""
 						fade_in_time = 0.2
 						fade_out_time = 0.2
-						looping = true
+						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
 						enable_scale = false
-						source_filename = "models/nyobo/walk.fbx"
+						source_filename = "models/nyobo/chase.fbx"
 						start_frame = -1
 						end_frame = -1
-						framerate = 72.0
+						framerate = -1.0
 						take = 0
 						reverse = false
 					},
