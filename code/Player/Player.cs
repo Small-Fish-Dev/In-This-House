@@ -1,4 +1,4 @@
-﻿using Sandbox;
+using Sandbox;
 using System;
 using System.Linq;
 
@@ -16,7 +16,7 @@ partial class Player : AnimatedEntity
 	{
 		base.Spawn();
 
-		SetModel( "models/citizen/citizen.vmdl" );
+		SetModel( "models/robber/robber.vmdl" );
 		SetupPhysicsFromAABB( PhysicsMotionType.Keyframed, CollisionBox.Mins, CollisionBox.Maxs );
 
 		Tags.Add( "player" );
