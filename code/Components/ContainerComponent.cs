@@ -3,6 +3,11 @@
 public partial class ContainerComponent : EntityComponent
 {
 	/// <summary>
+	/// Limited amount of space
+	/// </summary>
+	[Net] public int Limit { get; set; } = 20;
+
+	/// <summary>
 	/// Dictionary of all the items and amounts.
 	/// </summary>
 	public IReadOnlyDictionary<ItemPrefab, int> Items => items;
@@ -14,20 +19,25 @@ public partial class ContainerComponent : EntityComponent
 	/// </summary>
 	/// <param name="item"></param>
 	/// <param name="amount"></param>
-	public void Add( ItemPrefab item, int amount = 1 )
+	/// <returns>True if the operation was successful.</returns>
+	public bool Add( ItemPrefab item, int amount = 1 )
 	{
 		Game.AssertServer();
+		var success = false;
 
 		if ( items.ContainsKey( item ) )
 		{
 			items[item] += amount;
-			return;
+			success = true;
 		}
 
-		items.Add( item, amount );
+		if ( Items.Count < Limit && !success )
+			items.Add( item, amount );
 
 		if ( client != null )
 			sendUpdate( To.Single( client ), item.ResourceName, items[item] );
+
+		return success;
 	}
 
 	/// <summary>
