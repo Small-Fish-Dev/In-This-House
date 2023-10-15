@@ -64,7 +64,7 @@ PS
     CreateInputTexture2D( Normal, Linear, 8, "NormalizeNormals", "_normal", "Material,10/30", Default3( 0.5, 0.5, 1.0 ) );
 	CreateTexture2DWithoutSampler( g_tNormal ) < Channel( RGB, Box( Normal ), Linear ); OutputFormat( DXT5 ); SrgbRead( false ); >;
 
-	CreateInputTexture2D( Metalness, Linear, 8, "", "_metal", "Material,10/40", Default( 1 ) );
+	CreateInputTexture2D( Metalness, Linear, 8, "", "_metal", "Material,10/40", Default( 0 ) );
 	CreateInputTexture2D( Roughness, Linear, 8, "", "_rough", "Material,10/50", Default( 1 ) );
 	CreateTexture2DWithoutSampler( g_tRm ) < Channel( R, Box( Roughness ), Linear ); Channel( G, Box( Metalness ), Linear ); OutputFormat( BC7 ); SrgbRead( false ); >;
 
