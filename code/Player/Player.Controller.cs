@@ -10,16 +10,9 @@ public partial class Player
 
 	[Net] public float WalkSpeed { get; set; } = 200f;
 	[Net] public float RunSpeed { get; set; } = 350f;
+	[Net] public float Friction { get; set; } = 0.7f; // The lower the more you slip 
 
 	public float StunSpeed => (float)(WalkSpeed + (RunSpeed - WalkSpeed) * Math.Sin( 45f.DegreeToRadian() ));
-
-	/// <summary>
-	/// Acceleration speed in units per second (Ex. 200f means that after 1 second you've reached 200f speed)
-	/// </summary>
-	[Net]
-	public float AccelerationSpeed { get; set; } =
-		400f;
-
 	[Net, Predicted] public float WishSpeed { get; private set; } = 0f;
 
 	public float StepSize => 16f;
@@ -35,17 +28,21 @@ public partial class Player
 			? Vector3.Zero
 			: InputDirection.Normal * Rotation.FromYaw( InputAngles.yaw )) * WishSpeed;
 
+		var velocityDot = Vector3.Dot( wishVelocity.WithZ( 0 ).Normal, oldVelocity.WithZ(0).Normal );
+		var velocityDifference = MathX.Remap( velocityDot, 0.8f, 1f, 0.1f, 1f );
+		var sideSlipper = Velocity.Length <= WalkSpeed ? 1 : velocityDifference;
+
 		var lerpVelocity = Vector3.Lerp( Velocity, wishVelocity,
-				(wishVelocity.LengthSquared > Velocity.LengthSquared ? 15f : 5f) // Accelerate faster than decelerate
-				* Time.Delta )
-			.WithZ( Velocity.z );
+			(wishVelocity.LengthSquared > Velocity.LengthSquared ? 15f * sideSlipper : 5f * Friction / ( Velocity.Length / RunSpeed ) ) // Accelerate faster than decelerate
+			* Time.Delta )
+		.WithZ( Velocity.z );
 
 		var helper = new MoveHelper( Position, lerpVelocity );
 		helper.MaxStandableAngle = WalkAngle;
 
 		helper.Trace = Trace.Capsule( CollisionCapsule, Position, Position );
 		helper.Trace = helper.Trace
-			.WithoutTags( "player" )
+			.WithoutTags( "player", "npc" )
 			.Ignore( this );
 
 		helper.TryMoveWithStep( Time.Delta, StepSize );
@@ -61,7 +58,6 @@ public partial class Player
 		// then the pawn has probably ran into a wall
 		if ( !IsStunned &&
 		     !lerpVelocity.WithZ( 0 ).IsNearZeroLength
-		     && IsRunning
 		     && oldVelocity.WithZ( 0 ).Length > WalkSpeed
 		     && helper.Velocity.WithZ( 0 ).Length < StunSpeed
 		   )
@@ -70,7 +66,7 @@ public partial class Player
 			higherCapsule.CenterA = Vector3.Up * (CollisionRadius + StepSize);
 			helper.Trace = Trace.Capsule( higherCapsule, helper.Position, helper.Position + lerpVelocity.WithZ( 0 ).Normal );
 			helper.Trace = helper.Trace
-			.WithoutTags( "player" )
+			.WithoutTags( "player", "npc" )
 			.Ignore( this );
 			var tr = helper.Trace.Run();
 

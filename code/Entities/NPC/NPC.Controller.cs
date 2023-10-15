@@ -21,7 +21,7 @@ public partial class NPC
 
 		helper.Trace = Trace.Capsule( CollisionCapsule, Position, Position );
 		helper.Trace = helper.Trace
-			.WithoutTags( "player" )
+			.WithoutTags( "player", "npc" )
 			.Ignore( this );
 
 		helper.TryMoveWithStep( Time.Delta, 20f );
