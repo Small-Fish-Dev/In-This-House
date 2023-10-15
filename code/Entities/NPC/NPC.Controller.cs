@@ -16,7 +16,7 @@ public partial class NPC
 
 		Rotation = Rotation.Lerp( Rotation, Rotation.LookAt( Direction, Vector3.Up ), Time.Delta * 5f );
 
-		var helper = new MoveHelper( Position, Rotation.Forward * speed );
+		var helper = new MoveHelper( Position, Direction * speed );
 		helper.MaxStandableAngle = 60f;
 
 		helper.Trace = helper.Trace
