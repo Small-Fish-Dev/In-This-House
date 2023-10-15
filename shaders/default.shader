@@ -3,9 +3,6 @@ HEADER
 	Description = "Default Shader";
 }
 
-//=========================================================================================================================
-// Optional
-//=========================================================================================================================
 FEATURES
 {
     #include "vr_common_features.fxc"
@@ -67,14 +64,16 @@ PS
     CreateInputTexture2D( Normal, Linear, 8, "NormalizeNormals", "_normal", "Material,10/30", Default3( 0.5, 0.5, 1.0 ) );
 	CreateTexture2DWithoutSampler( g_tNormal ) < Channel( RGB, Box( Normal ), Linear ); OutputFormat( DXT5 ); SrgbRead( false ); >;
 
-	CreateInputTexture2D( Roughness, Linear, 8, "", "_rough", "Material,10/40", Default( 1 ) );
-	CreateTexture2DWithoutSampler( g_tRoughness ) < Channel( R, Box( Roughness ), Linear ); OutputFormat( BC7 ); SrgbRead( false ); >;
+	CreateInputTexture2D( Metalness, Linear, 8, "", "_metal", "Material,10/40", Default( 1 ) );
+	CreateInputTexture2D( Roughness, Linear, 8, "", "_rough", "Material,10/50", Default( 1 ) );
+	CreateTexture2DWithoutSampler( g_tRm ) < Channel( R, Box( Roughness ), Linear ); Channel( G, Box( Metalness ), Linear ); OutputFormat( BC7 ); SrgbRead( false ); >;
+
 
     #include "sbox_pixel.fxc"
     #include "common/pixel.hlsl"
 
 	#if ( S_TINT_MASK )
-		CreateInputTexture2D( TintMask, Srgb, 8, "", "_tint", "Material,10/50", Default( 1 ) );
+		CreateInputTexture2D( TintMask, Srgb, 8, "", "_tint", "Material,10/60", Default( 1 ) );
 		CreateTexture2DWithoutSampler( g_tTintMask ) < Channel( R, Box( TintMask ), Linear ); OutputFormat( BC7 ); SrgbRead( false ); Filter( POINT ); >;
 	#endif
     
@@ -115,8 +114,9 @@ PS
 		#endif
         m.Normal = TransformNormal( i, DecodeNormal( Tex2DS( g_tNormal, Sampler, UV.xy ).rgb ) );
 
-        m.Roughness = Tex2DS( g_tRoughness, Sampler, UV.xy ).r;
-        m.Metalness = 0;
+		float2 rm = Tex2DS( g_tRm, Sampler, UV.xy ).rg;
+        m.Roughness = rm.r;
+        m.Metalness = rm.g;
         m.AmbientOcclusion = 1;
         m.TintMask = 0;
         m.Opacity = 1;
