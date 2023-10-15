@@ -43,8 +43,8 @@ public partial class Player
 		var helper = new MoveHelper( Position, lerpVelocity );
 		helper.MaxStandableAngle = WalkAngle;
 
+		helper.Trace = Trace.Capsule( CollisionCapsule, Position, Position );
 		helper.Trace = helper.Trace
-			.Size( CollisionBox.Mins, CollisionBox.Maxs )
 			.WithoutTags( "player" )
 			.Ignore( this );
 
@@ -66,16 +66,18 @@ public partial class Player
 		     && helper.Velocity.WithZ( 0 ).Length < StunSpeed
 		   )
 		{
-			// Making the collision box a little bit shorter to prevent small items from triggering a concussion
-			var tr = helper.Trace
-				.Size( CollisionBox.Mins + Vector3.Up * StepSize, CollisionBox.Maxs )
-				.FromTo( helper.Position, helper.Position + lerpVelocity.WithZ( 0 ).Normal ).Run();
+			var higherCapsule = CollisionCapsule;
+			higherCapsule.CenterA = Vector3.Up * (CollisionRadius + StepSize);
+			helper.Trace = Trace.Capsule( higherCapsule, helper.Position, helper.Position + lerpVelocity.WithZ( 0 ).Normal );
+			helper.Trace = helper.Trace
+			.WithoutTags( "player" )
+			.Ignore( this );
+			var tr = helper.Trace.Run();
 
 			if ( tr.Hit )
 			{
 				Stun();
-
-				Velocity += tr.Normal * (CollisionBox.Size.WithZ( 0 ).Length + StunBounceVelocity);
+				Velocity += tr.Normal * (CollisionRadius + StunBounceVelocity);
 
 				// Let's randomly throw out an item when we crash.
 				if ( Game.IsServer )

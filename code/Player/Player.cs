@@ -11,13 +11,15 @@ partial class Player : AnimatedEntity
 
 	[Net, Change] public int Money { get; private set; }
 
-	public BBox CollisionBox => new( new Vector3( -12f, -12f, 0f ), new Vector3( 12f, 12f, 72f ) );
+	public virtual float CollisionRadius { get; set; } = 12f;
+	public virtual float CollisionHeight { get; set; } = 72f;
+	public Capsule CollisionCapsule => new Capsule( Vector3.Up * CollisionRadius, Vector3.Up * (CollisionHeight - CollisionRadius), CollisionRadius );
 	public override void Spawn()
 	{
 		base.Spawn();
 
 		SetModel( "models/robber/robber.vmdl" );
-		SetupPhysicsFromAABB( PhysicsMotionType.Keyframed, CollisionBox.Mins, CollisionBox.Maxs );
+		SetupPhysicsFromOrientedCapsule( PhysicsMotionType.Keyframed, CollisionCapsule );
 
 		Tags.Add( "player" );
 

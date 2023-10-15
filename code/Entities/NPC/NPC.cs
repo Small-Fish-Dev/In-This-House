@@ -93,7 +93,7 @@ public partial class NPC : AnimatedEntity
 
 		if ( angle > MaxVisionAngle / 2f || angle < -MaxVisionAngle / 2f ) return false;
 
-		var losTrace = Trace.Ray( Position + Vector3.Up * CollisionCapsule.CenterA.z, player.Position + Vector3.Up * player.CollisionBox.Maxs.z )
+		var losTrace = Trace.Ray( Position + Vector3.Up * CollisionCapsule.CenterB.z, player.Position + Vector3.Up * player.CollisionCapsule.CenterB.z )
 			.Ignore( this )
 			.Ignore( player )
 			.Run();
