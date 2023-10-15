@@ -53,12 +53,16 @@ public partial class ContainerComponent : EntityComponent
 		if ( Has( item ) < amount )
 			return false;
 
+		var delete = false;
 		items[item] -= amount;
 		if ( items[item] <= 0 )
+		{
 			items.Remove( item );
+			delete = true;
+		}
 
 		if ( client != null )
-			sendUpdate( To.Single( client ), item.ResourceName, items[item] );
+			sendUpdate( To.Single( client ), item.ResourceName, delete ? 0 : items[item] );
 
 		return true;
 	}
