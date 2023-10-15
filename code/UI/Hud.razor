@@ -18,6 +18,7 @@
 	@if ( player is not null )
 	{
 		<StunIndicator @Player=@player/>
+		<Inventory />
 	}
 
 	@if ( Game.LocalPawn is Spectator spectator )
@@ -27,12 +28,20 @@
 		if ( player is not null )
 		{
 			<div>Observing @player.Client.Name</div>
+	
 		}
 	}
 </root>
 
 @code {
 	public static Hud Instance { get; private set; }
+
+	[Event.Hotload]
+	static void hotload()
+	{ 
+		if ( Game.IsClient ) 
+			new Hud();
+	}
 
 	public Hud()
 	{
@@ -42,7 +51,6 @@
 
 	protected override int BuildHash()
 	{
-		return HashCode.Combine( Game.LocalPawn.GetType() );
+		return HashCode.Combine( Game.LocalPawn?.GetType() );
 	}
-
 }
