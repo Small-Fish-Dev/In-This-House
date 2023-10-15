@@ -1,0 +1,19 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "materials/hotspots/bricks/bricks_hotspot_color.png"
+	Normal "materials/default/default_normal.tga"
+	Roughness "materials/hotspots/bricks/brick_hotspot_rough.png"
+
+	ToolAttributes
+	{
+		SubrectDefinition "materials\hotspots\bricks\brick_hotspot.rect"
+	}
+}
