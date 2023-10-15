@@ -96,7 +96,9 @@
         }
       ]
     },
-    "ControlModes": {},
+    "ControlModes": {
+      "Keyboard": true
+    },
     "InputSettings": {
       "Actions": [
         {
@@ -206,6 +208,16 @@
           "Name": "Chat",
           "KeyboardCode": "enter",
           "GroupName": "Other"
+        },
+        {
+          "Name": "FollowNext",
+          "KeyboardCode": "MOUSE1",
+          "GroupName": "Spectator"
+        },
+        {
+          "Name": "FollowPrevious",
+          "KeyboardCode": "MOUSE3",
+          "GroupName": "Spectator"
         }
       ]
     },

@@ -7,25 +7,26 @@
 
 <root>
 	@{
-		switch ( Game.LocalPawn )
+		var player = Game.LocalPawn switch
 		{
-			case BrickJam.Player player:
-				{
-					<StunIndicator @Player=@player />
-					break;
-				}
+			BrickJam.Player playerAlive => playerAlive,
+			Spectator playerSpectator => playerSpectator.Following,
+			_ => null
+			};
+	}
 
-			case Spectator:
-				{
-					<div>yuo're dead lol lmao git gud</div>
-					break;
-				}
-				
-			default:
-				{
-					<div>TODO: unknown pawn type @(Game.LocalPawn.GetType())</div>
-					break;
-				}
+	@if ( player is not null )
+	{
+		<StunIndicator @Player=@player/>
+	}
+
+	@if ( Game.LocalPawn is Spectator spectator )
+	{
+		<div>yuo're dead lol lmao git gud</div>
+
+		if ( player is not null )
+		{
+			<div>Observing @player.Client.Name</div>
 		}
 	}
 </root>
