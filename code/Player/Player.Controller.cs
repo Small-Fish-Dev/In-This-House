@@ -76,15 +76,22 @@ public partial class Player
 
 			if ( tr.Hit )
 			{
-				Stun();
-				Velocity += tr.Normal * (CollisionRadius + StunBounceVelocity);
+				var dotProduct = Math.Abs( Vector3.Dot( lerpVelocity.WithZ(0).Normal, tr.Normal ) );
+				var wallVelocity = lerpVelocity.WithZ(0) * dotProduct;
 
-				// Let's randomly throw out an item when we crash.
-				if ( Game.IsServer )
+				if ( wallVelocity.Length > WalkSpeed )
 				{
-					var random = Game.Random.Float( 0f, 1f );
-					if ( random < DropChance )
-						ThrowRandomItem();
+					var difference = MathX.Remap( wallVelocity.Length, WalkSpeed, RunSpeed );
+					Stun( difference );
+					Velocity += tr.Normal * (CollisionRadius + StunBounceVelocity);
+
+					// Let's randomly throw out an item when we crash.
+					if ( Game.IsServer )
+					{
+						var random = Game.Random.Float( 0f, 1f );
+						if ( random < DropChance )
+							ThrowRandomItem();
+					}
 				}
 			}
 		}

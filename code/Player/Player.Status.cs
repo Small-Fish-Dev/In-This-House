@@ -2,14 +2,16 @@
 
 public partial class Player
 {
-	public float StunDuration => 2f;
+	public float StunDuration => 1.5f;
 	public bool IsStunned => !StunLeft;
 	[Net] public TimeUntil StunLeft { get; set; }
 
-	public void Stun()
+	public void Stun( float multiplier = 1f )
 	{
-		PlaySound( "sounds/pipe.sound" );
+		multiplier = Math.Clamp( multiplier, 0.1f, 2f);
+		PlaySound( "sounds/pipe.sound" )
+			.SetVolume( multiplier );
 
-		StunLeft = StunDuration;
+		StunLeft = StunDuration * multiplier;
 	}
 }
