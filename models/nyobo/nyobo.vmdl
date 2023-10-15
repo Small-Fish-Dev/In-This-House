@@ -201,29 +201,34 @@
 						take = 0
 						reverse = false
 					},
+					{
+						_class = "AnimFile"
+						name = "attack"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						enable_scale = false
+						source_filename = "models/nyobo/attack.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
 				]
 				default_root_bone_name = ""
 			},
 			{
 				_class = "BoneMarkupList"
-				children = 
-				[
-					{
-						_class = "BoneMarkup"
-						target_bone = "foot_L"
-						ignore_Translation = false
-						ignore_rotation = false
-						do_not_discard = true
-					},
-					{
-						_class = "BoneMarkup"
-						target_bone = "foot_R"
-						ignore_Translation = false
-						ignore_rotation = false
-						do_not_discard = true
-					},
-				]
-				bone_cull_type = "Aggressive"
+				bone_cull_type = "None"
 			},
 			{
 				_class = "AttachmentList"
@@ -246,6 +251,142 @@
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
+					},
+				]
+			},
+			{
+				_class = "IKData"
+				children = 
+				[
+					{
+						_class = "IKChain"
+						name = "leg_L"
+						children = 
+						[
+							{
+								_class = "IKChainJoint"
+								name = "upperleg_L"
+								children = 
+								[
+									{
+										_class = "IKChainJoint"
+										name = "lowerleg_L"
+										children = 
+										[
+											{
+												_class = "IKChainJoint"
+												name = "foot_L"
+												bone = "foot_L"
+											},
+										]
+										bone = "lowerleg_L"
+									},
+								]
+								bone = "upperleg_L"
+							},
+						]
+						m_bDoBonesOrientAlongPositiveX = true
+						"m_DefaultSolverSettings.m_nNumIterations" = 6
+						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
+						"m_DefaultTargetSettings.m_Bone" = 
+						{
+							m_Name = "foot_IK_L"
+						}
+						"m_DefaultTargetSettings.m_TargetSource" = "Bone"
+						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
+						{
+							m_id = 4294967295
+						}
+						"m_Data.m_EndEffectorFixedOffsetAttachment" = 
+						{
+							m_Name = ""
+						}
+						"m_Data.m_bParentJointRequiresAlignment" = true
+					},
+					{
+						_class = "IKChain"
+						name = "leg_R"
+						children = 
+						[
+							{
+								_class = "IKChainJoint"
+								name = "upperleg_R"
+								children = 
+								[
+									{
+										_class = "IKChainJoint"
+										name = "lowerleg_R"
+										children = 
+										[
+											{
+												_class = "IKChainJoint"
+												name = "foot_R"
+												bone = "foot_R"
+											},
+										]
+										bone = "lowerleg_R"
+									},
+								]
+								bone = "upperleg_R"
+							},
+						]
+						m_bDoBonesOrientAlongPositiveX = true
+						"m_DefaultSolverSettings.m_nNumIterations" = 6
+						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
+						"m_DefaultTargetSettings.m_Bone" = 
+						{
+							m_Name = "foot_IK_R"
+						}
+						"m_DefaultTargetSettings.m_TargetSource" = "Bone"
+						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
+						{
+							m_id = 4294967295
+						}
+						"m_Data.m_EndEffectorFixedOffsetAttachment" = 
+						{
+							m_Name = ""
+						}
+						"m_Data.m_bParentJointRequiresAlignment" = true
+					},
+				]
+			},
+			{
+				_class = "WeightListList"
+				children = 
+				[
+					{
+						_class = "WeightList"
+						name = "upperbody"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "neck"
+								weight = 1.0
+							},
+							{
+								bone = "pelvis"
+								weight = 0.776596
+							},
+							{
+								bone = "spine1"
+								weight = 1.0
+							},
+							{
+								bone = "spine2"
+								weight = 1.0
+							},
+							{
+								bone = "upperleg_L"
+								weight = 0.0
+							},
+							{
+								bone = "upperleg_R"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
 					},
 				]
 			},
