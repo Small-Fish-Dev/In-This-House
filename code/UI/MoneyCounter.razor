@@ -1,0 +1,134 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+
+@namespace BrickJam.UI
+@inherits Panel
+
+<root>
+	<div class="container">
+		<label class="currency">$</label>
+		<label @ref=money>0</label>
+	</div>
+	<div class="changes" @ref=changes />
+</root>
+
+@code {
+	BrickJam.Player player => Game.LocalPawn as BrickJam.Player;
+
+	const float DELAY = 2f;
+
+	Panel changes;
+	Panel change;
+	Label signLabel;
+	Label amountLabel;
+	TimeSince changed;
+
+	Label money;
+	float oldMoney;
+	int totalChange;
+
+	public override void Tick()
+	{
+		if ( change != null && !change.IsDeleting && changed >= DELAY )
+		{
+			change.Delete();
+
+			signLabel = null;
+			amountLabel = null;
+			change = null;
+		}
+
+		if ( player == null || money == null )
+			return;
+
+		oldMoney = MathX.LerpTo( oldMoney, player.Money, 10f * Time.Delta );
+		money.Text = $"{(int)(oldMoney + 0.5f):n0}";
+	}
+
+	[Event( "MoneyChanged" )]
+	private async void moneyChanged( BrickJam.Player player, int oldValue, int newValue )
+	{
+		if ( player != Game.LocalPawn || changes == null )
+			return;
+
+		var difference = Math.Abs( oldValue - newValue );
+		if ( difference == 0 )
+			return;
+
+		var sign = oldValue > newValue
+			? "-"
+			: "+";
+
+		change ??= changes.AddChild<Panel>( "change" );
+		changed = 0;
+
+		signLabel ??= change.AddChild<Label>("sign");
+		signLabel.Text = $"{sign}$";
+		signLabel.Style.FontColor = oldValue > newValue
+			? new Color32( 205, 50, 50 )
+			: new Color32( 50, 205, 50 );
+
+		amountLabel ??= change.AddChild<Label>();
+		amountLabel.Text = $"{difference:n0}";
+	}
+
+	protected override int BuildHash()
+	{
+		return player?.Money.GetHashCode() ?? 0;
+	}
+}
+
+<style>
+	MoneyCounter {
+		position: absolute;
+		right: 0px;
+		top: 0px;
+		padding: 10px;
+		font-family: "alagard";
+		font-size: 50px;
+		color: white;
+		flex-direction: row-reverse;
+
+		.container {
+			flex-direction: row;
+			text-shadow: 4px 4px 0px rgba(black, 0.8);
+		}
+
+		.currency {
+			padding-right: 5px; 
+			font-size: 32px; 
+			top: 8px;
+			color: rgba(50, 205, 50, 1);
+		}
+
+		.changes {
+			margin-right: 10px;
+		}
+
+		.change {
+			position: absolute;
+			right: 0px;
+			color: white;
+			transition: all 0.2s ease-in-out;
+			transform: scale(1) translateY(0%);
+			font-size: 24px;
+			text-shadow: 2px 2px 0px rgba(black, 0.8);
+
+			.sign {
+				font-size: 18px;
+				padding-right: 2px; 
+				top: 2px;
+			}
+
+			&:outro {
+				opacity: 0;
+				transform: translateY(-100%);
+				transition: all 1s ease-in-out;
+			}
+
+			&:intro {
+				transform: scale(0);
+			}
+		}
+	}
+</style>
