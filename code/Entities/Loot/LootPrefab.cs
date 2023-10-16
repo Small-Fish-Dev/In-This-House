@@ -1,10 +1,10 @@
 ﻿namespace BrickJam;
 
-[GameResource( "ItemPrefab", "item", "Define item data.", Icon = "stars" )]
-public class ItemPrefab : GameResource
+[GameResource( "LootPrefab", "item", "Define item data.", Icon = "stars" )]
+public class LootPrefab : GameResource
 {
-	public static IReadOnlyDictionary<string, ItemPrefab> All => all;
-	private static Dictionary<string, ItemPrefab> all = new();
+	public static IReadOnlyDictionary<string, LootPrefab> All => all;
+	private static Dictionary<string, LootPrefab> all = new();
 
 	public string Name { get; set; }
 
@@ -21,11 +21,11 @@ public class ItemPrefab : GameResource
 	}
 
 	/// <summary>
-	/// Gets an ItemPrefab by the ResourceName.
+	/// Gets an LootPrefab by the ResourceName.
 	/// </summary>
 	/// <param name="name"></param>
 	/// <returns></returns>
-	public static ItemPrefab Get( string name )
+	public static LootPrefab Get( string name )
 	{
 		if ( All.TryGetValue( name.ToLower(), out var prefab ) )
 			return prefab;

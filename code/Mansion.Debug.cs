@@ -3,12 +3,12 @@
 public partial class MansionGame : GameManager
 {
 	[ConCmd.Server( "give_item" )]
-	public static void GiveItem( string name, int amount = 1 )
+	public static void GiveLoot( string name, int amount = 1 )
 	{
 		if ( ConsoleSystem.Caller.Pawn is not Player pawn )
 			return;
 
-		var item = ItemPrefab.Get( name );
+		var item = LootPrefab.Get( name );
 		if ( item == null )
 			return;
 

@@ -86,7 +86,7 @@ public partial class Player
 					{
 						var random = Game.Random.Float( 0f, 1f );
 						if ( random < DropChance )
-							ThrowRandomItem();
+							ThrowRandomLoot();
 					}
 				}
 			}
@@ -113,20 +113,20 @@ public partial class Player
 			}
 	}
 
-	protected void ThrowRandomItem()
+	protected void ThrowRandomLoot()
 	{
-		var items = Inventory.Items
+		var items = Inventory.Loots
 			.Keys
 			.ToList();
 
-		var randomItem = Game.Random.FromList( items, null );
-		if ( randomItem == null || !Inventory.Remove( randomItem ) )
+		var randomLoot = Game.Random.FromList( items, null );
+		if ( randomLoot == null || !Inventory.Remove( randomLoot ) )
 			return;
 
 		var force = 300f;
 		var normal = Vector3.Random.WithZ( 0 );
-		var entity = Item.CreateFromGameResource( 
-			randomItem, 
+		var entity = Loot.CreateFromGameResource( 
+			randomLoot, 
 			Position + Vector3.Up * CollisionBounds.Maxs.z / 2f, 
 			Rotation.FromYaw( Rotation.Inverse.Yaw() ) 
 		);

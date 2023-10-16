@@ -1,6 +1,6 @@
 ﻿namespace BrickJam;
 
-public enum ItemRarity
+public enum LootRarity
 {
 	Broken,
 	Decrepit,

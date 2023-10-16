@@ -7,7 +7,7 @@
 <root>
 	<div class="background">
 		<div class="items">
-			@foreach ( var item in player.Inventory.Items )
+			@foreach ( var item in player.Inventory.Loots )
 			{
 				<div class="item">
 
@@ -33,7 +33,7 @@
 	
 	protected override int BuildHash()
 	{
-		var joined = String.Join( ' ', player.Inventory.Items.Select( pair => $"{pair.Key.Name} x{pair.Value}" ) );
+		var joined = String.Join( ' ', player.Inventory.Loots.Select( pair => $"{pair.Key.Name} x{pair.Value}" ) );
 		return joined.GetHashCode();
 	}
 }

@@ -10,8 +10,8 @@ public partial class ContainerComponent : EntityComponent
 	/// <summary>
 	/// Dictionary of all the items and amounts.
 	/// </summary>
-	public IReadOnlyDictionary<ItemPrefab, int> Items => items;
-	private Dictionary<ItemPrefab, int> items = new();
+	public IReadOnlyDictionary<LootPrefab, int> Loots => items;
+	private Dictionary<LootPrefab, int> items = new();
 	private IClient client => Entity.Client;
 
 	/// <summary>
@@ -20,7 +20,7 @@ public partial class ContainerComponent : EntityComponent
 	/// <param name="item"></param>
 	/// <param name="amount"></param>
 	/// <returns>True if the operation was successful.</returns>
-	public bool Add( ItemPrefab item, int amount = 1 )
+	public bool Add( LootPrefab item, int amount = 1 )
 	{
 		Game.AssertServer();
 		var success = false;
@@ -31,7 +31,7 @@ public partial class ContainerComponent : EntityComponent
 			success = true;
 		}
 
-		if ( Items.Count < Limit && !success )
+		if ( Loots.Count < Limit && !success )
 			items.Add( item, amount );
 
 		if ( client != null )
@@ -46,7 +46,7 @@ public partial class ContainerComponent : EntityComponent
 	/// <param name="item"></param>
 	/// <param name="amount"></param>
 	/// <returns>True if the operation was successful.</returns>
-	public bool Remove( ItemPrefab item, int amount = 1 )
+	public bool Remove( LootPrefab item, int amount = 1 )
 	{
 		Game.AssertServer();
 
@@ -72,7 +72,7 @@ public partial class ContainerComponent : EntityComponent
 	/// </summary>
 	/// <param name="item"></param>
 	/// <returns></returns>
-	public int Has( ItemPrefab item )
+	public int Has( LootPrefab item )
 	{
 		var amount = 0;
 		_ = items.TryGetValue( item, out amount );
@@ -83,7 +83,7 @@ public partial class ContainerComponent : EntityComponent
 	[ClientRpc]
 	private void sendUpdate( string prefabName, int amount )
 	{
-		var prefab = ItemPrefab.Get( prefabName );
+		var prefab = LootPrefab.Get( prefabName );
 		if ( prefab == null )
 		{
 			Log.Warning( $"Couldn't find the item {prefabName}." );
