@@ -25,23 +25,33 @@
 
 	Label money;
 	float oldMoney;
-	int totalChange;
+	float targetMoney = 0;
+
+	int? initialMoney;
+	int currentTotal;
+
+	void clearChange()
+	{
+		change.Delete();
+
+		signLabel = null;
+		amountLabel = null;
+		change = null;
+
+		initialMoney = null;
+		targetMoney = player.Money;
+		currentTotal = 0;
+	}
 
 	public override void Tick()
 	{
 		if ( change != null && !change.IsDeleting && changed >= DELAY )
-		{
-			change.Delete();
-
-			signLabel = null;
-			amountLabel = null;
-			change = null;
-		}
+			clearChange();
 
 		if ( player == null || money == null )
 			return;
 
-		oldMoney = MathX.LerpTo( oldMoney, player.Money, 10f * Time.Delta );
+		oldMoney = MathX.LerpTo( oldMoney, targetMoney, 10f * Time.Delta );
 		money.Text = $"{(int)(oldMoney + 0.5f):n0}";
 	}
 
@@ -51,11 +61,17 @@
 		if ( player != Game.LocalPawn || changes == null )
 			return;
 
-		var difference = Math.Abs( oldValue - newValue );
-		if ( difference == 0 )
-			return;
+		if ( initialMoney == null )
+			initialMoney = player.Money;
 
-		var sign = oldValue > newValue
+		currentTotal += newValue - oldValue;
+		if ( currentTotal == 0 )
+		{
+			clearChange();
+			return;
+		}
+
+		var sign = currentTotal < 0
 			? "-"
 			: "+";
 
@@ -64,12 +80,12 @@
 
 		signLabel ??= change.AddChild<Label>("sign");
 		signLabel.Text = $"{sign}$";
-		signLabel.Style.FontColor = oldValue > newValue
+		signLabel.Style.FontColor = currentTotal < 0
 			? new Color32( 205, 50, 50 )
 			: new Color32( 50, 205, 50 );
 
 		amountLabel ??= change.AddChild<Label>();
-		amountLabel.Text = $"{difference:n0}";
+		amountLabel.Text = $"{Math.Abs( currentTotal ):n0}";
 	}
 
 	protected override int BuildHash()
