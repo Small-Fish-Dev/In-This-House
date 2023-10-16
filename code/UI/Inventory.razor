@@ -33,6 +33,9 @@
 	
 	protected override int BuildHash()
 	{
+		if ( player?.Inventory?.Items == null )
+			return 0;
+
 		var joined = String.Join( ' ', player.Inventory.Items.Select( pair => $"{pair.Key.Name} x{pair.Value}" ) );
 		return joined.GetHashCode();
 	}
