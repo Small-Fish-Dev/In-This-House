@@ -7,8 +7,7 @@ public enum LevelType // We need this to categorize hammer entities
 	None,
 	Mansion,
 	Dungeon,
-	Office,
-	Library
+	Bathrooms
 }
 
 public abstract partial class Level : Entity // Easy replication to client
@@ -67,10 +66,8 @@ public abstract partial class Level : Entity // Easy replication to client
 				return typeof( MansionLevel );
 			case LevelType.Dungeon:
 				return typeof( DungeonLevel );
-			case LevelType.Office:
-				return typeof( OfficeLevel );
-			case LevelType.Library:
-				return typeof( LibraryLevel );
+			case LevelType.Bathrooms:
+				return typeof( BathroomsLevel );
 			default:
 				return null;
 		}
@@ -103,9 +100,7 @@ public partial class MansionGame
 		if ( Instance.CurrentLevel is MansionLevel )
 			SetLevel<DungeonLevel>();
 		else if ( Instance.CurrentLevel is DungeonLevel )
-			SetLevel<OfficeLevel>();
-		else if ( Instance.CurrentLevel is OfficeLevel )
-			SetLevel<LibraryLevel>();
+			SetLevel<BathroomsLevel>();
 	}
 
 	// For client callback
