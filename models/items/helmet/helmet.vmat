@@ -1,0 +1,16 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "models/items/helmet/helmet_color.png"
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	Metalness "models/items/helmet/helmet_metal.png"
+	Normal "models/items/helmet/helmet_normal.png"
+	Roughness "models/items/helmet/helmet_rough.png"
+}
