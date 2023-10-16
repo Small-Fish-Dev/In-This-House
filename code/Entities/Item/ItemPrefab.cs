@@ -1,6 +1,5 @@
 ﻿namespace BrickJam;
 
-// THE S&BOX PREFAB EDITOR BROKE LOLOLOL.
 [GameResource( "ItemPrefab", "item", "Define item data.", Icon = "stars" )]
 public class ItemPrefab : GameResource
 {
@@ -8,17 +7,9 @@ public class ItemPrefab : GameResource
 	private static Dictionary<string, ItemPrefab> all = new();
 
 	public string Name { get; set; }
-	public string Description { get; set; }
 
 	[ResourceType( "vmdl" )]
 	public string Model { get; set; }
-
-	public ItemRarity Rarity { get; set; }
-
-	// TODO: This could be a function of Rarity? 
-	// Common => some_amount
-	// Rare => higher_amount
-	// Legendary => highest_amount
 	public int MonetaryValue { get; set; }
 
 	protected override void PostLoad()

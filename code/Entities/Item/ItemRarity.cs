@@ -2,8 +2,13 @@
 
 public enum ItemRarity
 {
+	Broken,
+	Decrepit,
+	Worn,
+	Dusty,
 	Common,
-	Uncommon,
-	Rare,
-	Legendary
+	Nice,
+	Great,
+	Excellent,
+	Flawless
 }
