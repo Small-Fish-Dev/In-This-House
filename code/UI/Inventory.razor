@@ -7,11 +7,15 @@
 <root>
 	<div class="background">
 		<div class="items">
-			@foreach ( var item in player.Inventory.Loots )
-			{
-				<div class="item">
+			@{
+				if ( player?.Inventory?.Loots == null )
+					return;
 
-				</div>
+				foreach ( var item in player?.Inventory?.Loots )
+				{
+					<div class="item">
+					</div>
+				}
 			}
 		</div>
 	</div>

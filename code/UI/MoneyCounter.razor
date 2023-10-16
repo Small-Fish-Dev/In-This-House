@@ -15,6 +15,7 @@
 @code {
 	BrickJam.Player player => Game.LocalPawn as BrickJam.Player;
 
+	private static MoneyCounter instance;
 	const float DELAY = 2f;
 
 	Panel changes;
@@ -30,23 +31,31 @@
 	int? initialMoney;
 	int currentTotal;
 
-	void clearChange()
+	public static void Update()
 	{
-		change.Delete();
+		if ( instance == null )
+			return;
 
-		signLabel = null;
-		amountLabel = null;
-		change = null;
+		instance.change.Delete();
 
-		initialMoney = null;
-		targetMoney = player.Money;
-		currentTotal = 0;
+		instance.signLabel = null;
+		instance.amountLabel = null;
+		instance.change = null;
+
+		instance.initialMoney = null;
+		instance.targetMoney = (Game.LocalPawn as BrickJam.Player)?.Money ?? 0;
+		instance.currentTotal = 0;
+	}
+
+	public MoneyCounter()
+	{
+		instance = this;
 	}
 
 	public override void Tick()
 	{
 		if ( change != null && !change.IsDeleting && changed >= DELAY )
-			clearChange();
+			Update();
 
 		if ( player == null || money == null )
 			return;
@@ -67,7 +76,7 @@
 		currentTotal += newValue - oldValue;
 		if ( currentTotal == 0 )
 		{
-			clearChange();
+			Update();
 			return;
 		}
 
@@ -119,6 +128,7 @@
 
 		.changes {
 			margin-right: 10px;
+			margin-top: 10px;
 		}
 
 		.change {
