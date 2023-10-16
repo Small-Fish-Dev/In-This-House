@@ -25,6 +25,7 @@ partial class Player : AnimatedEntity
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;
+		EnableHideInFirstPerson = true;
 
 		// Remember to create the container component!!!
 		Components.GetOrCreate<ContainerComponent>();
@@ -65,7 +66,6 @@ partial class Player : AnimatedEntity
 
 		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Game.Preferences.FieldOfView );
 		Camera.FirstPersonViewer = this; // Doesn't work?
-		EnableDrawing = false; // Let's use this for now
 		
 		BugBug.Here( v =>
 		{
