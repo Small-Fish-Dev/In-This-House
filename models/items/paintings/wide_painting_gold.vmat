@@ -9,6 +9,8 @@ Layer0
 
 	//---- Material ----
 	Color "models/items/paintings/wide_painting_gold_color.png"
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	Metalness "models/items/paintings/wide_painting_gold_metal.png"
 	Normal "models/items/paintings/wide_painting_gold_normal.png"
 	Roughness "models/items/paintings/wide_painting_gold_rough.png"
 }
