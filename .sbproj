@@ -39,6 +39,16 @@
         "Addons": "",
         "PreLaunchCommand": "",
         "PostLaunchCommand": ""
+      },
+      {
+        "Name": "DEV 4P",
+        "GameIdent": "fish.2023_jam#local",
+        "MapName": "mansion.vmap",
+        "MaxPlayers": 4,
+        "GameSettings": {},
+        "Addons": "",
+        "PreLaunchCommand": "",
+        "PostLaunchCommand": "mansion_bot_add; mansion_bot_add; mansion_bot_add;"
       }
     ],
     "Collision": {
@@ -230,6 +240,11 @@
           "Name": "Inventory",
           "KeyboardCode": "q",
           "GroupName": "Other"
+        },
+        {
+          "Name": "StopFollowing",
+          "KeyboardCode": "SPACE",
+          "GroupName": "Spectator"
         }
       ]
     },

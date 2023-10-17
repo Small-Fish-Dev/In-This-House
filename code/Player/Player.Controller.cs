@@ -23,6 +23,7 @@ public partial class Player
 
 	protected void SimulateController()
 	{
+		IsRunning = Input.Down( "run" );
 		WishSpeed = IsRunning ? RunSpeed : WalkSpeed;
 
 		var oldVelocity = Velocity;

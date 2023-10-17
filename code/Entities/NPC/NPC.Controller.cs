@@ -12,8 +12,8 @@ public partial class NPC
 	{
 		if ( Direction.IsNearZeroLength ) return;
 
-		var speed = HasArrivedDestination ? 0f : ( Target != null ? RunSpeed : WalkSpeed );
-		var targetRotation = Rotation.LookAt( LastTarget != null ? (LastTarget.Position - Position) : Direction, Vector3.Up );
+		var speed = HasArrivedDestination ? 0f : ( Target.IsValid() ? RunSpeed : WalkSpeed );
+		var targetRotation = Rotation.LookAt( LastTarget.IsValid() ? (LastTarget.Position - Position) : Direction, Vector3.Up );
 		Rotation = Rotation.Lerp( Rotation, Rotation.FromYaw( targetRotation.Yaw() ), Time.Delta * 5f );
 
 		var helper = new MoveHelper( Position, Direction * speed );

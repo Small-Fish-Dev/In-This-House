@@ -12,6 +12,7 @@ public partial class Spectator : AnimatedEntity
 
 	[ClientInput] public Vector3 InputDirection { get; protected set; }
 	[ClientInput] public Angles InputAngles { get; protected set; }
+	public bool IsRunning { get; protected set; }
 	public Rotation InputRotation => InputAngles.ToRotation();
 
 	public override void BuildInput()
@@ -26,18 +27,19 @@ public partial class Spectator : AnimatedEntity
 	{
 		base.Simulate( cl );
 
-		// Follow the next available person if the pawn we've observed no longer exists
-		if ( Following is not null && !Following.IsValid
-		     || Input.Pressed( "FollowNext" ) )
+		if ( Game.IsServer )
 		{
-			FollowNext();
+			if ( Input.Pressed( "StopFollowing" ) )
+				StopFollowing();
+			// Follow the next available person if the pawn we've observed no longer exists
+			else if ( Input.Pressed( "FollowNext" ) || Following is not null && !Following.IsValid )
+				FollowNext();
+			else if ( Input.Pressed( "FollowPrevious" ) ) // TODO: FollowPrevious doesn't work for some reason
+				FollowPrevious();
 		}
-		else if ( Input.Pressed( "FollowPrevious" ) )
-		{
-			FollowPrevious();
-		}
-		
-		// TODO: move if not following anyone 
+
+		if ( Following is null )
+			SimulateController();
 	}
 
 	public override void FrameSimulate( IClient cl )
@@ -47,16 +49,17 @@ public partial class Spectator : AnimatedEntity
 		if ( Following is not null )
 		{
 			Camera.Position = Following.EyePosition;
-			Camera.Rotation = Following.InputRotation; // TODO: does it even work?
+			Camera.Rotation = Following.Rotation;
+			Camera.FirstPersonViewer = Following;
 		}
 		else
 		{
 			Camera.Position = Position;
 			Camera.Rotation = InputRotation;
+			Camera.FirstPersonViewer = this;
 		}
-		
+
 		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Game.Preferences.FieldOfView );
-		Camera.FirstPersonViewer = this; // Doesn't work?
 		EnableDrawing = false; // Let's use this for now
 	}
 
@@ -65,34 +68,39 @@ public partial class Spectator : AnimatedEntity
 		var clients = Game.Clients.Where( client => client.Pawn is Player ).ToList();
 		if ( clients.Count == 0 )
 		{
-			Following = null;
-			LastFollowIndex = -1;
+			StopFollowing();
 			return;
 		}
 
-		if ( Following is not null )
+		if ( Following is null )
+			LastFollowIndex = 0; // Follow the first player in the list
+		else
 		{
 			var index = clients.FindIndex( client => client.Pawn == Following );
 			if ( index == -1 )
-				LastFollowIndex %= clients.Count;
+				LastFollowIndex = Math.Max( LastFollowIndex, 0 ) % clients.Count;
 			else
 				LastFollowIndex = (index + 1) % clients.Count;
 		}
 
+		Log.Info( $"{LastFollowIndex}" );
 		Following = clients[LastFollowIndex].Pawn as Player;
 	}
 
 	private void FollowPrevious()
 	{
+		Log.Info( "follow prev" );
+
 		var clients = Game.Clients.Where( client => client.Pawn is Player ).ToList();
 		if ( clients.Count == 0 )
 		{
-			Following = null;
-			LastFollowIndex = -1;
+			StopFollowing();
 			return;
 		}
 
-		if ( Following is not null )
+		if ( Following is null )
+			LastFollowIndex = clients.Count - 1; // Follow the last player in the list
+		else
 		{
 			var index = clients.FindIndex( client => client.Pawn == Following );
 			if ( index == -1 )
@@ -100,5 +108,17 @@ public partial class Spectator : AnimatedEntity
 		}
 
 		Following = clients[LastFollowIndex].Pawn as Player;
+	}
+
+	private void StopFollowing()
+	{
+		if ( Following.IsValid() )
+		{
+			Position = Following.EyePosition;
+			Rotation = Following.Rotation;
+		}
+
+		Following = null;
+		LastFollowIndex = -1;
 	}
 }

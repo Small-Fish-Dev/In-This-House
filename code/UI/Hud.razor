@@ -1,4 +1,5 @@
 ﻿@using Sandbox;
+@using Sandbox.Diagnostics
 @using Sandbox.UI;
 
 @namespace BrickJam.UI
@@ -7,12 +8,7 @@
 
 <root>
 	@{
-		var player = Game.LocalPawn switch
-		{
-			BrickJam.Player playerAlive => playerAlive,
-			Spectator playerSpectator => playerSpectator.Following,
-			_ => null
-			};
+		var player = LocalPlayer;
 
 		var isSpectator = Game.LocalPawn is Spectator;
 		var isPlayer = Game.LocalPawn is BrickJam.Player;
@@ -48,12 +44,20 @@
 		if ( player is not null )
 		{
 			<div>Observing @player.Client.Name</div>
+			<label>Press Space to stop following this player</label>
 		}
 	}
 </root>
 
 @code {
 	public static Hud Instance { get; private set; }
+
+	private static BrickJam.Player LocalPlayer => Game.LocalPawn switch
+	{
+		BrickJam.Player playerAlive => playerAlive,
+		Spectator playerSpectator => playerSpectator.Following,
+		_ => null
+		};
 
 	[Event.Hotload]
 	static void hotload()
@@ -70,7 +74,7 @@
 
 	protected override int BuildHash()
 	{
-		return HashCode.Combine( Game.LocalPawn?.GetType() );
+		return HashCode.Combine( Game.LocalPawn, LocalPlayer );
 	}
 
 }
