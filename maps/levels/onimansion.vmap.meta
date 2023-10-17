@@ -1,0 +1,27 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "onimansion",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "onimansion",
+      "Tags": null,
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "fish.2023_jam"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "maps/onimansion.vmap"
+      }
+    }
+  }
+}
