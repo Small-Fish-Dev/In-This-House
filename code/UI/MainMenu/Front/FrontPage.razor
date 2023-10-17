@@ -53,14 +53,14 @@
         var options = new Sandbox.Modals.GameCreateModalOptions();
         options.Cookie = $"{Game.Menu.Package.FullIdent}.serverconfig";
 
+	    options.MaxPlayers = 4;
+	    options.MapSelection = false;
         options.ModalTitle = "Create Game";
-        options.MapFilter = "type:map sort:trending";
-        options.Default.Map = "facepunch.construct23";
         options.Default.GameTitle = $"{Game.Menu.Package.Title} Server";
 
-        options.OnStartGame = (setup) =>
+        options.OnStartGame = setup =>
         {
-            Game.Menu.StartServerAsync(setup.MaxPlayers, setup.GameTitle, setup.Map);
+            Game.Menu.StartServerAsync(setup.MaxPlayers, setup.GameTitle, "local.mansion");
         };
 
         Game.Overlay.ShowCreateGame(options);
@@ -70,7 +70,7 @@
     {
         var options = new Sandbox.Modals.ServerListModalOptions();
         options.TargetGame = Game.Menu.Package.FullIdent;
-        options.OnSelected = (server) =>
+        options.OnSelected = server =>
         {
             Game.Menu.ConnectToServer(server.SteamId);
         };

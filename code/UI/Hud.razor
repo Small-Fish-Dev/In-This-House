@@ -13,7 +13,7 @@
 		var isPlayer = Game.LocalPawn is BrickJam.Player;
 	}
 
-	@if ( MansionGame.Instance.TimerActive )
+	@if ( MansionGame.Instance?.TimerActive ?? false )
 	{
 		<Timer @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
 	}
@@ -55,7 +55,8 @@
 </root>
 
 @code {
-	public static Hud Instance { get; private set; }
+	public static Hud Instance => (Hud)_instance?.Target;
+	private static WeakReference _instance;
 
 	private static BrickJam.Player LocalPlayer => Game.LocalPawn switch
 	{
@@ -64,23 +65,16 @@
 		_ => null
 	};
 
-	[Event.Hotload]
-	static void hotload()
-	{
-		if ( Game.IsClient )
-			new Hud();
-	}
-
 	public Hud()
 	{
 		Instance?.Delete( true );
-		Instance = this;
+		_instance = new WeakReference( this );
 	}
 
 	protected override int BuildHash()
 	{
 	// TODO: don't change it to "MansionGame.Instance?" !!! There's something that is calling this func from the menu
-		return HashCode.Combine( Game.LocalPawn, LocalPlayer, MansionGame.Instance?.TimerActive );
+		return HashCode.Combine( Game.LocalPawn, LocalPlayer, MansionGame.Instance.TimerActive );
 	}
 
 }

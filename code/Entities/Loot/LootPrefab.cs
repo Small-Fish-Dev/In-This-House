@@ -9,6 +9,7 @@ public class LootPrefab : GameResource
 	private static Dictionary<string, LootPrefab> all = new();
 
 	public string Name { get; set; }
+	public string Description { get; set; }
 
 	[ResourceType( "vmdl" )]
 	public string Model { get; set; }

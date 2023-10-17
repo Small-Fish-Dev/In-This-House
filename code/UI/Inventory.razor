@@ -20,7 +20,14 @@
 					var item = pair.Key.Value;
 					var amount = pair.Value;
 
-					<div class="item">
+					<div class="item"
+					@onmouseover=@(() => { 
+						tooltipData = pair; 
+					})
+				 	@onmouseout=@(() => { 
+						 previousTooltip = tooltipData; 
+						 tooltipData = null; 
+					 })>
 						<looticon class="icon" prefab="@(item.Prefab.ResourceName)" />
 						<label class="amount">x@(amount)</label>
 					</div>
@@ -28,9 +35,48 @@
 			}
 		</div>
 	</div>
+
+	<div class="tooltip @(tooltipData != null ? "visible" : "")">
+		@{
+			var targetTooltip = tooltipData ?? previousTooltip;
+			if ( targetTooltip != null )
+			{
+				var data = targetTooltip.Value;
+				var prefab = data.Key.Value.Prefab;
+				var rarity = data.Key.Value.Rarity;
+				var price = (int)(prefab.MonetaryValue * Loot.RarityMap[rarity]);
+
+				<div style="flex-direction: column;">
+					<div style="flex-direction: row;"> 
+						<span style="margin-right: 10px;">@($"{rarity} {prefab.Name}")</span>
+						<span style="margin-right: 10px;">x@(data.Value)</span>
+					</div>
+					<div style="flex-direction: row; margin-top: 5px;"> 
+						<span class="currency">$</span><span>@($"{(price * data.Value):n0}")</span>
+
+						@if( data.Value > 1 )
+						{
+							<span style="color: gray; margin-left: 10px; padding-right: 5px;">(</span>
+							<span class="currency">$</span><span style="color: gray;">@($"{price:n0}") each )</span>
+						}
+					</div>
+
+					@if( prefab.Description != null && prefab.Description != string.Empty )
+					{
+						<div class="description">@(prefab.Description)</div>
+					}
+				</div>
+
+				<looticon class="icon" prefab="@(prefab.ResourceName)" />
+			}
+		}
+	</div>
 </root>
 
 @code {
+	private KeyValuePair<ItemEntry?, int>? previousTooltip;
+	private KeyValuePair<ItemEntry?, int>? tooltipData;
+
 	private class LootIcon : Panel
 	{
 		public LootPrefab LootPrefab { get; set; }
@@ -72,10 +118,10 @@
 	protected override int BuildHash()
 	{
 		if ( player?.Inventory?.Loots == null )
-			return 0;
+			return HashCode.Combine( tooltipData, previousTooltip );
 
 		var joined = String.Join( ' ', player.Inventory.Loots.Select( pair => $"{pair.Key?.Prefab.Name} {pair.Key?.Rarity} x{pair.Value}" ) );
-		return joined.GetHashCode();
+		return HashCode.Combine( tooltipData, previousTooltip, joined );
 	}
 }
 
@@ -102,6 +148,49 @@
 		&.visible {
 			transform: translateY(0%);
 			pointer-events: all;
+		}
+
+		.tooltip {
+			position: absolute;
+			left: 100%;
+			bottom: 20px;
+			margin-left: 10px;
+			transition: transform 0.2s ease-in-out;
+			background-color: transparent;
+			transform: translateY(200%);
+			font-size: 24px;
+			max-width: 500px;
+			text-shadow: 2px 2px 0px rgba(black, 0.8);
+			flex-direction: row;
+			padding: 10px;
+
+			.currency {
+				padding-right: 5px; 
+				font-size: 16px; 
+				top: 3px;
+				color: rgba(50, 205, 50, 1);
+			}
+
+			.description {
+				margin-top: 8px;
+				color: rgba(215, 215, 215, 1);
+			}
+
+			.icon {
+				position: absolute;
+				left: 100%;
+				margin-left: 10px;
+				height: 100%;
+				aspect-ratio: 1;
+				background-size: 100%;
+				background-repeat: no-repeat;
+				filter: border-wrap(2px black);
+			}
+
+			&.visible {
+				transform: translateY(0%);
+				pointer-events: all;
+			}
 		}
 
 		.background {
@@ -146,12 +235,11 @@
 					background-size: 100%;
 					background-position: center;
 					background-repeat: no-repeat;
-					filter: border-wrap( 2px black );
+					filter: border-wrap(2px black);
 				}
 
 				&:hover {
 					background-color: rgba(white, 0.1);
-					border: 2px rgba(white, 0.2);
 				}
 			}
 		}

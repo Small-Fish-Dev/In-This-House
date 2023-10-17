@@ -1,0 +1,19 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Rendering ----
+	F_RENDER_BACKFACES 1
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "models/specter/materials/specter_color.png"
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	Metalness "models/specter/materials/specter_metal.png"
+	Normal "models/specter/materials/specter_normal.png"
+	Roughness "models/specter/materials/specter_rough.png"
+}

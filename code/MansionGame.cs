@@ -12,16 +12,17 @@ namespace BrickJam;
 
 public partial class MansionGame : GameManager
 {
-	public static MansionGame Instance { get; private set; }
-	
-	[Net] public TimeUntil TimeOut { get; set;}
+	public static MansionGame Instance => (MansionGame)_instance?.Target;
+	private static WeakReference _instance;
+
+	[Net] public TimeUntil TimeOut { get; set; }
 	[Net] public bool TimerActive { get; set; }
 
 	public float TimePerLevel => 60.0f;
 
 	public MansionGame()
 	{
-		Instance = this;
+		_instance = new WeakReference( this );
 
 		if ( Game.IsClient )
 		{
@@ -103,7 +104,7 @@ public partial class MansionGame : GameManager
 				v.Value( "ang", Camera.Rotation.Angles() );
 			} );
 		} );
-		
+
 		foreach ( var player in All.Where( ent => ent is Player player && player.IsValid() ) )
 		{
 			var glow = player.Components.GetOrCreate<Glow>();
