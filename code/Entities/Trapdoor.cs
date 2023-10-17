@@ -3,6 +3,7 @@
 public class Trapdoor : UsableEntity
 {
 	public override float InteractionDuration => 2.0f;
+	public override string UseString => "get to the next level";
 
 	public override void Spawn()
 	{
