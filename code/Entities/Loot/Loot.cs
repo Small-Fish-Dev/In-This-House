@@ -98,7 +98,7 @@ public partial class Loot : UsableEntity
 		if ( !IsAuthority )
 			return;
 
-		user.Inventory.Add( new ItemEntry { Prefab = Prefab, Rarity = Rarity } );
-		Delete();
+		if ( user.Inventory.Add( new ItemEntry { Prefab = Prefab, Rarity = Rarity } ) )
+			Delete();
 	}
 }
