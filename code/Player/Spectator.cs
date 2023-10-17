@@ -1,4 +1,6 @@
-﻿namespace BrickJam;
+﻿using Sandbox.Component;
+
+namespace BrickJam;
 
 public partial class Spectator : AnimatedEntity
 {
@@ -83,14 +85,11 @@ public partial class Spectator : AnimatedEntity
 				LastFollowIndex = (index + 1) % clients.Count;
 		}
 
-		Log.Info( $"{LastFollowIndex}" );
 		Following = clients[LastFollowIndex].Pawn as Player;
 	}
 
 	private void FollowPrevious()
 	{
-		Log.Info( "follow prev" );
-
 		var clients = Game.Clients.Where( client => client.Pawn is Player ).ToList();
 		if ( clients.Count == 0 )
 		{
@@ -104,7 +103,9 @@ public partial class Spectator : AnimatedEntity
 		{
 			var index = clients.FindIndex( client => client.Pawn == Following );
 			if ( index == -1 )
-				LastFollowIndex %= clients.Count;
+				LastFollowIndex = Math.Max( LastFollowIndex, 0 ) % clients.Count;
+			else
+				LastFollowIndex = (index == 0 ? clients.Count - 1 : index - 1) % clients.Count;
 		}
 
 		Following = clients[LastFollowIndex].Pawn as Player;
