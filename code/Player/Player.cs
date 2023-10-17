@@ -91,6 +91,7 @@ partial class Player : AnimatedEntity
 
 		var animationHelper = new CitizenAnimationHelper( this );
 		animationHelper.WithVelocity( Velocity );
+		animationHelper.WithLookAt( Position + InputRotation.Forward * 10f );
 
 		animationHelper.IsGrounded = GroundEntity != null;
 	}
