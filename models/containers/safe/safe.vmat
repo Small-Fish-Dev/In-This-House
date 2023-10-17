@@ -1,0 +1,16 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "models/containers/safe/safe_color.png"
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	Metalness "models/containers/safe/safe_metal.png"
+	Normal "models/containers/safe/safe_normal.png"
+	Roughness "models/containers/safe/safe_rough.png"
+}
