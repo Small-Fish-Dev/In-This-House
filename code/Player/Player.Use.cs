@@ -27,6 +27,8 @@ partial class Player : AnimatedEntity
 
 	protected void SimulateUse()
 	{
+		UsableEntity = null;
+		
 		// First pass, looking directly at the object we want to use
 		var thinTrace = Trace.Ray( EyePosition, EyePosition + InputRotation.Forward * UseRange )
 			.WithTag( "useable" )
