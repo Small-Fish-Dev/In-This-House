@@ -77,6 +77,10 @@ public partial class NPC : AnimatedEntity
 
 	public virtual void FindTargets()
 	{
+		// Remove all the invalid players
+		foreach (var player in PlayersInVision.Where(player => !player.IsValid()).ToList()) // Make a copy of PlayersInVision
+			PlayersInVision.Remove( player );
+
 		foreach ( var player in Entity.All.OfType<Player>() )
 		{
 			if ( IsPlayerInVision( player ) )
