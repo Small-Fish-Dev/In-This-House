@@ -20,7 +20,7 @@ partial class Player : AnimatedEntity
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;
-		EnableHideInFirstPerson = true;
+		EnableHideInFirstPerson = false; // For firstperson legs!!
 
 		// Remember to create the container component!!!
 		Components.GetOrCreate<ContainerComponent>();
@@ -56,9 +56,11 @@ partial class Player : AnimatedEntity
 	{
 		base.FrameSimulate( cl );
 
+		HandleBodyiew();
+
 		if ( !MovementLocked )
 		{
-			Camera.Position = EyePosition;
+			Camera.Position = GetAttachment( "eyes" )?.Position ?? EyePosition;
 			Camera.Rotation = InputRotation;
 			Camera.FirstPersonViewer = this;
 		}
@@ -70,7 +72,8 @@ partial class Player : AnimatedEntity
 			Camera.FirstPersonViewer = null;
 		}
 
-		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Game.Preferences.FieldOfView );
+		Camera.ZNear = 2;
+		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( 60f );
 		
 		BugBug.Here( v =>
 		{
@@ -97,9 +100,10 @@ partial class Player : AnimatedEntity
 		else
 			Rotation = Rotation.FromYaw( InputAngles.yaw );
 
+		var remapped = MathX.Remap( Velocity.Length, 0, 150, 0.5f, 1f );
 		var animationHelper = new CitizenAnimationHelper( this );
 		animationHelper.WithVelocity( Velocity );
-		animationHelper.WithLookAt( Position + InputRotation.Forward * 10f );
+		animationHelper.WithLookAt( Position + InputRotation.Forward * 10f, 0f, remapped, 0.8f );
 
 		animationHelper.IsGrounded = GroundEntity != null;
 		SetAnimParameter( "special_movement_states", IsStunned ? 1 : ( IsTripping ? 2 : ( IsSlipping ? 3 : 0 ) ) );
