@@ -55,9 +55,12 @@ public partial class ContainerComponent : EntityComponent
 		}
 
 		if ( Loots.Count < Limit && !success )
+		{
 			items.Add( entry, amount );
+			success = true;
+		}
 
-		if ( client != null )
+		if ( client != null && success )
 			sendUpdate( To.Single( client ), entry.Prefab.ResourceName, entry.Rarity, items[entry] );
 
 		return success;
