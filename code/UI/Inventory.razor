@@ -27,7 +27,7 @@
 				 	@onmouseout=@(() => { 
 						 previousTooltip = tooltipData; 
 						 tooltipData = null; 
-					 })>
+					})>
 						<looticon class="icon" prefab="@(item.Prefab.ResourceName)" />
 						<label class="amount">x@(amount)</label>
 					</div>
@@ -36,7 +36,7 @@
 		</div>
 	</div>
 
-	<div class="tooltip @(tooltipData != null ? "visible" : "")">
+	<div class="tooltip @(tooltipData != null || holdPanel != null ? "visible" : "")">
 		@{
 			var targetTooltip = tooltipData ?? previousTooltip;
 			if ( targetTooltip != null )
@@ -76,6 +76,7 @@
 @code {
 	private KeyValuePair<ItemEntry?, int>? previousTooltip;
 	private KeyValuePair<ItemEntry?, int>? tooltipData;
+	private Panel? holdPanel;
 
 	private class LootIcon : Panel
 	{
@@ -102,19 +103,111 @@
 		}
 	}
 
+	private void createHoldPanel( KeyValuePair<ItemEntry?, int> pair )
+	{
+		deleteHoldPanel();
+		holdPanel = AddChild<Panel>( "drag" );
+
+		var prefab = pair.Key.Value.Prefab;
+		var rarity = pair.Key.Value.Rarity;
+
+		var icon = holdPanel.AddChild<Panel>( "icon" );
+		icon.Style.SetBackgroundImage( prefab.Icon );
+	}
+
+	private void deleteHoldPanel()
+	{
+		holdPanel?.Delete();
+		holdPanel = null;
+	}
+
 	BrickJam.Player player => Game.LocalPawn as BrickJam.Player;
 
 	public Inventory()
 	{
-		SetClass( "visible", false );
+		SetClass( "visible", false );		
+
+		AddEventListener( "onmousedown", ( PanelEvent @event ) =>
+		{
+			var e = @event as MousePanelEvent;
+			if ( !HasClass( "visible" ) || e.MouseButton != MouseButtons.Left || tooltipData == null )
+				return;
+
+			createHoldPanel( tooltipData.Value );
+		} );
+
+		AddEventListener( "onmouseup", ( PanelEvent @event ) =>
+		{
+			var e = @event as MousePanelEvent;
+			if ( e.MouseButton != MouseButtons.Left )
+				return;
+
+			deleteHoldPanel();
+
+			// Are we within inventory bounds?
+			if ( Mouse.Position.x >= Box.Left && Mouse.Position.x <= Box.Right
+			  && Mouse.Position.y >= Box.Top && Mouse.Position.x <= Box.Bottom ) return;
+
+			// Request to throw item.
+			if ( previousTooltip == null )
+				return;
+
+			var entry = previousTooltip.Value.Key.Value;
+			throwItem( entry.Prefab.ResourceName, entry.Rarity );
+		} );
+	}
+
+	[ConCmd.Server( "throw_item" )]
+	private static void throwItem( string name, LootRarity rarity )
+	{
+		if ( ConsoleSystem.Caller.Pawn is not BrickJam.Player player )
+			return;
+
+		// Let's try to remove the item.
+		var prefab = LootPrefab.Get( name );
+		if ( prefab == null )
+			return;
+
+		var entry = new ItemEntry
+		{
+			Prefab = prefab,
+			Rarity = rarity
+		};
+
+		if ( !player.Inventory.Remove( entry ) )
+			return;
+
+		var force = 300f;
+		var entity = Loot.CreateFromEntry( 
+			entry, 
+			player.EyePosition, 
+			Rotation.FromYaw( player.Rotation.Inverse.Yaw() ) 
+		);
+		entity.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
+		entity.ApplyAbsoluteImpulse( player.InputRotation.Forward * force );
 	}
 
 	public override void Tick()
 	{
 		if ( Input.Pressed( "Inventory" ) )
+		{
+			deleteHoldPanel();
 			SetClass( "visible", !HasClass( "visible" ) );
+		}
+
+		// Fucky workaround :P
+		Hud.Instance.Style.PointerEvents = holdPanel == null || !HasClass( "visible" )
+			? PointerEvents.None 
+			: PointerEvents.All;
+
+		if ( holdPanel != null )
+		{
+			var fraction = Mouse.Position / Screen.Size;
+			holdPanel.Style.Left = (Mouse.Position.x - Box.Rect.Left) * ScaleFromScreen;
+			holdPanel.Style.Top = (Mouse.Position.y - Box.Rect.Top) * ScaleFromScreen;
+		}
 	}
-	
+
 	protected override int BuildHash()
 	{
 		if ( player?.Inventory?.Loots == null )
@@ -244,4 +337,35 @@
 			}
 		}
     }
+
+	.drag {
+		position: absolute;
+		width: 75px;
+		aspect-ratio: 1;
+		transform: translate(-50%, -50%);
+		pointer-events: none;
+		background-color: rgba(black, 0.75);
+		border: 2px black;
+		padding: 2px;
+		opacity: 1;
+		transition: transform 0.1s ease-in;
+		transform-origin: top left;
+
+		&:intro {
+			transform: scale(0) translate(-50%, -50%);
+		}
+
+		&:outro {
+			transform: scale(0) translate(-50%, -50%);
+		}
+	
+		.icon {
+			width: 100%;
+			height: 100%;
+			background-size: 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+			filter: border-wrap(2px black);
+		}
+	}
 </style>
