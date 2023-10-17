@@ -233,7 +233,7 @@
         },
         {
           "Name": "FollowPrevious",
-          "KeyboardCode": "MOUSE3",
+          "KeyboardCode": "MOUSE2",
           "GroupName": "Spectator"
         },
         {
