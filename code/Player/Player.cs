@@ -29,7 +29,6 @@ partial class Player : AnimatedEntity
 
 	[ClientInput] public Vector3 InputDirection { get; protected set; }
 	[ClientInput] public Angles InputAngles { get; protected set; }
-	public bool IsRunning { get; protected set; } = false;
 	public Rotation InputRotation => InputAngles.ToRotation();
 	public Vector3 EyePosition => Position + Vector3.Up * 64f;
 

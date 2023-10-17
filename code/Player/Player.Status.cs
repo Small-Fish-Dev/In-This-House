@@ -9,7 +9,10 @@ public partial class Player
 
 	public void Stun( float multiplier = 1f )
 	{
-		multiplier = Math.Clamp( multiplier, 0.1f, 2f);
+		multiplier = Math.Clamp( multiplier, 0.1f, 1f);
+		var volume = MathX.Remap( multiplier, 0.1f, 1f, 0.3f, 1f );
+		var pitch = MathX.Remap( multiplier, 0.1f, 1f, 1.4f, 0.5f );
+		Log.Info( multiplier );
 		PlaySound( "sounds/pipe.sound" )
 			.SetVolume( multiplier );
 

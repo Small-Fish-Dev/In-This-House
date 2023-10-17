@@ -10,37 +10,52 @@ public partial class Player
 
 	[Net] public float WalkSpeed { get; set; } = 200f;
 	[Net] public float RunSpeed { get; set; } = 350f;
-	[Net] public float Friction { get; set; } = 0.7f; // The lower the more you slip 
+	[Net] public float Acceleration { get; set; } = 1200f; // Units per second
+	[Net] public float Deceleration { get; set; } = 400f; // Units per second
 
 	public float StunSpeed => (float)(WalkSpeed + (RunSpeed - WalkSpeed) * Math.Sin( 45f.DegreeToRadian() ));
-	[Net, Predicted] public float WishSpeed { get; private set; } = 0f;
+	public float WishSpeed => InputDirection.IsNearlyZero() ? 0 : (IsRunning ? RunSpeed : WalkSpeed);
+	public Vector3 WishVelocity => ( InputDirection.IsNearlyZero() || IsStunned )
+		? Vector3.Zero
+		: InputDirection * Rotation.FromYaw( InputAngles.yaw ) * WishSpeed;
+	public bool IsRunning => Input.Down( "run" );
 
 	public float StepSize => 16f;
 	public float WalkAngle => 46f;
 	public float StunBounceVelocity => 100f;
 
 	static string[] ignoreTags = new[] { "player", "npc", "nocollide" };
+	//Sound slippingSound;
+	//TimeSince lastSlip;
 
 	protected void SimulateController()
 	{
-		IsRunning = Input.Down( "run" );
-		WishSpeed = IsRunning ? RunSpeed : WalkSpeed;
+		if ( WishVelocity.Length > Velocity.WithZ(0).Length )
+		{
+			Velocity += WishVelocity.WithZ(0).Normal * Acceleration * Time.Delta;
+			Velocity = Velocity.ClampLength( WishSpeed );
+		}
+		else
+			Velocity = Velocity.WithZ( 0 ).ClampLength( Math.Max( Velocity.WithZ( 0 ).Length - Deceleration * Time.Delta, 0 ) ).WithZ( Velocity.z );
 
-		var oldVelocity = Velocity;
-		var wishVelocity = (InputDirection.IsNearlyZero() || IsStunned
-			? Vector3.Zero
-			: InputDirection.Normal * Rotation.FromYaw( InputAngles.yaw )) * WishSpeed;
+		/*
+		Log.Error( WishVelocity.WithZ( 0 ).Normal.Angle( Velocity.WithZ( 0 ).Normal ) );
 
-		var velocityDot = Vector3.Dot( wishVelocity.WithZ( 0 ).Normal, oldVelocity.WithZ(0).Normal );
-		var velocityDifference = MathX.Remap( velocityDot, 0.8f, 1f, 0.1f, 1f );
-		var sideSlipper = Velocity.Length <= WalkSpeed ? 1 : velocityDifference;
+		if ( Game.IsServer )
+		{
+			if ( Velocity.Length >= WalkSpeed * 1.1f && WishVelocity.WithZ( 0 ).Normal.Angle( Velocity.WithX( 0 ).Normal ) >= 30f )
+				lastSlip = 0f;
 
-		var lerpVelocity = Vector3.Lerp( Velocity, wishVelocity,
-			(wishVelocity.LengthSquared > Velocity.LengthSquared ? 15f * sideSlipper : 5f * Friction / ( Velocity.Length / RunSpeed ) ) // Accelerate faster than decelerate
-			* Time.Delta )
-		.WithZ( Velocity.z );
+			if ( lastSlip <= 0.1f )
+			{
+				if ( !slippingSound.IsPlaying )
+					slippingSound = PlaySound( "sounds/running.sound" );
+			}
+			else
+				slippingSound.Stop();
+		}*/
 
-		var helper = new MoveHelper( Position, lerpVelocity );
+		var helper = new MoveHelper( Position, Velocity );
 		helper.MaxStandableAngle = WalkAngle;
 
 		helper.Trace = Trace.Capsule( CollisionCapsule, Position, Position );
@@ -53,21 +68,20 @@ public partial class Player
 
 		Position = helper.Position;
 		Velocity = helper.Velocity;
-
+		
 		// If:
 		// - the player is running
 		// - the velocity dropped from more than WalkSpeed to near zero
 		// - there is a wall in the direction of movement
 		// then the pawn has probably ran into a wall
 		if ( !IsStunned &&
-		     !lerpVelocity.WithZ( 0 ).IsNearZeroLength
-		     && oldVelocity.WithZ( 0 ).Length > WalkSpeed
-		     && helper.Velocity.WithZ( 0 ).Length < StunSpeed
+		     !Velocity.WithZ( 0 ).IsNearZeroLength
+		     && Velocity.WithZ( 0 ).Length > WalkSpeed
 		   )
 		{
 			var higherCapsule = CollisionCapsule;
 			higherCapsule.CenterA = Vector3.Up * (CollisionRadius + StepSize);
-			helper.Trace = Trace.Capsule( higherCapsule, helper.Position, helper.Position + lerpVelocity.WithZ( 0 ).Normal );
+			helper.Trace = Trace.Capsule( higherCapsule, helper.Position, helper.Position + helper.Velocity.WithZ( 0 ) * Time.Delta );
 			helper.Trace = helper.Trace
 				.WithoutTags( ignoreTags )
 				.Ignore( this );
@@ -75,8 +89,8 @@ public partial class Player
 
 			if ( tr.Hit )
 			{
-				var dotProduct = Math.Abs( Vector3.Dot( lerpVelocity.WithZ(0).Normal, tr.Normal ) );
-				var wallVelocity = lerpVelocity.WithZ(0) * dotProduct;
+				var dotProduct = Math.Abs( Vector3.Dot( Velocity.WithZ(0).Normal, tr.Normal ) );
+				var wallVelocity = Velocity.WithZ(0) * dotProduct;
 
 				if ( wallVelocity.Length > WalkSpeed )
 				{
