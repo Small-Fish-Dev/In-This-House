@@ -13,17 +13,30 @@
 			Spectator playerSpectator => playerSpectator.Following,
 			_ => null
 			};
+
+		var isSpectator = Game.LocalPawn is Spectator;
+		var isPlayer = Game.LocalPawn is BrickJam.Player;
 	}
 
 	@if ( player is not null )
 	{
 		<!-- The client either has a living pawn or is observing another player's pawn -->
 		<StunIndicator @Player=@player/>
-		<Inventory />
-		
+		<Inventory/>
+
 		<Crosshair>
-			<Bottom>
+			<Top>
+				Some text on the top
+			</Top>
+			<Middle>
 				<InteractionIndicator @Player=@player/>
+			</Middle>
+			<Bottom>
+				Some text on the bottom
+				@if ( isPlayer )
+				{
+					<InteractionTip @Player=@player/>
+				}
 			</Bottom>
 		</Crosshair>
 	}
@@ -44,8 +57,8 @@
 
 	[Event.Hotload]
 	static void hotload()
-	{ 
-		if ( Game.IsClient ) 
+	{
+		if ( Game.IsClient )
 			new Hud();
 	}
 
@@ -59,4 +72,5 @@
 	{
 		return HashCode.Combine( Game.LocalPawn?.GetType() );
 	}
+
 }

@@ -1,0 +1,22 @@
+﻿@using Sandbox.UI;
+
+@namespace BrickJam.UI
+@inherits Panel
+
+<root>
+	@if ( Player.UsableEntity is not null )
+	{
+		<label>Press the use key to interact with @Player.UsableEntity.GetType().FullName</label> 
+	}
+</root>
+
+@code {
+
+	public Player Player;
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( Player.UsableEntity );
+	}
+
+}

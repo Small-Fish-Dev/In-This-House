@@ -6,7 +6,7 @@
 <root>
 	@if ( Player.CurrentlyUsedEntity is not null )
 	{
-		<RadialProgress @Progress=@( () => Player.InteractionComplete / Player.CurrentlyUsedEntity.InteractionDuration )/>
+		<RadialProgress @InnerDiameterPercent=@(75f) @Progress=@( () => Player.InteractionComplete / Player.CurrentlyUsedEntity.InteractionDuration )/>
 	}
 </root>
 

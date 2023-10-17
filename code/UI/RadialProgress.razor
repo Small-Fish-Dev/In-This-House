@@ -3,7 +3,8 @@
 @namespace BrickJam.UI
 @inherits Panel
 
-<root style="background: conic-gradient(white 0%, white @ProgressWhitePercent, transparent @ProgressTransparentPercent)"></root>
+<root style="background: conic-gradient(white 0%, white @ProgressWhitePercent, transparent @ProgressTransparentPercent)">
+</root>
 
 <style>
 	RadialProgress {
@@ -11,14 +12,28 @@
 		height: @( Radius );
 		aspect-ratio: 1;
 		
-		border: 1px solid white;
-		border-radius: 100%;
+		border-radius: 50%;
 	}
 </style>
 
+<!-- TODO: the cutout looks off center -->
+
+@if ( InnerDiameterPercent != 0 )
+{
+	<style>
+		RadialProgress {
+			mask-image: radial-gradient(black 0%, black @InnerRadiusBlackPercent, white @InnerRadiusWhitePercent, white 100%);
+		}
+	</style>
+}
+
 @code {
 
-	public Length Radius = Length.Pixels( 128 ) ?? Length.Auto;
+	public Length Radius { get; set; } = Length.Pixels( 128 ) ?? Length.Auto;
+	/// <summary>
+	/// From 0% to 100%
+	/// </summary>
+	public float InnerDiameterPercent { get; set; } = 0;
 
 	/// <summary>
 	/// A function that must return a value in range [0; 1]
@@ -29,6 +44,8 @@
 
 	private string ProgressWhitePercent => $"{ProgressClamped * 100}%";
 	private string ProgressTransparentPercent => $"{ProgressClamped * 100 + 0.01f}%";
+	private string InnerRadiusBlackPercent => $"{InnerDiameterPercent / 2}%";
+	private string InnerRadiusWhitePercent => $"{InnerDiameterPercent / 2 + 0.01f}%";
 
 	protected override int BuildHash() => HashCode.Combine( ProgressClamped );
 
