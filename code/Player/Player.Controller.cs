@@ -19,6 +19,8 @@ public partial class Player
 	public float WalkAngle => 46f;
 	public float StunBounceVelocity => 100f;
 
+	static string[] ignoreTags = new[] { "player", "npc", "nocollide" };
+
 	protected void SimulateController()
 	{
 		WishSpeed = IsRunning ? RunSpeed : WalkSpeed;
@@ -42,7 +44,7 @@ public partial class Player
 
 		helper.Trace = Trace.Capsule( CollisionCapsule, Position, Position );
 		helper.Trace = helper.Trace
-			.WithoutTags( "player", "npc" )
+			.WithoutTags( ignoreTags )
 			.Ignore( this );
 
 		helper.TryMoveWithStep( Time.Delta, StepSize );
@@ -66,8 +68,8 @@ public partial class Player
 			higherCapsule.CenterA = Vector3.Up * (CollisionRadius + StepSize);
 			helper.Trace = Trace.Capsule( higherCapsule, helper.Position, helper.Position + lerpVelocity.WithZ( 0 ).Normal );
 			helper.Trace = helper.Trace
-			.WithoutTags( "player", "npc" )
-			.Ignore( this );
+				.WithoutTags( ignoreTags )
+				.Ignore( this );
 			var tr = helper.Trace.Run();
 
 			if ( tr.Hit )
