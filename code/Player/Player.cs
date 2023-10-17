@@ -34,10 +34,13 @@ partial class Player : AnimatedEntity
 
 	public override void BuildInput()
 	{
-		InputDirection = Input.AnalogMove;
+		if ( CanUse )
+		{
+			InputDirection = Input.AnalogMove;
 
-		InputAngles += Input.AnalogLook;
-		InputAngles = InputAngles.WithPitch( Math.Clamp( InputAngles.pitch, -89.9f, 89.9f ) );
+			InputAngles += Input.AnalogLook;
+			InputAngles = InputAngles.WithPitch( Math.Clamp( InputAngles.pitch, -89.9f, 89.9f ) );
+		}
 	}
 
 	public override void Simulate( IClient cl )
@@ -53,11 +56,21 @@ partial class Player : AnimatedEntity
 	{
 		base.FrameSimulate( cl );
 
-		Camera.Position = EyePosition;
-		Camera.Rotation = InputRotation;
+		if ( !IsSlipping && !IsTripping )
+		{
+			Camera.Position = EyePosition;
+			Camera.Rotation = InputRotation;
+			Camera.FirstPersonViewer = this;
+		}
+		else
+		{
+			var newPos = Position - Velocity.WithZ( 0 ).Normal * 30f + Vector3.Up * 50f;
+			Camera.Position = Vector3.Lerp( Camera.Position, newPos, Time.Delta * 10 );
+			Camera.Rotation = Rotation.LookAt( Position + Vector3.Up * 16f - Camera.Position );
+			Camera.FirstPersonViewer = null;
+		}
 
 		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Game.Preferences.FieldOfView );
-		Camera.FirstPersonViewer = this; // Doesn't work?
 		
 		BugBug.Here( v =>
 		{
@@ -86,6 +99,7 @@ partial class Player : AnimatedEntity
 		animationHelper.WithLookAt( Position + InputRotation.Forward * 10f );
 
 		animationHelper.IsGrounded = GroundEntity != null;
+		SetAnimParameter( "special_movement_states", IsStunned ? 1 : ( IsTripping ? 2 : ( IsSlipping ? 3 : 0 ) ) );
 	}
 
 	public void Respawn()

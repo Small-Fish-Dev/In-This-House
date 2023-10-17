@@ -30,13 +30,16 @@ public partial class Player
 
 	protected void SimulateController()
 	{
-		if ( WishVelocity.Length > Velocity.WithZ(0).Length )
+		if ( !MovementLocked )
 		{
-			Velocity += WishVelocity.WithZ(0).Normal * Acceleration * Time.Delta;
-			Velocity = Velocity.WithZ(0).ClampLength( WishSpeed ).WithZ(Velocity.z);
+			if ( WishVelocity.Length > Velocity.WithZ( 0 ).Length )
+			{
+				Velocity += WishVelocity.WithZ( 0 ).Normal * Acceleration * Time.Delta;
+				Velocity = Velocity.WithZ( 0 ).ClampLength( WishSpeed ).WithZ( Velocity.z );
+			}
+			else
+				Velocity = Velocity.WithZ( 0 ).ClampLength( Math.Max( Velocity.WithZ( 0 ).Length - Deceleration * Time.Delta, 0 ) ).WithZ( Velocity.z );
 		}
-		else
-			Velocity = Velocity.WithZ( 0 ).ClampLength( Math.Max( Velocity.WithZ( 0 ).Length - Deceleration * Time.Delta, 0 ) ).WithZ( Velocity.z );
 
 		/*
 		Log.Error( WishVelocity.WithZ( 0 ).Normal.Angle( Velocity.WithZ( 0 ).Normal ) );
@@ -71,6 +74,7 @@ public partial class Player
 
 		CalculateStun( helper );
 		CalculateTrip( helper );
+		CalculateSlip( helper );
 
 		var traceDown = helper.TraceDirection( Vector3.Down );
 
@@ -143,7 +147,7 @@ public partial class Player
 		// - the velocity dropped from more than WalkSpeed to near zero
 		// - there is a wall in the direction of movement
 		// then the pawn has probably ran into a wall
-		if ( !IsStunned &&
+		if ( !IsTripping &&
 			 !Velocity.WithZ( 0 ).IsNearZeroLength
 			 && Velocity.WithZ( 0 ).Length > WalkSpeed
 		   )
@@ -152,14 +156,37 @@ public partial class Player
 			lowerCapsule.CenterB = Vector3.Up * (StepSize - CollisionRadius);
 			helper.Trace = Trace.Capsule( lowerCapsule, helper.Position, helper.Position + helper.Velocity.WithZ( 0 ) * Time.Delta );
 			helper.Trace = helper.Trace
-				.WithTag( "loot" ) // TODO Add stuff to slip on like piss
+				.WithTag( "loot" )
 				.Ignore( this );
 			var tr = helper.Trace.Run();
 
 			if ( tr.Hit )
-			{
-				Log.Info( "hii" );
-			}
+				Trip();
+		}
+	}
+
+	protected void CalculateSlip( MoveHelper helper )
+	{
+		// If:
+		// - the player is running
+		// - the velocity dropped from more than WalkSpeed to near zero
+		// - there is a wall in the direction of movement
+		// then the pawn has probably ran into a wall
+		if ( !IsSlipping &&
+			 !Velocity.WithZ( 0 ).IsNearZeroLength
+			 && Velocity.WithZ( 0 ).Length > WalkSpeed
+		   )
+		{
+			var lowerCapsule = CollisionCapsule;
+			lowerCapsule.CenterB = Vector3.Up * (StepSize - CollisionRadius);
+			helper.Trace = Trace.Capsule( lowerCapsule, helper.Position, helper.Position + helper.Velocity.WithZ( 0 ) * Time.Delta );
+			helper.Trace = helper.Trace
+				.WithTag( "slip" )
+				.Ignore( this );
+			var tr = helper.Trace.Run();
+
+			if ( tr.Hit )
+				Slip();
 		}
 	}
 
