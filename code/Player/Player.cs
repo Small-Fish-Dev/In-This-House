@@ -1,13 +1,8 @@
-using Sandbox;
-using System;
-using System.Linq;
-
 namespace BrickJam;
 
 partial class Player : AnimatedEntity
 {
-	[BindComponent]
-	public ContainerComponent Inventory { get; } 
+	[BindComponent] public ContainerComponent Inventory { get; } 
 
 	[Net, Change] public int Money { get; private set; }
 

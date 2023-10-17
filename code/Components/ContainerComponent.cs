@@ -34,7 +34,11 @@ public partial class ContainerComponent : EntityComponent
 	/// Dictionary of all the items and amounts.
 	/// </summary>
 	public IReadOnlyDictionary<ItemEntry?, int> Loots => items;
-	private Dictionary<ItemEntry?, int> items = new();
+
+	private static Dictionary<ItemEntry?, int> clItems = new();
+	private Dictionary<ItemEntry?, int> shItems = new();
+	private Dictionary<ItemEntry?, int> items => Game.IsClient ? clItems : shItems;
+
 	private IClient client => Entity.Client;
 
 	/// <summary>
