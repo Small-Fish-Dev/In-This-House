@@ -13,7 +13,7 @@
 		var isPlayer = Game.LocalPawn is BrickJam.Player;
 	}
 
-	@if ( MansionGame.Instance.TimerActive )
+	@if ( MansionGame.Instance?.TimerActive ?? false )
 	{
 		<Timer @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
 	}
@@ -63,13 +63,6 @@
 		Spectator playerSpectator => playerSpectator.Following,
 		_ => null
 	};
-
-	[Event.Hotload]
-	static void hotload()
-	{
-		if ( Game.IsClient )
-			new Hud();
-	}
 
 	public Hud()
 	{
