@@ -111,4 +111,10 @@ public partial class MansionGame : GameManager
 			glow.Enabled = Game.LocalPawn is Spectator;
 		}
 	}
+
+	public override void RenderHud()
+	{
+		base.RenderHud();
+		Event.Run( "render" );
+	}
 }

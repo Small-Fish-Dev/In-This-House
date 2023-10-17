@@ -2,5 +2,7 @@
   "Name": "Goblet",
   "Model": "models/items/goblet/goblet.vmdl",
   "MonetaryValue": 12,
+  "IconOffset": "20,-4,-7",
+  "IconAngles": "-40,-40,0",
   "__references": []
 }

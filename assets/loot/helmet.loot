@@ -2,5 +2,7 @@
   "Name": "Helmet",
   "Model": "models/items/helmet/helmet.vmdl",
   "MonetaryValue": 50,
+  "IconOffset": "15,0,-7",
+  "IconAngles": "10,30,10",
   "__references": []
 }

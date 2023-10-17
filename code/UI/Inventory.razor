@@ -6,14 +6,23 @@
 
 <root>
 	<div class="background">
+		<label class="title">INVENTORY</label>
 		<div class="items">
 			@{
 				if ( player?.Inventory?.Loots == null )
 					return;
 
-				foreach ( var item in player?.Inventory?.Loots )
+				foreach ( var pair in player?.Inventory?.Loots )
 				{
+					if ( !pair.Key.HasValue )
+						continue;
+
+					var item = pair.Key.Value;
+					var amount = pair.Value;
+
 					<div class="item">
+						<looticon class="icon" prefab="@(item.Prefab.ResourceName)" />
+						<label class="amount">x@(amount)</label>
 					</div>
 				}
 			}
@@ -22,6 +31,31 @@
 </root>
 
 @code {
+	private class LootIcon : Panel
+	{
+		public LootPrefab LootPrefab { get; set; }
+
+		public override void SetProperty( string name, string value )
+		{
+			base.SetProperty( name, value );
+
+			if ( name?.ToLower() == "prefab" )
+			{
+				LootPrefab = LootPrefab.Get( value );
+				if ( LootPrefab == null )
+					return;
+
+				Style.SetBackgroundImage( LootPrefab.Icon );
+				StateHasChanged();
+			}
+		}
+
+		protected override int BuildHash()
+		{
+			return HashCode.Combine( LootPrefab, LootPrefab?.Icon );
+		}
+	}
+
 	BrickJam.Player player => Game.LocalPawn as BrickJam.Player;
 
 	public Inventory()
@@ -55,6 +89,15 @@
 		bottom: 0px;
 		left: 0px;
 		padding: 20px;
+		font-family: "alagard";
+		color: white;
+
+		.title {
+			font-size: 64px;
+			text-shadow: 4px 4px 0px rgba(black, 0.8);
+			top: 25px;
+			left: 55px;
+		}
 
 		&.visible {
 			transform: translateY(0%);
@@ -75,17 +118,41 @@
 			left: 5.5%;
 			width: 95%;
 			height: 67%;
-			//background-color: rgba(red, 0.5);
 			flex-direction: row;
 			flex-wrap: wrap;
 
 			.item {
 				margin-right: 2.6%;
-				margin-bottom: 2.1%;
+				margin-bottom: 2%;
 				width: 16.5%;
 				height: 22.5%;
 				flex-shrink: 0;
 				flex-grow: 0;
+				background-color: rgba(black, 0.5);
+				text-shadow: 2px 2px 0px rgba(black, 0.8);
+
+				.amount {
+					position: absolute;
+					bottom: 5px;
+					right: 5px;
+					font-size: 20px;
+					text-stroke: 4px black;
+				}
+
+				.icon {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					background-size: 100%;
+					background-position: center;
+					background-repeat: no-repeat;
+					filter: border-wrap( 2px black );
+				}
+
+				&:hover {
+					background-color: rgba(white, 0.1);
+					border: 2px rgba(white, 0.2);
+				}
 			}
 		}
     }

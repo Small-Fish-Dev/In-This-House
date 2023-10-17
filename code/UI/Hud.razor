@@ -62,7 +62,7 @@
 		BrickJam.Player playerAlive => playerAlive,
 		Spectator playerSpectator => playerSpectator.Following,
 		_ => null
-		};
+	};
 
 	[Event.Hotload]
 	static void hotload()
@@ -80,7 +80,7 @@
 	protected override int BuildHash()
 	{
 	// TODO: don't change it to "MansionGame.Instance?" !!! There's something that is calling this func from the menu
-		return HashCode.Combine( Game.LocalPawn, LocalPlayer, MansionGame.Instance.TimerActive );
+		return HashCode.Combine( Game.LocalPawn, LocalPlayer, MansionGame.Instance?.TimerActive );
 	}
 
 }
