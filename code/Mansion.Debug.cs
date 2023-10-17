@@ -3,7 +3,7 @@
 public partial class MansionGame : GameManager
 {
 	[ConCmd.Server( "give_item" )]
-	public static void GiveLoot( string name, int amount = 1 )
+	public static void GiveLoot( string name, LootRarity rarity = LootRarity.Excellent, int amount = 1 )
 	{
 		if ( ConsoleSystem.Caller.Pawn is not Player pawn )
 			return;
@@ -12,7 +12,7 @@ public partial class MansionGame : GameManager
 		if ( item == null )
 			return;
 
-		pawn.Inventory.Add( item, amount );
+		pawn.Inventory.Add( new ItemEntry { Prefab = item, Rarity = rarity }, amount );
 	}
 
 	[ConCmd.Admin( "set_state" )]

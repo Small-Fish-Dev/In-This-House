@@ -49,12 +49,7 @@ public partial class Door : UsableEntity
 
 		if ( Locked )
 		{
-			// Do we have a lockpick?
-			var lockpick = LootPrefab.Get( "lockpick" );
-			if ( user.Inventory.Has( lockpick ) > 1 )
-			{
-				// TODO: Open lockpicking UI here.
-			}
+			// TODO: Open lockpicking UI here.
 
 			return;
 		}

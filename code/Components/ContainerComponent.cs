@@ -1,5 +1,28 @@
 ﻿namespace BrickJam;
 
+public struct ItemEntry : IEquatable<ItemEntry>
+{
+	public LootPrefab Prefab;
+	public LootRarity Rarity;
+
+	public bool Equals( ItemEntry other )
+	{
+		return other.Prefab == Prefab 
+			&& other.Rarity == Rarity;
+	}
+
+	public override bool Equals( object obj )
+	{
+		return obj is ItemEntry other
+			&& Equals( other );
+	}
+
+	public override int GetHashCode()
+	{
+		return HashCode.Combine( Prefab, Rarity );
+	}
+}
+
 public partial class ContainerComponent : EntityComponent
 {
 	/// <summary>
@@ -10,32 +33,32 @@ public partial class ContainerComponent : EntityComponent
 	/// <summary>
 	/// Dictionary of all the items and amounts.
 	/// </summary>
-	public IReadOnlyDictionary<LootPrefab, int> Loots => items;
-	private Dictionary<LootPrefab, int> items = new();
+	public IReadOnlyDictionary<ItemEntry?, int> Loots => items;
+	private Dictionary<ItemEntry?, int> items = new();
 	private IClient client => Entity.Client;
 
 	/// <summary>
 	/// Adds some amount of items to the list.
 	/// </summary>
-	/// <param name="item"></param>
+	/// <param name="entry"></param>
 	/// <param name="amount"></param>
 	/// <returns>True if the operation was successful.</returns>
-	public bool Add( LootPrefab item, int amount = 1 )
+	public bool Add( ItemEntry entry, int amount = 1 )
 	{
 		Game.AssertServer();
 		var success = false;
 
-		if ( items.ContainsKey( item ) )
+		if ( items.ContainsKey( entry ) )
 		{
-			items[item] += amount;
+			items[entry] += amount;
 			success = true;
 		}
 
 		if ( Loots.Count < Limit && !success )
-			items.Add( item, amount );
+			items.Add( entry, amount );
 
 		if ( client != null )
-			sendUpdate( To.Single( client ), item.ResourceName, items[item] );
+			sendUpdate( To.Single( client ), entry.Prefab.ResourceName, entry.Rarity, items[entry] );
 
 		return success;
 	}
@@ -43,26 +66,26 @@ public partial class ContainerComponent : EntityComponent
 	/// <summary>
 	/// Removes some amount of items from the list.
 	/// </summary>
-	/// <param name="item"></param>
+	/// <param name="entry"></param>
 	/// <param name="amount"></param>
 	/// <returns>True if the operation was successful.</returns>
-	public bool Remove( LootPrefab item, int amount = 1 )
+	public bool Remove( ItemEntry entry, int amount = 1 )
 	{
 		Game.AssertServer();
 
-		if ( Has( item ) < amount )
+		if ( Has( entry ) < amount )
 			return false;
 
 		var delete = false;
-		items[item] -= amount;
-		if ( items[item] <= 0 )
+		items[entry] -= amount;
+		if ( items[entry] <= 0 )
 		{
-			items.Remove( item );
+			items.Remove( entry );
 			delete = true;
 		}
 
 		if ( client != null )
-			sendUpdate( To.Single( client ), item.ResourceName, delete ? 0 : items[item] );
+			sendUpdate( To.Single( client ), entry.Prefab.ResourceName, entry.Rarity, delete ? 0 : items[entry] );
 
 		return true;
 	}
@@ -72,7 +95,7 @@ public partial class ContainerComponent : EntityComponent
 	/// </summary>
 	/// <param name="item"></param>
 	/// <returns></returns>
-	public int Has( LootPrefab item )
+	public int Has( ItemEntry item )
 	{
 		var amount = 0;
 		_ = items.TryGetValue( item, out amount );
@@ -81,7 +104,7 @@ public partial class ContainerComponent : EntityComponent
 	}
 
 	[ClientRpc]
-	private void sendUpdate( string prefabName, int amount )
+	private void sendUpdate( string prefabName, LootRarity rarity, int amount )
 	{
 		var prefab = LootPrefab.Get( prefabName );
 		if ( prefab == null )
@@ -90,8 +113,14 @@ public partial class ContainerComponent : EntityComponent
 			return;
 		}
 
-		items[prefab] = amount;
-		if ( items[prefab] <= 0 )
-			items.Remove( prefab );
+		var entry = new ItemEntry
+		{
+			Prefab = prefab,
+			Rarity = rarity
+		};
+
+		items[entry] = amount;
+		if ( items[entry] <= 0 )
+			items.Remove( entry );
 	}
 }

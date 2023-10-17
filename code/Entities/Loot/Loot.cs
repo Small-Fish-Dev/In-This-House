@@ -85,6 +85,13 @@ public partial class Loot : UsableEntity
 		return item;
 	}
 
+	public static Loot CreateFromEntry( ItemEntry entry, Vector3 position, Rotation rotation )
+	{
+		var item = CreateFromGameResource( entry.Prefab, position, rotation );
+		item.Rarity = entry.Rarity;
+		return item;
+	}
+
 	public static LootRarity RandomRarityFromLevel( LevelType level ) => WeightedList.RandomKey<LootRarity>( RarityChances[level] );
 
 	public override void Use( Player user )

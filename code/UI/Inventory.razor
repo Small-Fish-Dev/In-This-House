@@ -40,7 +40,7 @@
 		if ( player?.Inventory?.Loots == null )
 			return 0;
 
-		var joined = String.Join( ' ', player.Inventory.Loots.Select( pair => $"{pair.Key.Name} x{pair.Value}" ) );
+		var joined = String.Join( ' ', player.Inventory.Loots.Select( pair => $"{pair.Key?.Prefab.Name} {pair.Key?.Rarity} x{pair.Value}" ) );
 		return joined.GetHashCode();
 	}
 }

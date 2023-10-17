@@ -119,14 +119,14 @@ public partial class Player
 			.Keys
 			.ToList();
 
-		var randomLoot = Game.Random.FromList( items, null );
-		if ( randomLoot == null || !Inventory.Remove( randomLoot ) )
+		var randomLoot = Game.Random.FromList( items );
+		if ( randomLoot == null || !Inventory.Remove( randomLoot.Value ) )
 			return;
 
 		var force = 300f;
 		var normal = Vector3.Random.WithZ( 0 );
-		var entity = Loot.CreateFromGameResource( 
-			randomLoot, 
+		var entity = Loot.CreateFromEntry( 
+			randomLoot.Value, 
 			Position + Vector3.Up * CollisionBounds.Maxs.z / 2f, 
 			Rotation.FromYaw( Rotation.Inverse.Yaw() ) 
 		);
