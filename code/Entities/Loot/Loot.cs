@@ -70,8 +70,6 @@ public partial class Loot : UsableEntity
 	public static Loot CreateFromGameResource( LootPrefab resource, Vector3 position, Rotation rotation )
 	{
 		var item = new Loot();
-
-		item.Tags.Add( "nocollide" );
 		item.Position = position;
 		item.Rotation = rotation;
 		item.BaseMonetaryValue = resource.MonetaryValue;
@@ -88,6 +86,7 @@ public partial class Loot : UsableEntity
 	public static Loot CreateFromEntry( ItemEntry entry, Vector3 position, Rotation rotation )
 	{
 		var item = CreateFromGameResource( entry.Prefab, position, rotation );
+		item.Tags.Add( "nocollide" );
 		item.Rarity = entry.Rarity;
 		return item;
 	}
@@ -96,9 +95,10 @@ public partial class Loot : UsableEntity
 
 	public override void Use( Player user )
 	{
-		base.Use( user );
+		if ( !IsAuthority )
+			return;
 
-		user.AddMoney( MonetaryValue );
+		user.Inventory.Add( new ItemEntry { Prefab = Prefab, Rarity = Rarity } );
 		Delete();
 	}
 }

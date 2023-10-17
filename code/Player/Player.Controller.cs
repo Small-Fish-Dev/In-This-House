@@ -130,7 +130,7 @@ public partial class Player
 			Position + Vector3.Up * CollisionBounds.Maxs.z / 2f, 
 			Rotation.FromYaw( Rotation.Inverse.Yaw() ) 
 		);
-
+		entity.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 		entity.ApplyAbsoluteImpulse( (normal + Vector3.Up) * force );
 	}
 }
