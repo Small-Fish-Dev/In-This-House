@@ -92,7 +92,10 @@ partial class Player : AnimatedEntity
 
 	protected void SimulateAnimations()
 	{
-		Rotation = Rotation.FromYaw( InputAngles.yaw );
+		if ( MovementLocked )
+			Rotation = Rotation.LookAt( Velocity.WithZ( 0 ), Vector3.Up );
+		else
+			Rotation = Rotation.FromYaw( InputAngles.yaw );
 
 		var animationHelper = new CitizenAnimationHelper( this );
 		animationHelper.WithVelocity( Velocity );
@@ -100,6 +103,7 @@ partial class Player : AnimatedEntity
 
 		animationHelper.IsGrounded = GroundEntity != null;
 		SetAnimParameter( "special_movement_states", IsStunned ? 1 : ( IsTripping ? 2 : ( IsSlipping ? 3 : 0 ) ) );
+		SetAnimParameter( "speed_scale", Velocity.WithZ(0).Length / 150f );
 	}
 
 	public void Respawn()

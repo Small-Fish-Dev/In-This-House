@@ -89,7 +89,7 @@ public partial class Player
 			Velocity -= Vector3.Down * Game.PhysicsWorld.Gravity * Time.Delta;
 		}
 
-		if ( Input.Down( "jump" ) && !IsStunned )
+		if ( Input.Down( "jump" ) && !MovementLocked && !IsStunned )
 			if ( GroundEntity != null )
 			{
 				GroundEntity = null;
