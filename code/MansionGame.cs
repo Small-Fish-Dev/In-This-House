@@ -6,6 +6,7 @@ global using System;
 global using Sandbox.UI.Construct;
 global using System.IO;
 using BrickJam.UI;
+using Sandbox.Component;
 
 namespace BrickJam;
 
@@ -66,5 +67,12 @@ public partial class MansionGame : GameManager
 				v.Value( "ang", Camera.Rotation.Angles() );
 			} );
 		} );
+		
+		foreach ( var player in All.Where( ent => ent is Player player && player.IsValid() ) )
+		{
+			var glow = player.Components.GetOrCreate<Glow>();
+			glow.Color = Color.Green;
+			glow.Enabled = Game.LocalPawn is Spectator;
+		}
 	}
 }
