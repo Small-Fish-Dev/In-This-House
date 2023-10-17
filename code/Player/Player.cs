@@ -56,7 +56,7 @@ partial class Player : AnimatedEntity
 	{
 		base.FrameSimulate( cl );
 
-		if ( !IsSlipping && !IsTripping )
+		if ( !MovementLocked )
 		{
 			Camera.Position = EyePosition;
 			Camera.Rotation = InputRotation;

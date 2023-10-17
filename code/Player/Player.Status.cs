@@ -52,8 +52,8 @@ public partial class Player
 
 	public void ResetStatus()
 	{
-		StunLeft = 0f;
-		TripLeft = 0f;
-		SlipLeft = 0f;
+		StunLeft = -1f;
+		TripLeft = -1f;
+		SlipLeft = -1f;
 	}
 }
