@@ -1,0 +1,16 @@
+﻿@using Sandbox.UI;
+
+@namespace BrickJam.UI
+@inherits Panel
+
+<root>@SecondsFormatted</root>
+
+@code {
+
+	public Func<float> Seconds { get; set; }
+
+	private string SecondsFormatted => TimeSpan.FromSeconds( Seconds?.Invoke() ?? 0 ).ToString( @"mm\:ss" );
+
+	protected override int BuildHash() => HashCode.Combine( Seconds?.Invoke() ?? 0 );
+
+}

@@ -46,4 +46,10 @@ public partial class MansionGame : GameManager
 		var spectator = new Spectator { Transform = t };
 		ConsoleSystem.Caller.Pawn = spectator;
 	}
+
+	[ConCmd.Admin( "mansion_timer_stop" )]
+	public static void ConTimerStop()
+	{
+		Instance.TimerStop();
+	}
 }

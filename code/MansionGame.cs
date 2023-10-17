@@ -13,6 +13,11 @@ namespace BrickJam;
 public partial class MansionGame : GameManager
 {
 	public static MansionGame Instance { get; private set; }
+	
+	[Net] public TimeUntil TimeOut { get; set;}
+	[Net] public bool TimerActive { get; set; }
+
+	public float TimePerLevel => 60.0f;
 
 	public MansionGame()
 	{
@@ -49,6 +54,37 @@ public partial class MansionGame : GameManager
 		client.Pawn = pawn;
 		pawn.Respawn();
 		// TODO: Have pawn dead for now
+	}
+
+	public override void Simulate( IClient cl )
+	{
+		base.Simulate( cl );
+
+		if ( !IsAuthority )
+			return;
+
+		SimulateTimer();
+	}
+
+	public void TimerStart()
+	{
+		TimerActive = true;
+		TimeOut = TimePerLevel;
+	}
+
+	public void TimerStop()
+	{
+		TimerActive = false;
+		TimeOut = 0;
+	}
+
+	private void SimulateTimer()
+	{
+		if ( TimerActive && TimeOut )
+		{
+			TimerStop();
+			RestartLevel();
+		}
 	}
 
 	public override void FrameSimulate( IClient cl )

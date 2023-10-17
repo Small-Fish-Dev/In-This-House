@@ -1,5 +1,4 @@
 ﻿@using Sandbox;
-@using Sandbox.Diagnostics
 @using Sandbox.UI;
 
 @namespace BrickJam.UI
@@ -14,12 +13,17 @@
 		var isPlayer = Game.LocalPawn is BrickJam.Player;
 	}
 
+	@if ( MansionGame.Instance.TimerActive )
+	{
+		<Timer @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
+	}
+
 	@if ( player is not null )
 	{
 		<!-- The client either has a living pawn or is observing another player's pawn -->
 		<StunIndicator @Player=@player/>
 		<Inventory/>
-		<MoneyCounter />
+		<MoneyCounter/>
 
 		<Crosshair>
 			<Top>
@@ -75,7 +79,8 @@
 
 	protected override int BuildHash()
 	{
-		return HashCode.Combine( Game.LocalPawn, LocalPlayer );
+	// TODO: don't change it to "MansionGame.Instance?" !!! There's something that is calling this func from the menu
+		return HashCode.Combine( Game.LocalPawn, LocalPlayer, MansionGame.Instance.TimerActive );
 	}
 
 }
