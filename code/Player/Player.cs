@@ -96,20 +96,11 @@ partial class Player : AnimatedEntity
 		animationHelper.IsGrounded = GroundEntity != null;
 	}
 
-	public void Respawn( LevelType level )
+	public void Respawn()
 	{
-		var spawnPoints = Entity.All.OfType<PlayerSpawn>()
-			.Where( x => x.LevelType == level )
-			.ToList();
-
-		var randomSpawnPoint = Game.Random.FromList( spawnPoints );
-
-		if ( randomSpawnPoint != null )
-		{
-			var tx = randomSpawnPoint.Transform;
-			tx.Position = tx.Position + Vector3.Up * 50.0f;
-			Transform = tx;
-		}
+		var t = MansionGame.Instance.GetSpawnPoint();
+		t.Position += Vector3.Up * 50.0f;
+		Transform = t;
 	}
 
 	// Client callback for UI purposes

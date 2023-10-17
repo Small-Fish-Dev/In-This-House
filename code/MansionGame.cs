@@ -24,26 +24,42 @@ public partial class MansionGame : GameManager
 		}
 	}
 
+	public Transform GetSpawnPoint() => GetSpawnPoint( CurrentLevel.Type );
+
+	public Transform GetSpawnPoint( LevelType level )
+	{
+		var spawnPoints = Entity.All.OfType<PlayerSpawn>()
+			.Where( x => x.LevelType == level )
+			.ToList();
+
+		var randomSpawnPoint = Game.Random.FromList( spawnPoints );
+
+		if ( randomSpawnPoint == null )
+			return new Transform( Vector3.Zero, Rotation.Identity, 1 );
+
+		return randomSpawnPoint.Transform;
+	}
+
 	public override void ClientJoined( IClient client )
 	{
 		base.ClientJoined( client );
 
 		var pawn = new Player();
 		client.Pawn = pawn;
-		pawn.Respawn( Instance.CurrentLevel.Type );
+		pawn.Respawn();
 		// TODO: Have pawn dead for now
 	}
 
 	public override void FrameSimulate( IClient cl )
 	{
 		base.FrameSimulate( cl );
-		
+
 		BugBug.Here( v =>
 		{
 			v.Text( "small fish jam game" );
 			v.Value( "time", DateTime.Now );
 			v.Space();
-			
+
 			v.Group( "local camera", () =>
 			{
 				v.Value( "pos", Camera.Position );

@@ -32,16 +32,18 @@ public partial class MansionGame : GameManager
 	[ConCmd.Server( "mansion_spectate" )]
 	public static void Spectate()
 	{
-		if ( ConsoleSystem.Caller is null )
+		if ( ConsoleSystem.Caller is null || ConsoleSystem.Caller.Pawn is Spectator )
 			return;
 
+		var t = Instance.GetSpawnPoint();
 		if ( ConsoleSystem.Caller.Pawn is Player player )
 		{
 			Log.Error( "TODO: kill the player instead" );
+			t = new Transform(player.EyePosition, player.Rotation);
 			player.Delete();
 		}
 
-		var spectator = new Spectator();
+		var spectator = new Spectator { Transform = t };
 		ConsoleSystem.Caller.Pawn = spectator;
 	}
 }
