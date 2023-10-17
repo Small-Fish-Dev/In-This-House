@@ -15,9 +15,9 @@ public partial class Level
 			.WithCellSize( 12f )
 			.WithHeightClearance( 72f )
 			.WithWidthClearance( 12f )
-			.WithStepSize( 16f )
-			.WithStandableAngle( 46f )
-			.WithMaxDropHeight( 0f );
+			.WithStepSize( 24f )
+			.WithStandableAngle( 70f )
+			.WithMaxDropHeight( 200f );
 
 		Grid = await builder.Create( 1, printInfo: false );
 

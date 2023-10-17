@@ -17,14 +17,14 @@ public partial class NPC
 		Rotation = Rotation.Lerp( Rotation, Rotation.FromYaw( targetRotation.Yaw() ), Time.Delta * 5f );
 
 		var helper = new MoveHelper( Position, Direction * speed );
-		helper.MaxStandableAngle = 60f;
+		helper.MaxStandableAngle = 70f;
 
 		helper.Trace = Trace.Capsule( CollisionCapsule, Position, Position );
 		helper.Trace = helper.Trace
 			.WithoutTags( "player", "npc" )
 			.Ignore( this );
 
-		helper.TryMoveWithStep( Time.Delta, 20f );
+		helper.TryMoveWithStep( Time.Delta, 24f );
 		helper.TryUnstuck();
 
 		Position = helper.Position;
