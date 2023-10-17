@@ -1,0 +1,6 @@
+{
+  "Name": "Candle Holder",
+  "Model": "models/items/candle_holder/candle_holder.vmdl",
+  "MonetaryValue": 35,
+  "__references": []
+}

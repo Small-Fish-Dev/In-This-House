@@ -78,7 +78,7 @@ public partial class Loot : UseableEntity
 		item.BaseName = resource.Name;
 		item.Rarity = RandomRarityFromLevel( MansionGame.Instance.CurrentLevel.Type );
 		item.SetModel( resource.Model == string.Empty ? "models/error.vmdl" : resource.Model );
-		item.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
+		item.SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 
 		item.Prefab = resource;
 		

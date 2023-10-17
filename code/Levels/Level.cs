@@ -29,8 +29,6 @@ public abstract partial class Level : Entity // Easy replication to client
 		foreach ( var player in Entity.All.OfType<Player>() )
 			player.Respawn( Type );
 
-		// Spawn monster?
-
 		var allValidTrapdoors = Entity.All.OfType<ValidTrapdoorPosition>()
 			.Where( x => x.LevelType == Type )
 			.ToList();
@@ -38,6 +36,11 @@ public abstract partial class Level : Entity // Easy replication to client
 
 		Trapdoor = new Trapdoor();
 		Trapdoor.Position = randomValidTrapdoor.Position;
+
+		foreach ( var spawner in Entity.All.OfType<LootSpawner>().Where( x => x.Level == Type ).ToList() )
+		{
+			spawner.SpawnLoot();
+		}
 
 		await GenerateGrid();
 
@@ -52,6 +55,9 @@ public abstract partial class Level : Entity // Easy replication to client
 
 		Trapdoor?.Delete();
 		Monster?.Delete();
+
+		foreach ( var spawner in Entity.All.OfType<LootSpawner>().Where( x => x.Level == Type ) )
+			spawner.DeleteLoot();
 
 		return;
 	}

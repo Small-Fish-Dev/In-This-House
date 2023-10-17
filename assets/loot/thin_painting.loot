@@ -1,0 +1,6 @@
+{
+  "Name": "Painting",
+  "Model": "models/items/paintings/thin_painting.vmdl",
+  "MonetaryValue": 40,
+  "__references": []
+}

@@ -1,0 +1,6 @@
+{
+  "Name": "Goblet",
+  "Model": "models/items/goblet/goblet.vmdl",
+  "MonetaryValue": 12,
+  "__references": []
+}

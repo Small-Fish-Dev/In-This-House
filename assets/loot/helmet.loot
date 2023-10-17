@@ -1,0 +1,6 @@
+{
+  "Name": "Helmet",
+  "Model": "models/items/helmet/helmet.vmdl",
+  "MonetaryValue": 50,
+  "__references": []
+}

@@ -1,6 +1,6 @@
 ﻿namespace BrickJam;
 
-[GameResource( "LootPrefab", "item", "Define item data.", Icon = "stars" )]
+[GameResource( "LootPrefab", "loot", "Define loot data.", Icon = "star" )]
 public class LootPrefab : GameResource
 {
 	public static IReadOnlyDictionary<string, LootPrefab> All => all;
