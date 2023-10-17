@@ -24,7 +24,7 @@ public partial class Player
 	public float WalkAngle => 46f;
 	public float StunBounceVelocity => 100f;
 
-	static string[] ignoreTags = new[] { "player", "npc", "nocollide" };
+	static string[] ignoreTags = new[] { "player", "npc", "nocollide", "loot" };
 	//Sound slippingSound;
 	//TimeSince lastSlip;
 
@@ -33,7 +33,7 @@ public partial class Player
 		if ( WishVelocity.Length > Velocity.WithZ(0).Length )
 		{
 			Velocity += WishVelocity.WithZ(0).Normal * Acceleration * Time.Delta;
-			Velocity = Velocity.ClampLength( WishSpeed );
+			Velocity = Velocity.WithZ(0).ClampLength( WishSpeed ).WithZ(Velocity.z);
 		}
 		else
 			Velocity = Velocity.WithZ( 0 ).ClampLength( Math.Max( Velocity.WithZ( 0 ).Length - Deceleration * Time.Delta, 0 ) ).WithZ( Velocity.z );
@@ -68,46 +68,9 @@ public partial class Player
 
 		Position = helper.Position;
 		Velocity = helper.Velocity;
-		
-		// If:
-		// - the player is running
-		// - the velocity dropped from more than WalkSpeed to near zero
-		// - there is a wall in the direction of movement
-		// then the pawn has probably ran into a wall
-		if ( !IsStunned &&
-		     !Velocity.WithZ( 0 ).IsNearZeroLength
-		     && Velocity.WithZ( 0 ).Length > WalkSpeed
-		   )
-		{
-			var higherCapsule = CollisionCapsule;
-			higherCapsule.CenterA = Vector3.Up * (CollisionRadius + StepSize);
-			helper.Trace = Trace.Capsule( higherCapsule, helper.Position, helper.Position + helper.Velocity.WithZ( 0 ) * Time.Delta );
-			helper.Trace = helper.Trace
-				.WithoutTags( ignoreTags )
-				.Ignore( this );
-			var tr = helper.Trace.Run();
 
-			if ( tr.Hit )
-			{
-				var dotProduct = Math.Abs( Vector3.Dot( Velocity.WithZ(0).Normal, tr.Normal ) );
-				var wallVelocity = Velocity.WithZ(0) * dotProduct;
-
-				if ( wallVelocity.Length > WalkSpeed )
-				{
-					var difference = MathX.Remap( wallVelocity.Length, WalkSpeed, RunSpeed );
-					Stun( difference );
-					Velocity += tr.Normal * (CollisionRadius + StunBounceVelocity);
-
-					// Let's randomly throw out an item when we crash.
-					if ( Game.IsServer )
-					{
-						var random = Game.Random.Float( 0f, 1f );
-						if ( random < DropChance )
-							ThrowRandomLoot();
-					}
-				}
-			}
-		}
+		CalculateStun( helper );
+		CalculateTrip( helper );
 
 		var traceDown = helper.TraceDirection( Vector3.Down );
 
@@ -128,6 +91,76 @@ public partial class Player
 				GroundEntity = null;
 				Velocity += Vector3.Up * 300f;
 			}
+	}
+
+	protected void CalculateStun( MoveHelper helper )
+	{
+		// If:
+		// - the player is running
+		// - the velocity dropped from more than WalkSpeed to near zero
+		// - there is a wall in the direction of movement
+		// then the pawn has probably ran into a wall
+		if ( !IsStunned &&
+			 !Velocity.WithZ( 0 ).IsNearZeroLength
+			 && Velocity.WithZ( 0 ).Length > WalkSpeed
+		   )
+		{
+			var higherCapsule = CollisionCapsule;
+			higherCapsule.CenterA = Vector3.Up * (CollisionRadius + StepSize);
+			helper.Trace = Trace.Capsule( higherCapsule, helper.Position, helper.Position + helper.Velocity.WithZ( 0 ) * Time.Delta );
+			helper.Trace = helper.Trace
+				.WithoutTags( ignoreTags )
+				.Ignore( this );
+			var tr = helper.Trace.Run();
+
+			if ( tr.Hit )
+			{
+				var dotProduct = Math.Abs( Vector3.Dot( Velocity.WithZ( 0 ).Normal, tr.Normal ) );
+				var wallVelocity = Velocity.WithZ( 0 ) * dotProduct;
+
+				if ( wallVelocity.Length > WalkSpeed )
+				{
+					var difference = MathX.Remap( wallVelocity.Length, WalkSpeed, RunSpeed );
+					Stun( difference );
+					Velocity += tr.Normal * (CollisionRadius + StunBounceVelocity);
+
+					// Let's randomly throw out an item when we crash.
+					if ( Game.IsServer )
+					{
+						var random = Game.Random.Float( 0f, 1f );
+						if ( random < DropChance )
+							ThrowRandomLoot();
+					}
+				}
+			}
+		}
+	}
+
+	protected void CalculateTrip( MoveHelper helper )
+	{
+		// If:
+		// - the player is running
+		// - the velocity dropped from more than WalkSpeed to near zero
+		// - there is a wall in the direction of movement
+		// then the pawn has probably ran into a wall
+		if ( !IsStunned &&
+			 !Velocity.WithZ( 0 ).IsNearZeroLength
+			 && Velocity.WithZ( 0 ).Length > WalkSpeed
+		   )
+		{
+			var lowerCapsule = CollisionCapsule;
+			lowerCapsule.CenterB = Vector3.Up * (StepSize - CollisionRadius);
+			helper.Trace = Trace.Capsule( lowerCapsule, helper.Position, helper.Position + helper.Velocity.WithZ( 0 ) * Time.Delta );
+			helper.Trace = helper.Trace
+				.WithTag( "loot" ) // TODO Add stuff to slip on like piss
+				.Ignore( this );
+			var tr = helper.Trace.Run();
+
+			if ( tr.Hit )
+			{
+				Log.Info( "hii" );
+			}
+		}
 	}
 
 	protected void ThrowRandomLoot()
