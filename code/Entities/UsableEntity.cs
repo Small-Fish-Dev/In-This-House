@@ -1,7 +1,9 @@
 ﻿namespace BrickJam;
 
-public class UseableEntity : ModelEntity
+public class UsableEntity : ModelEntity
 {
+	public virtual float InteractionDuration => 1.0f;
+	
 	public override void Spawn()
 	{
 		base.Spawn();

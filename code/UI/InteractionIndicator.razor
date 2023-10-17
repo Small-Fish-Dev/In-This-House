@@ -1,0 +1,22 @@
+﻿@using Sandbox.UI;
+
+@namespace BrickJam.UI
+@inherits Panel
+
+<root>
+	@if ( Player.CurrentlyUsedEntity is not null )
+	{
+		<RadialProgress @Progress=@( () => Player.InteractionComplete / Player.CurrentlyUsedEntity.InteractionDuration )/>
+	}
+</root>
+
+@code {
+
+	public Player Player;
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( Player.CurrentlyUsedEntity );
+	}
+
+}

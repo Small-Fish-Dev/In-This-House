@@ -12,7 +12,7 @@ public enum DoorState : sbyte
 
 [HammerEntity]
 [EditorModel( "models/placeholders/placeholder_door.vmdl" )]
-public partial class Door : UseableEntity
+public partial class Door : UsableEntity
 {
 	[Net] public DoorState State { get; set; }
 	[Net] public bool Locked { get; set; }

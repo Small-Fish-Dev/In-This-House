@@ -1,7 +1,9 @@
 ﻿namespace BrickJam;
 
-public class Trapdoor : UseableEntity
+public class Trapdoor : UsableEntity
 {
+	public override float InteractionDuration => 2.0f;
+
 	public override void Spawn()
 	{
 		base.Spawn();

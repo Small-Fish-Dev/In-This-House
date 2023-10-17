@@ -27,7 +27,7 @@ public abstract partial class Level : Entity // Easy replication to client
 		await GameTask.NextPhysicsFrame();
 
 		foreach ( var player in Entity.All.OfType<Player>() )
-			player.Respawn( Type );
+			player.Respawn();
 
 		var allValidTrapdoors = Entity.All.OfType<ValidTrapdoorPosition>()
 			.Where( x => x.LevelType == Type )
@@ -46,6 +46,7 @@ public abstract partial class Level : Entity // Easy replication to client
 
 		return;
 	}
+
 	public virtual async Task End()
 	{
 		await GameTask.NextPhysicsFrame();
@@ -69,7 +70,7 @@ public abstract partial class Level : Entity // Easy replication to client
 			case LevelType.None:
 				return null;
 			case LevelType.Mansion:
-				return typeof( MansionLevel );
+				return typeof(MansionLevel);
 			case LevelType.Dungeon:
 				return typeof( DungeonLevel );
 			case LevelType.Bathrooms:

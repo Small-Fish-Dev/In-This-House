@@ -1,0 +1,18 @@
+﻿@using Sandbox.Razor
+@using Sandbox.UI;
+
+@namespace BrickJam.UI
+@inherits Panel
+
+<root>
+	<div>@Top</div>
+	<div>X</div>
+	<div>@Bottom</div>
+</root>
+
+@code {
+
+	public RenderFragment Top { get; set; }
+	public RenderFragment Bottom { get; set; }
+
+}

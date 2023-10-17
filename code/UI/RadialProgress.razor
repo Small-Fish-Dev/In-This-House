@@ -25,9 +25,11 @@
 	/// </summary>
 	public Func<float> Progress { get; set; }
 
-	private string ProgressWhitePercent => $"{Progress() * 100}%";
-	private string ProgressTransparentPercent => $"{Progress() * 100 + 0.01f}%";
+	private float ProgressClamped => Progress?.Invoke().Clamp( 0, 1 ) ?? 0;
 
-	protected override int BuildHash() => HashCode.Combine( Progress() );
+	private string ProgressWhitePercent => $"{ProgressClamped * 100}%";
+	private string ProgressTransparentPercent => $"{ProgressClamped * 100 + 0.01f}%";
+
+	protected override int BuildHash() => HashCode.Combine( ProgressClamped );
 
 }

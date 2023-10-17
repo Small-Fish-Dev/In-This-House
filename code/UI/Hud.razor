@@ -17,8 +17,15 @@
 
 	@if ( player is not null )
 	{
+		<!-- The client either has a living pawn or is observing another player's pawn -->
 		<StunIndicator @Player=@player/>
 		<Inventory />
+		
+		<Crosshair>
+			<Bottom>
+				<InteractionIndicator @Player=@player/>
+			</Bottom>
+		</Crosshair>
 	}
 
 	@if ( Game.LocalPawn is Spectator spectator )
@@ -28,7 +35,6 @@
 		if ( player is not null )
 		{
 			<div>Observing @player.Client.Name</div>
-	
 		}
 	}
 </root>

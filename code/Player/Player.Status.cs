@@ -4,6 +4,7 @@ public partial class Player
 {
 	public float StunDuration => 1.5f;
 	public bool IsStunned => !StunLeft;
+	public bool CanUse => !IsStunned;
 	[Net] public TimeUntil StunLeft { get; set; }
 
 	public void Stun( float multiplier = 1f )
@@ -13,5 +14,6 @@ public partial class Player
 			.SetVolume( multiplier );
 
 		StunLeft = StunDuration * multiplier;
+		CancelInteraction();
 	}
 }
