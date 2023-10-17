@@ -17,6 +17,8 @@ public partial class Door : UsableEntity
 	[Net] public DoorState State { get; set; } = DoorState.Closed;
 	[Net] public bool Locked { get; set; }
 
+	public override string UseString => "open the door";
+
 	private Transform initialTransform;
 	private Vector3? _hinge;
 	private int side;

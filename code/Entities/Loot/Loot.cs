@@ -3,6 +3,8 @@
 public partial class Loot : UsableEntity
 {
 	public LootPrefab Prefab;
+	
+	public override string UseString => $"take the {Name}";
 
 	[Net] public LootRarity Rarity { get; set; } = LootRarity.Common;
 	[Net] public int BaseMonetaryValue { get; set; } = 0;

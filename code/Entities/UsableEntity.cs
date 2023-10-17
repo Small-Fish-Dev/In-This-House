@@ -3,6 +3,7 @@
 public class UsableEntity : ModelEntity
 {
 	public virtual float InteractionDuration => 1.0f;
+	public virtual string UseString => $"interact with {GetType().FullName}";
 	
 	public override void Spawn()
 	{
