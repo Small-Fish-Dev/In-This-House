@@ -78,7 +78,7 @@ partial class Player : AnimatedEntity
 		}
 		else
 		{
-			if ( UsableEntity is not null && Input.Down( "use" ) )
+			if ( UsableEntity is not null && Input.Pressed( "use" ) )
 			{
 				CurrentlyUsedEntity = UsableEntity;
 				InteractionComplete = UsableEntity.InteractionDuration;
