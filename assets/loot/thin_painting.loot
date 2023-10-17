@@ -1,6 +1,9 @@
 {
   "Name": "Painting",
+  "Description": "This is a painting of Sir Luke and his wife Margaret. The painting was made by Leonardo da Vinci in the 15th century.",
   "Model": "models/items/paintings/thin_painting.vmdl",
   "MonetaryValue": 40,
+  "IconOffset": "60,0,0",
+  "IconAngles": "90,-180,0",
   "__references": []
 }

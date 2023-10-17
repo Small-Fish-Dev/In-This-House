@@ -1,5 +1,4 @@
 ﻿@using Sandbox;
-@using Sandbox.Diagnostics
 @using Sandbox.UI;
 
 @namespace BrickJam.UI
@@ -14,11 +13,17 @@
 		var isPlayer = Game.LocalPawn is BrickJam.Player;
 	}
 
+	@if ( MansionGame.Instance?.TimerActive ?? false )
+	{
+		<Timer @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
+	}
+
 	@if ( player is not null )
 	{
 		<!-- The client either has a living pawn or is observing another player's pawn -->
 		<StunIndicator @Player=@player/>
 		<Inventory/>
+		<MoneyCounter/>
 
 		<Crosshair>
 			<Top>
@@ -50,31 +55,26 @@
 </root>
 
 @code {
-	public static Hud Instance { get; private set; }
+	public static Hud Instance => (Hud)_instance?.Target;
+	private static WeakReference _instance;
 
 	private static BrickJam.Player LocalPlayer => Game.LocalPawn switch
 	{
 		BrickJam.Player playerAlive => playerAlive,
 		Spectator playerSpectator => playerSpectator.Following,
 		_ => null
-		};
-
-	[Event.Hotload]
-	static void hotload()
-	{
-		if ( Game.IsClient )
-			new Hud();
-	}
+	};
 
 	public Hud()
 	{
 		Instance?.Delete( true );
-		Instance = this;
+		_instance = new WeakReference( this );
 	}
 
 	protected override int BuildHash()
 	{
-		return HashCode.Combine( Game.LocalPawn, LocalPlayer );
+	// TODO: don't change it to "MansionGame.Instance?" !!! There's something that is calling this func from the menu
+		return HashCode.Combine( Game.LocalPawn, LocalPlayer, MansionGame.Instance.TimerActive );
 	}
 
 }

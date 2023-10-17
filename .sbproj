@@ -110,6 +110,11 @@
           "a": "nocollide",
           "b": "world",
           "r": "Collide"
+        },
+        {
+          "a": "player",
+          "b": "nocollide",
+          "r": "Ignore"
         }
       ]
     },

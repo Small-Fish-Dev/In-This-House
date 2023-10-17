@@ -4,8 +4,8 @@ namespace BrickJam;
 
 public enum DoorState : sbyte
 {
-	Opening = -1,
-	Closing = 1,
+	Opening = 1,
+	Closing = -1,
 	Open = 2,
 	Closed = 3,
 }
@@ -14,7 +14,7 @@ public enum DoorState : sbyte
 [EditorModel( "models/placeholders/placeholder_door.vmdl" )]
 public partial class Door : UsableEntity
 {
-	[Net] public DoorState State { get; set; }
+	[Net] public DoorState State { get; set; } = DoorState.Closed;
 	[Net] public bool Locked { get; set; }
 
 	private Transform initialTransform;

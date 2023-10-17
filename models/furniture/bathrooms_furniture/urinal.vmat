@@ -1,0 +1,16 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "models/furniture/bathrooms_furniture/urinal_color.png"
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	Metalness "models/furniture/bathrooms_furniture/urinal_metal.png"
+	Normal "models/furniture/bathrooms_furniture/urinal_normal.png"
+	Roughness "models/furniture/bathrooms_furniture/urinal_rough.png"
+}

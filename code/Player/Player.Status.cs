@@ -2,18 +2,58 @@
 
 public partial class Player
 {
-	public float StunDuration => 1.5f;
+	[Net] public float StunDuration { get; set; } = 1.5f;
 	public bool IsStunned => !StunLeft;
-	public bool CanUse => !IsStunned;
+	public bool CanUse => !IsStunned && !IsTripping && !IsSlipping;
+	public bool MovementLocked => IsTripping || IsSlipping;
 	[Net] public TimeUntil StunLeft { get; set; }
 
 	public void Stun( float multiplier = 1f )
 	{
-		multiplier = Math.Clamp( multiplier, 0.1f, 2f);
+		ResetStatus();
+
+		multiplier = Math.Clamp( multiplier, 0.1f, 1f );
+		var volume = MathX.Remap( multiplier, 0.1f, 1f, 0.3f, 1f );
+		var pitch = MathX.Remap( multiplier, 0.1f, 1f, 1.4f, 0.5f );
+
 		PlaySound( "sounds/pipe.sound" )
 			.SetVolume( multiplier );
 
 		StunLeft = StunDuration * multiplier;
 		CancelInteraction();
+	}
+
+	[Net] public float TripDuration { get; set; } = 1.5f;
+	public bool IsTripping => !TripLeft;
+	[Net] public TimeUntil TripLeft { get; set; }
+
+	public void Trip()
+	{
+		ResetStatus();
+		//PlaySound( "sounds/pipe.sound" )
+		//	.SetVolume( multiplier );
+
+		TripLeft = TripDuration;
+		CancelInteraction();
+	}
+
+	[Net] public float SlipDuration { get; set; } = 1f;
+	public bool IsSlipping => !SlipLeft;
+	[Net] public TimeUntil SlipLeft { get; set; }
+
+	public void Slip()
+	{
+		ResetStatus();
+		//PlaySound( "sounds/pipe.sound" )
+		//	.SetVolume( multiplier );
+
+		SlipLeft = SlipDuration;
+	}
+
+	public void ResetStatus()
+	{
+		StunLeft = 0f;
+		TripLeft = 0f;
+		SlipLeft = 0f;
 	}
 }

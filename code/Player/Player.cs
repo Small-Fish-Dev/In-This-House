@@ -1,13 +1,8 @@
-using Sandbox;
-using System;
-using System.Linq;
-
 namespace BrickJam;
 
 partial class Player : AnimatedEntity
 {
-	[BindComponent]
-	public ContainerComponent Inventory { get; } 
+	[BindComponent] public ContainerComponent Inventory { get; } 
 
 	[Net, Change] public int Money { get; private set; }
 
@@ -34,16 +29,18 @@ partial class Player : AnimatedEntity
 
 	[ClientInput] public Vector3 InputDirection { get; protected set; }
 	[ClientInput] public Angles InputAngles { get; protected set; }
-	public bool IsRunning { get; protected set; } = false;
 	public Rotation InputRotation => InputAngles.ToRotation();
 	public Vector3 EyePosition => Position + Vector3.Up * 64f;
 
 	public override void BuildInput()
 	{
-		InputDirection = Input.AnalogMove;
+		if ( CanUse )
+		{
+			InputDirection = Input.AnalogMove;
 
-		InputAngles += Input.AnalogLook;
-		InputAngles = InputAngles.WithPitch( Math.Clamp( InputAngles.pitch, -89.9f, 89.9f ) );
+			InputAngles += Input.AnalogLook;
+			InputAngles = InputAngles.WithPitch( Math.Clamp( InputAngles.pitch, -89.9f, 89.9f ) );
+		}
 	}
 
 	public override void Simulate( IClient cl )
@@ -59,11 +56,21 @@ partial class Player : AnimatedEntity
 	{
 		base.FrameSimulate( cl );
 
-		Camera.Position = EyePosition;
-		Camera.Rotation = InputRotation;
+		if ( !IsSlipping && !IsTripping )
+		{
+			Camera.Position = EyePosition;
+			Camera.Rotation = InputRotation;
+			Camera.FirstPersonViewer = this;
+		}
+		else
+		{
+			var newPos = Position - Velocity.WithZ( 0 ).Normal * 30f + Vector3.Up * 50f;
+			Camera.Position = Vector3.Lerp( Camera.Position, newPos, Time.Delta * 10 );
+			Camera.Rotation = Rotation.LookAt( Position + Vector3.Up * 16f - Camera.Position );
+			Camera.FirstPersonViewer = null;
+		}
 
 		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Game.Preferences.FieldOfView );
-		Camera.FirstPersonViewer = this; // Doesn't work?
 		
 		BugBug.Here( v =>
 		{
@@ -85,13 +92,18 @@ partial class Player : AnimatedEntity
 
 	protected void SimulateAnimations()
 	{
-		Rotation = Rotation.FromYaw( InputAngles.yaw );
+		if ( MovementLocked )
+			Rotation = Rotation.LookAt( Velocity.WithZ( 0 ), Vector3.Up );
+		else
+			Rotation = Rotation.FromYaw( InputAngles.yaw );
 
 		var animationHelper = new CitizenAnimationHelper( this );
 		animationHelper.WithVelocity( Velocity );
 		animationHelper.WithLookAt( Position + InputRotation.Forward * 10f );
 
 		animationHelper.IsGrounded = GroundEntity != null;
+		SetAnimParameter( "special_movement_states", IsStunned ? 1 : ( IsTripping ? 2 : ( IsSlipping ? 3 : 0 ) ) );
+		SetAnimParameter( "speed_scale", Velocity.WithZ(0).Length / 150f );
 	}
 
 	public void Respawn()

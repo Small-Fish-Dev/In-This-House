@@ -12,11 +12,17 @@ namespace BrickJam;
 
 public partial class MansionGame : GameManager
 {
-	public static MansionGame Instance { get; private set; }
+	public static MansionGame Instance => (MansionGame)_instance?.Target;
+	private static WeakReference _instance;
+
+	[Net] public TimeUntil TimeOut { get; set; }
+	[Net] public bool TimerActive { get; set; }
+
+	public float TimePerLevel => 60.0f;
 
 	public MansionGame()
 	{
-		Instance = this;
+		_instance = new WeakReference( this );
 
 		if ( Game.IsClient )
 		{
@@ -51,6 +57,37 @@ public partial class MansionGame : GameManager
 		// TODO: Have pawn dead for now
 	}
 
+	public override void Simulate( IClient cl )
+	{
+		base.Simulate( cl );
+
+		if ( !IsAuthority )
+			return;
+
+		SimulateTimer();
+	}
+
+	public void TimerStart()
+	{
+		TimerActive = true;
+		TimeOut = TimePerLevel;
+	}
+
+	public void TimerStop()
+	{
+		TimerActive = false;
+		TimeOut = 0;
+	}
+
+	private void SimulateTimer()
+	{
+		if ( TimerActive && TimeOut )
+		{
+			TimerStop();
+			RestartLevel();
+		}
+	}
+
 	public override void FrameSimulate( IClient cl )
 	{
 		base.FrameSimulate( cl );
@@ -67,12 +104,18 @@ public partial class MansionGame : GameManager
 				v.Value( "ang", Camera.Rotation.Angles() );
 			} );
 		} );
-		
+
 		foreach ( var player in All.Where( ent => ent is Player player && player.IsValid() ) )
 		{
 			var glow = player.Components.GetOrCreate<Glow>();
 			glow.Color = Color.Green;
 			glow.Enabled = Game.LocalPawn is Spectator;
 		}
+	}
+
+	public override void RenderHud()
+	{
+		base.RenderHud();
+		Event.Run( "render" );
 	}
 }

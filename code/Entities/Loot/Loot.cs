@@ -69,26 +69,27 @@ public partial class Loot : UsableEntity
 
 	public static Loot CreateFromGameResource( LootPrefab resource, Vector3 position, Rotation rotation )
 	{
-		var item = new Loot();
-		item.Position = position;
-		item.Rotation = rotation;
-		item.BaseMonetaryValue = resource.MonetaryValue;
-		item.BaseName = resource.Name;
-		item.Rarity = RandomRarityFromLevel( MansionGame.Instance.CurrentLevel.Type );
-		item.SetModel( resource.Model == string.Empty ? "models/error.vmdl" : resource.Model );
-		item.SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
+		var loot = new Loot();
+		loot.Position = position;
+		loot.Rotation = rotation;
+		loot.BaseMonetaryValue = resource.MonetaryValue;
+		loot.BaseName = resource.Name;
+		loot.Rarity = RandomRarityFromLevel( MansionGame.Instance.CurrentLevel.Type );
+		loot.SetModel( resource.Model == string.Empty ? "models/error.vmdl" : resource.Model );
+		loot.SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
+		loot.Tags.Add( "nocollide" );
+		loot.Tags.Add( "loot" );
 
-		item.Prefab = resource;
+		loot.Prefab = resource;
 		
-		return item;
+		return loot;
 	}
 
 	public static Loot CreateFromEntry( ItemEntry entry, Vector3 position, Rotation rotation )
 	{
-		var item = CreateFromGameResource( entry.Prefab, position, rotation );
-		item.Tags.Add( "nocollide" );
-		item.Rarity = entry.Rarity;
-		return item;
+		var loot = CreateFromGameResource( entry.Prefab, position, rotation );
+		loot.Rarity = entry.Rarity;
+		return loot;
 	}
 
 	public static LootRarity RandomRarityFromLevel( LevelType level ) => WeightedList.RandomKey<LootRarity>( RarityChances[level] );

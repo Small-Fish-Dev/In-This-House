@@ -100,6 +100,8 @@ public partial class MansionGame
 
 		Instance.CurrentLevel = Activator.CreateInstance<T>();
 		await Instance.CurrentLevel.Start();
+
+		Instance.TimerStart();
 	}
 
 	public static void NextLevel()
@@ -108,6 +110,19 @@ public partial class MansionGame
 			SetLevel<DungeonLevel>();
 		else if ( Instance.CurrentLevel is DungeonLevel )
 			SetLevel<BathroomsLevel>();
+	}
+
+	// rndtrash: oh my god i hate it so much
+	public static void RestartLevel()
+	{
+		if ( Instance.CurrentLevel is MansionLevel )
+			SetLevel<MansionLevel>();
+		else if ( Instance.CurrentLevel is DungeonLevel )
+			SetLevel<DungeonLevel>();
+		else if (Instance.CurrentLevel is BathroomsLevel)
+			SetLevel<BathroomsLevel>();
+		else
+			Log.Error( $"Don't know how to restart the level {Instance.CurrentLevel.GetType()}" );
 	}
 
 	// For client callback
