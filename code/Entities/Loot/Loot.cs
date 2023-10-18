@@ -1,15 +1,17 @@
-﻿namespace BrickJam;
+﻿using BrickJam.UI;
+
+namespace BrickJam;
 
 public partial class Loot : UsableEntity
 {
 	public LootPrefab Prefab;
 	
-	public override string UseString => $"take the {FullName}";
+	public override string UseString => $"take the {Name}";
 
 	[Net] public LootRarity Rarity { get; set; } = LootRarity.Common;
 	[Net] public int BaseMonetaryValue { get; set; } = 0;
 	[Net] public string BaseName { get; set; } = "Loot";
-	public string FullName => $"{Rarity} {Name}";
+	public new string Name => $"{Rarity} {BaseName}";
 	public int MonetaryValue => (int)(BaseMonetaryValue * RarityMap[Rarity]);
 	public static Dictionary<LootRarity, float> RarityMap { get; set; } = new()
 	{
@@ -103,5 +105,21 @@ public partial class Loot : UsableEntity
 
 		if ( user.Inventory.Add( new ItemEntry { Prefab = Prefab, Rarity = Rarity } ) )
 			Delete();
+	}
+
+	private GroundLootPanel panel;
+	public override void ClientSpawn()
+	{
+		base.ClientSpawn();
+		panel = new GroundLootPanel
+		{
+			Loot = this
+		};
+	}
+
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+		panel?.Delete();
 	}
 }

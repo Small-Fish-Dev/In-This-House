@@ -1,0 +1,78 @@
+﻿@using Sandbox.UI;
+
+@namespace BrickJam.UI
+@inherits WorldPanel
+
+<root>
+	<div class="container">
+		<span>@(Loot.Name)</span>
+		<div style="flex-direction: row;">
+			<span class="currency">$</span><span>@(Loot.MonetaryValue)</span>
+		</div>
+	</div>
+</root>
+
+@code {
+	public Loot Loot { get; set; }
+	TimeSince sinceCreation;
+
+	public GroundLootPanel()
+	{
+		// Center our panel :D
+		var size = new Vector2( 2500, 500 );
+		PanelBounds = new Rect( -size / 2f, size );
+	}
+
+	public override void Tick()
+	{
+		if ( Loot == null || !Loot.IsValid )
+		{
+			if ( !IsDeleting )
+				Delete();
+
+			return;
+		}
+
+		var bounce = 2f * MathF.Sin( sinceCreation );
+		var height = (Loot.CollisionBounds.Maxs * Loot.Rotation).z;
+		Position = Loot.Position + (height + bounce + 15f) * Vector3.Up;
+		Rotation = Rotation.LookAt( Camera.Position - Position );
+
+		var dist = Game.LocalPawn?.Position.Distance( Position ) ?? 0;
+		var remapped = MathX.Remap( dist, 500, 700, 1, 0 );
+		Style.Opacity = remapped;
+	}
+}
+
+<style>
+	GroundLootPanel {
+		transition: transform 0.5s ease-in-out;
+		justify-content: center;
+		align-items: center;
+
+		.container {
+			padding: 10px;
+			font-size: 32px;
+			align-items: center;
+			font-family: "alagard";
+			flex-direction: column;
+			color: white;
+			text-shadow: 3px 3px 0px black;
+
+			.currency {
+				padding-right: 4px; 
+				font-size: 22px; 
+				top: 5px;
+				color: rgba(50, 205, 50, 1);
+			}
+		}
+
+		&:outro {
+			transform: scale(0);
+		}
+
+		&:intro {
+			transform: scale(0);
+		}
+	}
+</style>
