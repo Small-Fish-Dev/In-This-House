@@ -20,7 +20,7 @@ public partial class MansionGame : GameManager
 	[Net] public TimeUntil TimeOut { get; set; }
 	[Net] public bool TimerActive { get; set; }
 
-	public float TimePerLevel => 60.0f;
+	public float TimePerLevel => 180.0f;
 
 	public MansionGame()
 	{

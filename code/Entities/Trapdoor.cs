@@ -3,7 +3,10 @@
 public class Trapdoor : UsableEntity
 {
 	public override float InteractionDuration => 2.0f;
-	public override string UseString => "get to the next level";
+	public override string UseString => CanUse ? "proceed to the next level" : "ALL PLAYERS NEED TO BE NEARBY TO PROCEED";
+	public override bool CanUse => Entity.All.OfType<Player>()
+		.Where( x => x.IsAlive )
+		.All( x => x.Position.Distance( Position ) <= 400f );
 
 	public override void Spawn()
 	{

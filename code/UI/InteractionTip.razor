@@ -6,7 +6,15 @@
 <root>
 	@if ( Player.UsableEntity is not null )
 	{
-		<span>Hold </span><inputglyph action="use" /><span>to @(Player.UsableEntity.UseString).</span>
+        if (Player.UsableEntity.CanUse )
+        {
+            <span>Hold </span><inputglyph action="use" /><span>to @(Player.UsableEntity.UseString).</span>
+        }
+        else
+        {
+            <span>@(Player.UsableEntity.UseString).</span>
+        }
+
 	}
 </root>
 
@@ -15,7 +23,7 @@
 
 	protected override int BuildHash()
 	{
-		return HashCode.Combine( Player.UsableEntity );
+		return HashCode.Combine( Time.Now );
 	}
 }
 

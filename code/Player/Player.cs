@@ -5,6 +5,7 @@ partial class Player : AnimatedEntity
 	[BindComponent] public ContainerComponent Inventory { get; } 
 
 	[Net, Change] public int Money { get; private set; }
+	[Net] public bool IsAlive { get; set; } = false;
 
 	public float CollisionRadius => IsCrouching ? 22f : 12f;
 	public float CollisionHeight => IsCrouching ?  36f : 72f;
@@ -158,6 +159,7 @@ partial class Player : AnimatedEntity
 		var t = MansionGame.Instance.GetSpawnPoint();
 		t.Position += Vector3.Up * 50.0f;
 		Transform = t;
+		IsAlive = true;
 	}
 
 	// Client callback for UI purposes
