@@ -61,7 +61,7 @@ partial class Player : AnimatedEntity
 
 	public override void BuildInput()
 	{
-		if ( CanUse )
+		if ( !CommandsLocked )
 		{
 			InputDirection = Input.AnalogMove;
 

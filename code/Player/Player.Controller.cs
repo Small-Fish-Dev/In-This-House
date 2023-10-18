@@ -11,6 +11,7 @@ public partial class Player
 	[Net] public float CrouchSpeed { get; set; } = 80f;
 	[Net] public float WalkSpeed { get; set; } = 200f;
 	[Net] public float RunSpeed { get; set; } = 350f;
+	[Net] public float JumpHeight { get; set; } = 250f;
 	[Net] public float Acceleration { get; set; } = 1200f; // Units per second
 	[Net] public float Deceleration { get; set; } = 400f; // Units per second
 
@@ -124,6 +125,7 @@ public partial class Player
 		{
 			GroundEntity = traceDown.Entity;
 			Position = traceDown.EndPosition;
+			Velocity = Velocity.WithZ( 0 );
 		}
 		else
 		{
@@ -131,12 +133,16 @@ public partial class Player
 			Velocity -= Vector3.Down * Game.PhysicsWorld.Gravity * Time.Delta;
 		}
 
-		if ( Input.Down( "jump" ) && !MovementLocked && !IsStunned )
-			if ( GroundEntity != null )
-			{
-				GroundEntity = null;
-				Velocity += Vector3.Up * 300f;
-			}
+		if ( !CommandsLocked )
+		{
+			if ( Input.Pressed( "jump" ))
+				if ( GroundEntity != null )
+				{
+					GroundEntity = null;
+					Velocity += Vector3.Up * JumpHeight;
+				}
+		}
+
 	}
 
 	protected void CalculateStun( MoveHelper helper )
