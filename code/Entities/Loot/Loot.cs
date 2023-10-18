@@ -4,12 +4,12 @@ public partial class Loot : UsableEntity
 {
 	public LootPrefab Prefab;
 	
-	public override string UseString => $"take the {Name}";
+	public override string UseString => $"take the {FullName}";
 
 	[Net] public LootRarity Rarity { get; set; } = LootRarity.Common;
 	[Net] public int BaseMonetaryValue { get; set; } = 0;
 	[Net] public string BaseName { get; set; } = "Loot";
-	public new string Name => $"{Rarity} {Name}";
+	public string FullName => $"{Rarity} {Name}";
 	public int MonetaryValue => (int)(BaseMonetaryValue * RarityMap[Rarity]);
 	public static Dictionary<LootRarity, float> RarityMap { get; set; } = new()
 	{
