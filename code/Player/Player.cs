@@ -6,7 +6,7 @@ partial class Player : AnimatedEntity
 
 	[Net, Change] public int Money { get; private set; }
 
-	public float CollisionRadius => 12f;
+	public float CollisionRadius => IsCrouching ? 22f : 12f;
 	public float CollisionHeight => IsCrouching ?  36f : 72f;
 	public Capsule CollisionCapsule => new Capsule( Vector3.Up * CollisionRadius, Vector3.Up * (CollisionHeight - CollisionRadius), CollisionRadius );
 	public override void Spawn()
