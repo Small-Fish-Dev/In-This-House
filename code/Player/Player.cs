@@ -5,7 +5,7 @@ partial class Player : AnimatedEntity
 	[BindComponent] public ContainerComponent Inventory { get; } 
 
 	[Net, Change] public int Money { get; private set; }
-	[Net] public bool IsAlive { get; set; } = false;
+	[Net] public bool IsAlive { get; private set; } = false;
 
 	public float CollisionRadius => IsCrouching ? 22f : 12f;
 	public float CollisionHeight => IsCrouching ?  36f : 72f;
@@ -160,6 +160,14 @@ partial class Player : AnimatedEntity
 		t.Position += Vector3.Up * 50.0f;
 		Transform = t;
 		IsAlive = true;
+	}
+
+	public void Kill()
+	{
+		IsAlive = false;
+
+		if ( !All.OfType<Player>().Any( x => x.IsAlive ) )
+			MansionGame.SetLevel<MansionLevel>();
 	}
 
 	// Client callback for UI purposes
