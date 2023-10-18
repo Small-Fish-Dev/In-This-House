@@ -1,4 +1,5 @@
 ﻿using Editor;
+using GridAStar;
 
 namespace BrickJam;
 
@@ -40,7 +41,7 @@ public partial class Door : UsableEntity
 
 		SetModel( "models/placeholders/placeholder_door.vmdl" );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
-		Tags.Add( "solid", "door" );
+		Tags.Add( "door" );
 		initialTransform = Transform;
 	}
 
@@ -100,6 +101,8 @@ public partial class Door : UsableEntity
 				: DoorState.Closed;
 
 			Transform = Transform.WithRotation( targetRotation );
+
+			OccupyCells();
 			return;
 		}
 
@@ -121,5 +124,37 @@ public partial class Door : UsableEntity
 		// Linear rotation for the door.
 		var rot = Rotation.Lerp( Rotation, targetRotation, 1f / TIME * Time.Delta );
 		Transform = Transform.WithRotation( rot );
+	}
+
+	public void OccupyCells()
+	{
+		foreach ( var grid in GridAStar.Grid.Grids )
+		{
+			if ( grid.Value.IsInsideBounds( Position ) )
+			{
+				for ( var x = -16; x < 16f; x++ )
+					for ( var y = -16; y < 16; y++ )
+					{
+						var checkPos = Position + Rotation.Forward * 5f * x + Rotation.Right * 5f * y + Vector3.Up * 5f;
+						var cellFound = grid.Value.GetCell( checkPos );
+
+						if ( cellFound != null )
+							cellFound.Tags.Remove( "occupied" );
+					}
+
+				for ( var x = 0; x < 15f; x++ )
+					for ( var y = -2; y < 3; y++ )
+					{
+						var checkPos = Position + Rotation.Forward * 5f * x + Rotation.Right * 5f * y + Vector3.Up * 5f;
+						var cellFound = grid.Value.GetCell( checkPos );
+
+						if ( cellFound != null )
+						{
+							cellFound.SetOccupant( this );
+							cellFound.Tags.Add( "occupied" );
+						}
+					}
+			}
+		}
 	}
 }
