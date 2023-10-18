@@ -5,9 +5,9 @@
 
 <root>
 	<div class="container">
-		<span>@(Loot.Name)</span>
+		<span>@(Loot.FullName)</span>
 		<div style="flex-direction: row;">
-			<span class="currency">$</span><span>@(Loot.MonetaryValue)</span>
+			<span class="currency">$</span><span>@($"{Loot.MonetaryValue:n0}")</span>
 		</div>
 	</div>
 </root>
@@ -19,7 +19,7 @@
 	public GroundLootPanel()
 	{
 		// Center our panel :D
-		var size = new Vector2( 2500, 500 );
+		var size = new Vector2( 1500, 500 );
 		PanelBounds = new Rect( -size / 2f, size );
 	}
 
