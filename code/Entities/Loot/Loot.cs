@@ -6,12 +6,12 @@ public partial class Loot : UsableEntity
 {
 	public LootPrefab Prefab;
 	
-	public override string UseString => $"take the {Name}";
+	public override string UseString => $"take the {FullName}";
 
 	[Net] public LootRarity Rarity { get; set; } = LootRarity.Common;
 	[Net] public int BaseMonetaryValue { get; set; } = 0;
 	[Net] public string BaseName { get; set; } = "Loot";
-	public new string Name => $"{Rarity} {BaseName}";
+	public string FullName => $"{Rarity} {BaseName}";
 	public int MonetaryValue => (int)(BaseMonetaryValue * RarityMap[Rarity]);
 	public static Dictionary<LootRarity, float> RarityMap { get; set; } = new()
 	{
@@ -81,7 +81,6 @@ public partial class Loot : UsableEntity
 		loot.Rarity = RandomRarityFromLevel( MansionGame.Instance.CurrentLevel.Type );
 		loot.SetModel( resource.Model == string.Empty ? "models/error.vmdl" : resource.Model );
 		loot.SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
-		loot.Tags.Add( "nocollide" );
 		loot.Tags.Add( "loot" );
 
 		loot.Prefab = resource;
