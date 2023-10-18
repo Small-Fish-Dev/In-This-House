@@ -1,0 +1,11 @@
+{
+  "DefaultLanguage": "en",
+  "Sounds": {
+    "en": "sounds/voice_lines/hampter.sound"
+  },
+  "Subtitles": {
+    "en": "hampter",
+    "it": "criceto"
+  },
+  "__references": []
+}

@@ -6,7 +6,9 @@ global using System;
 global using Sandbox.UI.Construct;
 global using System.IO;
 using BrickJam.UI;
+using BrickJam.VoiceLines;
 using Sandbox.Component;
+using Sandbox.UI;
 
 namespace BrickJam;
 
@@ -28,6 +30,7 @@ public partial class MansionGame : GameManager
 		{
 			InitializeEffects();
 			_ = new Hud();
+			_ = new VoiceLinePlayer();
 		}
 	}
 
