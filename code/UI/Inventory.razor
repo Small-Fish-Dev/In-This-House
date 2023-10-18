@@ -46,7 +46,7 @@
 				var rarity = data.Key.Value.Rarity;
 				var price = (int)(prefab.MonetaryValue * Loot.RarityMap[rarity]);
 
-				<div style="flex-direction: column;">
+				<div class="container">
 					<div style="flex-direction: row;"> 
 						<span style="margin-right: 10px;">@($"{rarity} {prefab.Name}")</span>
 						<span style="margin-right: 10px;">x@(data.Value)</span>
@@ -56,8 +56,8 @@
 
 						@if( data.Value > 1 )
 						{
-							<span style="color: gray; margin-left: 10px; padding-right: 5px;">(</span>
-							<span class="currency">$</span><span style="color: gray;">@($"{price:n0}") each )</span>
+							<span style="color: rgba(215, 215, 215, 1); margin-left: 10px; padding-right: 5px;">/</span>
+							<span class="currency">$</span><span style="color: rgba(215, 215, 215, 1);">@($"{price:n0}") ea.</span>
 						}
 					</div>
 
@@ -252,10 +252,18 @@
 			background-color: transparent;
 			transform: translateY(200%);
 			font-size: 24px;
-			max-width: 500px;
 			text-shadow: 2px 2px 0px rgba(black, 0.8);
 			flex-direction: row;
 			padding: 10px;
+			border-image: url(ui/scroll_border.png) fill;
+			border-image-tint: darken(white, 0.35);
+			align-items: center;
+
+			.container {
+				max-width: 500px;
+				flex-direction: column;
+				flex-shrink: 0;
+			}
 
 			.currency {
 				padding-right: 5px; 
@@ -270,14 +278,13 @@
 			}
 
 			.icon {
-				position: absolute;
-				left: 100%;
-				margin-left: 10px;
-				height: 100%;
+				margin-left: 20px;
+				height: 100px;
 				aspect-ratio: 1;
 				background-size: 100%;
 				background-repeat: no-repeat;
 				filter: border-wrap(2px black);
+				z-index: 2;
 			}
 
 			&.visible {
@@ -340,15 +347,14 @@
 
 	.drag {
 		position: absolute;
-		width: 75px;
+		width: 100px;
 		aspect-ratio: 1;
 		transform: translate(-50%, -50%);
 		pointer-events: none;
-		background-color: rgba(black, 0.75);
-		border: 2px black;
-		padding: 2px;
+		border-image: url(ui/scroll_border.png) fill;
+		border-image-tint: darken(white, 0.25);
 		opacity: 1;
-		transition: transform 0.1s ease-in;
+		transition: transform 0.1s linear;
 		transform-origin: top left;
 
 		&:intro {
