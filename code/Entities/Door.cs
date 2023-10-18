@@ -57,19 +57,23 @@ public partial class Door : UsableEntity
 			return;
 		}
 
-		// Set the door state depending on current state.
-		State = State == DoorState.Open || State == DoorState.Opening
-			? DoorState.Closing
-			: DoorState.Opening;
+		if ( State == DoorState.Open || State == DoorState.Opening )
+			Close( user );
+		else
+			Open( user );
+	}
 
-		// I have no clue if this is right or not :DD 
-		var angle = Math.Abs( Rotation.LookAt( initialTransform.Position - user.Position ).Yaw() ) 
-			+ Math.Abs( initialTransform.Rotation.Yaw() - 90) 
-			- 90;
+	public void Open( Entity user )
+	{
+		State = DoorState.Opening;
 
-		side = angle > 0 && angle < 180
-			? 1
-			: -1;
+		var localPosition = Transform.PointToLocal( user.Position );
+		side = localPosition.y > 0 ? -1 : 1;
+	}
+
+	public void Close( Entity user )
+	{
+		State = DoorState.Closing;
 	}
 
 	[GameEvent.Tick]
@@ -151,7 +155,7 @@ public partial class Door : UsableEntity
 						if ( cellFound != null )
 						{
 							cellFound.SetOccupant( this );
-							cellFound.Tags.Add( "occupied" );
+							cellFound.Tags.Add( "door" );
 						}
 					}
 			}
