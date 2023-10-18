@@ -27,7 +27,7 @@ public class Upgrade
 	public string Title;
 	public string Description;
 	public string Texture;
-	public float Price;
+	public int Price;
 
 	/// <summary> Position of upgrade on skill tree, with 0 being the center </summary>
 	public Vector2 Position = Vector2.Zero;
