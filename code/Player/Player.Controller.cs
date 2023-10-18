@@ -8,17 +8,17 @@ public partial class Player
 	/// </summary>
 	[Net] public float DropChance { get; set; } = 0.5f;
 
+	[Net] public float CrouchSpeed { get; set; } = 80f;
 	[Net] public float WalkSpeed { get; set; } = 200f;
 	[Net] public float RunSpeed { get; set; } = 350f;
 	[Net] public float Acceleration { get; set; } = 1200f; // Units per second
 	[Net] public float Deceleration { get; set; } = 400f; // Units per second
 
 	public float StunSpeed => (float)(WalkSpeed + (RunSpeed - WalkSpeed) * Math.Sin( 45f.DegreeToRadian() ));
-	public float WishSpeed => InputDirection.IsNearlyZero() ? 0 : (IsRunning ? RunSpeed : WalkSpeed);
+	public float WishSpeed => InputDirection.IsNearlyZero() ? 0 : ( IsCrouching ? CrouchSpeed : (IsRunning ? RunSpeed : WalkSpeed) );
 	public Vector3 WishVelocity => ( InputDirection.IsNearlyZero() || IsStunned )
 		? Vector3.Zero
 		: InputDirection * Rotation.FromYaw( InputAngles.yaw ) * WishSpeed;
-	public bool IsRunning => Input.Down( "run" );
 
 	public float StepSize => 16f;
 	public float WalkAngle => 46f;
@@ -92,6 +92,8 @@ public partial class Player
 				slippingSound.Stop();
 		}*/
 
+		//if ( IsCrouching )
+
 		var helper = new MoveHelper( Position, Velocity );
 		helper.MaxStandableAngle = WalkAngle;
 
@@ -106,9 +108,14 @@ public partial class Player
 		Position = helper.Position;
 		Velocity = helper.Velocity;
 
-		CalculateStun( helper );
-		CalculateTrip( helper );
-		CalculateSlip( helper );
+		if ( IsRunning )
+			CalculateStun( helper );
+
+		if ( !IsCrouching )
+		{
+			CalculateTrip( helper );
+			CalculateSlip( helper );
+		}
 
 		var traceDown = helper.TraceDirection( Vector3.Down );
 

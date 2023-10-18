@@ -6,15 +6,15 @@ partial class Player : AnimatedEntity
 
 	[Net, Change] public int Money { get; private set; }
 
-	public virtual float CollisionRadius { get; set; } = 12f;
-	public virtual float CollisionHeight { get; set; } = 72f;
+	public float CollisionRadius => 12f;
+	public float CollisionHeight => IsCrouching ?  36f : 72f;
 	public Capsule CollisionCapsule => new Capsule( Vector3.Up * CollisionRadius, Vector3.Up * (CollisionHeight - CollisionRadius), CollisionRadius );
 	public override void Spawn()
 	{
 		base.Spawn();
 
 		SetModel( "models/robber/robber.vmdl" );
-		SetupPhysicsFromOrientedCapsule( PhysicsMotionType.Keyframed, CollisionCapsule );
+		RebuildCollisions();
 
 		Tags.Add( "player" );
 
@@ -33,11 +33,31 @@ partial class Player : AnimatedEntity
 		mask.EnableHideInFirstPerson = true;
 	}
 
+	public void RebuildCollisions() => SetupPhysicsFromOrientedCapsule( PhysicsMotionType.Keyframed, CollisionCapsule );
+
 
 	[ClientInput] public Vector3 InputDirection { get; protected set; }
 	[ClientInput] public Angles InputAngles { get; protected set; }
+	[ClientInput] public bool IsRunning { get; protected set; }
+	[ClientInput]
+	public bool IsCrouching
+	{
+		get => crouching;
+		protected set
+		{
+			if ( value != crouching )
+			{
+				crouching = value;
+				RebuildCollisions();
+			}
+		}
+	}
+
+
+	public bool crouching = false;
+
 	public Rotation InputRotation => InputAngles.ToRotation();
-	public Vector3 EyePosition => Position + Vector3.Up * 64f;
+	public Vector3 EyePosition => Position + Vector3.Up * ( IsCrouching ? 28f : 64f );
 
 	public override void BuildInput()
 	{
@@ -47,6 +67,17 @@ partial class Player : AnimatedEntity
 
 			InputAngles += Input.AnalogLook;
 			InputAngles = InputAngles.WithPitch( Math.Clamp( InputAngles.pitch, -89.9f, 89.9f ) );
+		}
+
+		if ( !MovementLocked )
+		{
+			IsRunning = Input.Down( "run" );
+			IsCrouching = Input.Down( "crouch" );
+		}
+		else
+		{
+			IsRunning = false;
+			IsCrouching = false;
 		}
 	}
 
@@ -111,6 +142,7 @@ partial class Player : AnimatedEntity
 		var animationHelper = new CitizenAnimationHelper( this );
 		animationHelper.WithVelocity( Velocity );
 		animationHelper.WithLookAt( Position + InputRotation.Forward * 10f, 0f, remapped, 0.8f );
+		animationHelper.DuckLevel = IsCrouching ? 2f : 0f;
 
 		animationHelper.IsGrounded = GroundEntity != null;
 		SetAnimParameter( "special_movement_states", IsStunned ? 1 : ( IsTripping ? 2 : ( IsSlipping ? 3 : 0 ) ) );
