@@ -25,21 +25,41 @@ public partial class Player
 	public float StunBounceVelocity => 100f;
 
 	static string[] ignoreTags = new[] { "player", "npc", "nocollide", "loot" };
-	//Sound slippingSound;
-	//TimeSince lastSlip;
+	Sound skiddingSound;
+	float baseSkiddingVolume = 0.1f;
+	float skiddingVolume = 0.2f;
 
 	protected void SimulateController()
 	{
 		if ( !MovementLocked )
 		{
-			if ( WishVelocity.Length > Velocity.WithZ( 0 ).Length )
+			if ( WishVelocity.Length >= Velocity.WithZ( 0 ).Length ) // Accelerating
 			{
 				Velocity += WishVelocity.WithZ( 0 ).Normal * Acceleration * Time.Delta;
 				Velocity = Velocity.WithZ( 0 ).ClampLength( WishSpeed ).WithZ( Velocity.z );
+
+
+				skiddingVolume = Math.Max( skiddingVolume -= Time.Delta, 0f );
 			}
-			else
-				Velocity = Velocity.WithZ( 0 ).ClampLength( Math.Max( Velocity.WithZ( 0 ).Length - Deceleration / ( Velocity.WithZ( 0 ).Length / WalkSpeed * 1.5f ) * Time.Delta, 0 ) ).WithZ( Velocity.z );
+			else // Decelerating
+			{
+				var momentumCoefficent = Velocity.WithZ( 0 ).Length / WalkSpeed * 1.2f; // Faster you move, more momentum you have, harder to stop
+				Velocity = Velocity.WithZ( 0 ).ClampLength( Math.Max( Velocity.WithZ( 0 ).Length - Deceleration / momentumCoefficent * Time.Delta, 0 ) ).WithZ( Velocity.z );
+
+				using ( Prediction.Off() )
+				{
+					if ( !skiddingSound.IsPlaying )
+						skiddingSound = PlaySound( "sounds/drift.sound" );
+
+					if ( Velocity.WithZ( 0 ).Length >= WalkSpeed * 1.1f )
+						skiddingVolume = Math.Min( skiddingVolume += Time.Delta, skiddingVolume );
+					else
+						skiddingVolume = Math.Max( skiddingVolume -= Time.Delta, 0f );
+				}
+			}
 		}
+
+		skiddingSound.SetVolume( skiddingVolume );
 
 		/*
 		Log.Error( WishVelocity.WithZ( 0 ).Normal.Angle( Velocity.WithZ( 0 ).Normal ) );
