@@ -24,6 +24,13 @@ partial class Player : AnimatedEntity
 
 		// Remember to create the container component!!!
 		Components.GetOrCreate<ContainerComponent>();
+
+		// Mask
+		var mask = new ModelEntity();
+		mask.SetModel( "models/robber/mask.vmdl" );
+		mask.SetParent( this, true );
+		mask.Transmit = TransmitType.Always;
+		mask.EnableHideInFirstPerson = true;
 	}
 
 
