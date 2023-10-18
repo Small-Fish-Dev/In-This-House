@@ -137,7 +137,10 @@ partial class Player : AnimatedEntity
 		if ( MovementLocked )
 			Rotation = Rotation.LookAt( Velocity.WithZ( 0 ), Vector3.Up );
 		else
+		{
+			if ( !IsStunned )
 			Rotation = Rotation.FromYaw( InputAngles.yaw );
+		}
 
 		var remapped = MathX.Remap( Velocity.Length, 0, 150, 0.5f, 1f );
 		var animationHelper = new CitizenAnimationHelper( this );

@@ -24,7 +24,7 @@ public partial class Player
 
 	public float StepSize => 16f;
 	public float WalkAngle => 46f;
-	public float StunBounceVelocity => 100f;
+	public float StunBounceVelocity => 500f;
 
 	static string[] ignoreTags = new[] { "player", "npc", "nocollide", "loot" };
 	Sound skiddingSound;
@@ -174,7 +174,9 @@ public partial class Player
 				{
 					var difference = MathX.Remap( wallVelocity.Length, WalkSpeed, RunSpeed );
 					Stun( difference );
+
 					Velocity += tr.Normal * (CollisionRadius + StunBounceVelocity);
+					Rotation = Rotation.LookAt( -tr.Normal, Vector3.Up );
 
 					// Let's randomly throw out an item when we crash.
 					if ( Game.IsServer )
