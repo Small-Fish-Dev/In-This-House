@@ -6,17 +6,30 @@
 <root>
 	@if ( Player.UsableEntity is not null )
 	{
-		<label>Hold the use key to @Player.UsableEntity.UseString</label> 
+		<span>Hold </span><inputglyph action="use" /><span>to @(Player.UsableEntity.UseString).</span>
 	}
 </root>
 
 @code {
-
 	public Player Player;
 
 	protected override int BuildHash()
 	{
 		return HashCode.Combine( Player.UsableEntity );
 	}
-
 }
+
+
+<style>
+	InteractionTip {
+		color: white;
+		font-size: 32px;
+		text-shadow: 4px 4px 0px black;
+
+		InputGlyph {
+			width: 32px;
+			aspect-ratio: 1;
+			margin: 0px 10px 0px 10px;
+		}
+	}
+</style>
