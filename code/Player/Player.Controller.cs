@@ -26,11 +26,13 @@ public partial class Player
 
 	static string[] ignoreTags = new[] { "player", "npc", "nocollide", "loot" };
 	Sound skiddingSound;
-	float baseSkiddingVolume = 0.1f;
-	float skiddingVolume = 0.2f;
+	float baseSkiddingVolume = 0.3f;
+	float skiddingVolume;
+	TimeSince lastAcceleration;
 
 	protected void SimulateController()
 	{
+		baseSkiddingVolume = 0.3f;
 		if ( !MovementLocked )
 		{
 			if ( WishVelocity.Length >= Velocity.WithZ( 0 ).Length ) // Accelerating
@@ -38,26 +40,38 @@ public partial class Player
 				Velocity += WishVelocity.WithZ( 0 ).Normal * Acceleration * Time.Delta;
 				Velocity = Velocity.WithZ( 0 ).ClampLength( WishSpeed ).WithZ( Velocity.z );
 
+				if ( WishVelocity.WithZ( 0 ).Normal.Angle( Velocity.WithZ( 0 ).Normal ) >= 65f )
+				{
+					if ( Velocity.WithZ( 0 ).Length >= WalkSpeed * 1.1f )
+						skiddingVolume = Math.Min( skiddingVolume + Time.Delta, baseSkiddingVolume );
+				}
+				else
+					skiddingVolume = Math.Max( skiddingVolume - Time.Delta, 0f );
 
-				skiddingVolume = Math.Max( skiddingVolume -= Time.Delta, 0f );
+				lastAcceleration = 0f;
 			}
 			else // Decelerating
 			{
 				var momentumCoefficent = Velocity.WithZ( 0 ).Length / WalkSpeed * 1.2f; // Faster you move, more momentum you have, harder to stop
 				Velocity = Velocity.WithZ( 0 ).ClampLength( Math.Max( Velocity.WithZ( 0 ).Length - Deceleration / momentumCoefficent * Time.Delta, 0 ) ).WithZ( Velocity.z );
 
-				using ( Prediction.Off() )
+				if ( lastAcceleration >= 0.1f )
 				{
-					if ( !skiddingSound.IsPlaying )
-						skiddingSound = PlaySound( "sounds/drift.sound" );
-
 					if ( Velocity.WithZ( 0 ).Length >= WalkSpeed * 1.1f )
-						skiddingVolume = Math.Min( skiddingVolume += Time.Delta, skiddingVolume );
+						skiddingVolume = Math.Min( skiddingVolume + Time.Delta, baseSkiddingVolume );
 					else
-						skiddingVolume = Math.Max( skiddingVolume -= Time.Delta, 0f );
+						skiddingVolume = Math.Max( skiddingVolume - Time.Delta, 0f );
 				}
 			}
 		}
+
+		if ( skiddingVolume > 0f )
+		{
+			if ( !skiddingSound.IsPlaying )
+				skiddingSound = PlaySound( "sounds/drift.sound" );
+		}
+		else
+			skiddingSound.Stop();
 
 		skiddingSound.SetVolume( skiddingVolume );
 
