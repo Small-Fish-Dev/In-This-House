@@ -106,6 +106,8 @@ public partial class NPC : AnimatedEntity
 						door.Close( this );
 					} );
 				}
+				else
+					Velocity = Velocity + door.Rotation.Forward * Time.Delta * 1000f;
 			}
 	}
 
