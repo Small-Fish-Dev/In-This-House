@@ -1,4 +1,5 @@
 ﻿using GridAStar;
+using Sandbox;
 
 namespace BrickJam;
 
@@ -64,12 +65,48 @@ public partial class NPC : AnimatedEntity
 			}
 		}
 
-		if ( Target != null )
+		if ( Target != null ) // Kill player is in range
 			if ( Target.Position.Distance( Position ) <= 40f )
 				CatchPlayer( Target );
 
+		if ( IsFollowingPath )
+			foreach ( var door in Entity.All.OfType<Door>() )
+			{
+				if ( door.Position.Distance( Position ) <= 60f )
+				if ( door.State == DoorState.Closed )
+					door.State = DoorState.Open;
+			}
+
+		ComputeOpenDoors();
 		ComputeNavigation();
 		ComputeMotion();
+	}
+
+	public virtual void ComputeOpenDoors()
+	{
+		var startPos = Position + Vector3.Up * CollisionCapsule.CenterB.z;
+		var endPos = startPos + Rotation.Forward * 60;
+		var doorTrace = Trace.Ray( startPos, endPos )
+			.Size( 20f )
+			.DynamicOnly()
+			.WithAnyTags( "door" )
+			.Ignore( this )
+			.Run();
+
+		if ( doorTrace.Hit )
+			if ( doorTrace.Entity is Door door )
+			{
+				if ( door.State == DoorState.Closed || door.State == DoorState.Closing )
+				{
+					door.Open( this );
+
+					GameTask.RunInThreadAsync( async () =>
+					{
+						await GameTask.Delay( 2000 );
+						door.Close( this );
+					} );
+				}
+			}
 	}
 
 	public virtual void CatchPlayer( Player player )
