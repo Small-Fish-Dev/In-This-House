@@ -6,7 +6,7 @@ partial class Player : AnimatedEntity
 
 	[Net, Change] public int Money { get; private set; }
 
-	public float CollisionRadius => 12f;
+	public float CollisionRadius => IsCrouching ? 22f : 12f;
 	public float CollisionHeight => IsCrouching ?  36f : 72f;
 	public Capsule CollisionCapsule => new Capsule( Vector3.Up * CollisionRadius, Vector3.Up * (CollisionHeight - CollisionRadius), CollisionRadius );
 	public override void Spawn()
@@ -61,7 +61,7 @@ partial class Player : AnimatedEntity
 
 	public override void BuildInput()
 	{
-		if ( CanUse )
+		if ( !CommandsLocked )
 		{
 			InputDirection = Input.AnalogMove;
 
@@ -137,7 +137,10 @@ partial class Player : AnimatedEntity
 		if ( MovementLocked )
 			Rotation = Rotation.LookAt( Velocity.WithZ( 0 ), Vector3.Up );
 		else
+		{
+			if ( !IsStunned )
 			Rotation = Rotation.FromYaw( InputAngles.yaw );
+		}
 
 		var remapped = MathX.Remap( Velocity.Length, 0, 150, 0.5f, 1f );
 		var animationHelper = new CitizenAnimationHelper( this );

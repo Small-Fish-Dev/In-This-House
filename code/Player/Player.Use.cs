@@ -60,7 +60,7 @@ partial class Player : AnimatedEntity
 		}
 
 		// Cancel and return if we're unable to interact with anything (stunned, tied up or what not)
-		if ( !CanUse )
+		if ( !!CommandsLocked )
 		{
 			CancelInteraction();
 			return;
