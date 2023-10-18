@@ -15,13 +15,6 @@ public partial class MansionGame : GameManager
 		pawn.Inventory.Add( new ItemEntry { Prefab = item, Rarity = rarity }, amount );
 	}
 
-	[ConCmd.Admin( "set_state" )]
-	public static void SetState( string state )
-	{
-		if ( state == "play" || state == "playing" )
-			SetState<PlayingState>();
-	}
-
 	[ConCmd.Admin( "set_level" )]
 	public static void SetLevel( string level )
 	{
