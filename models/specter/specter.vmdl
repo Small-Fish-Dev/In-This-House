@@ -43,6 +43,7 @@
 							exception_list = 
 							[
 								"lantern",
+								"specter",
 							]
 						}
 					},
