@@ -15,7 +15,7 @@
 				{
 					_class = "CStateMachineAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 32.0, 0.0 ]
+					m_vecPosition = [ 208.0, 0.0 ]
 					m_nNodeID = 
 					{
 						m_id = 33774337
@@ -111,7 +111,7 @@
 									{
 										m_id = 1233047042
 									}
-									m_bReset = true
+									m_bReset = false
 									m_resetCycleOption = "Beginning"
 									m_flFixedCycleValue = 0.0
 									m_blendCurve = 
@@ -133,7 +133,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 731603046
+									m_id = 101272633
 								}
 								m_outputID = 
 								{
@@ -159,13 +159,67 @@
 			{
 				key = 
 				{
+					m_id = 101272633
+				}
+				value = 
+				{
+					_class = "CBoneMaskAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -16.0, 80.0 ]
+					m_nNodeID = 
+					{
+						m_id = 101272633
+					}
+					m_networkMode = "ServerAuthoritative"
+					m_sNote = ""
+					m_weightListName = "upperbody"
+					m_inputConnection1 = 
+					{
+						m_nodeID = 
+						{
+							m_id = 885833097
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_inputConnection2 = 
+					{
+						m_nodeID = 
+						{
+							m_id = 731603046
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_blendSpace = "BlendSpace_Parent"
+					m_bUseBlendScale = false
+					m_blendValueSource = "Parameter"
+					m_blendParameter = 
+					{
+						m_id = 4294967295
+					}
+					m_timingBehavior = "UseChild2"
+					m_flTimingBlend = 0.5
+					m_flRootMotionBlend = 0.0
+					m_footMotionTiming = "Child1"
+					m_bResetChild1 = false
+					m_bResetChild2 = true
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 731603046
 				}
 				value = 
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -176.0, 48.0 ]
+					m_vecPosition = [ -272.0, 48.0 ]
 					m_nNodeID = 
 					{
 						m_id = 731603046
@@ -187,7 +241,7 @@
 				{
 					_class = "CBlend2DAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -176.0, 0.0 ]
+					m_vecPosition = [ -272.0, 0.0 ]
 					m_nNodeID = 
 					{
 						m_id = 885833097
@@ -244,7 +298,7 @@
 				{
 					_class = "CRootAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 240.0, 0.0 ]
+					m_vecPosition = [ 416.0, 0.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1988093773

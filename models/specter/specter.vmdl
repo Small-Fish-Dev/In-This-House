@@ -139,12 +139,32 @@
 						source_filename = "models/specter/attack.fbx"
 						start_frame = -1
 						end_frame = -1
-						framerate = 36.0
+						framerate = 30.0
 						take = 0
 						reverse = false
 					},
 				]
 				default_root_bone_name = ""
+			},
+			{
+				_class = "WeightListList"
+				children = 
+				[
+					{
+						_class = "WeightList"
+						name = "upperbody"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "spine1"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+				]
 			},
 		]
 		model_archetype = ""
