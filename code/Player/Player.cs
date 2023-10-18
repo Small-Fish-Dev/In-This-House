@@ -125,6 +125,7 @@ partial class Player : AnimatedEntity
 				v.Group( "movement", () =>
 				{
 					v.Value( "running?", IsRunning );
+					v.Value( "croushing?", IsCrouching );
 					v.Value( "wish speed", WishSpeed );
 				} );
 			} );

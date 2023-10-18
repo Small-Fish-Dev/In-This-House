@@ -19,6 +19,7 @@ public partial class Player
 	public Vector3 WishVelocity => ( InputDirection.IsNearlyZero() || IsStunned )
 		? Vector3.Zero
 		: InputDirection * Rotation.FromYaw( InputAngles.yaw ) * WishSpeed;
+	public bool IsAboveWalkingSpeed => Velocity.WithZ( 0 ).Length >= WalkSpeed * 1.1f;
 
 	public float StepSize => 16f;
 	public float WalkAngle => 46f;
@@ -42,7 +43,7 @@ public partial class Player
 
 				if ( WishVelocity.WithZ( 0 ).Normal.Angle( Velocity.WithZ( 0 ).Normal ) >= 65f )
 				{
-					if ( Velocity.WithZ( 0 ).Length >= WalkSpeed * 1.1f )
+					if ( IsAboveWalkingSpeed )
 						skiddingVolume = Math.Min( skiddingVolume + Time.Delta, baseSkiddingVolume );
 				}
 				else
@@ -57,7 +58,7 @@ public partial class Player
 
 				if ( lastAcceleration >= 0.1f )
 				{
-					if ( Velocity.WithZ( 0 ).Length >= WalkSpeed * 1.1f )
+					if ( IsAboveWalkingSpeed )
 						skiddingVolume = Math.Min( skiddingVolume + Time.Delta, baseSkiddingVolume );
 					else
 						skiddingVolume = Math.Max( skiddingVolume - Time.Delta, 0f );
@@ -108,7 +109,7 @@ public partial class Player
 		Position = helper.Position;
 		Velocity = helper.Velocity;
 
-		if ( IsRunning )
+		if ( IsAboveWalkingSpeed )
 			CalculateStun( helper );
 
 		if ( !IsCrouching )
