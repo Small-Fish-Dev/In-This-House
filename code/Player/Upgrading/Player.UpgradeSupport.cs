@@ -58,6 +58,14 @@ public partial class Player
 			return;
 		}
 
+		foreach ( var upgradeDependency in upgrade.Dependencies.Where( upgradeDependency =>
+			         !caller.HasUpgrade( upgradeDependency ) ) )
+		{
+			Log.Warning(
+				$"{ConsoleSystem.Caller.Name} doesn't have dependency {upgradeDependency} for upgrade {identifier}" );
+			return;
+		}
+
 		if ( upgrade.Price > caller.Money )
 		{
 			Log.Warning( $"{ConsoleSystem.Caller.Name} doesn't have the funds for upgrade {identifier}" );
