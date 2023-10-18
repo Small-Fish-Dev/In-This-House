@@ -34,7 +34,6 @@ public partial class Player
 
 	protected void SimulateController()
 	{
-		baseSkiddingVolume = 0.3f;
 		if ( !MovementLocked )
 		{
 			if ( WishVelocity.Length >= Velocity.WithZ( 0 ).Length ) // Accelerating
@@ -76,25 +75,6 @@ public partial class Player
 			skiddingSound.Stop();
 
 		skiddingSound.SetVolume( skiddingVolume );
-
-		/*
-		Log.Error( WishVelocity.WithZ( 0 ).Normal.Angle( Velocity.WithZ( 0 ).Normal ) );
-
-		if ( Game.IsServer )
-		{
-			if ( Velocity.Length >= WalkSpeed * 1.1f && WishVelocity.WithZ( 0 ).Normal.Angle( Velocity.WithX( 0 ).Normal ) >= 30f )
-				lastSlip = 0f;
-
-			if ( lastSlip <= 0.1f )
-			{
-				if ( !slippingSound.IsPlaying )
-					slippingSound = PlaySound( "sounds/running.sound" );
-			}
-			else
-				slippingSound.Stop();
-		}*/
-
-		//if ( IsCrouching )
 
 		var helper = new MoveHelper( Position, Velocity );
 		helper.MaxStandableAngle = WalkAngle;
