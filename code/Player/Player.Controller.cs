@@ -38,7 +38,7 @@ public partial class Player
 				Velocity = Velocity.WithZ( 0 ).ClampLength( WishSpeed ).WithZ( Velocity.z );
 			}
 			else
-				Velocity = Velocity.WithZ( 0 ).ClampLength( Math.Max( Velocity.WithZ( 0 ).Length - Deceleration * Time.Delta, 0 ) ).WithZ( Velocity.z );
+				Velocity = Velocity.WithZ( 0 ).ClampLength( Math.Max( Velocity.WithZ( 0 ).Length - Deceleration / ( Velocity.WithZ( 0 ).Length / WalkSpeed * 1.5f ) * Time.Delta, 0 ) ).WithZ( Velocity.z );
 		}
 
 		/*
