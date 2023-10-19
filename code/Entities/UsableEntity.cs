@@ -5,7 +5,9 @@ public class UsableEntity : ModelEntity
 	public virtual float InteractionDuration => 1.0f;
 	public virtual string UseString => $"interact with {GetType().FullName}";
 	public virtual bool CanUse => true;
-	
+
+	public Player User { get; set; }
+
 	public override void Spawn()
 	{
 		base.Spawn();

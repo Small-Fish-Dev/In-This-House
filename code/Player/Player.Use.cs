@@ -1,27 +1,28 @@
 ﻿using Sandbox;
 using System;
+using System.Collections.Immutable;
 using System.Linq;
 
 namespace BrickJam;
 
 partial class Player : AnimatedEntity
 {
+	public partial class InteractionRequest : BaseNetworkable
+	{
+		[Net] public UsableEntity Entity { get; set; }
+		[Net] public TimeUntil Complete { get; set; }
+	}
+
 	/// <summary>
 	/// Entity we're currently using
 	/// </summary>
 	[Net]
-	public UsableEntity CurrentlyUsedEntity { get; set; }
-
-	/// <summary>
-	/// How long have we been interacting with UsableEntity
-	/// </summary>
-	[Net]
-	public TimeUntil InteractionComplete { get; set; }
+	public IList<InteractionRequest> InteractionRequests { get; set; }
 
 	/// <summary>
 	/// A usable entity that we're looking at
 	/// </summary>
-	public UsableEntity UsableEntity { get; set; }
+	public UsableEntity UsableEntity { get; private set; }
 
 	public float UseRange => 120f;
 
@@ -59,48 +60,85 @@ partial class Player : AnimatedEntity
 					UsableEntity = foundUsable;
 		}
 
-		// Cancel and return if we're unable to interact with anything (stunned, tied up or what not)
-		if ( !!CommandsLocked )
+		if ( Game.IsServer )
 		{
-			CancelInteraction();
-			return;
-		}
+			// Cancel and return if we're unable to interact with anything (stunned, tied up or what not)
+			if ( CommandsLocked )
+			{
+				CancelInteractions();
+				return;
+			}
 
-		if ( CurrentlyUsedEntity is not null )
-		{
-			// If we are not looking at the same entity as frame earlier or we have released the use key
-			// then we should cancel the interaction.
-			if ( CurrentlyUsedEntity != UsableEntity || !Input.Down( "use" ) )
-				CancelInteraction();
-
-			if ( InteractionComplete )
-				FinishInteraction();
-		}
-		else
-		{
 			if ( UsableEntity is not null && Input.Pressed( "use" ) )
 			{
-				CurrentlyUsedEntity = UsableEntity;
-				InteractionComplete = UsableEntity.InteractionDuration;
+				// Grab if no one uses it
+				if ( !UsableEntity.User.IsValid() )
+					EnqueueInteraction( UsableEntity );
+				// Interact with the item twice to cancel
+				else if ( UsableEntity.User == this )
+				{
+					var ir = InteractionRequests.FirstOrDefault(
+						interactionRequest => interactionRequest.Entity == UsableEntity
+					);
+					if ( ir is not null )
+						InteractionRequests.Remove( ir );
+
+					CancelInteraction( UsableEntity );
+				}
 			}
+
+			// Go through each interaction request, remove those that are either finished or not valid 
+			foreach ( var interactionRequest in InteractionRequests.Where( ShouldRemoveEntityFromQueue ).ToList() )
+				InteractionRequests.Remove( interactionRequest );
 		}
 	}
 
-	protected void FinishInteraction()
+	private bool ShouldRemoveEntityFromQueue( InteractionRequest interactionRequest )
 	{
-		if ( CurrentlyUsedEntity is null )
-			return;
+		// Remove the invalid interaction requests
+		if ( !interactionRequest.Entity.IsValid()
+		     || interactionRequest.Entity.Position.Distance( Position ) > UseRange )
+		{
+			CancelInteraction( interactionRequest.Entity );
+			return true;
+		}
 
-		CurrentlyUsedEntity.Use( this );
-		CurrentlyUsedEntity = null;
+		if ( !interactionRequest.Complete )
+			return false;
+
+		FinishInteraction( interactionRequest.Entity );
+		return true;
 	}
 
-	protected void CancelInteraction()
+	private void EnqueueInteraction( UsableEntity entity )
 	{
-		if ( CurrentlyUsedEntity is null )
-			return;
+		Game.AssertServer();
 
-		CurrentlyUsedEntity = null;
-		InteractionComplete = 0;
+		entity.User = this;
+		InteractionRequests.Add( new InteractionRequest { Complete = entity.InteractionDuration, Entity = entity } );
+	}
+
+	private void FinishInteraction( UsableEntity entity )
+	{
+		Game.AssertServer();
+
+		entity.Use( this );
+		entity.User = null;
+	}
+
+	private void CancelInteraction( UsableEntity entity )
+	{
+		Game.AssertServer();
+
+		if ( entity.IsValid() )
+			entity.User = null;
+	}
+
+	private void CancelInteractions()
+	{
+		foreach ( var interactionRequest in InteractionRequests )
+			CancelInteraction( interactionRequest.Entity );
+
+		InteractionRequests.Clear();
 	}
 }

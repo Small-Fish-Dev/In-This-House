@@ -1,0 +1,57 @@
+﻿@using Sandbox.UI;
+
+@namespace BrickJam.UI
+@inherits Panel
+
+<root>
+	@foreach ( var interactionRequest in Player.InteractionRequests.Where( ir => ir.Entity is not null && ir.Entity.IsValid ) )
+	{
+		<RadialProgress
+			class="ir"
+			style="@GetPosition( interactionRequest )"
+			@InnerDiameterPercent=@( 75f )
+			@Progress=@( () => interactionRequest.Entity.IsValid() ? 1 - interactionRequest.Complete / interactionRequest.Entity.InteractionDuration : 0 )/>
+	}
+</root>
+
+<style>
+	Interactions {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		
+		z-index: 0;
+		
+		.ir {
+			position: absolute;
+			
+			transform: translate(-50%, -50%);
+			
+			z-index: 0;
+		}
+	}
+</style>
+
+@code {
+
+	public Player Player { get; set; }
+
+	private string GetPosition( Player.InteractionRequest interactionRequest )
+	{
+		var position = interactionRequest.Entity.WorldSpaceBounds.Center.ToScreen();
+		return position.z < 0 || position.LengthSquared > 2 * 2 ? "display: none" : $"left: {position.x * 100}vw; top: {position.y * 100}vh";
+	}
+
+	protected override int BuildHash()
+	{
+		if ( Player.InteractionRequests.Count > 0 )
+			return HashCode.Combine( Time.Now ); // Redraw every tick if we have anything on the screen
+
+		// TODO: not sure if it's a proper way of doing that
+		var hash = HashCode.Combine( Player.InteractionRequests );
+		return Player.InteractionRequests.Aggregate( hash, HashCode.Combine );
+	}
+
+}

@@ -48,7 +48,7 @@
         return HashCode.Combine( Style.Opacity.ToString() );
     }
 
-    [Event.Client.Frame]
+    [GameEvent.Client.Frame]
     private void calculateOpacity()
     {
         Style.Opacity = CurrentState switch

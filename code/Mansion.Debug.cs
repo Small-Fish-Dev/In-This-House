@@ -31,9 +31,8 @@ public partial class MansionGame : GameManager
 		var t = Instance.GetSpawnPoint();
 		if ( ConsoleSystem.Caller.Pawn is Player player )
 		{
-			Log.Error( "TODO: kill the player instead" );
-			t = new Transform(player.EyePosition, player.Rotation);
-			player.Delete();
+			t = new Transform(player.EyePosition, player.InputRotation); // TODO: network inputrotation
+			player.Kill();
 		}
 
 		var spectator = new Spectator { Transform = t };

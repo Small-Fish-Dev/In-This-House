@@ -4,7 +4,7 @@ namespace BrickJam;
 
 public partial class Player
 {
-	[Net, Change( "NetUpgradesEvent" )] public List<string> Upgrades { get; set; } = new();
+	[Net, Change( "NetUpgradesEvent" )] public IList<string> Upgrades { get; set; }
 
 	private static Upgrade _combinedUpgrades;
 	public static Upgrade CombinedUpgrades => _combinedUpgrades;

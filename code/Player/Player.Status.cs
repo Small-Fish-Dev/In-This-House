@@ -2,8 +2,8 @@
 
 public partial class Player
 {
-	public bool CommandsLocked => IsStunned || IsTripping || IsSlipping;
-	public bool MovementLocked => IsTripping || IsSlipping;
+	public bool CommandsLocked => IsStunned || IsTripping || IsSlipping || !IsAlive;
+	public bool MovementLocked => IsTripping || IsSlipping || !IsAlive;
 
 	[Net] public float StunDuration { get; set; } = 1.5f;
 	public bool IsStunned => !StunLeft;
@@ -21,7 +21,6 @@ public partial class Player
 			.SetVolume( multiplier );
 
 		StunLeft = StunDuration * multiplier;
-		CancelInteraction();
 	}
 
 	[Net] public float TripDuration { get; set; } = 1.5f;
@@ -35,7 +34,6 @@ public partial class Player
 		//	.SetVolume( multiplier );
 
 		TripLeft = TripDuration;
-		CancelInteraction();
 	}
 
 	[Net] public float SlipDuration { get; set; } = 1f;
