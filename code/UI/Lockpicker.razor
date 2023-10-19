@@ -4,38 +4,57 @@
 @namespace BrickJam.UI
 @inherits Panel
 
-<style>
-	Lockpicker {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-		justify-content: center;
-		align-items: center;
-
-		.scene {
-			width: 700px;
-			height: 700px;
-			background-size: 100%;
-			background-repeat: no-repeat;
-			background-position: center;
-			background-color: rgba(black, 0.2);
-		}
-    }
-</style>
-
 <root>
 </root>
 
 @code {
+	// Valid range for our lockpicking.
+	public const float RANGE = 5f;
+
+	public LockedComponent Component { get; }
+	public float CorrectAngle { get; }
+
+	private static Lockpicker instance;
+
+	// Don't actually use this..
+	public Lockpicker() : this( null ) { }
+
+	public Lockpicker( LockedComponent component )
+	{
+		instance?.Delete( true );
+		instance = this;
+
+		Component = component;
+		CorrectAngle = Game.Random.Float( 0f, 90f );
+	}
+
+	public override void OnButtonEvent( ButtonEvent e )
+	{
+		base.OnButtonEvent( e );
+
+		if ( e.Button == "mouseleft" )
+			down = e.Pressed;
+	}
+
+	public static void Open( LockedComponent component )
+	{
+		var panel = new Lockpicker( component );
+		Hud.Instance.AddChild( panel );
+	}
+
+	SceneObject wrench;
+	SceneObject pick;
+
 	SceneModel padlock;
 	SceneCamera camera => panel.Camera;
 	ScenePanel panel;
 
-	TimeSince opened;
 	Transform targetTransform => new Transform( Vector3.Down * 3.5f, Rotation.From( 60, 0, 0 ) );
+
+	bool down = false;
+	bool solved = false;
 	float rotation = 0f;
+	float mouseAngle = 0;
 
 	protected override void OnAfterTreeRender( bool firstTime )
 	{
@@ -64,8 +83,17 @@
 		camera.FieldOfView = 60f;
 		camera.ZFar = 1000;
 		camera.ZNear = 5f;
-		opened = 0;
 		AddChild( panel );
+	}
+
+	private async void solvedAsync()
+	{
+		solved = true;
+		padlock.SetAnimParameter( "unlocked", true );
+		Component?.RequestLockpicked();
+
+		await GameTask.Delay( 500 );
+		Delete();
 	}
 
 	public override void Tick()
@@ -73,16 +101,63 @@
 		if ( camera == null || padlock == null )
 			return;
 
+		// Input stuff..
+		var rect = panel.Box.Rect;
+		var pivot = camera.ToScreen( padlock.GetAttachment( "hole" )?.Position ?? 0 );
+		var center = pivot - panel.MousePosition;
+
+		var targetRotation = down 
+			? MathX.Clamp( 90f, 0f, 90f - MathF.Abs( mouseAngle - CorrectAngle ) ) 
+			: 0;
+		rotation = MathX.Lerp( rotation, targetRotation, 4f * Time.Delta );
+		mouseAngle = down 
+			? mouseAngle 
+			: MathX.Clamp( 
+				90 - MathF.Atan2( center.x, center.y ) * (180f / MathF.PI), 
+				0, 90 );
+
+		// Check if we've succesfully lockpicked!
+		if ( !solved && down
+		  && rotation.AlmostEqual( 90f, RANGE )
+		  && mouseAngle >= CorrectAngle - RANGE && mouseAngle <= CorrectAngle + RANGE )
+			solvedAsync();
+
 		// Camera stuff..
 		camera.Position = Vector3.Backward * 10f;
 		camera.Rotation = Rotation.From( 0, 0, 0 );
-
+		
 		// Padlock stuff..
 		padlock.Transform = Transform.Lerp( padlock.Transform, targetTransform, 2f * Time.Delta, true );
+		padlock.SetAnimParameter( "rotate", rotation );
 		padlock.Update( Time.Delta );
-
-		var index = 2;
-		var transform = padlock.GetBoneWorldTransform( index );
-		rotation = MathF.Abs( 90f * MathF.Sin( Time.Now * 2f ));
 	}
 }
+
+<style>
+	Lockpicker {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+		justify-content: center;
+		align-items: center;
+		pointer-events: all;
+		background-color: rgba(black, 0.75);
+		backdrop-filter: blur(4px);
+		transition: opacity 0.5s ease-in-out;
+
+		&:outro {
+			opacity: 0;
+		}
+
+		.scene {
+			width: 700px;
+			height: 700px;
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: center;
+			pointer-events: none;
+		}
+    }
+</style>
