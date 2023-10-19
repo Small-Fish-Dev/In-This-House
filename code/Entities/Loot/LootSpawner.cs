@@ -1,9 +1,9 @@
 ﻿using Editor;
+using Sandbox.Internal;
 
 namespace BrickJam;
 
 [HammerEntity]
-[EditorModel( "models/items/candle_holder/candle_holder.vmdl" )]
 public partial class LootSpawner : Entity
 {
 	[Property]
@@ -34,4 +34,35 @@ public partial class LootSpawner : Entity
 	}
 
 	public void DeleteLoot() => LootSpawned?.Delete();
+
+	#region HAMMER GIZMO
+	private static LootPrefab gizmoPrefab;
+	private static string gizmoPath;
+
+	public static void DrawGizmos( EditorContext context )
+	{
+		var path = context.Target.GetProperty( "LootToSpawn" ).As.String;
+		if ( path == null )
+			return;
+
+		if ( gizmoPath != path )
+		{
+			try
+			{
+				gizmoPrefab = GlobalGameNamespace.ResourceLibrary.Get<LootPrefab>( path );
+				gizmoPath = path;
+			}
+			catch {}
+		}
+
+		if ( gizmoPrefab == null )
+			return;
+
+		var model = Model.Load( gizmoPrefab.Model );
+		if ( model == null || model.IsError )
+			return;
+
+		Gizmo.Draw.Model( model );
+	}
+	#endregion
 }
