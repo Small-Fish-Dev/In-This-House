@@ -16,7 +16,7 @@ public abstract partial class Level : Entity // Easy replication to client
 {
 	public virtual LevelType Type { get; set; } = LevelType.None;
 	[Net] public Trapdoor Trapdoor { get; set; } = null;
-	[Net] public IList<NPC> Monsters { get; set; } = new();
+	[Net] public IList<NPC> Monsters { get; set; }
 	[Net] public TimeSince SinceStarted { get; set; } = 0f;
 
 	public Level() => Transmit = TransmitType.Always;
@@ -87,6 +87,9 @@ public abstract partial class Level : Entity // Easy replication to client
 
 		foreach ( var door in allDoorsInLevel )
 			door.Close();
+
+		foreach ( var loot in Entity.All.OfType<Loot>() )
+			loot.Delete();
 
 		return;
 	}
