@@ -20,26 +20,13 @@ public partial class MansionGame : GameManager
 	[Net] public TimeUntil TimeOut { get; set; }
 	[Net] public bool TimerActive { get; set; }
 
-	[Net] int seed { get; set; }
-	public static int Seed
-	{
-		get => Instance.seed;
-		protected set => Instance.seed = value;
-	}
-
-	[Net] Random random { get; set; }
-	public static Random Random
-	{
-		get => Instance.random;
-		protected set => Instance.random = value;
-	}
+	public static int Seed { get; set; } = 0;
+	public static Random Random { get; set; } = new Random();
 
 	public float TimePerLevel => 180.0f;
 
 	public MansionGame()
 	{
-		_instance = new WeakReference( this );
-
 		if ( Game.IsClient )
 		{
 			InitializeEffects();
@@ -52,7 +39,16 @@ public partial class MansionGame : GameManager
 	{
 		base.Spawn();
 
+		_instance = new WeakReference( this );
+
 		ResetRandomSeed();
+	}
+
+	public override void ClientSpawn()
+	{
+		base.ClientSpawn();
+
+		_instance = new WeakReference( this );
 	}
 
 	public static void ResetRandomSeed()
