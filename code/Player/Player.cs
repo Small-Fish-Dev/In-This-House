@@ -202,15 +202,17 @@ partial class Player : AnimatedEntity
 		var t = MansionGame.Instance.GetSpawnPoint();
 		t.Position += Vector3.Up * 50.0f;
 		Transform = t;
+
 		IsAlive = true;
+		EnableDrawing = true;
+		EnableAllCollisions = false;
 	}
 
 	public void Kill()
 	{
 		IsAlive = false;
-
-		if ( !All.OfType<Player>().Any( x => x.IsAlive ) )
-			MansionGame.RestartGame();
+		EnableDrawing = false;
+		EnableAllCollisions = false;
 	}
 
 	// Client callback for UI purposes
