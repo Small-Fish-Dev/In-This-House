@@ -8,9 +8,9 @@ Layer0
 	g_bFogEnabled "1"
 
 	//---- Material ----
-	Color "models/pissing_guy/materials/pissing_guy_color.png"
+	Color "models/pissing_guy/materials/pissing_guy_open_color.png"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
 	Metalness "materials/default/default_metal.tga"
-	Normal "models/pissing_guy/materials/pissing_guy_normal.png"
-	Roughness "models/pissing_guy/materials/pissing_guy_rough.png"
+	Normal "models/pissing_guy/materials/pissing_guy_open_normal.png"
+	Roughness "models/pissing_guy/materials/pissing_guy_open_rough.png"
 }

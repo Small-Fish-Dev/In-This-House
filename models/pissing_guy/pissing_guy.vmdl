@@ -11,6 +11,7 @@
 				[
 					{
 						_class = "DefaultMaterialGroup"
+						name = "closed"
 						remaps = 
 						[
 							{
@@ -20,6 +21,17 @@
 						]
 						use_global_default = false
 						global_default_material = ""
+					},
+					{
+						_class = "MaterialGroup"
+						name = "open"
+						remaps = 
+						[
+							{
+								from = "models/pissing_guy/pissing_guy.vmat"
+								to = "models/pissing_guy/materials/pissing_guy_open.vmat"
+							},
+						]
 					},
 				]
 			},
