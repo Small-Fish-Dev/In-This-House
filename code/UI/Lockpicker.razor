@@ -5,6 +5,15 @@
 @inherits Panel
 
 <root>
+	<div class="title">
+		<span>Move your mouse to rotate around the key hole.</span>
+		<div style="flex-direction: row; padding: 5px;">
+			<span>Hold down </span><inputglyph action="attack1" /> <span>to pick the lock.</span>
+		</div>
+		<div style="flex-direction: row;">
+			<span>Press </span><inputglyph action="attack2" /> <span>to exit.</span>
+		</div>
+	</div>
 </root>
 
 @code {
@@ -31,6 +40,9 @@
 	public override void OnButtonEvent( ButtonEvent e )
 	{
 		base.OnButtonEvent( e );
+
+		if ( e.Button == "mouseright" && !IsDeleting )
+			Delete();
 
 		if ( e.Button == "mouseleft" )
 			down = e.Pressed;
@@ -75,11 +87,14 @@
 
 		var transform = new Transform( Vector3.Down * 3.5f, Rotation.From( 0, 0, 0 ) );
 		padlock = new SceneModel( world, "models/items/lock/lock.vmdl", transform );
+		wrench = new SceneObject( world, "models/items/wrench/wrench.vmdl", Transform.Zero );
+		pick = new SceneObject( world, "models/items/pick/pick.vmdl", Transform.Zero );
+
 		panel = new ScenePanel();
 		panel.AddClass( "scene" );
 
 		camera.World = world;
-		camera.Size = 512;
+		camera.Size = 1024;
 		camera.FieldOfView = 60f;
 		camera.ZFar = 1000;
 		camera.ZNear = 5f;
@@ -103,7 +118,8 @@
 
 		// Input stuff..
 		var rect = panel.Box.Rect;
-		var pivot = camera.ToScreen( padlock.GetAttachment( "hole" )?.Position ?? 0 );
+		var hole = padlock.GetAttachment( "hole" ) ?? Transform.Zero;
+		var pivot = camera.ToScreen( hole.Position );
 		var center = pivot - panel.MousePosition;
 
 		var targetRotation = down 
@@ -123,9 +139,28 @@
 			solvedAsync();
 
 		// Camera stuff..
-		camera.Position = Vector3.Backward * 10f;
+		camera.Position = Vector3.Backward * 20f;
 		camera.Rotation = Rotation.From( 0, 0, 0 );
-		
+
+		// Wrench stuff..
+		var wTransform = new Transform( 
+			hole.Position + padlock.Rotation.Up * 1.2f + padlock.Rotation.Forward * 0.4f, 
+			hole.Rotation
+				.RotateAroundAxis( Vector3.Up, 40f )
+				.RotateAroundAxis( Vector3.Forward, -90 )
+		);
+		wrench.Transform = wTransform;
+
+		// Lockpick stuff..
+		var lTransform = new Transform( 
+			hole.Position + padlock.Rotation.Up * 1.2f + padlock.Rotation.Backward * 0.2f, 
+			hole.Rotation
+				.RotateAroundAxis( Vector3.Up, 90f )
+				.RotateAroundAxis( Vector3.Forward, 45f )
+				.RotateAroundAxis( Vector3.Up + Vector3.Left, mouseAngle )
+		);
+		pick.Transform = lTransform;
+
 		// Padlock stuff..
 		padlock.Transform = Transform.Lerp( padlock.Transform, targetTransform, 2f * Time.Delta, true );
 		padlock.SetAnimParameter( "rotate", rotation );
@@ -146,14 +181,32 @@
 		background-color: rgba(black, 0.75);
 		backdrop-filter: blur(4px);
 		transition: opacity 0.5s ease-in-out;
+		z-index: -1;
+
+		.title {
+			position: absolute;
+			top: 200px;
+			color: white;
+			font-size: 32px;
+			flex-direction: column;
+			align-items: center;
+			text-shadow: 3px 3px 0px black;
+			
+			InputGlyph {
+				width: 32;
+				aspect-ratio: 1;
+				margin-left: 5px;
+				margin-right: 5px;
+			}
+		}
 
 		&:outro {
 			opacity: 0;
 		}
 
 		.scene {
-			width: 700px;
-			height: 700px;
+			width: 1024px;
+			aspect-ratio: 1;
 			background-size: 100%;
 			background-repeat: no-repeat;
 			background-position: center;
