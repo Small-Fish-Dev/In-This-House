@@ -120,6 +120,12 @@ public partial class MansionGame
 		await Instance.CurrentLevel?.Start();
 	}
 
+	public static void RestartGame()
+	{
+		ResetRandomSeed();
+		SetLevel<ShopLevel>();
+	}
+
 	// For client callback
 	public void OnCurrentLevelChanged()
 	{

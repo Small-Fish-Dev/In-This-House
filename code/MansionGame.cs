@@ -19,6 +19,14 @@ public partial class MansionGame : GameManager
 
 	[Net] public TimeUntil TimeOut { get; set; }
 	[Net] public bool TimerActive { get; set; }
+
+	[Net] int seed { get; set; }
+	public static int Seed
+	{
+		get => Instance.seed;
+		protected set => Instance.seed = value;
+	}
+
 	[Net] Random random { get; set; }
 	public static Random Random
 	{
@@ -44,7 +52,15 @@ public partial class MansionGame : GameManager
 	{
 		base.Spawn();
 
-		Random = new Random( DateTime.UtcNow.Ticks.GetHashCode() );
+		ResetRandomSeed();
+	}
+
+	public static void ResetRandomSeed()
+	{
+		if ( !Game.IsServer ) return;
+
+		Seed = DateTime.UtcNow.Ticks.GetHashCode();
+		Random = new Random( Seed );
 	}
 
 	public Transform GetSpawnPoint() => GetSpawnPoint( CurrentLevel.Type );
