@@ -21,8 +21,17 @@ public abstract partial class Level : Entity // Easy replication to client
 
 	public Level() => Transmit = TransmitType.Always;
 
+	bool gameIsEnding = false;
+
 	[GameEvent.Tick.Server]
-	public virtual void Compute() { } // TODO: When restarting might be a problem if it runs while it awaits Start and End
+	public virtual void Compute() // TODO: When restarting might be a problem if it runs while it awaits Start and End
+	{
+		if ( !All.OfType<Player>().Any( x => x.IsAlive ) && !gameIsEnding )
+		{
+			MansionGame.RestartGame();
+			gameIsEnding = true;
+		}
+	}
 
 	public virtual async Task Start()
 	{
@@ -45,6 +54,8 @@ public abstract partial class Level : Entity // Easy replication to client
 		}
 
 		await GenerateGrid();
+
+		gameIsEnding = false;
 
 		return;
 	}
