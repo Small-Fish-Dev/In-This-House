@@ -37,8 +37,26 @@ public abstract partial class Level : Entity // Easy replication to client
 	{
 		await GameTask.NextPhysicsFrame();
 
-		foreach ( var player in Entity.All.OfType<Player>() )
-			player.Respawn();
+		foreach ( var client in Game.Clients )
+		{
+			switch (client.Pawn)
+			{
+				case Player player:
+					player.Respawn();
+					break;
+				case Spectator spectator:
+					{
+						var body = spectator.Body.IsValid() ? spectator.Body : new Player();
+						body.Respawn();
+						client.Pawn = body;
+						spectator.Delete();
+						break;
+					}
+			}
+		}
+
+		foreach ( var player in Entity.All.OfType<Player>().Where( p => p.Client is null ) )
+			player.Delete();
 
 		var allValidTrapdoors = Entity.All.OfType<ValidTrapdoorPosition>()
 			.Where( x => x.LevelType == Type )
@@ -76,7 +94,7 @@ public abstract partial class Level : Entity // Easy replication to client
 
 		Trapdoor?.Delete();
 
-		foreach ( var monster in Monsters )
+		foreach ( var monster in new List<NPC>( Monsters ) )
 			RemoveMonster( monster );
 
 		foreach ( var spawner in Entity.All.OfType<LootSpawner>().Where( x => x.Level == Type ) )
@@ -106,10 +124,10 @@ public abstract partial class Level : Entity // Easy replication to client
 	{
 		return type switch
 		{
-			LevelType.Shop => typeof( ShopLevel ),
-			LevelType.Mansion => typeof( MansionLevel ),
-			LevelType.Dungeon => typeof( DungeonLevel ),
-			LevelType.Bathrooms => typeof( BathroomsLevel ),
+			LevelType.Shop => typeof(ShopLevel),
+			LevelType.Mansion => typeof(MansionLevel),
+			LevelType.Dungeon => typeof(DungeonLevel),
+			LevelType.Bathrooms => typeof(BathroomsLevel),
 			_ => null,
 		};
 	}

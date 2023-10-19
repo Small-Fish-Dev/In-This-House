@@ -10,6 +10,8 @@ public partial class Spectator : AnimatedEntity
 	[Net, Local]
 	public Player Following { get; set; }
 
+	public Player Body { get; set; }
+
 	[Net, Local] protected int LastFollowIndex { get; set; } = -1;
 
 	[ClientInput] public Vector3 InputDirection { get; protected set; }

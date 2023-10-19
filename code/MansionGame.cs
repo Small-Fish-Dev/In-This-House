@@ -82,7 +82,22 @@ public partial class MansionGame : GameManager
 		var pawn = new Player();
 		client.Pawn = pawn;
 		pawn.Respawn();
-		// TODO: Have pawn dead for now
+		// TODO: if a client has joined in the middle of the game then give them a spectator instead
+	}
+
+	public override void ClientDisconnect( IClient cl, NetworkDisconnectionReason reason )
+	{
+		base.ClientDisconnect( cl, reason );
+		
+		if (cl.Pawn is Player player)
+			player.Delete();
+		else if ( cl.Pawn is Spectator spectator )
+		{
+			var p = spectator.Body;
+			if (p.IsValid())
+				p.Delete();
+			spectator.Delete();
+		}
 	}
 
 	public override void Simulate( IClient cl )

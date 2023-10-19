@@ -22,21 +22,13 @@ public partial class MansionGame : GameManager
 			SetLevel<MansionLevel>();
 	}
 
-	[ConCmd.Server( "mansion_spectate" )]
-	public static void Spectate()
+	[ConCmd.Server( "mansion_die" )]
+	public static void Die()
 	{
-		if ( ConsoleSystem.Caller is null || ConsoleSystem.Caller.Pawn is Spectator )
+		if ( ConsoleSystem.Caller is null || ConsoleSystem.Caller.Pawn is not Player player )
 			return;
 
-		var t = Instance.GetSpawnPoint();
-		if ( ConsoleSystem.Caller.Pawn is Player player )
-		{
-			t = new Transform(player.EyePosition, player.InputRotation); // TODO: network inputrotation
-			player.Kill();
-		}
-
-		var spectator = new Spectator { Transform = t };
-		ConsoleSystem.Caller.Pawn = spectator;
+		player.Kill();
 	}
 
 	[ConCmd.Admin( "mansion_timer_stop" )]
