@@ -2,7 +2,7 @@
 
 public partial class LockedComponent : EntityComponent
 {
-	[Net] public bool Locked { get; set; }
+	[Net] public bool Locked { get; set; } = true;
 
 	public void Lockpick()
 	{
