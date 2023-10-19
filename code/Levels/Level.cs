@@ -109,6 +109,8 @@ public partial class MansionGame
 			SetLevel<DungeonLevel>();
 		else if ( Instance.CurrentLevel is DungeonLevel )
 			SetLevel<BathroomsLevel>();
+		else if ( Instance.CurrentLevel is BathroomsLevel )
+			SetLevel<ShopLevel>();
 	}
 
 	// rndtrash: oh my god i hate it so much // ubre: fixed it for you
@@ -126,6 +128,6 @@ public partial class MansionGame
 	[GameEvent.Entity.PostSpawn]
 	static void startLevels()
 	{
-		SetLevel<MansionLevel>();
+		SetLevel<ShopLevel>();
 	}
 }

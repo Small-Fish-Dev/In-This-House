@@ -210,7 +210,7 @@ partial class Player : AnimatedEntity
 		IsAlive = false;
 
 		if ( !All.OfType<Player>().Any( x => x.IsAlive ) )
-			MansionGame.SetLevel<MansionLevel>();
+			MansionGame.SetLevel<ShopLevel>();
 	}
 
 	// Client callback for UI purposes
