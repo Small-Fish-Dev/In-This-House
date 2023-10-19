@@ -1,0 +1,16 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "models/items/wrench/wrench_color.png"
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	Metalness "materials/default/default_metal.tga"
+	Normal "materials/default/default_normal.tga"
+	Roughness "[0.903000 0.903000 0.903000 0.000000]"
+}
