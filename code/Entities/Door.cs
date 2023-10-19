@@ -59,7 +59,7 @@ public partial class Door : UsableEntity
 		}
 
 		if ( State == DoorState.Open || State == DoorState.Opening )
-			Close( user );
+			Close();
 		else
 			Open( user );
 	}
@@ -72,7 +72,7 @@ public partial class Door : UsableEntity
 		side = localPosition.y > 0 ? -1 : 1;
 	}
 
-	public void Close( Entity user )
+	public void Close()
 	{
 		State = DoorState.Closing;
 	}

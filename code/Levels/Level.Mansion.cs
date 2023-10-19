@@ -9,8 +9,10 @@ public partial class MansionLevel : Level
 	{
 		await base.Start();
 
-		Monster = new AoNyobo( this );
-		Monster.Position = Trapdoor.Position;
+		var monster = new AoNyobo( this );
+		monster.Position = Trapdoor.Position;
+		RegisterMonster( monster );
+
 		return;
 	}
 

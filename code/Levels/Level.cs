@@ -16,7 +16,7 @@ public abstract partial class Level : Entity // Easy replication to client
 {
 	public virtual LevelType Type { get; set; } = LevelType.None;
 	[Net] public Trapdoor Trapdoor { get; set; } = null;
-	[Net] public NPC Monster { get; set; } = null;
+	[Net] public IList<NPC> Monsters { get; set; } = new();
 	[Net] public TimeSince SinceStarted { get; set; } = 0f;
 
 	public Level() => Transmit = TransmitType.Always;
@@ -45,13 +45,20 @@ public abstract partial class Level : Entity // Easy replication to client
 			.ToList();
 		var randomValidTrapdoor = MansionGame.Random.FromList( allValidTrapdoors );
 
+		Trapdoor?.Delete(); // Just make sure
 		Trapdoor = new Trapdoor();
 		Trapdoor.Position = randomValidTrapdoor.Position;
 
 		foreach ( var spawner in Entity.All.OfType<LootSpawner>().Where( x => x.Level == Type ).ToList() )
-		{
 			spawner.SpawnLoot();
-		}
+
+		var allDoorsInLevel = Entity.All.OfType<Door>()
+			.Where( x => WorldBox.Contains( x.Position ) ); // Only doors inside of this level
+
+		foreach ( var door in allDoorsInLevel )
+			door.Close();
+
+		await GameTask.Delay( 1000 ); // Wait for any door to close lol :-)
 
 		await GenerateGrid();
 
@@ -68,12 +75,28 @@ public abstract partial class Level : Entity // Easy replication to client
 		await GameTask.DelaySeconds( 1f ); // Wait for the black screen to be fully black
 
 		Trapdoor?.Delete();
-		Monster?.Delete();
+
+		foreach ( var monster in Monsters )
+			RemoveMonster( monster );
 
 		foreach ( var spawner in Entity.All.OfType<LootSpawner>().Where( x => x.Level == Type ) )
 			spawner.DeleteLoot();
 
+		var allDoorsInLevel = Entity.All.OfType<Door>()
+			.Where( x => WorldBox.Contains( x.Position ) ); // Only doors inside of this level
+
+		foreach ( var door in allDoorsInLevel )
+			door.Close();
+
 		return;
+	}
+
+	public virtual void RegisterMonster( NPC monster ) => Monsters.Add( monster );
+
+	public virtual void RemoveMonster( NPC monster )
+	{
+		Monsters.Remove( monster );
+		monster.Delete();
 	}
 
 	public static Type GetType( LevelType type )

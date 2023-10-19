@@ -103,7 +103,7 @@ public partial class NPC : AnimatedEntity
 					GameTask.RunInThreadAsync( async () =>
 					{
 						await GameTask.Delay( 2000 );
-						door.Close( this );
+						door.Close();
 					} );
 				}
 				else
