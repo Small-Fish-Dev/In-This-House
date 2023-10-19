@@ -172,6 +172,31 @@ partial class Player : AnimatedEntity
 		}	
 	}
 
+	protected void PlayJumpSound()
+	{
+		string levelSound = MansionGame.Instance.CurrentLevel.Type switch
+		{
+			LevelType.Mansion => "sounds/footsteps/footstep-wood-jump.sound",
+			_ => "sounds/footsteps/footstep-concrete-jump.sound",
+		};
+
+		var footstep = PlaySound( levelSound );
+		var newVolume = MathX.Remap( Velocity.Length, 0, RunSpeed, 0.6f, 1f );
+		footstep.SetVolume( newVolume );
+	}
+	protected void PlayLandSound()
+	{
+		string levelSound = MansionGame.Instance.CurrentLevel.Type switch
+		{
+			LevelType.Mansion => "sounds/footsteps/footstep-wood-land.sound",
+			_ => "sounds/footsteps/footstep-concrete-land.sound",
+		};
+
+		var footstep = PlaySound( levelSound );
+		var newVolume = MathX.Remap( Velocity.WithZ( 0 ).Length, 0, 300, 0.5f, 2f, false );
+		footstep.SetVolume( newVolume );
+	}
+
 	public void Respawn()
 	{
 		var t = MansionGame.Instance.GetSpawnPoint();

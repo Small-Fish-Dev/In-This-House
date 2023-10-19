@@ -103,6 +103,9 @@ public partial class Player
 
 		if ( traceDown.Entity != null )
 		{
+			if ( GroundEntity == null )
+				PlayLandSound();
+
 			GroundEntity = traceDown.Entity;
 			Position = traceDown.EndPosition;
 			Velocity = Velocity.WithZ( 0 );
@@ -120,6 +123,7 @@ public partial class Player
 				{
 					GroundEntity = null;
 					Velocity += Vector3.Up * JumpHeight;
+					PlayJumpSound();
 				}
 		}
 
