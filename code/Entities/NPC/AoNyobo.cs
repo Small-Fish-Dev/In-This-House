@@ -3,8 +3,8 @@
 public partial class AoNyobo : NPC
 {
 	public override string ModelPath { get; set; } = "models/nyobo/nyobo.vmdl";
-	public override float WalkSpeed { get; set; } = 80f;
-	public override float RunSpeed { get; set; } = 300f;
+	public override float WalkSpeed { get; set; } = 160f;
+	public override float RunSpeed { get; set; } = 480f;
 
 	public AoNyobo() { }
 	public AoNyobo( Level level ) : base( level ) { }

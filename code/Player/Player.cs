@@ -210,11 +210,13 @@ partial class Player : AnimatedEntity
 
 	public void Kill()
 	{
+		if ( !IsAlive ) return;
+
 		IsAlive = false;
 		EnableDrawing = false;
 		EnableAllCollisions = false;
 
-		Log.Error( "TODO: FUCKIG INPUTROTATION IS NOT NETWORKED TO EVERYONE FUUUUUUUUCKK" );
+		// Log.Error( "TODO: FUCKIG INPUTROTATION IS NOT NETWORKED TO EVERYONE FUUUUUUUUCKK" );
 		var spectator = new Spectator { Position = EyePosition, Rotation = Rotation, Body = this }; // TODO: Rotation->InputRotation
 		Client.Pawn = spectator;
 	}

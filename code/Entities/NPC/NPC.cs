@@ -107,7 +107,7 @@ public partial class NPC : AnimatedEntity
 					} );
 				}
 				else
-					Velocity = Velocity + door.Rotation.Forward * Time.Delta * 1000f;
+					Velocity = Velocity + door.Rotation.Forward * Time.Delta * 2000f;
 			}
 	}
 
