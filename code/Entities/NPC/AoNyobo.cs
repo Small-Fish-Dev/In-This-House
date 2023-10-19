@@ -18,12 +18,13 @@ public partial class AoNyobo : NPC
 	}
 
 
-	[ConCmd.Server( "SpawnNPC" )]
+	[ConCmd.Server( "AoNyobo" )]
 	public static void SpawnNPC()
 	{
 		var caller = ConsoleSystem.Caller.Pawn;
 
 		var npc = new AoNyobo( MansionGame.Instance.CurrentLevel );
-		npc.Position = caller.Position;
+		npc.Position = caller.Position + caller.Rotation.Forward * 100f;
+		npc.Rotation = caller.Rotation;
 	}
 }
