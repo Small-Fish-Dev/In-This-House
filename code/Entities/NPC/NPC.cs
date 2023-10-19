@@ -43,7 +43,7 @@ public partial class NPC : AnimatedEntity
 				.FirstOrDefault().Key;
 			LastTarget = Target;
 
-			nextIdle = Game.Random.Float( 3f, 6f );
+			nextIdle = MansionGame.Random.Float( 3f, 6f );
 		}
 		else
 			Target = null;
@@ -58,7 +58,7 @@ public partial class NPC : AnimatedEntity
 				if ( targetCell != null )
 				{
 					NavigateTo( targetCell );
-					nextIdle = Game.Random.Float( 3f, 6f );
+					nextIdle = MansionGame.Random.Float( 3f, 6f );
 				}
 
 				LastTarget = null;

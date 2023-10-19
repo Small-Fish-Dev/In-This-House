@@ -165,7 +165,7 @@ public partial class Player
 					// Let's randomly throw out an item when we crash.
 					if ( Game.IsServer )
 					{
-						var random = Game.Random.Float( 0f, 1f );
+						var random = MansionGame.Random.Float( 0f, 1f );
 						if ( random < DropChance )
 							ThrowRandomLoot();
 					}
@@ -230,7 +230,7 @@ public partial class Player
 			.Keys
 			.ToList();
 
-		var randomLoot = Game.Random.FromList( items );
+		var randomLoot = MansionGame.Random.FromList( items );
 		if ( randomLoot == null || !Inventory.Remove( randomLoot.Value ) )
 			return;
 

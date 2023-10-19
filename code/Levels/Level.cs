@@ -34,7 +34,7 @@ public abstract partial class Level : Entity // Easy replication to client
 		var allValidTrapdoors = Entity.All.OfType<ValidTrapdoorPosition>()
 			.Where( x => x.LevelType == Type )
 			.ToList();
-		var randomValidTrapdoor = Game.Random.FromList( allValidTrapdoors );
+		var randomValidTrapdoor = MansionGame.Random.FromList( allValidTrapdoors );
 
 		Trapdoor = new Trapdoor();
 		Trapdoor.Position = randomValidTrapdoor.Position;

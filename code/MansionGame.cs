@@ -19,6 +19,12 @@ public partial class MansionGame : GameManager
 
 	[Net] public TimeUntil TimeOut { get; set; }
 	[Net] public bool TimerActive { get; set; }
+	[Net] Random random { get; set; }
+	public static Random Random
+	{
+		get => Instance.random;
+		protected set => Instance.random = value;
+	}
 
 	public float TimePerLevel => 180.0f;
 
@@ -34,6 +40,13 @@ public partial class MansionGame : GameManager
 		}
 	}
 
+	public override void Spawn()
+	{
+		base.Spawn();
+
+		Random = new Random( DateTime.UtcNow.Ticks.GetHashCode() );
+	}
+
 	public Transform GetSpawnPoint() => GetSpawnPoint( CurrentLevel.Type );
 
 	public Transform GetSpawnPoint( LevelType level )
@@ -42,7 +55,7 @@ public partial class MansionGame : GameManager
 			.Where( x => x.LevelType == level )
 			.ToList();
 
-		var randomSpawnPoint = Game.Random.FromList( spawnPoints );
+		var randomSpawnPoint = MansionGame.Random.FromList( spawnPoints );
 
 		if ( randomSpawnPoint == null )
 			return new Transform( Vector3.Zero, Rotation.Identity, 1 );

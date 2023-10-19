@@ -22,7 +22,7 @@ public partial class LootSpawner : Entity
 
 	public void SpawnLoot()
 	{
-		var chance = Game.Random.Float();
+		var chance = MansionGame.Random.Float();
 
 		if ( chance <= ChanceToSpawn )
 		{
