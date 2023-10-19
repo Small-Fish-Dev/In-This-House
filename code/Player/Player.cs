@@ -154,6 +154,18 @@ partial class Player : AnimatedEntity
 		SetAnimParameter( "speed_scale", Velocity.WithZ(0).Length / 150f );
 	}
 
+	public override void OnAnimEventFootstep( Vector3 position, int foot, float volume )
+	{
+		base.OnAnimEventFootstep( position, foot, volume );
+
+		if ( GroundEntity != null )
+		{
+			var footstep = Sound.FromWorld( "sounds/footsteps/footstep-wood.sound", position );
+			var newVolume = MathX.Remap( Velocity.Length, WalkSpeed, RunSpeed, 0.3f, 0.6f );
+			footstep.SetVolume( newVolume );
+		}	
+	}
+
 	public void Respawn()
 	{
 		var t = MansionGame.Instance.GetSpawnPoint();
