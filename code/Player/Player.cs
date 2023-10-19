@@ -160,7 +160,13 @@ partial class Player : AnimatedEntity
 
 		if ( GroundEntity != null )
 		{
-			var footstep = Sound.FromWorld( "sounds/footsteps/footstep-wood.sound", position );
+			string levelSound = MansionGame.Instance.CurrentLevel.Type switch
+			{
+				LevelType.Mansion => "sounds/footsteps/footstep-wood.sound",
+				_ => "sounds/footsteps/footstep-concrete.sound",
+			};
+
+			var footstep = Sound.FromWorld( levelSound, position );
 			var newVolume = MathX.Remap( Velocity.Length, WalkSpeed, RunSpeed, 0.3f, 0.6f );
 			footstep.SetVolume( newVolume );
 		}	
