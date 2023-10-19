@@ -1,10 +1,12 @@
 ﻿using BrickJam.UI;
+using static Sandbox.Gizmo;
 
 namespace BrickJam;
 
 public enum LevelType // We need this to categorize hammer entities
 {
 	None,
+	Shop,
 	Mansion,
 	Dungeon,
 	Bathrooms
@@ -20,7 +22,7 @@ public abstract partial class Level : Entity // Easy replication to client
 	public Level() => Transmit = TransmitType.Always;
 
 	[GameEvent.Tick.Server]
-	public virtual void Compute() { }
+	public virtual void Compute() { } // TODO: When restarting might be a problem if it runs while it awaits Start and End
 
 	public virtual async Task Start()
 	{
@@ -65,19 +67,14 @@ public abstract partial class Level : Entity // Easy replication to client
 
 	public static Type GetType( LevelType type )
 	{
-		switch ( type )
+		return type switch
 		{
-			case LevelType.None:
-				return null;
-			case LevelType.Mansion:
-				return typeof(MansionLevel);
-			case LevelType.Dungeon:
-				return typeof( DungeonLevel );
-			case LevelType.Bathrooms:
-				return typeof( BathroomsLevel );
-			default:
-				return null;
-		}
+			LevelType.Shop => typeof( ShopLevel ),
+			LevelType.Mansion => typeof( MansionLevel ),
+			LevelType.Dungeon => typeof( DungeonLevel ),
+			LevelType.Bathrooms => typeof( BathroomsLevel ),
+			_ => null,
+		};
 	}
 
 	public static Type GetNextType( LevelType type ) => GetType( type + 1 );
@@ -106,23 +103,19 @@ public partial class MansionGame
 
 	public static void NextLevel()
 	{
-		if ( Instance.CurrentLevel is MansionLevel )
+		if ( Instance.CurrentLevel is ShopLevel )
+			SetLevel<MansionLevel>();
+		else if ( Instance.CurrentLevel is MansionLevel )
 			SetLevel<DungeonLevel>();
 		else if ( Instance.CurrentLevel is DungeonLevel )
 			SetLevel<BathroomsLevel>();
 	}
 
-	// rndtrash: oh my god i hate it so much
-	public static void RestartLevel()
+	// rndtrash: oh my god i hate it so much // ubre: fixed it for you
+	public async static void RestartLevel()
 	{
-		if ( Instance.CurrentLevel is MansionLevel )
-			SetLevel<MansionLevel>();
-		else if ( Instance.CurrentLevel is DungeonLevel )
-			SetLevel<DungeonLevel>();
-		else if (Instance.CurrentLevel is BathroomsLevel)
-			SetLevel<BathroomsLevel>();
-		else
-			Log.Error( $"Don't know how to restart the level {Instance.CurrentLevel.GetType()}" );
+		await Instance.CurrentLevel?.End();
+		await Instance.CurrentLevel?.Start();
 	}
 
 	// For client callback
