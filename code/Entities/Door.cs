@@ -12,7 +12,7 @@ public enum DoorState : sbyte
 }
 
 [HammerEntity]
-[EditorModel( "models/placeholders/placeholder_door.vmdl" )]
+[EditorModel( "models/furniture/mansion_furniture/mansion_door.vmdl" )]
 public partial class Door : UsableEntity
 {
 	[Net] public DoorState State { get; set; } = DoorState.Closed;
@@ -39,7 +39,7 @@ public partial class Door : UsableEntity
 	{
 		base.Spawn();
 
-		SetModel( "models/placeholders/placeholder_door.vmdl" );
+		SetModel( "models/furniture/mansion_furniture/mansion_door.vmdl" );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		Tags.Add( "door" );
 		initialTransform = Transform;

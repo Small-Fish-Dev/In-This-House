@@ -3,7 +3,7 @@
 namespace BrickJam;
 
 [HammerEntity]
-[EditorModel( "models/placeholders/placeholder_trapdoor.vmdl" )]
+[EditorModel( "models/furniture/trap_door.vmdl" )]
 public partial class ValidTrapdoorPosition : Entity
 {
 	[Property] public LevelType LevelType { get; set; } = LevelType.None;

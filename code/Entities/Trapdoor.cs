@@ -12,7 +12,7 @@ public class Trapdoor : UsableEntity
 	{
 		base.Spawn();
 
-		SetModel( "models/placeholders/placeholder_trapdoor.vmdl" );
+		SetModel( "models/furniture/trap_door.vmdl" );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		Tags.Add( "solid" );
 		Tags.Add( "trapdoor" );
