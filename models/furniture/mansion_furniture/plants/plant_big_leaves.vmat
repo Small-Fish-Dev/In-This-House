@@ -1,0 +1,19 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Rendering ----
+	F_RENDER_BACKFACES 1
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "models/furniture/mansion_furniture/plants/plant_big_leaves_color.png"
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	Metalness "materials/default/default_metal.tga"
+	Normal "models/furniture/mansion_furniture/plants/plant_big_leaves_normal.png"
+	Roughness "models/furniture/mansion_furniture/plants/plant_big_leaves_rough.png"
+}

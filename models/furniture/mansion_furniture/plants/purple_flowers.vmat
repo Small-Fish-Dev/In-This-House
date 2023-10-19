@@ -1,0 +1,21 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Rendering ----
+	F_RENDER_BACKFACES 1
+	F_TINT_MASK 1
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "models/furniture/mansion_furniture/plants/flowers_color.png"
+	g_vColorTint "[0.525490 0.141176 0.576471 0.000000]"
+	Metalness "materials/default/default_metal.tga"
+	Normal "models/furniture/mansion_furniture/plants/flowers_normal.png"
+	Roughness "models/furniture/mansion_furniture/plants/flowers_rough.png"
+	TintMask "models/furniture/mansion_furniture/plants/flowers_mask.png"
+}
