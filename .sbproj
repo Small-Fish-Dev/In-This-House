@@ -205,7 +205,7 @@
         },
         {
           "Name": "Inventory",
-          "KeyboardCode": "q",
+          "KeyboardCode": "TAB",
           "GroupName": "Other"
         },
         {
