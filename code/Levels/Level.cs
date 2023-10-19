@@ -82,6 +82,8 @@ public abstract partial class Level : Entity // Easy replication to client
 
 		gameIsEnding = false;
 
+		MansionGame.Instance.TimerStart();
+
 		return;
 	}
 
@@ -152,8 +154,6 @@ public partial class MansionGame
 
 		Instance.CurrentLevel = Activator.CreateInstance<T>();
 		await Instance.CurrentLevel.Start();
-
-		Instance.TimerStart();
 	}
 
 	public static void NextLevel()
