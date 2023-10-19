@@ -73,8 +73,6 @@ public class LootPrefab : GameResource
 	private void renderIcon( bool display = false )
 	{
 		// Create our scene.
-		var mdl = Sandbox.Model.Load( Model );
-
 		var world = new SceneWorld();
 		var camera = new SceneCamera()
 		{
@@ -88,7 +86,7 @@ public class LootPrefab : GameResource
 			BackgroundColor = Color.Transparent
 		};
 
-		_ = new SceneObject( world, mdl, new Transform( IconOffset, IconAngles.ToRotation() ) );
+		_ = new SceneObject( world, Model, new Transform( IconOffset, IconAngles.ToRotation() ) );
 
 		_ = new SceneLight( world, Vector3.Up * 15f + Vector3.Backward * 5f, 150f, Color.White * 1 );
 		_ = new SceneLight( world, Vector3.Up * 25f + Vector3.Forward * 10f, 150f, Color.White * 1 );

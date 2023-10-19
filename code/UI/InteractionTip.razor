@@ -3,7 +3,7 @@
 @namespace BrickJam.UI
 @inherits Panel
 
-<root>
+<root class="@(Player.UsableEntity?.UseString != null ? "visible" : "")">
 	@if ( Player.UsableEntity is not null )
 	{
         if (Player.UsableEntity.CanUse )
@@ -33,6 +33,13 @@
 		color: white;
 		font-size: 32px;
 		text-shadow: 4px 4px 0px black;
+		padding: 10px;
+		padding-right: 40px;
+		padding-left: 40px;
+
+		&.visible {
+			background: linear-gradient(to left, rgba(black, 0) 0%, rgba(black, 0.2) 20%, rgba(black, 0.2) 80%, rgba(black, 0) 100%);
+		}
 
 		InputGlyph {
 			width: 32px;
