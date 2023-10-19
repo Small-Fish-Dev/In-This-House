@@ -75,8 +75,8 @@
 						reverse = false
 					},
 					{
-						_class = "AnimFrame"
-						name = "idle"
+						_class = "AnimFile"
+						name = "rotate"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -89,17 +89,35 @@
 						anim_markup_ordered = false
 						disable_compression = false
 						enable_scale = false
-						src_anim_name = "lock"
-						frame_type = "FirstFrame"
-						frame = 0
+						source_filename = "models/items/lock/rotate.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
 					},
 				]
 				default_root_bone_name = ""
 			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "hole"
+						parent_bone = "hole"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = ""
+		anim_graph_name = "models/items/lock/lock.vanmgrph"
 		base_model_name = ""
 	}
 }
