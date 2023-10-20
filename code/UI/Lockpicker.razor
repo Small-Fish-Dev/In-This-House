@@ -20,6 +20,7 @@
 	// Valid range for our lockpicking.
 	public const float RANGE = 5f;
 
+	public static bool Active => instance?.IsValid ?? false;
 	public LockedComponent Component { get; }
 	public float CorrectAngle { get; }
 
@@ -177,11 +178,11 @@
         height: 100%;
 		justify-content: center;
 		align-items: center;
-		pointer-events: all;
-		background-color: rgba(black, 0.75);
+		pointer-events: all;	
+		background-color: rgba(white, 0.05);
 		backdrop-filter: blur(4px);
-		transition: opacity 0.5s ease-in-out;
-		z-index: -1;
+		transition: opacity 2s ease-in-out;
+		z-index: 2;
 		opacity: 1;
 
 		.title {
@@ -203,6 +204,7 @@
 
 		&:outro {
 			opacity: 0;
+			pointer-events: none;
 		}
 
 		&:intro {
@@ -216,6 +218,7 @@
 			background-repeat: no-repeat;
 			background-position: center;
 			pointer-events: none;
+			filter: border-wrap(2px black);
 		}
     }
 </style>
