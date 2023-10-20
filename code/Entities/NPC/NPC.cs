@@ -13,6 +13,9 @@ public partial class NPC : AnimatedEntity
 	public Capsule CollisionCapsule => new Capsule( Vector3.Up * CollisionRadius, Vector3.Up * (CollisionHeight - CollisionRadius), CollisionRadius );
 	public virtual float MaxVisionRange { get; set; } = 1024f;
 	public virtual float MaxVisionAngle { get; set; } = 120f; // Degrees
+	public virtual float MaxVisionAngleWhenChasing { get; set; } = 180f;
+	public virtual float MaxVisionRangeWhenChasing { get; set; } = 2048f;
+	public virtual float MaxRememberTime { get; set; } = 2f; // How long will it keep tracking your position when you're out of sight (This lets them get into rooms or corridors you hide in)
 	public virtual float AttackAnimationDuration { get; set; } = 1.5f;
 	public virtual float KillAfterAttackTime { get; set; } = 1f;
 	public virtual float SetDistanceWhenAttacking { get; set; } = 50f;
@@ -167,21 +170,24 @@ public partial class NPC : AnimatedEntity
 			}
 			else
 				if ( PlayersInVision.ContainsKey( player ) )
-					if ( PlayersInVision[player] >= 1f ) // Stops following if lost sight after 1 second (This means it will follow you into rooms or behind corridors)
+					if ( PlayersInVision[player] >= MaxRememberTime ) // Stops following if lost sight after 1 second (This means it will follow you into rooms or behind corridors)
 						PlayersInVision.Remove( player );
 		}
 	}
 
 	public virtual bool IsPlayerInVision( Player player )
 	{
-		if ( player.Position.Distance( Position ) >= MaxVisionRange ) return false;
+		var visionRange = player == Target ? MaxVisionRangeWhenChasing : MaxVisionRange;
+		var visionAngle = player == Target ? MaxVisionAngleWhenChasing : MaxVisionAngle;
+
+		if ( player.Position.Distance( Position ) >= visionRange ) return false;
 
 		var relativePosition = Transform.PointToLocal( player.Position );
 		var angle = Vector3.GetAngle( relativePosition, Vector3.Forward );
 
-		if ( angle > MaxVisionAngle / 2f || angle < -MaxVisionAngle / 2f ) return false;
+		if ( angle > visionAngle / 2f || angle < -visionAngle / 2f ) return false;
 
-		var losTrace = Trace.Ray( Position + Vector3.Up * CollisionCapsule.CenterB.z, player.Position + Vector3.Up * player.CollisionCapsule.CenterB.z )
+		var losTrace = Trace.Ray( Position + Vector3.Up * CollisionCapsule.CenterB.z, player.EyePosition )
 			.Ignore( this )
 			.Ignore( player )
 			.Run();

@@ -12,7 +12,6 @@ public partial class Specter : NPC
 	public override void Spawn()
 	{
 		base.Spawn();
-		Scale = 1.1f;
 
 		//PlaySound( "sounds/wega.sound" );
 	}
@@ -24,7 +23,7 @@ public partial class Specter : NPC
 		var caller = ConsoleSystem.Caller.Pawn;
 
 		var npc = new Specter( MansionGame.Instance.CurrentLevel );
-		npc.Position = caller.Position + caller.Rotation.Forward * 100f;
+		npc.Position = caller.Position + caller.Rotation.Forward * 300f;
 		npc.Rotation = caller.Rotation;
 	}
 }
