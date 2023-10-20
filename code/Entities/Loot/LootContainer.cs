@@ -17,6 +17,13 @@ public class LootContainer : UsableEntity
 
 	public override void Spawn()
 	{
+		var random = MansionGame.Random.Float( 0f, 1f );
+		if ( random < ChanceToSpawn )
+		{
+			Delete();
+			return;
+		}
+
 		var level = MansionGame.Instance?.CurrentLevel?.Type ?? LevelType.Mansion;
 		if ( !models.TryGetValue( level, out var model ) )
 		{
