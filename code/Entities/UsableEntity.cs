@@ -28,7 +28,7 @@ public class UsableEntity : AnimatedEntity
 	{
 		base.OnNewModel( model );
 
-		if ( Game.IsServer && model.GetAttachment( "lock" ) != null )
+		if ( Game.IsServer && model?.GetAttachment( "lock" ) != null )
 			Components.GetOrCreate<LockedComponent>();
 	}
 }
