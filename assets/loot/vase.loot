@@ -1,0 +1,10 @@
+{
+  "Name": "Vase",
+  "Description": null,
+  "Level": "Shop",
+  "Model": "models/items/vase/vase.vmdl",
+  "MonetaryValue": 40,
+  "IconOffset": "27,3,-8",
+  "IconAngles": "-45,0,15",
+  "__references": []
+}

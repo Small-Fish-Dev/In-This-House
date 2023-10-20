@@ -1,0 +1,10 @@
+{
+  "Name": "Gold Bar",
+  "Description": "",
+  "Level": "Dungeon",
+  "Model": "models/items/gold_bar/gold_bar.vmdl",
+  "MonetaryValue": 100,
+  "IconOffset": "15,0,0",
+  "IconAngles": "0,90,-45",
+  "__references": []
+}
