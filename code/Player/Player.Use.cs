@@ -72,7 +72,9 @@ partial class Player : AnimatedEntity
 			if ( UsableEntity is not null && Input.Pressed( "use" ) )
 			{
 				// Grab if no one uses it
-				if ( !UsableEntity.User.IsValid() )
+				if ( UsableEntity.Locked )
+					UsableEntity.Lock.Lockpick( this );
+				else if ( !UsableEntity.User.IsValid() )
 					EnqueueInteraction( UsableEntity );
 				// Interact with the item twice to cancel
 				else if ( UsableEntity.User == this )

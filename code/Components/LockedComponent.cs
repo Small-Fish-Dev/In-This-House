@@ -3,15 +3,29 @@
 public partial class LockedComponent : EntityComponent
 {
 	[Net] public bool Locked { get; set; } = true;
+	[Net] public AnimatedEntity Lock { get; set; }	
 
-	public void Lockpick()
+	public LockedComponent() 
+	{
+		// Lock model!
+		if ( Game.IsServer )
+		{
+			Lock = new();
+			Lock.SetModel( "models/items/lock/lock.vmdl" );
+			Lock.SetParent( Entity, "lock" );
+			Lock.Transmit = TransmitType.Always;
+		}
+	}
+
+	public void Lockpick( Entity target )
 	{
 		if ( !Locked )
 			return;
 
 		Game.AssertServer();
 
-		_lockpick( Entity.NetworkIdent );
+		if ( target.Client != null )
+			_lockpick( To.Single( target.Client ), Entity.NetworkIdent );
 	}
 
 	public void RequestLockpicked()
@@ -29,6 +43,10 @@ public partial class LockedComponent : EntityComponent
 			return;
 
 		component.Locked = false;
+		
+		component.Lock.SetAnimParameter( "unlocked", true );
+		component.Lock.Tags.Add( "nocollide" );
+		component.Lock.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 	}
 
 	[ClientRpc]
