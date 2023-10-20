@@ -59,7 +59,8 @@
         "npc": "Unset",
         "nocollide": "Ignore",
         "world": "Unset",
-        "loot": "Collide"
+        "loot": "Collide",
+        "container": "Collide"
       },
       "Pairs": [
         {
@@ -129,6 +130,11 @@
         {
           "a": "npc",
           "b": "loot",
+          "r": "Ignore"
+        },
+        {
+          "a": "loot",
+          "b": "container",
           "r": "Ignore"
         }
       ]

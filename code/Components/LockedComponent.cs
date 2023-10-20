@@ -5,7 +5,7 @@ public partial class LockedComponent : EntityComponent
 	[Net] public bool Locked { get; set; } = true;
 	[Net] public AnimatedEntity Lock { get; set; }	
 
-	public LockedComponent() 
+	public LockedComponent Initialize() 
 	{
 		// Lock model!
 		if ( Game.IsServer )
@@ -15,6 +15,8 @@ public partial class LockedComponent : EntityComponent
 			Lock.SetParent( Entity, "lock" );
 			Lock.Transmit = TransmitType.Always;
 		}
+
+		return this;
 	}
 
 	public void Lockpick( Entity target )
@@ -43,7 +45,7 @@ public partial class LockedComponent : EntityComponent
 			return;
 
 		component.Locked = false;
-		
+		component.Lock.Parent = null;
 		component.Lock.SetAnimParameter( "unlocked", true );
 		component.Lock.Tags.Add( "nocollide" );
 		component.Lock.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
