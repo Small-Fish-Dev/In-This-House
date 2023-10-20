@@ -1,9 +1,5 @@
-﻿using Editor;
+﻿namespace BrickJam;
 
-namespace BrickJam;
-
-[HammerEntity]
-[EditorModel( "models/containers/safe/safe.vmdl" )]
 public partial class LootContainer : UsableEntity
 {
 	[Net] public bool Spitting { get; set; }
@@ -12,10 +8,7 @@ public partial class LootContainer : UsableEntity
 	public override bool CanUse => !Spitting;
 	public override string UseString => "open the container.";
 
-	[Property]
-	public float ChanceToSpawn { get; set; } = 0.5f;
-
-	private IReadOnlyDictionary<LevelType, string> models = new Dictionary<LevelType, string>()
+	private static IReadOnlyDictionary<LevelType, string> models = new Dictionary<LevelType, string>()
 	{
 		[LevelType.Mansion] = "models/containers/safe/safe.vmdl",
 		[LevelType.Dungeon] = "models/containers/chest/chest.vmdl",
@@ -33,13 +26,6 @@ public partial class LootContainer : UsableEntity
 
 	public override void Spawn()
 	{
-		var random = MansionGame.Random.Float( 0f, 1f );
-		if ( random < ChanceToSpawn )
-		{
-			Delete();
-			return;
-		}
-
 		var level = MansionGame.Instance?.CurrentLevel?.Type ?? LevelType.Mansion;
 		if ( !models.TryGetValue( level, out var model ) )
 		{

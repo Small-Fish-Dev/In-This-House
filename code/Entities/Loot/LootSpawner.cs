@@ -8,10 +8,14 @@ public partial class LootSpawner : Entity
 {
 	[Property]
 	public LootPrefab LootToSpawn { get; set; }
+
+	[Property]
+	public bool IsContainer { get; set; } = false;
+
 	[Property]
 	public float ChanceToSpawn { get; set; } = 0.5f;
 
-	public Loot LootSpawned { get; set; }
+	public Entity EntitySpawned { get; set; }
 
 	public override void Spawn()
 	{
@@ -23,16 +27,30 @@ public partial class LootSpawner : Entity
 	{
 		var chance = MansionGame.Random.Float();
 
-		if ( chance <= ChanceToSpawn && LootToSpawn != null )
+		if ( chance <= ChanceToSpawn )
 		{
-			LootSpawned = Loot.CreateFromGameResource( LootToSpawn, Position, Rotation );
+			if ( IsContainer )
+			{
+				EntitySpawned = new LootContainer()
+				{
+					Position = Position,
+					Rotation = Rotation,
+				};
 
-			if ( LootSpawned is null )
+				return;
+			}
+
+			if ( LootToSpawn == null )
+				return;
+
+			EntitySpawned = Loot.CreateFromGameResource( LootToSpawn, Position, Rotation );
+
+			if ( EntitySpawned is null )
 				Log.Error( $"{this} Couldn't spawn item! item: {LootToSpawn}" );
 		}
 	}
 
-	public void DeleteLoot() => LootSpawned?.Delete();
+	public void DeleteLoot() => EntitySpawned?.Delete();
 
 	#region HAMMER GIZMO
 	private static LootPrefab gizmoPrefab;
@@ -40,6 +58,13 @@ public partial class LootSpawner : Entity
 
 	public static void DrawGizmos( EditorContext context )
 	{
+		var container = context.Target.GetProperty( "IsContainer" ).As.Bool;
+		if ( container )
+		{
+			Gizmo.Draw.Model( "models/containers/safe/safe.vmdl" );
+			return;
+		}
+
 		var path = context.Target.GetProperty( "LootToSpawn" ).As.String;
 		if ( path == null )
 			return;
