@@ -1,6 +1,7 @@
 {
   "Name": "Painting",
   "Description": "",
+  "Level": "Mansion",
   "Model": "models/items/paintings/wide_painting.vmdl",
   "MonetaryValue": 40,
   "IconOffset": "100,0,0",

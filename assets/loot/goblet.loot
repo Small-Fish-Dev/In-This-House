@@ -1,5 +1,7 @@
 {
   "Name": "Goblet",
+  "Description": "",
+  "Level": "Dungeon",
   "Model": "models/items/goblet/goblet.vmdl",
   "MonetaryValue": 12,
   "IconOffset": "20,-4,-7",

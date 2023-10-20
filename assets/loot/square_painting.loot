@@ -1,6 +1,7 @@
 {
   "Name": "Painting",
-  "Description": null,
+  "Description": "",
+  "Level": "Mansion",
   "Model": "models/items/paintings/square_painting.vmdl",
   "MonetaryValue": 1,
   "IconOffset": "70,0,0",

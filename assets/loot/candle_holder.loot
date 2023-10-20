@@ -1,5 +1,7 @@
 {
   "Name": "Candle Holder",
+  "Description": "",
+  "Level": "Mansion",
   "Model": "models/items/candle_holder/candle_holder.vmdl",
   "MonetaryValue": 35,
   "IconOffset": "35,0,-15",

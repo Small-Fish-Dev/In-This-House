@@ -1,5 +1,7 @@
 {
   "Name": "Helmet",
+  "Description": "",
+  "Level": "Mansion",
   "Model": "models/items/helmet/helmet.vmdl",
   "MonetaryValue": 50,
   "IconOffset": "15,0,-7",
