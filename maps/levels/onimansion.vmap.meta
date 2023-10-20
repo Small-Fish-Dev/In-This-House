@@ -17,7 +17,10 @@
       "CodePath": null,
       "PackageReferences": [],
       "EditorReferences": [
-        "fish.2023_jam"
+        "fish.2023_jam",
+        "kote.vaz_2107#1186",
+        "alexdev.babyfoot#2939",
+        "mml.sussy#1281"
       ],
       "Metadata": {
         "SingleAssetSource": "maps/levels/onimansion.vmap"
