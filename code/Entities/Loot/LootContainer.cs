@@ -22,6 +22,15 @@ public partial class LootContainer : UsableEntity
 		[LevelType.Bathrooms] = "models/containers/medicine_cabinet/medicine_cabinet.vmdl"
 	};
 
+	// ANIMATINO FIX!!
+	private async void funny()
+	{
+		await GameTask.Delay( 500 );
+		SetAnimParameter( "open", true );
+		await GameTask.Delay( 500 );
+		SetAnimParameter( "open", false );
+	}
+
 	public override void Spawn()
 	{
 		var random = MansionGame.Random.Float( 0f, 1f );
@@ -42,12 +51,16 @@ public partial class LootContainer : UsableEntity
 		SetModel( model );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		Tags.Add( "solid", "container" );
+
+		funny();
 	}
 
 	private async void spit()
 	{
 		Spitting = true;
 		SetAnimParameter( "open", true );
+
+		await GameTask.Delay( 500 );
 
 		var lootCount = Game.Random.Int( 2, 5 );
 		var levelLoot = LootPrefab.All
@@ -66,6 +79,7 @@ public partial class LootContainer : UsableEntity
 			var loot = Loot.CreateFromGameResource( prefab, transform.Position, Game.Random.Rotation() );
 			loot.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 			loot.ApplyAbsoluteImpulse( force * normal + Vector3.Up * 300f );
+			loot.Scale = 0;
 
 			await GameTask.Delay( 1250 );
 		}
