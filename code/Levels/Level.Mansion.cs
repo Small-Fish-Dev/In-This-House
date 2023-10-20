@@ -10,7 +10,7 @@ public partial class MansionLevel : Level
 		await base.Start();
 
 		var monster = new AoNyobo( this );
-		monster.Position = Trapdoor.Position;
+		monster.Position = Exit.Position;
 		RegisterMonster( monster );
 
 		return;

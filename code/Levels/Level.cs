@@ -15,7 +15,7 @@ public enum LevelType // We need this to categorize hammer entities
 public abstract partial class Level : Entity // Easy replication to client
 {
 	public virtual LevelType Type { get; set; } = LevelType.None;
-	[Net] public Trapdoor Trapdoor { get; set; } = null;
+	[Net] public UsableEntity Exit { get; set; } = null;
 	[Net] public IList<NPC> Monsters { get; set; }
 	[Net] public TimeSince SinceStarted { get; set; } = 0f;
 
@@ -58,14 +58,27 @@ public abstract partial class Level : Entity // Easy replication to client
 		foreach ( var player in Entity.All.OfType<Player>().Where( p => p.Client is null ) )
 			player.Delete();
 
-		var allValidTrapdoors = Entity.All.OfType<ValidTrapdoorPosition>()
-			.Where( x => x.LevelType == Type )
-			.ToList();
-		var randomValidTrapdoor = MansionGame.Random.FromList( allValidTrapdoors );
+		Exit?.Delete(); // Just make sure
 
-		Trapdoor?.Delete(); // Just make sure
-		Trapdoor = new Trapdoor();
-		Trapdoor.Position = randomValidTrapdoor.Position;
+		if ( Type == LevelType.Bathrooms )
+		{
+			var allValidFinalDoors = Entity.All.OfType<ValidFinalDoorPosition>()
+				.ToList();
+			var randomFinalDoor = MansionGame.Random.FromList( allValidFinalDoors );
+
+			Exit = new FinalDoor();
+			Exit.Position = randomFinalDoor.Position;
+		}
+		else
+		{
+			var allValidTrapdoors = Entity.All.OfType<ValidTrapdoorPosition>()
+				.Where( x => x.LevelType == Type )
+				.ToList();
+			var randomValidTrapdoor = MansionGame.Random.FromList( allValidTrapdoors );
+
+			Exit = new Trapdoor();
+			Exit.Position = randomValidTrapdoor.Position;
+		}
 
 		foreach ( var spawner in Entity.All.OfType<LootSpawner>().Where( x => x.Level == Type ).ToList() )
 			spawner.SpawnLoot();
@@ -94,7 +107,7 @@ public abstract partial class Level : Entity // Easy replication to client
 		BlackScreen.Start( To.Everyone, 2f, 1f, 1f );
 		await GameTask.DelaySeconds( 1f ); // Wait for the black screen to be fully black
 
-		Trapdoor?.Delete();
+		Exit?.Delete();
 
 		foreach ( var monster in new List<NPC>( Monsters ) )
 			RemoveMonster( monster );
