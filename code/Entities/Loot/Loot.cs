@@ -71,14 +71,15 @@ public partial class Loot : UsableEntity
 		},
 	};
 
-	public static Loot CreateFromGameResource( LootPrefab resource, Vector3 position, Rotation rotation )
+	public static Loot CreateFromGameResource( LootPrefab resource, Vector3 position, Rotation rotation, bool setRarity = true )
 	{
 		var loot = new Loot();
 		loot.Position = position;
 		loot.Rotation = rotation;
 		loot.BaseMonetaryValue = resource.MonetaryValue;
 		loot.BaseName = resource.Name;
-		loot.Rarity = RandomRarityFromLevel( MansionGame.Instance.CurrentLevel.Type );
+		if ( setRarity )
+			loot.Rarity = RandomRarityFromLevel( MansionGame.Instance.CurrentLevel.Type );
 		loot.SetModel( resource.Model == string.Empty ? "models/error.vmdl" : resource.Model );
 		loot.SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		loot.Tags.Add( "loot" );
@@ -90,20 +91,41 @@ public partial class Loot : UsableEntity
 
 	public static Loot CreateFromEntry( ItemEntry entry, Vector3 position, Rotation rotation )
 	{
-		var loot = CreateFromGameResource( entry.Prefab, position, rotation );
+		var loot = CreateFromGameResource( entry.Prefab, position, rotation, false );
 		loot.Rarity = entry.Rarity;
 		return loot;
 	}
 
 	public static LootRarity RandomRarityFromLevel( LevelType level ) => WeightedList.RandomKey<LootRarity>( RarityChances[level] );
 
+	Player picker = null;
+	bool deleting = false;
+
 	public override void Use( Player user )
 	{
-		if ( !IsAuthority )
+		if ( !IsAuthority || picker != null )
 			return;
 
-		if ( user.Inventory.Add( new ItemEntry { Prefab = Prefab, Rarity = Rarity } ) )
+		picker = user;
+		SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
+
+		var normal = (user.Position - Position).Normal.WithZ( 1f );
+		var force = 100f + Position.Distance( user.Position ) * 2f;
+		ApplyAbsoluteImpulse( force * normal );
+	}
+
+	[GameEvent.Tick.Server]
+	private void effect()
+	{
+		if ( picker == null )
+			return;
+
+		Scale = MathX.Lerp( Scale, 0, 5f * Time.Delta );
+		if ( Scale.AlmostEqual( 0, 0.1f ) && !deleting )
+		{
+			picker.Inventory.Add( new ItemEntry { Prefab = Prefab, Rarity = Rarity } );
 			Delete();
+		}
 	}
 
 	private GroundLootPanel panel;
