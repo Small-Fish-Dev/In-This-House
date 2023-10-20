@@ -2,7 +2,7 @@
 
 public partial class MansionGame : GameManager
 {
-	[ConCmd.Server( "give_item" )]
+	[ConCmd.Admin( "give_item" )]
 	public static void GiveLoot( string name, LootRarity rarity = LootRarity.Excellent, int amount = 1 )
 	{
 		if ( ConsoleSystem.Caller.Pawn is not Player pawn )
@@ -13,6 +13,15 @@ public partial class MansionGame : GameManager
 			return;
 
 		pawn.Inventory.Add( new ItemEntry { Prefab = item, Rarity = rarity }, amount );
+	}
+
+	[ConCmd.Admin( "set_money" )]
+	public static void SetMoney( int amount )
+	{
+		if ( ConsoleSystem.Caller.Pawn is not Player pawn )
+			return;
+
+		pawn.SetMoney( amount );
 	}
 
 	[ConCmd.Admin( "set_level" )]

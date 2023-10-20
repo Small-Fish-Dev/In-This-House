@@ -13,7 +13,7 @@
 </root>
 
 @code {
-	BrickJam.Player player => Game.LocalPawn as BrickJam.Player;
+	public BrickJam.Player Player;
 
 	private static MoneyCounter instance;
 	const float DELAY = 2f;
@@ -43,7 +43,7 @@
 		instance.change = null;
 
 		instance.initialMoney = null;
-		instance.targetMoney = (Game.LocalPawn as BrickJam.Player)?.Money ?? 0;
+		instance.targetMoney = instance.Player?.Money ?? 0;
 		instance.currentTotal = 0;
 	}
 
@@ -57,7 +57,7 @@
 		if ( change != null && !change.IsDeleting && changed >= DELAY )
 			Update();
 
-		if ( player == null || money == null )
+		if ( Player == null || money == null )
 			return;
 
 		oldMoney = MathX.LerpTo( oldMoney, targetMoney, 10f * Time.Delta );
@@ -67,7 +67,7 @@
 	[Event( "MoneyChanged" )]
 	private async void moneyChanged( BrickJam.Player player, int oldValue, int newValue )
 	{
-		if ( player != Game.LocalPawn || changes == null )
+		if ( player != Player || changes == null )
 			return;
 
 		if ( initialMoney == null )
@@ -99,7 +99,7 @@
 
 	protected override int BuildHash()
 	{
-		return player?.Money.GetHashCode() ?? 0;
+		return Player?.Money.GetHashCode() ?? 0;
 	}
 }
 
@@ -107,11 +107,15 @@
 	MoneyCounter {
 		position: absolute;
 		right: 0px;
-		top: 0px;
-		padding: 10px;
+		top: 30px;
+		padding-left: 40px;
+		padding-right: 10px;
+		padding-top: 5px;
 		font-size: 50px;
 		color: white;
 		flex-direction: row-reverse;
+		z-index: 3;
+		background: linear-gradient(to left, rgba(black, 0.5) 0%, rgba(black, 0.2) 75%, rgba(black, 0) 100%);
 
 		.container {
 			flex-direction: row;
@@ -132,7 +136,7 @@
 
 		.change {
 			position: absolute;
-			right: 0px;
+			right: 10px;
 			color: white;
 			transition: all 0.2s ease-in-out;
 			transform: scale(1) translateY(0%);
