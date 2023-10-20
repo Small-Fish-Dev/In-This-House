@@ -24,6 +24,9 @@ public partial class Level
 
 		Grid = await builder.Create( 1, printInfo: false );
 
+		await Grid.AssignEdgeCells( tagToExclude: "edge", tagToAssign: "outeredge" );
+		await Grid.AssignEdgeCells( tagToExclude: "outeredge", tagToAssign: "inneredge" );
+
 		foreach ( var door in Entity.All.OfType<Door>() )
 			if ( Grid.IsInsideBounds( door.Position ) )
 				door.OccupyCells();

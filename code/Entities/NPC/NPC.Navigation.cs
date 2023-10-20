@@ -115,7 +115,9 @@ public partial class NPC
 			.WithPartialEnabled()
 			.WithMaxDistance( 2000f )
 			.AvoidTag( "door", 400f )
-			.AvoidTag( "edge", 200f );
+			.AvoidTag( "edge", 300f )
+			.AvoidTag( "outeredge", 200f )
+			.AvoidTag( "inneredge", 100f );
 
 			if ( false && CurrentGrid.LineOfSight( startingCell, targetCell ) ) // If there's direct line of sight, move in a straight path from A to B
 			{

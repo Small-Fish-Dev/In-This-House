@@ -8,7 +8,7 @@ public partial class NPC : AnimatedEntity
 	public Level Level { get; private set; }
 	internal TimeUntil nextIdle { get; set; } = 0f;
 	public virtual string ModelPath { get; set; } = "models/citizen/citizen.vmdl";
-	public virtual float CollisionRadius { get; set; } = 12f;
+	public virtual float CollisionRadius { get; set; } = 8f;
 	public virtual float CollisionHeight { get; set; } = 72f;
 	public Capsule CollisionCapsule => new Capsule( Vector3.Up * CollisionRadius, Vector3.Up * (CollisionHeight - CollisionRadius), CollisionRadius );
 	public virtual float MaxVisionRange { get; set; } = 1024f;
