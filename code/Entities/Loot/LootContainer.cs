@@ -3,6 +3,7 @@
 namespace BrickJam;
 
 [HammerEntity]
+[EditorModel( "models/containers/safe/safe.vmdl" )]
 public class LootContainer : UsableEntity
 {
 	public override float InteractionDuration => 2f;
