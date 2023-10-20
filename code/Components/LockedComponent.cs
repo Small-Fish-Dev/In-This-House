@@ -12,7 +12,7 @@ public partial class LockedComponent : EntityComponent
 		{
 			Lock = new();
 			Lock.SetModel( "models/items/lock/lock.vmdl" );
-			Lock.SetParent( Entity, "lock" );
+			Lock.SetParent( Entity, "lock", Transform.Zero );
 			Lock.Transmit = TransmitType.Always;
 		}
 

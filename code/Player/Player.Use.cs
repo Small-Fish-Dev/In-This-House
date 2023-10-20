@@ -56,7 +56,7 @@ partial class Player : AnimatedEntity
 			var foundInSphere = FindInSphere( thinTrace.EndPosition, 20f );
 
 			foreach ( var found in foundInSphere )
-				if ( found is UsableEntity foundUsable )
+				if ( found is UsableEntity foundUsable && foundUsable.CanUse )
 					UsableEntity = foundUsable;
 		}
 

@@ -1,7 +1,7 @@
 {
   "Name": "Vase",
-  "Description": null,
-  "Level": "Shop",
+  "Description": "",
+  "Level": "Mansion",
   "Model": "models/items/vase/vase.vmdl",
   "MonetaryValue": 40,
   "IconOffset": "27,3,-8",

@@ -118,7 +118,10 @@ public partial class Loot : UsableEntity
 	private void effect()
 	{
 		if ( picker == null )
+		{
+			Scale = MathX.Lerp( Scale, 1f, 5f * Time.Delta );
 			return;
+		}
 
 		Scale = MathX.Lerp( Scale, 0, 5f * Time.Delta );
 		if ( Scale.AlmostEqual( 0, 0.1f ) && !deleting )

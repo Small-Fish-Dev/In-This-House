@@ -23,7 +23,7 @@ public partial class LootSpawner : Entity
 	{
 		var chance = MansionGame.Random.Float();
 
-		if ( chance <= ChanceToSpawn )
+		if ( chance <= ChanceToSpawn && LootToSpawn != null )
 		{
 			LootSpawned = Loot.CreateFromGameResource( LootToSpawn, Position, Rotation );
 

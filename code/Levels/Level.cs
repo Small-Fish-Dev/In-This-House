@@ -80,8 +80,12 @@ public abstract partial class Level : Entity // Easy replication to client
 			Exit.Position = randomValidTrapdoor.Position;
 		}
 
-		foreach ( var spawner in Entity.All.OfType<LootSpawner>().Where( x => (x.LootToSpawn?.Level ?? LevelType.Mansion) == Type ) )
-			spawner.SpawnLoot();
+		var spawners = Entity.All.OfType<LootSpawner>()
+			.Where( x => (x.LootToSpawn?.Level ?? LevelType.Mansion) == Type )
+			.ToList();
+
+		for ( int i = 0; i < spawners.Count; i++ )
+			spawners[i]?.SpawnLoot();
 
 		var allDoorsInLevel = Entity.All.OfType<Door>()
 			.Where( x => WorldBox.Contains( x.Position ) ); // Only doors inside of this level
