@@ -1,5 +1,5 @@
 {
-  "Title": "2023 Jam",
+  "Title": "In This House",
   "Type": "game",
   "Org": "fish",
   "Ident": "2023_jam",
@@ -8,7 +8,7 @@
   "HasAssets": true,
   "AssetsPath": "",
   "Resources": null,
-  "MenuResources": null,
+  "MenuResources": "/ui/*\n/UI/*\n/fonts/*",
   "HasCode": true,
   "CodePath": "/code/",
   "PackageReferences": [

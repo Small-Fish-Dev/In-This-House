@@ -1,20 +1,22 @@
 
 .gamemainmenu frontpage
 {
+	align-items: center;
+	
 	margin: 100px 100px;
 	gap: 100px;
 
 	.game-title
 	{
-		font-family: Poppins;
-		font-weight: 700;
-		font-size: 70px;
+		color: white;
+		font-size: 92px;
+		text-shadow: 4px 4px 0px black;
 	}
 
 	.controls
 	{
 		flex-direction: column;
 		gap: 8px;
-		align-items: flex-start;
+		align-items: stretch;
 	}
 }
