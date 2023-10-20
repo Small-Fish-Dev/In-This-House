@@ -142,13 +142,64 @@
 						take = 0
 						reverse = false
 					},
+					{
+						_class = "AnimFile"
+						name = "walk"
+						children = 
+						[
+							{
+								_class = "ExtractMotion"
+								extract_tx = true
+								extract_ty = true
+								extract_tz = false
+								extract_rz = false
+								linear = false
+								quadratic = false
+								root_bone_name = ""
+								motion_type = "Single"
+							},
+							{
+								_class = "AnimSmoothLoop"
+								frames_from_start = 2
+								frames_from_end = 2
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_BODYGROUP_SET_VALUE"
+								event_frame = 0
+								event_keys = 
+								{
+									bodygroup = "pants"
+									value = 0
+								}
+							},
+						]
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						enable_scale = false
+						source_filename = "models/pissing_guy/walk.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = 48.0
+						take = 0
+						reverse = false
+					},
 				]
 				default_root_bone_name = ""
 			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = ""
+		anim_graph_name = "models/pissing_guy/pissing_guy.vanmgrph"
 		base_model_name = ""
 	}
 }
