@@ -110,7 +110,7 @@ public partial class Loot : UsableEntity
 		SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 
 		var normal = (user.Position - Position).Normal.WithZ( 1f );
-		var force = 100f + Position.Distance( user.Position ) * 2f;
+		var force = 100f + Position.Distance( user.Position );
 		ApplyAbsoluteImpulse( force * normal );
 	}
 
