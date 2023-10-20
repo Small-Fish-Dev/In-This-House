@@ -24,6 +24,7 @@ public partial class MansionGame : GameManager
 	public static Random Random { get; set; } = new Random();
 
 	public float TimePerLevel => 180.0f;
+	public float TimeToJoin => 5.0f;
 
 	public MansionGame()
 	{
@@ -79,22 +80,29 @@ public partial class MansionGame : GameManager
 	{
 		base.ClientJoined( client );
 
-		var pawn = new Player();
-		client.Pawn = pawn;
-		pawn.Respawn();
-		// TODO: if a client has joined in the middle of the game then give them a spectator instead
+		if ( !TimerActive || TimePerLevel - TimeOut <= TimeToJoin )
+		{
+			var pawn = new Player();
+			client.Pawn = pawn;
+			pawn.Respawn();
+		}
+		else
+		{
+			var pawn = new Spectator();
+			client.Pawn = pawn;
+		}
 	}
 
 	public override void ClientDisconnect( IClient cl, NetworkDisconnectionReason reason )
 	{
 		base.ClientDisconnect( cl, reason );
-		
-		if (cl.Pawn is Player player)
+
+		if ( cl.Pawn is Player player )
 			player.Delete();
 		else if ( cl.Pawn is Spectator spectator )
 		{
 			var p = spectator.Body;
-			if (p.IsValid())
+			if ( p.IsValid() )
 				p.Delete();
 			spectator.Delete();
 		}
