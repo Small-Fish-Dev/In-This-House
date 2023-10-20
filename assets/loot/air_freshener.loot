@@ -1,0 +1,10 @@
+{
+  "Name": "Air Freshener",
+  "Description": "",
+  "Level": "Bathrooms",
+  "Model": "models/items/air_freshener/air_freshener.vmdl",
+  "MonetaryValue": 30,
+  "IconOffset": "15,2,-7",
+  "IconAngles": "-20,60,0",
+  "__references": []
+}

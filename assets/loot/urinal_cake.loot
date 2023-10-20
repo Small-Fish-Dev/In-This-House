@@ -1,0 +1,10 @@
+{
+  "Name": "Urinal Cake",
+  "Description": null,
+  "Level": "Bathrooms",
+  "Model": "models/items/urinal_cake/urinal_cake.vmdl",
+  "MonetaryValue": 70,
+  "IconOffset": "0,0,0",
+  "IconAngles": "-45,0,0",
+  "__references": []
+}

@@ -1,0 +1,10 @@
+{
+  "Name": "Golden Turd",
+  "Description": null,
+  "Level": "Bathrooms",
+  "Model": "models/items/golden_turd/golden_turd.vmdl",
+  "MonetaryValue": 200,
+  "IconOffset": "15,0,-3",
+  "IconAngles": "-30,0,0",
+  "__references": []
+}

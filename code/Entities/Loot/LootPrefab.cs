@@ -95,9 +95,13 @@ public class LootPrefab : GameResource
 
 		// Render to texture.
 		Graphics.RenderToTexture( camera, Icon );
-		
+
 		if ( display )
-			DebugOverlay.Texture( Icon, new Rect( 250, Icon.Size ), 3 );
+		{
+			var rect = new Rect( 250, Icon.Size );
+			DebugOverlay.Texture( Icon, rect, 3 );
+			DebugOverlay.Texture( Texture.Invalid, new Rect( 250, Icon.Size ), 3 );
+		}
 
 		// Dispose the scene.
 		world.Delete();
