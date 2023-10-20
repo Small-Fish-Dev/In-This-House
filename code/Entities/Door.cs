@@ -144,7 +144,7 @@ public partial class Door : UsableEntity
 						var cellFound = grid.Value.GetCell( checkPos );
 
 						if ( cellFound != null )
-							cellFound.Tags.Remove( "occupied" );
+							cellFound.Tags.Remove( "door" );
 					}
 
 				for ( var x = 0; x < 15f; x++ )
@@ -161,5 +161,8 @@ public partial class Door : UsableEntity
 					}
 			}
 		}
+
+		foreach ( var monster in MansionGame.Instance.CurrentLevel.Monsters )
+			monster.RecalculatePath();
 	}
 }

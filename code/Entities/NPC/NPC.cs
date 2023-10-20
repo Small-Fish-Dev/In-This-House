@@ -109,12 +109,10 @@ public partial class NPC : AnimatedEntity
 
 					GameTask.RunInThreadAsync( async () =>
 					{
-						await GameTask.Delay( 2000 );
+						await GameTask.Delay( 3000 );
 						door.Close();
 					} );
 				}
-				else
-					Velocity = Velocity + door.Rotation.Forward * Time.Delta * 1000f; // Gotta push them along the door because they're dumb and can't go around it
 			}
 	}
 

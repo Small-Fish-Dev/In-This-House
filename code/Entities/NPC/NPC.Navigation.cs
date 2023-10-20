@@ -90,6 +90,8 @@ public partial class NPC
 		}
 	}
 
+	public void RecalculatePath() => NavigateTo( GetTargetPathCell() );
+
 	public Cell GetTargetPathCell()
 	{
 		if ( Target != null )
@@ -111,7 +113,9 @@ public partial class NPC
 			var pathBuilder = new AStarPathBuilder( CurrentGrid )
 			.WithPathCreator( this )
 			.WithPartialEnabled()
-			.WithMaxDistance( 2000f );
+			.WithMaxDistance( 2000f )
+			.AvoidTag( "door", 400f )
+			.AvoidTag( "edge", 200f );
 
 			if ( false && CurrentGrid.LineOfSight( startingCell, targetCell ) ) // If there's direct line of sight, move in a straight path from A to B
 			{
@@ -128,7 +132,7 @@ public partial class NPC
 				if ( computedPath.IsEmpty || computedPath.Length < 1 )
 					return;
 
-				computedPath.Simplify();
+				computedPath.Simplify( 2, 3, "door", "edge" );
 
 				CurrentPath = computedPath;
 			}
