@@ -24,7 +24,7 @@ public partial class AoNyobo : NPC
 		var caller = ConsoleSystem.Caller.Pawn;
 
 		var npc = new AoNyobo( MansionGame.Instance.CurrentLevel );
-		npc.Position = caller.Position + caller.Rotation.Forward * 100f;
+		npc.Position = caller.Position + caller.Rotation.Forward * 500f;
 		npc.Rotation = caller.Rotation;
 	}
 }
