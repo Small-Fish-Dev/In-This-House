@@ -2,7 +2,8 @@
 
 public partial class Player
 {
-	public bool CommandsLocked => IsStunned || IsTripping || IsSlipping || !IsAlive;
+	[Net] public bool Blocked { get; set; } = false;
+	public bool CommandsLocked => IsStunned || MovementLocked || Blocked;
 	public bool MovementLocked => IsTripping || IsSlipping || !IsAlive;
 
 	[Net] public float StunDuration { get; set; } = 1.5f;

@@ -10,6 +10,9 @@ partial class Player : AnimatedEntity
 	public float CollisionRadius => IsCrouching ? 22f : 12f;
 	public float CollisionHeight => IsCrouching ?  36f : 72f;
 	public Capsule CollisionCapsule => new Capsule( Vector3.Up * CollisionRadius, Vector3.Up * (CollisionHeight - CollisionRadius), CollisionRadius );
+
+	[Net] public NPC CameraTarget { get; set; } = null;
+
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -97,19 +100,30 @@ partial class Player : AnimatedEntity
 
 		HandleBodyiew();
 
-		if ( !MovementLocked )
+		if ( CameraTarget == null )
 		{
-			Camera.Position = GetAttachment( "eyes" )?.Position ?? EyePosition;
-			Camera.Rotation = InputRotation;
-			Camera.FirstPersonViewer = this;
+			if ( !MovementLocked )
+			{
+				Camera.Position = GetAttachment( "eyes" )?.Position ?? EyePosition;
+				Camera.Rotation = InputRotation;
+				Camera.FirstPersonViewer = this;
+			}
+			else
+			{
+				var newPos = Position - Velocity.WithZ( 0 ).Normal * 30f + Vector3.Up * 50f;
+				Camera.Position = Vector3.Lerp( Camera.Position, newPos, Time.Delta * 10 );
+				Camera.Rotation = Rotation.LookAt( Position + Vector3.Up * 16f - Camera.Position );
+				Camera.FirstPersonViewer = null;
+			}
 		}
 		else
 		{
-			var newPos = Position - Velocity.WithZ( 0 ).Normal * 30f + Vector3.Up * 50f;
-			Camera.Position = Vector3.Lerp( Camera.Position, newPos, Time.Delta * 10 );
-			Camera.Rotation = Rotation.LookAt( Position + Vector3.Up * 16f - Camera.Position );
-			Camera.FirstPersonViewer = null;
+			var headPos = CameraTarget.GetBoneTransform( CameraTarget.GetBoneIndex( "head" ) ).Position;
+			var rotation = Rotation.LookAt( headPos - Camera.Position );
+			Camera.Position = GetAttachment( "eyes" )?.Position ?? EyePosition;
+			Camera.Rotation = rotation;
 		}
+		
 
 		Camera.ZNear = 2;
 		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( 60f );
@@ -135,12 +149,20 @@ partial class Player : AnimatedEntity
 
 	protected void SimulateAnimations()
 	{
-		if ( MovementLocked )
-			Rotation = Rotation.LookAt( Velocity.WithZ( 0 ), Vector3.Up );
+		if ( CameraTarget == null )
+		{
+			if ( MovementLocked )
+				Rotation = Rotation.LookAt( Velocity.WithZ( 0 ), Vector3.Up );
+			else
+			{
+				if ( !IsStunned )
+					Rotation = Rotation.FromYaw( InputAngles.yaw );
+			}
+		}
 		else
 		{
-			if ( !IsStunned )
-			Rotation = Rotation.FromYaw( InputAngles.yaw );
+			var rotation = Rotation.LookAt( CameraTarget.Position - Position, Vector3.Up );
+			Rotation = Rotation.Lerp( Rotation, rotation, Time.Delta * 5f );
 		}
 
 		var remapped = MathX.Remap( Velocity.Length, 0, 150, 0.5f, 1f );
@@ -206,6 +228,7 @@ partial class Player : AnimatedEntity
 		IsAlive = true;
 		EnableDrawing = true;
 		EnableAllCollisions = false;
+		Blocked = false;
 	}
 
 	public void Kill()
@@ -215,6 +238,7 @@ partial class Player : AnimatedEntity
 		IsAlive = false;
 		EnableDrawing = false;
 		EnableAllCollisions = false;
+		Blocked = false;
 
 		// Log.Error( "TODO: FUCKIG INPUTROTATION IS NOT NETWORKED TO EVERYONE FUUUUUUUUCKK" );
 		var spectator = new Spectator { Position = EyePosition, Rotation = Rotation, Body = this }; // TODO: Rotation->InputRotation

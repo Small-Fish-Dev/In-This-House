@@ -13,9 +13,13 @@ public partial class NPC : AnimatedEntity
 	public Capsule CollisionCapsule => new Capsule( Vector3.Up * CollisionRadius, Vector3.Up * (CollisionHeight - CollisionRadius), CollisionRadius );
 	public virtual float MaxVisionRange { get; set; } = 1024f;
 	public virtual float MaxVisionAngle { get; set; } = 120f; // Degrees
+	public virtual float AttackAnimationDuration { get; set; } = 1.5f;
+	public virtual float KillAfterAttackTime { get; set; } = 1f;
+	public virtual float SetDistanceWhenAttacking { get; set; } = 50f;
 	public Dictionary<Player, TimeSince> PlayersInVision { get; private set; } = new();
 	public Player Target { get; set; } = null;
 	public Player LastTarget { get; set; } = null;
+	public Player CurrentlyMurdering { get; set; } = null;
 
 	public NPC() { }
 	public NPC( Level level ) : base()
@@ -107,13 +111,33 @@ public partial class NPC : AnimatedEntity
 					} );
 				}
 				else
-					Velocity = Velocity + door.Rotation.Forward * Time.Delta * 2000f;
+					Velocity = Velocity + door.Rotation.Forward * Time.Delta * 1000f; // Gotta push them along the door because they're dumb and can't go around it
 			}
 	}
 
-	public virtual void CatchPlayer( Player player )
+	public async virtual void CatchPlayer( Player player )
 	{
+		SetAnimParameter( "attack", true );
+
+		var currentDirection = (player.Position - Position).Normal;
+		player.Position = Position + currentDirection * SetDistanceWhenAttacking;
+		player.CameraTarget = this;
+		player.Blocked = true;
+
+		CurrentlyMurdering = player;
+		Blocked = true;
+
+		await GameTask.DelaySeconds( KillAfterAttackTime );
+
 		player.Kill();
+
+		await GameTask.DelaySeconds( AttackAnimationDuration );
+
+		player.CameraTarget = null;
+		player.Blocked = false;
+
+		CurrentlyMurdering = null;
+		Blocked = false;
 	}
 
 	[GameEvent.Tick]

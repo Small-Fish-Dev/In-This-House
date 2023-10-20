@@ -66,6 +66,9 @@ public partial class Player
 			}
 		}
 
+		if ( Blocked )
+			Velocity = Vector3.Zero.WithZ( Velocity.z );
+
 		if ( skiddingVolume > 0f )
 		{
 			if ( !skiddingSound.IsPlaying )
