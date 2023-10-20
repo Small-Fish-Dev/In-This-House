@@ -80,7 +80,7 @@ public abstract partial class Level : Entity // Easy replication to client
 			Exit.Position = randomValidTrapdoor.Position;
 		}
 
-		foreach ( var spawner in Entity.All.OfType<LootSpawner>().Where( x => x.LootToSpawn.Level == Type ).ToList() )
+		foreach ( var spawner in Entity.All.OfType<LootSpawner>().Where( x => (x.LootToSpawn?.Level ?? LevelType.Mansion) == Type ) )
 			spawner.SpawnLoot();
 
 		var allDoorsInLevel = Entity.All.OfType<Door>()
@@ -112,7 +112,7 @@ public abstract partial class Level : Entity // Easy replication to client
 		foreach ( var monster in new List<NPC>( Monsters ) )
 			RemoveMonster( monster );
 
-		foreach ( var spawner in Entity.All.OfType<LootSpawner>().Where( x => (x.LootToSpawn?.Level ?? LevelType.Mansion) == Type ) )
+		foreach ( var spawner in Entity.All.OfType<LootSpawner>().Where( x => x.LootToSpawn?.Level == Type ) )
 			spawner.DeleteLoot();
 
 		var allDoorsInLevel = Entity.All.OfType<Door>()

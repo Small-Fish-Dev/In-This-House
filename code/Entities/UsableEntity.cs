@@ -1,6 +1,6 @@
 ﻿namespace BrickJam;
 
-public class UsableEntity : ModelEntity
+public class UsableEntity : AnimatedEntity
 {
 	[BindComponent]
 	public LockedComponent Lock { get; }

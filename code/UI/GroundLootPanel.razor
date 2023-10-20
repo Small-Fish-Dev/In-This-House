@@ -42,6 +42,11 @@
 		var remapped = MathX.Remap( dist, 500, 700, 1, 0 );
 		Style.Opacity = remapped;
 	}
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( Loot?.Name );
+	}
 }
 
 <style>

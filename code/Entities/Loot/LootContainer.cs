@@ -45,6 +45,8 @@ public class LootContainer : UsableEntity
 
 	private async void spit()
 	{
+		SetAnimParameter( "open", true );
+
 		var lootCount = Game.Random.Int( 2, 5 );
 		var levelLoot = LootPrefab.All
 			.Where( x => x.Value.Level == (MansionGame.Instance?.CurrentLevel?.Type ?? LevelType.Mansion) )
