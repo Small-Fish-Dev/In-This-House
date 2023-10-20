@@ -1,0 +1,21 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "materials/hotspots/bricks/dungeon_rock_hs_color.png"
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	Metalness "materials/hotspots/bricks/dungeon_rock_hs_metal.png"
+	Normal "materials/hotspots/bricks/dungeon_rock_hs_normal.png"
+	Roughness "materials/hotspots/bricks/dungeon_rock_hs_rough.png"
+
+	ToolAttributes
+	{
+		SubrectDefinition "materials/hotspots/wood_framing/mansion_wood_hs.rect"
+	}
+}
