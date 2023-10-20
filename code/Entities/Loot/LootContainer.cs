@@ -1,5 +1,8 @@
-﻿namespace BrickJam;
+﻿using Editor;
 
+namespace BrickJam;
+
+[HammerEntity]
 public class LootContainer : UsableEntity
 {
 	public override float InteractionDuration => 2f;
