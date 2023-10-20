@@ -10,8 +10,7 @@ public partial class LootSpawner : Entity
 	public LootPrefab LootToSpawn { get; set; }
 	[Property]
 	public float ChanceToSpawn { get; set; } = 0.5f;
-	[Property]
-	public LevelType Level { get; set; } = LevelType.None;
+
 	public Loot LootSpawned { get; set; }
 
 	public override void Spawn()

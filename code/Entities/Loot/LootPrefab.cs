@@ -10,6 +10,7 @@ public class LootPrefab : GameResource
 
 	public string Name { get; set; }
 	public string Description { get; set; }
+	public LevelType Level { get; set; }
 
 	[ResourceType( "vmdl" )]
 	public string Model { get; set; }
