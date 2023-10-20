@@ -1,0 +1,696 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	RectangleSets = 
+	[
+		{
+			name = ""
+			properties = null
+			rectangles = 
+			[
+				{
+					min = [ 0, 0 ]
+					max = [ 0, 2048 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 0 ]
+					max = [ 0, 2048 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 0 ]
+					max = [ 0, 32768 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 0 ]
+					max = [ 0, 2048 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 0 ]
+					max = [ 16384, 4096 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 4096 ]
+					max = [ 16384, 8192 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 0 ]
+					max = [ 24576, 8192 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 24576, 0 ]
+					max = [ 32768, 8192 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 0 ]
+					max = [ 0, 28672 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 8192 ]
+					max = [ 16384, 10240 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 8192 ]
+					max = [ 32768, 10240 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 10240 ]
+					max = [ 16384, 12288 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 10240 ]
+					max = [ 32768, 12288 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 20480 ]
+					max = [ 4096, 24576 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 12288 ]
+					max = [ 32768, 13312 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 13312 ]
+					max = [ 32768, 14336 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 12288 ]
+					max = [ 16384, 13312 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 13312 ]
+					max = [ 16384, 14336 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 14336 ]
+					max = [ 16384, 14848 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 14848 ]
+					max = [ 16384, 15360 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 14336 ]
+					max = [ 32768, 14848 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 14848 ]
+					max = [ 32768, 15360 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 15360 ]
+					max = [ 20480, 15872 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 20480, 15360 ]
+					max = [ 24576, 15872 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 24576, 15360 ]
+					max = [ 28672, 15872 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 28672, 15360 ]
+					max = [ 32768, 15872 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 28672, 15872 ]
+					max = [ 32768, 16384 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 24576, 15872 ]
+					max = [ 28672, 16384 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 20480, 15872 ]
+					max = [ 24576, 16384 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 15872 ]
+					max = [ 20480, 16384 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 8192, 15360 ]
+					max = [ 16384, 15872 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 15360 ]
+					max = [ 8192, 15872 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 15872 ]
+					max = [ 8192, 16384 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 8192, 15872 ]
+					max = [ 16384, 16384 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 16384 ]
+					max = [ 8192, 20480 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 8192, 16384 ]
+					max = [ 16384, 20480 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 16384 ]
+					max = [ 24576, 20480 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 24576, 16384 ]
+					max = [ 32768, 20480 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 28672, 20480 ]
+					max = [ 32768, 22528 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 24576, 20480 ]
+					max = [ 28672, 22528 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 20480, 20480 ]
+					max = [ 24576, 22528 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 20480 ]
+					max = [ 20480, 22528 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 22528 ]
+					max = [ 18432, 24576 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 18432, 22528 ]
+					max = [ 20480, 24576 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 20480, 22528 ]
+					max = [ 22528, 24576 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 22528, 22528 ]
+					max = [ 24576, 24576 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 24576, 22528 ]
+					max = [ 32768, 23552 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 24576, 23552 ]
+					max = [ 32768, 24576 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 24576, 24576 ]
+					max = [ 32768, 25600 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 24576 ]
+					max = [ 24576, 25600 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 25600 ]
+					max = [ 24576, 26624 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 24576, 25600 ]
+					max = [ 28672, 26624 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 28672, 25600 ]
+					max = [ 32768, 26624 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 28672, 26624 ]
+					max = [ 32768, 27648 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 24576, 26624 ]
+					max = [ 28672, 27648 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 26624 ]
+					max = [ 24576, 27136 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 27136 ]
+					max = [ 24576, 27648 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 27648 ]
+					max = [ 20480, 28160 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 20480, 27648 ]
+					max = [ 24576, 28160 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 20480, 28160 ]
+					max = [ 24576, 28672 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 28160 ]
+					max = [ 20480, 28672 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 24576, 27648 ]
+					max = [ 28672, 28160 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 28672, 28160 ]
+					max = [ 32768, 28672 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 28672, 27648 ]
+					max = [ 32768, 28160 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 24576, 28160 ]
+					max = [ 28672, 28672 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 16384, 28672 ]
+					max = [ 32768, 32768 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 28672 ]
+					max = [ 16384, 32768 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 8192, 26624 ]
+					max = [ 16384, 28672 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 26624 ]
+					max = [ 8192, 28672 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 24576 ]
+					max = [ 8192, 26624 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 8192, 24576 ]
+					max = [ 16384, 26624 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 12288, 20480 ]
+					max = [ 16384, 24576 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 8192, 20480 ]
+					max = [ 12288, 24576 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 4096, 20480 ]
+					max = [ 8192, 24576 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 0 ]
+					max = [ 0, 2048 ]
+					properties = 
+					{
+						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 0 ]
+					max = [ 0, 2048 ]
+					properties = 
+					{
+						allowTiling = true
+					}
+				},
+			]
+		},
+	]
+}
