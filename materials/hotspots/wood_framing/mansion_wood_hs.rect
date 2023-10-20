@@ -13,6 +13,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -21,6 +22,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -29,6 +31,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -37,6 +40,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -45,6 +49,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -53,6 +58,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -61,6 +67,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -69,6 +76,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -77,6 +85,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -85,6 +94,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -93,6 +103,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -101,6 +112,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -109,6 +121,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -117,6 +130,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -125,6 +139,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -133,6 +148,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -141,6 +157,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -149,6 +166,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -157,6 +175,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -165,6 +184,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -173,6 +193,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -181,6 +202,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -189,6 +211,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -197,6 +220,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -205,6 +229,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -213,6 +238,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -221,6 +247,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -229,6 +256,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -237,6 +265,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -245,6 +274,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -253,6 +283,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -261,6 +292,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -269,6 +301,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -277,6 +310,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -285,6 +319,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -293,6 +328,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -301,6 +337,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -309,6 +346,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -317,6 +355,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -325,6 +364,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -333,6 +373,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -341,6 +382,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -349,6 +391,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -357,6 +400,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -365,6 +409,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -373,6 +418,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -381,6 +427,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -389,6 +436,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -397,6 +445,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -405,6 +454,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -413,6 +463,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -421,6 +472,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -429,6 +481,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -437,6 +490,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -445,6 +499,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -453,6 +508,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -461,6 +517,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -469,6 +526,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -477,6 +535,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -485,6 +544,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -493,6 +553,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -501,6 +562,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -509,6 +571,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -517,6 +580,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -525,6 +589,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -533,6 +598,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -541,6 +607,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -549,6 +616,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -557,6 +625,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -565,6 +634,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -573,6 +643,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -581,6 +652,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -589,6 +661,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -597,6 +670,7 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
 					}
 				},
 				{
@@ -605,6 +679,15 @@
 					properties = 
 					{
 						allowRotation = true
+						allowTiling = true
+					}
+				},
+				{
+					min = [ 0, 0 ]
+					max = [ 0, 2048 ]
+					properties = 
+					{
+						allowTiling = true
 					}
 				},
 			]
