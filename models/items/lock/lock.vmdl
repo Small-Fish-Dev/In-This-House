@@ -114,6 +114,21 @@
 					},
 				]
 			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = "solid"
+						origin = [ 0.006209, -0.011863, 3.947458 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 2.203264, 5.899248, 7.851303 ]
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""

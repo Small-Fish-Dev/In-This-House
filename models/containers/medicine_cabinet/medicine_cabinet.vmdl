@@ -128,8 +128,8 @@
 						_class = "Attachment"
 						name = "lock"
 						parent_bone = "door_r"
-						relative_origin = [ -140.0, -17.0, 23.0 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
+						relative_origin = [ -140.0, -55.0, 23.0 ]
+						relative_angles = [ -65.0, 0.0, -90.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -138,7 +138,7 @@
 						name = "exit"
 						parent_bone = "root"
 						relative_origin = [ 0.0, 105.0, 89.0 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ -90.0, -90.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},

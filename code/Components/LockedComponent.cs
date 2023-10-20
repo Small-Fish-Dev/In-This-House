@@ -13,6 +13,7 @@ public partial class LockedComponent : EntityComponent
 			Lock = new();
 			Lock.SetModel( "models/items/lock/lock.vmdl" );
 			Lock.SetParent( Entity, "lock", Transform.Zero );
+			Lock.Tags.Add( "solid" );
 			Lock.Transmit = TransmitType.Always;
 		}
 
@@ -47,7 +48,6 @@ public partial class LockedComponent : EntityComponent
 		component.Locked = false;
 		component.Lock.Parent = null;
 		component.Lock.SetAnimParameter( "unlocked", true );
-		component.Lock.Tags.Add( "nocollide" );
 		component.Lock.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 	}
 
