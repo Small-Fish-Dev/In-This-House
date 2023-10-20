@@ -8,6 +8,15 @@ public partial class BathroomsLevel : Level
 	public async override Task Start()
 	{
 		await base.Start();
+
+		foreach ( var spawner in Entity.All.OfType<PissingGuySpawner>().ToList() )
+		{
+			var guy = spawner.SpawnGuy();
+
+			if ( guy != null )
+				RegisterMonster( guy );
+		}
+
 		return;
 	}
 
