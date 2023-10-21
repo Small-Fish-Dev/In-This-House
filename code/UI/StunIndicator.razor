@@ -3,21 +3,45 @@
 @namespace BrickJam.UI
 @inherits Panel
 
-<root>
-	@if ( Player.IsStunned )
-	{
-		<div>Stunned!</div>
-		<RadialProgress @Progress=@( () => Player.StunLeft / Player.StunDuration )></RadialProgress>
-	}
+<root class="@((Player?.IsStunned ?? false) ? "visible" : "")">
+	<RadialProgress @Progress=@( () => Player.StunLeft / Player.StunDuration )></RadialProgress>
+	<span>STUNNED!</span>
 </root>
 
 @code {
-
 	public Player Player;
 
 	protected override int BuildHash()
 	{
 		return HashCode.Combine( Player.IsStunned );
 	}
-
 }
+
+<style>
+	StunIndicator {
+		position: absolute;
+		right: 0px;
+		top: 50%;
+		padding: 10px;
+		padding-left: 30px;
+		transform: translateX(100%);
+		transition: transform 0.1s ease-in-out;
+		font-size: 32px;
+		color:white;
+		text-shadow: 3px 3px 0px black;
+		z-index: 3;
+		background: linear-gradient(to left, rgba(black, 0.5) 0%, rgba(black, 0.2) 75%, rgba(black, 0) 100%);
+		align-items: center;
+
+		RadialProgress {
+			width: 48px;
+			aspect-ratio: 1;
+			margin-right: 10px;
+			filter: drop-shadow(3px 3px 1px black);
+		}
+
+		&.visible {
+			transform: translateX(0%);
+		}
+	}
+</style>
