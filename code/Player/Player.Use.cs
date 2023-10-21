@@ -116,7 +116,7 @@ partial class Player : AnimatedEntity
 			
 			// Remove the invalid or complete interaction request
 			if ( !HasActiveInteractionRequest
-			     || CurrentInteractionRequest.Entity.Position.Distance( Position ) > UseRange * 1.5f )
+			     || CurrentInteractionRequest.Entity.Position.Distance( Position ) > UseRange * 2f )
 			{
 				CancelInteraction();
 			}
