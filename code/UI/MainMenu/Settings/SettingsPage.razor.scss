@@ -1,6 +1,16 @@
 .gamemainmenu settingspage
 {
-	padding: 0 170px;
+	padding: 0;
+	
+	.navbar
+	{
+		padding: 32px;
+	}
+	
+	.scroll
+	{
+		padding: 0 170px;
+	}
 }
 
 keybind

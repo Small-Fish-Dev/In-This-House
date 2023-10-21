@@ -1,0 +1,48 @@
+﻿@import "../Common.scss";
+
+.gamemainmenu creditspage
+{
+  padding: 0;
+
+  > .navbar
+  {
+    padding: 32px;
+  }
+
+  .scroll
+  {
+    flex-grow: 1;
+    gap: 15px;
+    
+    color: #ddd;
+    background-color: #000000AA;
+    
+    padding: 100px 25vmin;
+    
+    > .row {
+      flex-grow: 0;
+      flex-shrink: 0;
+      
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 15px;
+      
+      justify-content: center;
+
+      text-align: center;
+      
+      > .col {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        flex-grow: 1;
+        flex-basis: 0;
+        
+        text-align: left;
+        
+        &:first-child {
+          text-align: right;
+        }
+      }
+    }
+  }
+}
