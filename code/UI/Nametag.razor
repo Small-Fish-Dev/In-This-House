@@ -1,22 +1,21 @@
-﻿@using Sandbox.UI;
+﻿@using Sandbox;
+@using Sandbox.UI;
 
 @namespace BrickJam.UI
 @inherits WorldPanel
 
 <root>
 	<div class="container">
-		<span>@(Loot.FullName)</span>
-		<div style="flex-direction: row;">
-			<span class="currency">$</span><span>@($"{Loot.MonetaryValue:n0}")</span>
-		</div>
+		<span>@(Player?.Client?.Name ?? "dead player")</span>
 	</div>
 </root>
 
 @code {
-	public Loot Loot { get; set; }
+	private static Dictionary<BrickJam.Player, Nametag> nametags = new();
+	public BrickJam.Player Player { get; private set; }
 	TimeSince sinceCreation = 0;
 
-	public GroundLootPanel()
+	public Nametag()
 	{
 		// Center our panel :D
 		var size = new Vector2( 1500, 500 );
@@ -25,7 +24,7 @@
 
 	public override void Tick()
 	{
-		if ( Loot == null || !Loot.IsValid )
+		if ( Player == null || !Player.IsValid )
 		{
 			if ( !IsDeleting )
 				Delete();
@@ -34,8 +33,8 @@
 		}
 
 		var bounce = 2f * MathF.Sin( sinceCreation );
-		var height = (Loot.CollisionBounds.Maxs * Loot.Rotation).z;
-		Position = Loot.Position + (height + bounce + 15f) * Vector3.Up;
+		var height = (Player.CollisionBounds.Maxs * Player.Rotation).z;
+		Position = Player.Position + (height + bounce) * Vector3.Up;
 		Rotation = Rotation.LookAt( Camera.Position - Position );
 
 		var dist = Game.LocalPawn?.Position.Distance( Position ) ?? 0;
@@ -43,14 +42,31 @@
 		Style.Opacity = remapped;
 	}
 
+	[GameEvent.Tick.Client]
+	private static void creator()
+	{
+		var players = Game.Clients
+			.Select( x => x.Pawn as BrickJam.Player );
+
+		foreach ( var player in players )
+		{
+			if ( nametags.TryGetValue( player, out var panel ) || Game.LocalPawn == player )
+				continue;
+
+			nametags.Add( player, new Nametag() { 
+				Player = player 
+			} );
+		}
+	}
+
 	protected override int BuildHash()
 	{
-		return HashCode.Combine( Loot?.Name );
+		return HashCode.Combine( Player );
 	}
 }
 
 <style>
-	GroundLootPanel {
+	Nametag {
 		transition: transform 0.5s ease-in-out;
 		justify-content: center;
 		align-items: center;
@@ -66,13 +82,6 @@
 			color: white;
 			text-shadow: 3px 3px 0px black;
 			background: linear-gradient(to left, rgba(black, 0) 0%, rgba(black, 0.2) 20%, rgba(black, 0.2) 80%, rgba(black, 0) 100%);
-
-			.currency {
-				padding-right: 4px; 
-				font-size: 22px; 
-				top: 5px;
-				color: rgba(50, 205, 50, 1);
-			}
 		}
 
 		&:outro {
