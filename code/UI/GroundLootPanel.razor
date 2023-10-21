@@ -36,7 +36,10 @@
 		var bounce = 2f * MathF.Sin( sinceCreation );
 		var height = (Loot.CollisionBounds.Maxs * Loot.Rotation).z;
 		Position = Loot.Position + (height + bounce + 15f) * Vector3.Up;
-		Rotation = Rotation.LookAt( Camera.Position - Position );
+
+		var rotation = Rotation.LookAt( Camera.Position - Position );
+		var targetRoll = 5f * MathF.Sin( sinceCreation * 1.5f );
+		Rotation = Rotation.From( 0, rotation.Yaw(), MathF.Floor( targetRoll * 2f + 0.5f ) / 2f );
 
 		var dist = Game.LocalPawn?.Position.Distance( Position ) ?? 0;
 		var remapped = MathX.Remap( dist, 500, 700, 1, 0 );

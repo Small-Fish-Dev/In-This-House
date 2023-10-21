@@ -275,4 +275,26 @@ partial class Player : AnimatedEntity
 
 	// Remove to the players money (Clamps to 0)
 	public void RemoveMoney( int value ) => SetMoney( Math.Max( Money + value, 0 ) );
+
+	[ClientRpc]
+	public static void _sendMessage( int indent, string message )
+	{
+		if ( Entity.FindByIndex( indent ) is not Player player )
+			return;
+
+		foreach ( var p in Entity.All.OfType<Player>() )
+		Speechbubble.Create( message, p );
+	}
+
+	[ConCmd.Server]
+	public static void SendMessage( string message )
+	{
+		if ( ConsoleSystem.Caller.Pawn is not Player pawn )
+			return;
+
+		if ( string.IsNullOrEmpty( message ) || message.Length > 200 )
+			return;
+
+		_sendMessage( pawn.NetworkIdent, message );
+	}
 }

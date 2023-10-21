@@ -24,7 +24,7 @@
 
 	public override void Tick()
 	{
-		if ( Player == null || !Player.IsValid || Player.IsAlive )
+		if ( Player == null || !Player.IsValid || !Player.IsAlive )
 		{
 			if ( !IsDeleting )
 				Delete();
@@ -33,9 +33,11 @@
 		}
 
 		var bounce = 2f * MathF.Sin( sinceCreation );
-		var height = (Player.CollisionBounds.Maxs * Player.Rotation).z;
-		Position = Player.Position + (height + bounce) * Vector3.Up;
-		Rotation = Rotation.LookAt( Camera.Position - Position );
+		Position = Player.EyePosition + (10f + bounce) * Vector3.Up;
+
+		var rotation = Rotation.LookAt( Camera.Position - Position );
+		var targetRoll = 5f * MathF.Sin( sinceCreation * 1.5f );
+		Rotation = Rotation.From( 0, rotation.Yaw(), MathF.Floor( targetRoll * 2f + 0.5f ) / 2f );
 
 		var dist = Game.LocalPawn?.Position.Distance( Position ) ?? 0;
 		var remapped = MathX.Remap( dist, 500, 700, 1, 0 );
@@ -50,7 +52,7 @@
 
 		foreach ( var player in players )
 		{
-			if ( player == null || nametags.TryGetValue( player, out var panel ) || Game.LocalPawn == player )
+			if ( player == null || !player.IsAlive || nametags.TryGetValue( player, out var panel ) || Game.LocalPawn == player )
 				continue;
 
 			nametags.Add( player, new Nametag() { 

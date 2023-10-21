@@ -38,4 +38,26 @@
             }
         }
     }
+
+    .chat-input {
+        position: absolute;
+        width: 450px;
+        min-height: 20px;
+        font-size: 24px;
+        opacity: 0;
+        pointer-events: all;
+        background-color: rgba(37, 64, 98, 1);
+        box-shadow: 3px 3px 0px 0px rgba(17, 44, 78, 1);
+        transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+        transform: translate(-50% 200px);
+        text-shadow: 3px 3px 0px black;
+        left: 50%;
+        top: 50%;
+        margin-top: 40px;
+
+        &.visible {
+            opacity: 1;
+            transform: translate(-50% 0px);
+        }
+    }
 }

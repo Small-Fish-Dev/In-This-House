@@ -52,7 +52,20 @@
 			<div class="hint"><inputglyph action="inventory"/>Inventory</div>
 		</div>
 	}
-	
+
+	<textinput ghost="..." class="chat-input" @ref=ChatInput onsubmit=@(( PanelEvent panelEvent ) => {
+		if ( panelEvent.Target is not TextInput input )
+			return;
+
+		if ( string.IsNullOrEmpty( input.Text ) || input.Text.Length > 200 )
+			Log.Error( "Input length must be >= 1 and < 200." );
+		else
+			BrickJam.Player.SendMessage( input.Text );
+
+		input.Text = "";
+		input.SetClass( "visible", false );
+	}) />
+
 	<SubtitlesList @Pawn=@player />
 
 	@if ( Game.LocalPawn is Spectator spectator )
@@ -68,6 +81,7 @@
 </root>
 
 @code {
+	public TextInput ChatInput { get; private set; }
 	public static Hud Instance => (Hud)_instance?.Target;
 	private static WeakReference _instance;
 
@@ -82,6 +96,18 @@
 	{
 		Instance?.Delete( true );
 		_instance = new WeakReference( this );
+	}
+
+	public override void Tick()
+	{
+		if ( ChatInput == null )
+			return;
+
+		if ( Input.Pressed( "chat" ) )
+		{
+			ChatInput.Focus();
+			ChatInput.SetClass( "visible", true );
+		}
 	}
 
 	protected override int BuildHash()
