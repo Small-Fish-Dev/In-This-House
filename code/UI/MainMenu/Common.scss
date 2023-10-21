@@ -18,6 +18,18 @@
   border-image: url("/ui/button_border.png");
 
   font-weight: bold;
+  
+  &.accent {
+    background-color: #543251;
+    
+    border-image: url("/ui/button_border_accent.png");
+  }
+  
+  &.highlight {
+    background-color: #254062;
+    
+    border-image: url("/ui/button_border_highlight.png");
+  }
 
   &:hover {
     filter: brightness(1.2);

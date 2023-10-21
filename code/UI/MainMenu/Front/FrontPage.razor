@@ -14,13 +14,13 @@
 
         @if ( Game.InGame )
         {
-            <a class="button" href="/active">Current Game</a>
+            <a class="button highlight" href="/active">Current Game</a>
             <a class="button" onclick=@LeaveGame>Leave Game</a>
             <span style="height: 20px;"></span>
         }
         else
         {
-            <a class="button" onclick="@CreateNewGame">Create Game</a>
+            <a class="button highlight" onclick="@CreateNewGame">Create Game</a>
         }
 
         <a class="button" onclick="@OpenServerList">Find a Game</a>
@@ -32,7 +32,7 @@
 
         <span style="height: 20px;"></span>
 
-        <a class="button" @onclick=@Game.Menu.Close>Quit</a>
+        <a class="button accent" @onclick=@Game.Menu.Close>Quit</a>
 
     </div>
 
