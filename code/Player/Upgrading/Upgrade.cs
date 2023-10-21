@@ -37,6 +37,7 @@ public class Upgrade
 	#region Effects
 
 	// Example
+	[Effect] public float SpeedMultiplier { get; set; }
 	/*[Effect] public float AuraOfFear { get; set; }
 	[Effect] public float AuraOfRespect { get; set; }
 	[Effect] public float GoblinSchool { get; set; }

@@ -10,6 +10,11 @@ public static class Creator
 		Upgrade.ClearAll();
 
 		// Example
+		new Upgrade.Builder( "Jellyfish Jam", "Applies jellyfish jam on your body. Makes you faster." )
+			.ConfigureWith( v =>
+				v.SpeedMultiplier = 0.05f )
+			.Build();
+
 		/*new Upgrade.Builder( "Aura of Fear I", "Enemies around you have lower diligence." )
 			.ConfigureWith( v =>
 			{
