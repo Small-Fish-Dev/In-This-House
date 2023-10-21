@@ -15,7 +15,7 @@
 				{
 					_class = "CBlend2DAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -352.0, 48.0 ]
+					m_vecPosition = [ -352.0, 64.0 ]
 					m_nNodeID = 
 					{
 						m_id = 776979121
@@ -193,7 +193,7 @@
 											}
 										},
 									]
-									m_blendDuration = 0.2
+									m_blendDuration = 0.3
 									m_destState = 
 									{
 										m_id = 884795111
@@ -253,12 +253,12 @@
 											m_bIsFinished = true
 										},
 									]
-									m_blendDuration = 0.3
+									m_blendDuration = 0.5
 									m_destState = 
 									{
 										m_id = 191134117
 									}
-									m_bReset = true
+									m_bReset = false
 									m_resetCycleOption = "Beginning"
 									m_flFixedCycleValue = 0.0
 									m_blendCurve = 
@@ -312,7 +312,7 @@
 				{
 					_class = "CBoneMaskAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -144.0, 128.0 ]
+					m_vecPosition = [ -144.0, 144.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1827659546
@@ -353,7 +353,7 @@
 					m_flTimingBlend = 0.5
 					m_flRootMotionBlend = 0.0
 					m_footMotionTiming = "Child1"
-					m_bResetChild1 = true
+					m_bResetChild1 = false
 					m_bResetChild2 = true
 				}
 			},
@@ -366,7 +366,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -352.0, 144.0 ]
+					m_vecPosition = [ -352.0, 160.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1925701260
@@ -375,7 +375,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "attack"
-					m_playbackSpeed = 0.6
+					m_playbackSpeed = 0.7
 					m_bLoop = false
 				}
 			},
