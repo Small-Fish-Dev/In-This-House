@@ -114,6 +114,14 @@
 
 	public override void Tick()
 	{
+		if ( Component?.Entity == null )
+		{
+			if ( !IsDeleting )
+				Delete();
+
+			return;
+		}
+
 		if ( camera == null || padlock == null )
 			return;
 

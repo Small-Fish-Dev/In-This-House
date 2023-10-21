@@ -55,6 +55,7 @@ public partial class Spectator : AnimatedEntity
 			Camera.Position = Following.EyePosition;
 			Camera.Rotation = Following.Rotation;
 			Camera.FirstPersonViewer = Following;
+			Player.HandleBodyview();
 		}
 		else
 		{

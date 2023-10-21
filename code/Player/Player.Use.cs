@@ -91,8 +91,6 @@ partial class Player : AnimatedEntity
 				if ( found is UsableEntity foundUsable && foundUsable.CanUse )
 					UsableEntity = foundUsable;
 		}*/
-		if ( UsableEntity != null ) 
-		DebugOverlay.Text( UsableEntity.Name, UsableEntity.Position );
 
 		if ( Game.IsServer )
 		{
