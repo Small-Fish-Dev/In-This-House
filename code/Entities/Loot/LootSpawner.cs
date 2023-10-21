@@ -15,7 +15,7 @@ public partial class LootSpawner : Entity
 	[Property]
 	public float ChanceToSpawn { get; set; } = 0.5f;
 
-	public Entity EntitySpawned { get; set; }
+	public IEntity EntitySpawned { get; set; }
 
 	public override void Spawn()
 	{
