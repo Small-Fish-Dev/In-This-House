@@ -29,6 +29,12 @@ public partial class MansionGame : GameManager
 	{
 		if ( level == "mansion" )
 			SetLevel<MansionLevel>();
+		if ( level == "shop" )
+			SetLevel<ShopLevel>();
+		if ( level == "bathrooms" )
+			SetLevel<BathroomsLevel>();
+		if ( level == "dungeon" )
+			SetLevel<DungeonLevel>();
 	}
 
 	[ConCmd.Server( "mansion_die" )]

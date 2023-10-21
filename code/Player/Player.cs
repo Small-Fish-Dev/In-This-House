@@ -249,9 +249,12 @@ partial class Player : AnimatedEntity
 		EnableAllCollisions = false;
 		Blocked = false;
 
-		// Log.Error( "TODO: FUCKIG INPUTROTATION IS NOT NETWORKED TO EVERYONE FUUUUUUUUCKK" );
-		var spectator = new Spectator { Position = EyePosition, Rotation = Rotation, Body = this }; // TODO: Rotation->InputRotation
-		Client.Pawn = spectator;
+		if ( Entity.All.OfType<Player>().Where( x => x.IsAlive ).Count() > 0 )
+		{
+			// Log.Error( "TODO: FUCKIG INPUTROTATION IS NOT NETWORKED TO EVERYONE FUUUUUUUUCKK" );
+			var spectator = new Spectator { Position = EyePosition, Rotation = Rotation, Body = this }; // TODO: Rotation->InputRotation
+			Client.Pawn = spectator;
+		}
 	}
 
 	// Client callback for UI purposes

@@ -21,15 +21,15 @@ public abstract partial class Level : Entity // Easy replication to client
 
 	public Level() => Transmit = TransmitType.Always;
 
-	bool gameIsEnding = false;
+	public static bool GameIsEnding { get; set; } = false;
 
 	[GameEvent.Tick.Server]
 	public virtual void Compute() // TODO: When restarting might be a problem if it runs while it awaits Start and End
 	{
-		if ( !All.OfType<Player>().Any( x => x.IsAlive ) && !gameIsEnding )
+		if ( Entity.All.OfType<Player>().Count() > 0 && Entity.All.OfType<Player>().All( x => !x.IsAlive ) && !GameIsEnding )
 		{
 			MansionGame.RestartGame();
-			gameIsEnding = true;
+			GameIsEnding = true;
 		}
 	}
 
@@ -97,7 +97,7 @@ public abstract partial class Level : Entity // Easy replication to client
 
 		await GenerateGrid();
 
-		gameIsEnding = false;
+		GameIsEnding = false;
 
 		MansionGame.Instance.TimerStart();
 
@@ -127,6 +127,8 @@ public abstract partial class Level : Entity // Easy replication to client
 
 		foreach ( var loot in Entity.All.OfType<Loot>() )
 			loot.Delete();
+
+		MansionGame.Instance.TimerStop();
 
 		return;
 	}
@@ -206,6 +208,6 @@ public partial class MansionGame
 	[GameEvent.Entity.PostSpawn]
 	static void startLevels()
 	{
-		SetLevel<ShopLevel>();
+		RestartGame();
 	}
 }
