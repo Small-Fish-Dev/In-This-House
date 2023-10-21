@@ -178,7 +178,7 @@ public partial class NPC : AnimatedEntity, IPushable
 		foreach ( var player in PlayersInVision.Where( x => !x.Key.IsAlive ).ToList() ) // Make a copy of PlayersInVision
 			PlayersInVision.Remove( player.Key );
 
-		foreach ( var player in Entity.All.OfType<Player>() )
+		foreach ( var player in Entity.All.OfType<Player>().Where( x => x.IsAlive ).ToList() )
 		{
 			if ( IsPlayerInVision( player ) )
 			{

@@ -32,7 +32,7 @@ public partial class NPC
 			var direction = (Position - toucher.Position).WithZ( 0 ).Normal;
 			var distance = Position.Distance( toucher.Position );
 
-			var pushOffset = direction * MathE.SmoothKernel( CollisionRadius * 2f, distance ) * Time.Delta * 1500f;
+			var pushOffset = direction * MathE.SmoothKernel( CollisionRadius * 2f, distance ) * Time.Delta * 3000f;
 			Velocity += pushOffset.WithY( 0 );
 		}
 
