@@ -114,7 +114,9 @@
 
 	public override void Tick()
 	{
-		if ( Component?.Entity == null )
+		if ( Component == null 
+		  || Component.Entity == null 
+		  || Component.Locked )
 		{
 			if ( !IsDeleting )
 				Delete();
