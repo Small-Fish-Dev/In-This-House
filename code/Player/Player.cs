@@ -2,7 +2,7 @@ using BrickJam.UI;
 
 namespace BrickJam;
 
-partial class Player : AnimatedEntity
+partial class Player : AnimatedEntity, IPushable
 {
 	[BindComponent] public ContainerComponent Inventory { get; } 
 
@@ -22,8 +22,6 @@ partial class Player : AnimatedEntity
 		SetModel( "models/robber/robber.vmdl" );
 		RebuildCollisions();
 
-		Tags.Add( "player" );
-
 		EnableAllCollisions = true;
 		EnableDrawing = true;
 		EnableHideInFirstPerson = false; // For firstperson legs!!
@@ -39,7 +37,12 @@ partial class Player : AnimatedEntity
 		mask.EnableHideInFirstPerson = true;
 	}
 
-	public void RebuildCollisions() => SetupPhysicsFromOrientedCapsule( PhysicsMotionType.Keyframed, CollisionCapsule );
+	public void RebuildCollisions()
+	{
+		SetupPhysicsFromOrientedCapsule( PhysicsMotionType.Keyframed, CollisionCapsule );
+		EnableTouch = true;
+		Tags.Add( "player" );
+	}
 
 
 	[ClientInput] public Vector3 InputDirection { get; protected set; }
@@ -186,6 +189,27 @@ partial class Player : AnimatedEntity
 		SetAnimParameter( "speed_scale", Velocity.WithZ(0).Length / 150f );
 	}
 
+	internal List<AnimatedEntity> toPush = new();
+
+	public override void StartTouch( Entity other )
+	{
+		base.Touch( other );
+
+		if ( !Game.IsServer ) return;
+		if ( other is IPushable toucher )
+			toPush.Add( toucher as AnimatedEntity );
+	}
+
+	public override void EndTouch( Entity other )
+	{
+		base.Touch( other );
+
+		if ( !Game.IsServer ) return;
+
+		if ( other is IPushable toucher && toPush.Contains( toucher as AnimatedEntity ) )
+			toPush.Remove( toucher as AnimatedEntity );
+	}
+
 	public override void OnAnimEventFootstep( Vector3 position, int foot, float volume )
 	{
 		base.OnAnimEventFootstep( position, foot, volume );
@@ -237,7 +261,7 @@ partial class Player : AnimatedEntity
 
 		IsAlive = true;
 		EnableDrawing = true;
-		EnableAllCollisions = false;
+		EnableAllCollisions = true;
 		Blocked = false;
 	}
 
