@@ -12,7 +12,7 @@ public partial class Player
 	[Net] public float WalkSpeed { get; set; } = 200f;
 	[Net] public float RunSpeed { get; set; } = 350f;
 	[Net] public float JumpHeight { get; set; } = 250f;
-	[Net] public float Acceleration { get; set; } = 1000f; // Units per second
+	[Net] public float Acceleration { get; set; } = 600f; // Units per second
 	[Net] public float Deceleration { get; set; } = 400f; // Units per second
 
 	public float StunSpeed => (float)(WalkSpeed + (RunSpeed - WalkSpeed) * Math.Sin( 45f.DegreeToRadian() ));
@@ -20,11 +20,11 @@ public partial class Player
 	public Vector3 WishVelocity => ( InputDirection.IsNearlyZero() || IsStunned )
 		? Vector3.Zero
 		: InputDirection * Rotation.FromYaw( InputAngles.yaw ) * WishSpeed;
-	public bool IsAboveWalkingSpeed => Velocity.WithZ( 0 ).Length >= WalkSpeed * 1.2f;
+	public bool IsAboveWalkingSpeed => Velocity.WithZ( 0 ).Length >= MathX.Lerp( WalkSpeed, RunSpeed, 0.5f );
 
 	public float StepSize => 16f;
 	public float WalkAngle => 46f;
-	public float StunBounceVelocity => 500f;
+	public float StunBounceVelocity => 550f;
 
 	static string[] ignoreTags = new[] { "player", "npc", "nocollide", "loot" };
 	Sound skiddingSound;
@@ -45,6 +45,8 @@ public partial class Player
 				{
 					if ( IsAboveWalkingSpeed )
 						skiddingVolume = Math.Min( skiddingVolume + Time.Delta, baseSkiddingVolume );
+					else
+						skiddingVolume = Math.Max( skiddingVolume - Time.Delta, 0f );
 				}
 				else
 					skiddingVolume = Math.Max( skiddingVolume - Time.Delta, 0f );
@@ -63,6 +65,8 @@ public partial class Player
 					else
 						skiddingVolume = Math.Max( skiddingVolume - Time.Delta, 0f );
 				}
+				else
+					skiddingVolume = Math.Max( skiddingVolume - Time.Delta, 0f );
 			}
 		}
 		else
@@ -162,7 +166,7 @@ public partial class Player
 			higherCapsule.CenterA = Vector3.Up * (CollisionRadius + StepSize);
 			helper.Trace = Trace.Capsule( higherCapsule, helper.Position, helper.Position + helper.Velocity.WithZ( 0 ) * Time.Delta );
 			helper.Trace = helper.Trace
-				.WithoutTags( ignoreTags )
+				.WithoutTags( "nocollide", "loot" )
 				.Ignore( this );
 			var tr = helper.Trace.Run();
 
@@ -170,10 +174,27 @@ public partial class Player
 			{
 				var dotProduct = Math.Abs( Vector3.Dot( Velocity.WithZ( 0 ).Normal, tr.Normal ) );
 				var wallVelocity = Velocity.WithZ( 0 ) * dotProduct;
+				var difference = MathX.Remap( wallVelocity.Length, WalkSpeed, RunSpeed );
 
 				if ( wallVelocity.Length > WalkSpeed )
 				{
-					var difference = MathX.Remap( wallVelocity.Length, WalkSpeed, RunSpeed );
+					if ( tr.Entity is Player other )
+					{
+						difference /= 2f;
+
+						if ( Game.IsServer )
+						{
+							var random = MansionGame.Random.Float( 0f, 1f );
+							if ( random < DropChance )
+								other.ThrowRandomLoot();
+
+							other.Stun( difference );
+
+							other.Velocity -= tr.Normal * (CollisionRadius + StunBounceVelocity - Velocity.WithZ(0).Length);
+							other.Rotation = Rotation.LookAt( tr.Normal, Vector3.Up );
+						}
+					}
+
 					Stun( difference );
 
 					Velocity += tr.Normal * (CollisionRadius + StunBounceVelocity);
