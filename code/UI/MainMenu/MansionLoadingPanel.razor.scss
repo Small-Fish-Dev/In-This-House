@@ -11,7 +11,6 @@
   justify-content: flex-end;
   align-items: stretch;
   flex-direction: column;
-
   font-family: "alagard";
   text-shadow: 2px 2px 0px black;
 
@@ -54,6 +53,9 @@
 
     flex-direction: row;
 
+    padding: 10px;
+    padding-bottom: 5px;
+    
     > .title {
       font-size: 80px;
       font-weight: bolder;
