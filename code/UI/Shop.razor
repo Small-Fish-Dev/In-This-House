@@ -1,9 +1,55 @@
-﻿@using Sandbox.UI;
+﻿@using System.Runtime.CompilerServices
+@using Sandbox.UI;
 
 @namespace BrickJam.UI
 @inherits Panel
 @attribute [StyleSheet]
 
 <root>
-	<div class="container"></div>
+	<div class="window">
+		<div class="header"></div>
+		<div class="container">
+			<div class="items">
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+			</div>
+			<div class="border-overlay"></div>
+		</div>
+	</div>
 </root>
+
+@code {
+
+	private static Shop instance;
+
+	public Shop()
+	{
+		instance = this;
+	}
+
+	public static void Open()
+	{
+		instance.SetClass( "open", true );
+	}
+
+	public static void Close()
+	{
+		instance.SetClass( "open", false );
+	}
+
+	public static void Toggle()
+	{
+		instance.SetClass( "open", !instance.HasClass( "open" ) );
+	}
+
+}

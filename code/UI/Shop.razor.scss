@@ -5,15 +5,100 @@
 
     width: 100%;
     height: 100%;
-    
-    
+
     justify-content: center;
     align-items: center;
 
-    .container {
-        background-color: transparent;
+    opacity: 0;
 
-        width: 700px;
-        height: 600px;
+    &.open {
+        opacity: 1;
+
+        pointer-events: all;
+    }
+
+    transition: opacity 0.3s ease;
+    
+    .window {
+        width: 1200px;
+        height: 900px;
+
+        background-color: #61577C;
+
+        border-right: #25213A solid 5px;
+        border-bottom: #25213A solid 5px;
+
+        padding: 8px;
+
+        flex-direction: column;
+
+        .header {
+            width: 100%;
+            height: 155px;
+
+            image-rendering: pixelated;
+            background-image: url("ui/shop/header.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+
+            margin-bottom: 10px;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+
+            .border-overlay {
+                width: 100%;
+                height: 100%;
+
+                z-index: 30;
+
+                position: absolute;
+
+                image-rendering: pixelated;
+                background-image: url("ui/shop/border.png");
+                background-size: 100%;
+                background-position: center;
+
+                pointer-events: none;
+            }
+
+            .items {
+                width: 100%;
+                height: 100%;
+
+                pointer-events: all;
+
+                justify-content: center;
+                align-items: center;
+
+                flex-wrap: wrap;
+                overflow: scroll;
+
+                image-rendering: pixelated;
+                background-image: url("ui/shop/background.png");
+                background-size: 200% 200%;
+                background-position: center;
+
+                padding: 10px;
+
+                .item {
+                    flex-shrink: 0;
+                    margin-left: 15px;
+                    margin-right: 15px;
+                    margin-bottom: 15px;
+
+                    width: 140px;
+                    height: 200px;
+
+                    image-rendering: pixelated;
+                    background-image: url("ui/shop/upgrade.png");
+                    background-size: 100%;
+                    background-position: center;
+                }
+            }
+
+        }
     }
 }
