@@ -10,7 +10,7 @@
         {
             <span>Hold </span><inputglyph action="use" /><span>to @(Player.UsableEntity.Locked ? Player.UsableEntity.LockText : Player.UsableEntity.UseString).</span>
         }
-        else
+		else if ( Player.UsableEntity.UseString != string.Empty )
         {
             <span>@(Player.UsableEntity.UseString).</span>
         }
