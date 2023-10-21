@@ -106,6 +106,12 @@ public partial class NPC
 	{
 		GameTask.RunInThreadAsync( async () =>
 		{
+			if ( !IsValid )
+			{
+				Log.Warning( "NavigateTo: ent not valid" );
+				return;
+			}
+
 			var startingCell = CurrentGrid.GetCell( Position ) ?? CurrentGrid.GetNearestCell( Position );
 
 			if ( startingCell == null || targetCell == null || startingCell == targetCell ) return;
