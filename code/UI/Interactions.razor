@@ -4,33 +4,14 @@
 @inherits Panel
 
 <root>
-	@foreach ( var interactionRequest in Player.InteractionRequests.Where( ir => ir.Entity is not null && ir.Entity.IsValid ) )
-	{
-		<RadialProgress
-			class="ir"
-			style="@GetPosition( interactionRequest )"
-			@InnerDiameterPercent=@( 75f )
-			@Progress=@( () => interactionRequest.Entity.IsValid() ? 1 - interactionRequest.Complete / interactionRequest.Entity.InteractionDuration : 0 )/>
-	}
 </root>
 
 <style>
 	Interactions {
 		position: absolute;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
+		left: 0; top: 0;
 		filter: drop-shadow(3px 3px 1px black);
 		z-index: 0;
-		
-		.ir {
-			position: absolute;
-			
-			transform: translate(-50%, -50%);
-			
-			z-index: 0;
-		}
 	}
 </style>
 
@@ -38,20 +19,47 @@
 
 	public Player Player { get; set; }
 
-	private string GetPosition( Player.InteractionRequest interactionRequest )
-	{
-		var position = interactionRequest.Entity.WorldSpaceBounds.Center.ToScreen();
-		return position.z < 0 || position.LengthSquared > 2 * 2 ? "display: none" : $"left: {position.x * 100}vw; top: {position.y * 100}vh";
-	}
+	private readonly List<SingleInteraction> interactionPanels = new();
 
-	protected override int BuildHash()
+	public override void Tick()
 	{
-		if ( Player.InteractionRequests.Count > 0 )
-			return HashCode.Combine( Time.Now ); // Redraw every tick if we have anything on the screen
+		base.Tick();
 
-		// TODO: not sure if it's a proper way of doing that
-		var hash = HashCode.Combine( Player.InteractionRequests );
-		return Player.InteractionRequests.Aggregate( hash, HashCode.Combine );
+		// Panels that we don't have to remove
+		var knownGoodPanels = new List<SingleInteraction>();
+
+		foreach ( var interactionRequest in Player.InteractionRequests )
+		{
+			var associatedPanel = interactionPanels
+				.FirstOrDefault( v => v.Request.Entity == interactionRequest.Entity );
+			if ( associatedPanel == null )
+			{
+				// Create a panel
+				associatedPanel = new SingleInteraction( interactionRequest );
+				AddChild( associatedPanel );
+				interactionPanels.Add( associatedPanel );
+			}
+			knownGoodPanels.Add( associatedPanel );
+		}
+
+		// Remove old panels
+		for ( var i = interactionPanels.Count - 1; i >= 0; i-- )
+		{
+			var panel = interactionPanels[i];
+			if ( knownGoodPanels.Contains( panel ) )
+				continue;
+			panel.ProgressIndicator.Value = 1;
+			if ( panel.Request.Complete > 0 )
+			{
+				// Stopped before it was finished, delete immediately
+				panel.Delete( true );
+			}
+			else
+			{
+				panel.Delete();
+			}
+			interactionPanels.RemoveAt( i );
+		}
 	}
 
 }
