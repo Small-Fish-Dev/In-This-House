@@ -8,23 +8,7 @@ public partial class ShopLevel : Level
 	{
 		// We don't do base.start here
 
-		foreach ( var client in Game.Clients )
-		{
-			switch ( client.Pawn )
-			{
-				case Player player:
-					player.Respawn();
-					break;
-				case Spectator spectator:
-					{
-						var pawn = new Player();
-						client.Pawn = pawn;
-						pawn.Respawn();
-						spectator.Delete();
-						break;
-					}
-			}
-		}
+		RespawnAll();
 
 		foreach ( var player in Entity.All.OfType<Player>().Where( p => p.Client is null ) )
 			player.Delete();

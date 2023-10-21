@@ -26,10 +26,32 @@ public abstract partial class Level : Entity // Easy replication to client
 	[GameEvent.Tick.Server]
 	public virtual void Compute() // TODO: When restarting might be a problem if it runs while it awaits Start and End
 	{
-		if ( Entity.All.OfType<Player>().Count() > 0 && Entity.All.OfType<Player>().All( x => !x.IsAlive ) && !GameIsEnding )
+		if ( All.OfType<Player>().Any() && All.OfType<Player>().All( x => !x.IsAlive ) && !GameIsEnding )
 		{
 			MansionGame.RestartGame();
 			GameIsEnding = true;
+		}
+	}
+
+	protected void RespawnAll()
+	{
+		foreach ( var client in Game.Clients )
+		{
+			switch ( client.Pawn )
+			{
+				case Player player:
+					player.Respawn();
+					break;
+
+				case Spectator spectator:
+					{
+						var pawn = spectator.Body.IsValid() ? spectator.Body : new Player();
+						pawn.Respawn();
+						client.Pawn = pawn;
+						spectator.Delete();
+						break;
+					}
+			}
 		}
 	}
 
@@ -37,23 +59,7 @@ public abstract partial class Level : Entity // Easy replication to client
 	{
 		await GameTask.NextPhysicsFrame();
 
-		foreach ( var client in Game.Clients )
-		{
-			switch (client.Pawn)
-			{
-				case Player player:
-					player.Respawn();
-					break;
-				case Spectator spectator:
-					{
-						var body = spectator.Body.IsValid() ? spectator.Body : new Player();
-						body.Respawn();
-						client.Pawn = body;
-						spectator.Delete();
-						break;
-					}
-			}
-		}
+		RespawnAll();
 
 		foreach ( var player in Entity.All.OfType<Player>().Where( p => p.Client is null ) )
 			player.Delete();
