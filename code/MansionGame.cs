@@ -28,6 +28,8 @@ public partial class MansionGame : GameManager
 
 	public MansionGame()
 	{
+		ClientSlots = Enumerable.Repeat<IClient>( null, Game.Server.MaxPlayers ).ToList();
+
 		if ( Game.IsClient )
 		{
 			InitializeEffects();
@@ -80,6 +82,8 @@ public partial class MansionGame : GameManager
 	{
 		base.ClientJoined( client );
 
+		GiveSlot( client );
+
 		if ( !TimerActive || TimePerLevel - TimeOut <= TimeToJoin )
 		{
 			var pawn = new Player();
@@ -96,6 +100,8 @@ public partial class MansionGame : GameManager
 	public override void ClientDisconnect( IClient cl, NetworkDisconnectionReason reason )
 	{
 		base.ClientDisconnect( cl, reason );
+
+		ReleaseSlot( cl );
 
 		if ( cl.Pawn is Player player )
 			player.Delete();
@@ -159,7 +165,8 @@ public partial class MansionGame : GameManager
 		foreach ( var player in All.Where( ent => ent is Player player && player.IsValid() ) )
 		{
 			var glow = player.Components.GetOrCreate<Glow>();
-			glow.Color = Color.Green;
+			glow.Color = player.Client.GetColor();
+			glow.Width = 0.5f;
 			glow.Enabled = Game.LocalPawn is Spectator;
 		}
 	}

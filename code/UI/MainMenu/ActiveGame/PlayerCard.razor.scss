@@ -1,0 +1,23 @@
+﻿PlayerCard {
+  //aspect-ratio: 0.75; // TODO: some day this will work...
+  flex: 1 1 0;
+  
+  padding: 4px;
+    
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 20px;
+  
+  > .inner {
+    flex-grow: 1;
+
+    flex-direction: column;
+    flex-wrap: nowrap;
+    
+    padding: 10px;
+    
+    border-radius: 16px;
+    
+    background-color: #aaaaaaaa;
+  }
+}

@@ -1,0 +1,44 @@
+﻿@using Sandbox.UI;
+
+@namespace BrickJam.UI.MainMenu.ActiveGame
+@inherits Panel
+@attribute [StyleSheet]
+
+<root style="border-color: @Client.GetColor().Hex">
+	<div class="inner">
+		@if ( Client is null )
+		{
+			<label>Empty</label>
+		}
+		else
+		{
+			<label>@Client.Name@( Client.IsFriend ? " (friend)" : "" )@( Client.IsOwnedByLocalClient ? " (you) " : " " )</label>
+			<label>TODO: 3d model, money, maybe even playtime</label>
+			@* YOU SHOULD KICK YOURSELF, NOW! *@
+			@if ( IsViewerAdmin && !Client.IsOwnedByLocalClient )
+			{
+				<button @onclick=@Kick>Kick</button>
+			}
+		}
+	</div>
+</root>
+
+@code {
+
+	public IClient Client { get; set; }
+
+	private bool IsViewerAdmin =>
+		Game.Clients.Any( client => client.IsOwnedByLocalClient && (client.IsListenServerHost || client.Ping == 0) );
+
+	private void Kick()
+	{
+		Log.Error( "TODO: KICK!!!" );
+		ConsoleSystem.Run( "kickid", Client.Id );
+	}
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( Client?.Id ?? -1 );
+	}
+
+}

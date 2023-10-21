@@ -1,5 +1,7 @@
 ﻿.gamemainmenu activepage
 {
+  flex-direction: column;
+  
   padding: 0;
   
   .navbar
@@ -8,5 +10,14 @@
     background-repeat: repeat;
     
     padding: 32px;
+  }
+  
+  .inset
+  {
+    flex-direction: column;
+    font-size: 50px;
+    padding: 40px;
+    
+    align-content: stretch;
   }
 }

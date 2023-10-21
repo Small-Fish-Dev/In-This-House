@@ -8,76 +8,65 @@
 
 @if ( !Game.InGame )
 {
-    <div>No game. Error. We shouldn't be here.</div>
-    return;
+	<div>No game. Error. We shouldn't be here.</div>
+	return;
 }
 
-<root style="flex-direction: column;">
+<root>
 
-    <div class="navbar">
-        <div class="left">
-            <a class="button" href="/"> Home </a>
-            <span class="block">&gt;</span>
-            <span class="block">Current Game</span>
-        </div>
-        <div class="right">
-            
-        </div>
-    </div>
+	<div class="navbar">
+		<div class="left">
+			<a class="button" href="/"> Home </a>
+			<span class="block">&gt;</span>
+			<span class="block">Current Game</span>
+		</div>
+		<div class="right">
 
-    <section class="inset" style="flex-direction: row;">
+		</div>
+	</div>
 
-        <div style="flex-grow: 1; flex-shrink: 0; flex-direction: column; font-size: 50px; padding: 40px">
+	<section class="inset">
 
-            <h2>Current Players (@Game.Clients.Count() / @Game.Server.MaxPlayers)</h2>
+		@* <h2>Current Players (@Game.Clients.Count / @Game.Server.MaxPlayers)</h2> *@
 
-	        <div style="flex-direction: column; margin: 20px 30px; font-size: 40px;">
-		        @foreach ( var player in Game.Clients )
-		        {
-			        <div>
-				        @player.Name@(player.IsFriend ? " (friend)" : "")@(player.IsOwnedByLocalClient ? " (you) " : " ")
-			        </div>
-		        }
-	        </div>
-	        
-        </div>
+		<PlayerSlots/>
 
-    </section>
-    
-    <div class="navbar">
-    
-        <div class="left">
-            <span class="button" onclick=@( () => Game.Menu.LeaveServer( "Leaving" ) )>Leave Server</span>
-        </div>
+	</section>
 
-        <div class="right">
-            
-            <span class="button primary" onclick=@ReturnToGame>Return To Game</span>
-        </div>
+	<div class="navbar">
 
-    </div>
+		<div class="left">
+			<span class="button" onclick=@( () => Game.Menu.LeaveServer( "Leaving" ) )>Leave Server</span>
+		</div>
+
+		<div class="right">
+
+			<span class="button primary" onclick=@ReturnToGame>Return To Game</span>
+		</div>
+
+	</div>
 
 </root>
 
 @code
 {
-	private bool IsMenuVisible { get; set;}
-	
-    protected override void OnParametersSet()
-    {
-        /*ShowMapOption = Game.Menu.Package.MapSelectionMode != Sandbox.DataModel.Game.MapSelect.Hidden;
+	private bool IsMenuVisible { get; set; }
+
+	protected override void OnParametersSet()
+	{
+	/*ShowMapOption = Game.Menu.Package.MapSelectionMode != Sandbox.DataModel.Game.MapSelect.Hidden;
         ShowMapOption = ShowMapOption && Game.Menu.Package.MapSelectionMode != Sandbox.DataModel.Game.MapSelect.Empty;*/
-    }
+	}
 
-    public void ReturnToGame()
-    {
-        Game.Menu.HideMenu();
-    }
+	public void ReturnToGame()
+	{
+		Game.Menu.HideMenu();
+	}
 
-    protected override int BuildHash()
-    {
-        return HashCode.Combine( Game.Clients.Count, Game.Server.MapIdent, IsVisible );
-    }
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( Game.Clients.Count, Game.Server.MapIdent, IsVisible );
+	}
 
 	[GameEvent.Client.Frame]
 	private void Frame()
@@ -86,16 +75,16 @@
 		Log.Info( $"{IsMenuVisible}" );
 	}
 
-    public override void Tick()
-    {
-        base.Tick();
+	public override void Tick()
+	{
+		base.Tick();
 
-        if (!IsVisible)
-            return;
+		if ( !IsVisible )
+			return;
 
-        if ( !Game.InGame )
-        {
-            this.Navigate( "/" );
-        }
-    }
+		if ( !Game.InGame )
+		{
+			this.Navigate( "/" );
+		}
+	}
 }
