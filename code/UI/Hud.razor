@@ -18,11 +18,15 @@
 		<Timer @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
 	}
 
+	@if( Game.LocalPawn is Player ply && ply.IsValid )
+	{
+		<Inventory/>
+	}
+
 	@if ( player is not null )
 	{
 		<!-- The client either has a living pawn or is observing another player's pawn -->
 		<StunIndicator @Player=@player/>
-		<Inventory/>
 		<MoneyCounter @Player=@player/>
 		<Interactions @Player=@player/>
 
