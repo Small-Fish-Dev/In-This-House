@@ -1,3 +1,5 @@
+using BrickJam.UI;
+
 namespace BrickJam;
 
 partial class Player : AnimatedEntity
@@ -67,13 +69,20 @@ partial class Player : AnimatedEntity
 	{
 		if ( !CommandsLocked )
 		{
-			InputDirection = Input.AnalogMove;
+			if ( !Lockpicker.Active )
+			{
+				InputDirection = Input.AnalogMove;
 
-			InputAngles += Input.AnalogLook;
-			InputAngles = InputAngles.WithPitch( Math.Clamp( InputAngles.pitch, -89.9f, 89.9f ) );
+				InputAngles += Input.AnalogLook;
+				InputAngles = InputAngles.WithPitch( Math.Clamp( InputAngles.pitch, -89.9f, 89.9f ) );
+			}
+			else
+			{
+				InputDirection = 0;
+			}
 		}
 
-		if ( !MovementLocked )
+		if ( !MovementLocked && !Lockpicker.Active )
 		{
 			IsRunning = Input.Down( "run" );
 			IsCrouching = Input.Down( "crouch" );
