@@ -1,0 +1,21 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "materials/hotspots/blue_painted_metal/blue_painted_metal_hotspot_color.png"
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	Metalness "materials/hotspots/blue_painted_metal/blue_painted_metal_hotspot_metal.png"
+	Normal "materials/hotspots/blue_painted_metal/blue_painted_metal_hotspot_normal.png"
+	Roughness "materials/hotspots/blue_painted_metal/blue_painted_metal_hotspot_rough.png"
+
+	ToolAttributes
+	{
+		SubrectDefinition "materials/hotspots/wood_framing/mansion_wood_hs.rect"
+	}
+}
