@@ -1,0 +1,21 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "materials/hotspots/metal/rusted_metal_color.png"
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	Metalness "materials/hotspots/metal/rusted_metal_metal.png"
+	Normal "materials/hotspots/metal/rusted_metal_normal.png"
+	Roughness "materials/hotspots/metal/rusted_metal_rough.png"
+
+	ToolAttributes
+	{
+		SubrectDefinition "materials/hotspots/wood_framing/mansion_wood_hs.rect"
+	}
+}
