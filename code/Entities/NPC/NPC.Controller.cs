@@ -15,7 +15,7 @@ public partial class NPC
 	public virtual void ComputeMotion()
 	{
 		if ( !Blocked )
-			Velocity = Vector3.Lerp( Velocity, WishVelocity, Time.Delta * 15f );
+			Velocity = Vector3.Lerp( Velocity, WishVelocity, Time.Delta * 15f ).WithZ( Velocity.z );
 		else
 			Velocity = Vector3.Zero.WithZ( Velocity.z );
 
