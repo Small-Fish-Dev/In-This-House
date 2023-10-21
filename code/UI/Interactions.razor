@@ -49,7 +49,15 @@
 			if ( knownGoodPanels.Contains( panel ) )
 				continue;
 			panel.ProgressIndicator.Value = 1;
-			panel.Delete();
+			if ( panel.Request.Complete > 0 )
+			{
+				// Stopped before it was finished, delete immediately
+				panel.Delete( true );
+			}
+			else
+			{
+				panel.Delete();
+			}
 			interactionPanels.RemoveAt( i );
 		}
 	}
