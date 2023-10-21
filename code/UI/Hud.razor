@@ -18,7 +18,7 @@
 		<Timer @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
 	}
 
-	@if( Game.LocalPawn is Player ply && ply.IsValid )
+	@if( Game.LocalPawn is BrickJam.Player ply && ply.IsValid )
 	{
 		<Inventory/>
 	}

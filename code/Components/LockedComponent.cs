@@ -62,6 +62,7 @@ public partial class LockedComponent : EntityComponent
 		if ( component == null )
 			return;
 
-		UI.Lockpicker.Open( component );
+		if ( !UI.Lockpicker.Active )
+			UI.Lockpicker.Open( component );
 	}
 }

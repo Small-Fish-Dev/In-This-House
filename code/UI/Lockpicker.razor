@@ -20,7 +20,7 @@
 	// Valid range for our lockpicking.
 	public const float RANGE = 5f;
 
-	public static bool Active => instance?.IsValid ?? false;
+	public static bool Active => instance != null && !instance.IsDeleting && instance.IsValid && instance.IsVisible;
 	public LockedComponent Component { get; }
 	public float CorrectAngle { get; }
 
