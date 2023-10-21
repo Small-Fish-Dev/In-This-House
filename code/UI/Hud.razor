@@ -13,14 +13,12 @@
 		var isPlayer = Game.LocalPawn is BrickJam.Player;
 	}
 
-	@if ( MansionGame.Instance?.TimerActive ?? false )
-	{
-		<Timer @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
-	}
+	<Timer Active="@(MansionGame.Instance.TimerActive)" @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
 
 	@if( Game.LocalPawn is BrickJam.Player ply && ply.IsValid )
 	{
 		<Inventory/>
+		<Eventlog/>
 	}
 
 	<Shop/>
@@ -58,7 +56,7 @@
 			return;
 
 		if ( string.IsNullOrEmpty( input.Text ) || input.Text.Length > 200 )
-			Log.Error( "Input length must be >= 1 and < 200." );
+			Eventlog.Send( "<red>Input length must be greater than 1 and smaller than 200." );
 		else
 			BrickJam.Player.SendMessage( input.Text );
 

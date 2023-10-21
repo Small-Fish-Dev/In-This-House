@@ -1,4 +1,6 @@
-﻿namespace BrickJam;
+﻿using Sandbox;
+
+namespace BrickJam;
 
 partial class Player : AnimatedEntity
 {
@@ -70,6 +72,7 @@ partial class Player : AnimatedEntity
 
 		if ( traceResult.Entity is UsableEntity usable )
 			return usable;
+
 		return null;
 	}
 
@@ -88,6 +91,8 @@ partial class Player : AnimatedEntity
 				if ( found is UsableEntity foundUsable && foundUsable.CanUse )
 					UsableEntity = foundUsable;
 		}*/
+		if ( UsableEntity != null ) 
+		DebugOverlay.Text( UsableEntity.Name, UsableEntity.Position );
 
 		if ( Game.IsServer )
 		{

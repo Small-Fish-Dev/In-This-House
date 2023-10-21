@@ -127,7 +127,9 @@ public partial class Loot : UsableEntity
 		Scale = MathX.Lerp( Scale, 0, 5f * Time.Delta );
 		if ( Scale.AlmostEqual( 0, 0.1f ) && !deleting )
 		{
-			picker.Inventory.Add( new ItemEntry { Prefab = Prefab, Rarity = Rarity } );
+			var item = new ItemEntry { Prefab = Prefab, Rarity = Rarity };
+			picker.Inventory.Add( item );
+			Eventlog.Send( $"You picked up <gray>1x {item.Name}.", To.Single( picker ) );
 			Delete();
 		}
 	}

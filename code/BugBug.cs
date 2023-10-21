@@ -5,6 +5,8 @@
 /// </summary>
 public static class BugBug
 {
+	const bool ENABLED = false;
+
 	private static readonly Stack<Action<Builder>> BuildStack = new();
 
 	public class Builder
@@ -61,6 +63,9 @@ public static class BugBug
 	[GameEvent.Client.PostCamera]
 	private static void Draw()
 	{
+		if ( !ENABLED )
+			return;
+
 		var builder = new Builder();
 		while ( BuildStack.Count != 0 )
 		{

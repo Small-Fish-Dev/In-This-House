@@ -251,6 +251,8 @@ public partial class Player
 		if ( randomLoot == null || !Inventory.Remove( randomLoot.Value ) )
 			return;
 
+		Eventlog.Send( $"Whoops... You slipped and dropped <gray>1x {randomLoot?.Name}.", To.Single( Client ) );
+
 		var force = 300f;
 		var normal = Vector3.Random.WithZ( 0 );
 		var entity = Loot.CreateFromEntry( 

@@ -34,6 +34,7 @@ public partial class LootContainer : UsableEntity
 			return;
 		}
 
+		base.Spawn();
 		SetModel( model );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		Tags.Add( "solid", "container" );

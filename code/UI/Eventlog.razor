@@ -1,0 +1,201 @@
+﻿﻿@using Sandbox;
+@using Sandbox.UI;
+
+@namespace BrickJam	
+@inherits Panel
+
+<root />
+
+@code {
+	/// <summary>
+	/// The limit of events shown at once.
+	/// </summary>
+	public const int Limit = 5;
+
+	public static Eventlog Instance { get; private set; }
+	private List<(Panel Panel, TimeUntil UntilDelete)?> events = new();
+
+	public Eventlog()
+	{
+		Instance = this;
+	}
+
+	public override void Tick()
+	{
+		// Tick all events.
+		for ( int i = 0; i < events.Count; i++ )
+		{
+			var current = events.ElementAtOrDefault( i );
+			if ( current == null )
+				continue;
+
+			var log = current.Value;
+			if ( events.First() == log && log.UntilDelete )
+			{
+				log.Panel?.Delete();
+				events.Remove( log );
+			}
+		}
+	}
+
+	/// <summary>
+	/// Create a log on clientside.
+	/// </summary>
+	/// <param name="input"></param>
+	/// <param name="time"></param>
+	public void Append( string input, float time = 8f )
+	{
+		// Handle overflowing.
+		if ( events.Count >= Limit )
+		{
+			var first = events.FirstOrDefault();
+			first?.Panel?.Delete();
+			events.Remove( first );
+		}
+
+		// Create eventlog.
+		var container = AddChild<Panel>( "event" );
+
+		// Parse the input.
+		var isColor = false;
+		var shouldClose = false;
+		var output = "";
+		var color = Color.White;
+
+		for ( int i = 0; i < input.Length; i++ )
+		{
+			var character = input[i];
+
+			switch ( character )
+			{
+				// Handle capturing the colors and closing them.
+				case '<':
+					// Do we have input without a color?
+					if ( output != "" )
+					{
+						appendLabel( container, output, color );
+						output = "";
+					}
+
+					// Check if we should capture color or start closing.
+					if ( !isColor )
+					{
+						isColor = true;
+						break;
+					}
+
+					shouldClose = true;
+					break;
+
+				case '>':
+					// Parse color if we should.
+					if ( isColor && !shouldClose )
+					{
+						color = Color.Parse( output ) ?? Color.White;
+						output = "";
+						isColor = false;
+						break;
+					}
+
+					// Append new label.
+					if ( output == "" )
+						break;
+
+					appendLabel( container, output, color );
+
+					// Reset values.
+					output = "";
+					color = Color.White;
+					shouldClose = false;
+					isColor = false;
+
+					break;
+
+				case '/':
+					if ( !shouldClose )
+					{
+						output += character;
+						break;
+					}
+
+					shouldClose = true;
+					break;
+
+				// Add characters to output.
+				default:
+					output += character;
+					break;
+			}
+
+			// Handle very last input.
+			if ( i == input.Length - 1 && output != "" )
+				appendLabel( container, output, color );
+		}
+
+		// Register eventlog.
+		events.Add( (container, time) );
+	}
+
+	private void appendLabel( Panel parent, string text, Color color )
+	{
+		var label = parent.AddChild<Label>( "label" );
+		label.Text = text;
+		label.Style.FontColor = color;
+	}
+
+	/// <summary>
+	/// Sends an eventlog to a client.
+	/// </summary>
+	/// <param name="text"></param>
+	/// <param name="time"></param>
+	public static void Send( string text, To? target = null, float time = 8f )
+	{
+		if ( !Game.IsServer )
+		{
+			if ( target == null )
+				Instance?.Append( text, time );
+			return;
+		}
+		
+		BrickJam.Player._addEventlog( target ?? To.Everyone, text, time );
+	}
+}
+
+<style>
+	Eventlog {
+		position: absolute;
+		top: 30px;
+		left: 0px;
+		justify-content: flex-start;
+		flex-direction: column;
+		align-items: flex-start;
+
+		.event {
+			flex-direction: row;
+			flex-wrap: wrap;
+			text-align: left;
+			max-width: 600px;
+			background: linear-gradient(to right, rgba(black, 0.5) 0%, rgba(black, 0.2) 75%, rgba(black, 0) 100%);
+			padding: 5px;
+			padding-left: 10px;
+			padding-right: 50px;
+			margin-bottom: 2px;	
+			transform: translateX(0px);
+			transition: transform 0.2s ease-in-out;
+
+			&:intro {
+				transform: translateX(-100%);
+			}
+
+			&:outro {
+				transform: translateX(-100%);
+			}
+
+			.label {
+				font-size: 16px;
+				text-shadow: 2px 2px 0px black;
+				color: white;
+			}
+		}
+	}
+</style>
