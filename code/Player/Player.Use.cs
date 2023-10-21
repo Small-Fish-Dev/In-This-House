@@ -63,7 +63,8 @@ partial class Player : AnimatedEntity
 		if ( Game.IsServer )
 		{
 			// Cancel and return if we're unable to interact with anything (stunned, tied up or what not)
-			if ( CommandsLocked )
+			// Also cancel if the player isn't holding use
+			if ( CommandsLocked || !Input.Down( "use" ) )
 			{
 				CancelInteractions();
 				return;
