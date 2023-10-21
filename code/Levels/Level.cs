@@ -46,8 +46,8 @@ public abstract partial class Level : Entity // Easy replication to client
 				case Spectator spectator:
 					{
 						var pawn = spectator.Body.IsValid() ? spectator.Body : new Player();
-						pawn.Respawn();
 						client.Pawn = pawn;
+						pawn.Respawn();
 						spectator.Delete();
 						break;
 					}
