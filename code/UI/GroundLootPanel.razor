@@ -39,7 +39,7 @@
 
 		var rotation = Rotation.LookAt( Camera.Position - Position );
 		var targetRoll = 5f * MathF.Sin( sinceCreation * 1.5f );
-		Rotation = Rotation.From( 0, rotation.Yaw(), MathF.Floor( targetRoll * 2f + 0.5f ) / 2f );
+		Rotation = Rotation.From( rotation.Pitch(), rotation.Yaw(), MathF.Floor( targetRoll * 2f + 0.5f ) / 2f );
 
 		var dist = Game.LocalPawn?.Position.Distance( Position ) ?? 0;
 		var remapped = MathX.Remap( dist, 500, 700, 1, 0 );

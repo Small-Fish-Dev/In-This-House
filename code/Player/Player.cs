@@ -311,6 +311,12 @@ partial class Player : AnimatedEntity, IPushable
 		Speechbubble.Create( message, p );
 	}
 
+	[ClientRpc]
+	public static void _addEventlog( string text, float time )
+	{
+		Eventlog.Instance?.Append( text, time );
+	}
+
 	[ConCmd.Server]
 	public static void SendMessage( string message )
 	{
