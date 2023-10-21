@@ -135,6 +135,7 @@ partial class Player : AnimatedEntity
 		
 
 		Camera.ZNear = 2;
+		Camera.ZFar = 4096;
 		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( 60f );
 		
 		BugBug.Here( v =>
