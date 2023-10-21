@@ -24,7 +24,7 @@ partial class Player : AnimatedEntity
 	/// </summary>
 	public UsableEntity UsableEntity { get; private set; }
 
-	public float UseRange => 120f;
+	public float UseRange => 100f;
 
 	protected void SimulateUse()
 	{
@@ -69,7 +69,7 @@ partial class Player : AnimatedEntity
 				CancelInteractions();
 				return;
 			}
-
+			
 			if ( UsableEntity is not null && Input.Pressed( "use" ) )
 			{
 				// Grab if no one uses it
@@ -100,7 +100,7 @@ partial class Player : AnimatedEntity
 	{
 		// Remove the invalid interaction requests
 		if ( !interactionRequest.Entity.IsValid()
-		     || interactionRequest.Entity.Position.Distance( Position ) > UseRange )
+		     || interactionRequest.Entity.Position.Distance( Position ) > UseRange + 20 )
 		{
 			CancelInteraction( interactionRequest.Entity );
 			return true;
