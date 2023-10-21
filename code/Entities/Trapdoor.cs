@@ -22,6 +22,7 @@ public class Trapdoor : UsableEntity
 	{
 		base.Use( user );
 
-		MansionGame.NextLevel();
+		if ( CanUse )
+			MansionGame.NextLevel();
 	}
 }

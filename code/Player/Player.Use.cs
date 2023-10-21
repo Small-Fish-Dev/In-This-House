@@ -102,7 +102,8 @@ partial class Player : AnimatedEntity
 			// If the player has not used anything yet
 			if ( UsableEntity is not null
 			     && Input.Pressed( "use" )
-			     && !HasActiveInteractionRequest )
+			     && !HasActiveInteractionRequest
+				 && UsableEntity.CanUse )
 			{
 				if ( UsableEntity.Locked )
 					UsableEntity.Lock.Lockpick( this );
