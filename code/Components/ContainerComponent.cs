@@ -6,6 +6,7 @@ public struct ItemEntry : IEquatable<ItemEntry>
 	public LootRarity Rarity;
 
 	public string Name => $"{Rarity} {Prefab?.Name ?? "unknown"}";
+	public int Price => (int)((Prefab?.MonetaryValue ?? 0) * Loot.RarityMap[Rarity]);
 
 	public bool Equals( ItemEntry other )
 	{

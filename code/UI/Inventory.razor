@@ -42,22 +42,21 @@
 			if ( targetTooltip != null )
 			{
 				var data = targetTooltip.Value;
-				var prefab = data.Key.Value.Prefab;
-				var rarity = data.Key.Value.Rarity;
-				var price = (int)(prefab.MonetaryValue * Loot.RarityMap[rarity]);
+				var entry = data.Key.Value;
+				var prefab = entry.Prefab;
 
 				<div class="container">
 					<div style="flex-direction: row;"> 
-						<span style="margin-right: 10px;">@($"{rarity} {prefab.Name}")</span>
+						<span style="margin-right: 10px;">@($"{entry.Name}")</span>
 						<span style="margin-right: 10px;">x@(data.Value)</span>
 					</div>
 					<div style="flex-direction: row; margin-top: 5px;"> 
-						<span class="currency">$</span><span>@($"{(price * data.Value):n0}")</span>
+						<span class="currency">$</span><span>@($"{(entry.Price * data.Value):n0}")</span>
 
 						@if( data.Value > 1 )
 						{
 							<span style="color: rgba(215, 215, 215, 1); margin-left: 10px; padding-right: 5px;">/</span>
-							<span class="currency">$</span><span style="color: rgba(215, 215, 215, 1);">@($"{price:n0}") ea.</span>
+							<span class="currency">$</span><span style="color: rgba(215, 215, 215, 1);">@($"{entry.Price:n0}") ea.</span>
 						}
 					</div>
 
