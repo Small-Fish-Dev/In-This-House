@@ -3,12 +3,12 @@ using Sandbox;
 
 namespace BrickJam;
 
-public partial class NPC : AnimatedEntity
+public partial class NPC : AnimatedEntity, IPushable
 {
 	public Level Level { get; private set; }
 	internal TimeUntil nextIdle { get; set; } = 0f;
 	public virtual string ModelPath { get; set; } = "models/citizen/citizen.vmdl";
-	public virtual float CollisionRadius { get; set; } = 8f;
+	public virtual float CollisionRadius { get; set; } = 12f;
 	public virtual float CollisionHeight { get; set; } = 72f;
 	public Capsule CollisionCapsule => new Capsule( Vector3.Up * CollisionRadius, Vector3.Up * (CollisionHeight - CollisionRadius), CollisionRadius );
 	public virtual float MaxVisionRange { get; set; } = 1024f;
@@ -87,6 +87,27 @@ public partial class NPC : AnimatedEntity
 		ComputeOpenDoors();
 		ComputeNavigation();
 		ComputeMotion();
+	}
+
+	internal List<AnimatedEntity> toPush = new();
+
+	public override void StartTouch( Entity other )
+	{
+		base.Touch( other );
+
+		if ( !Game.IsServer ) return;
+		if ( other is IPushable toucher )
+			toPush.Add( toucher as AnimatedEntity );
+	}
+
+	public override void EndTouch( Entity other )
+	{
+		base.Touch( other );
+
+		if ( !Game.IsServer ) return;
+
+		if ( other is IPushable toucher && toPush.Contains( toucher as AnimatedEntity ) )
+			toPush.Remove( toucher as AnimatedEntity );
 	}
 
 	public virtual void ComputeOpenDoors()

@@ -24,12 +24,24 @@ public partial class NPC
 		else
 			Rotation = Rotation.LookAt( CurrentlyMurdering.Position - Position, Vector3.Up );
 
+		foreach ( var toucher in toPush )
+		{
+			if ( toucher is not { IsValid: true } )
+				continue;
+
+			var direction = (Position - toucher.Position).WithZ( 0 ).Normal;
+			var distance = Position.Distance( toucher.Position );
+
+			var pushOffset = direction * MathE.SmoothKernel( CollisionRadius * 2f, distance ) * Time.Delta * 1500f;
+			Velocity += pushOffset.WithY( 0 );
+		}
+
 		var helper = new MoveHelper( Position, Velocity );
 		helper.MaxStandableAngle = 70f;
 
 		helper.Trace = Trace.Capsule( CollisionCapsule, Position, Position );
 		helper.Trace = helper.Trace
-			.WithoutTags( "player", "npc" )
+			.WithoutTags( "player", "npc", "door", "loot", "nocollide" )
 			.Ignore( this );
 
 		helper.TryMoveWithStep( Time.Delta, 24f );
