@@ -116,7 +116,7 @@
 	{
 		if ( Component == null 
 		  || Component.Entity == null 
-		  || Component.Locked )
+		  || !Component.Locked )
 		{
 			if ( !IsDeleting )
 				Delete();
