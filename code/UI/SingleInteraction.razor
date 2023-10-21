@@ -1,12 +1,8 @@
-﻿@using Sandbox.UI;
-
-@namespace BrickJam.UI
+﻿@namespace BrickJam.UI
 @inherits Graphicator.Actor
 
 <root>
-	<RadialProgress
-		class="ir"
-		@InnerDiameterPercent=@( 75f ) @ref=ProgressIndicator/>
+	<RadialProgress @InnerDiameterPercent=@( 75f ) @ref=ProgressIndicator/>
 </root>
 
 <style>
@@ -22,16 +18,15 @@
 
 @code {
 
-	public SingleInteraction( Player.InteractionRequest request ) => Request = request;
-
 	public Player.InteractionRequest Request { get; set; }
-	public RadialProgress ProgressIndicator { get; set; }
+	
+	private RadialProgress ProgressIndicator { get; set; }
 
 	protected override void Act()
 	{
 		base.Act();
 
-		if ( Request.Entity?.IsValid == true )
+		if ( Request?.IsActive ?? false )
 		{
 			ProgressIndicator.Value = 1 - Request.Complete / Request.Entity.InteractionDuration;
 			MoveToWorldPoint( Request.Entity.WorldSpaceBounds.Center );
