@@ -25,4 +25,11 @@ public static class MathE
 
 	}
 
+	public static float SmoothKernel( float radius, float distance )
+	{
+		var value = Math.Max( 0, radius * radius - distance * distance );
+		value = MathX.Remap( value, 0f, radius * radius, 0f, 1f );
+		return value * value;
+	}
+
 }
