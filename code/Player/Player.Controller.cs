@@ -12,7 +12,7 @@ public partial class Player
 	[Net] public float WalkSpeed { get; set; } = 200f;
 	[Net] public float RunSpeed { get; set; } = 350f;
 	[Net] public float JumpHeight { get; set; } = 250f;
-	[Net] public float Acceleration { get; set; } = 1200f; // Units per second
+	[Net] public float Acceleration { get; set; } = 1000f; // Units per second
 	[Net] public float Deceleration { get; set; } = 400f; // Units per second
 
 	public float StunSpeed => (float)(WalkSpeed + (RunSpeed - WalkSpeed) * Math.Sin( 45f.DegreeToRadian() ));
@@ -20,7 +20,7 @@ public partial class Player
 	public Vector3 WishVelocity => ( InputDirection.IsNearlyZero() || IsStunned )
 		? Vector3.Zero
 		: InputDirection * Rotation.FromYaw( InputAngles.yaw ) * WishSpeed;
-	public bool IsAboveWalkingSpeed => Velocity.WithZ( 0 ).Length >= WalkSpeed * 1.1f;
+	public bool IsAboveWalkingSpeed => Velocity.WithZ( 0 ).Length >= WalkSpeed * 1.2f;
 
 	public float StepSize => 16f;
 	public float WalkAngle => 46f;
@@ -65,6 +65,8 @@ public partial class Player
 				}
 			}
 		}
+		else
+			skiddingVolume = Math.Max( skiddingVolume - Time.Delta, 0f );
 
 		if ( Blocked )
 			Velocity = Vector3.Zero.WithZ( Velocity.z );
@@ -94,13 +96,13 @@ public partial class Player
 		Velocity = helper.Velocity;
 
 		if ( IsAboveWalkingSpeed )
+		{
 			CalculateStun( helper );
+			CalculateTrip( helper );
+		}
 
 		if ( !IsCrouching )
-		{
-			CalculateTrip( helper );
 			CalculateSlip( helper );
-		}
 
 		var traceDown = helper.TraceDirection( Vector3.Down );
 
@@ -186,7 +188,7 @@ public partial class Player
 		// then the pawn has probably ran into a wall
 		if ( !IsTripping &&
 			 !Velocity.WithZ( 0 ).IsNearZeroLength
-			 && Velocity.WithZ( 0 ).Length > WalkSpeed
+			 && IsAboveWalkingSpeed
 		   )
 		{
 			var lowerCapsule = CollisionCapsule;
@@ -211,7 +213,7 @@ public partial class Player
 		// then the pawn has probably ran into a wall
 		if ( !IsSlipping &&
 			 !Velocity.WithZ( 0 ).IsNearZeroLength
-			 && Velocity.WithZ( 0 ).Length > WalkSpeed
+			 && Velocity.WithZ( 0 ).Length > CrouchSpeed
 		   )
 		{
 			var lowerCapsule = CollisionCapsule;
