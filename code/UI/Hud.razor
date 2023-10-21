@@ -23,6 +23,8 @@
 		<Inventory/>
 	}
 
+	<Shop/>
+	
 	@if ( player is not null )
 	{
 		<!-- The client either has a living pawn or is observing another player's pawn -->
@@ -32,13 +34,13 @@
 
 		<Crosshair>
 			<Top>
-				Some text on the top
+				<!--Some text on the top-->
 			</Top>
 			<Middle>
 				X
 			</Middle>
 			<Bottom>
-				Some text on the bottom
+				<!--Some text on the bottom-->
 				@if ( isPlayer )
 				{
 					<InteractionTip @Player=@player/>
