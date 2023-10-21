@@ -307,8 +307,7 @@ partial class Player : AnimatedEntity, IPushable
 		if ( Entity.FindByIndex( indent ) is not Player player )
 			return;
 
-		foreach ( var p in Entity.All.OfType<Player>() )
-		Speechbubble.Create( message, p );
+		Speechbubble.Create( message, player );
 	}
 
 	[ClientRpc]
