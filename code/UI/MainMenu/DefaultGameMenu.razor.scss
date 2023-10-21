@@ -2,9 +2,6 @@
 
 .gamemainmenu
 {
-	background: url("/ui/bricks2.png") repeat;
-	padding: 0 170px;
-	opacity: 1;
 	flex-direction: column;
 	font-size: 25px;
 	width: 100%;
@@ -21,18 +18,24 @@
 		opacity: 0;
 		transform: scaleX( 1.1 );
 	}
-
-	&.ingame
-	{
-		background-color: #151313ee;
-	}
 }
 
 .gamemainmenu .navigator-canvas
 {
+	width: 100%;
 	height: 100%;
 	flex-grow: 1;
 	flex-shrink: 0;
+	
+	> * {
+		background-image: url("/ui/bricks.png");
+		background-repeat: repeat;
+	}
+}
+
+.gamemainmenu.ingame .navigator-canvas > *
+{
+	background-image: radial-gradient(rgba(21, 19, 19, 0.93) 0%, rgba(21, 19, 19, 0.93) 100%);
 }
 
 section

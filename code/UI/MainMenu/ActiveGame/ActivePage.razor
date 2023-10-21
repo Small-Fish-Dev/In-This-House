@@ -4,6 +4,7 @@
 @using System.Linq;
 @inherits Panel
 @namespace BrickJam.UI.MainMenu.ActiveGame
+@attribute [StyleSheet]
 
 @if ( !Game.InGame )
 {
@@ -52,14 +53,16 @@
 
             <h2>Current Players</h2>
 
-            <div style="flex-direction: column; margin: 30px 30px;">
-                @foreach ( var player in Game.Clients )
-                {
-                    <div>
-                        @player.Name - @player.SteamId
-                    </div>
-                }
-            </div>
+	        <div style="flex-direction: column; margin: 30px 30px;">
+		        @foreach ( var player in Game.Clients )
+		        {
+			        <div>
+				        @player.Name - @player.SteamId
+			        </div>
+		        }
+	        </div>
+	        
+	        <h1>TODO: show the party</h1>
 
         </div>
 
@@ -82,6 +85,8 @@
 
 @code
 {
+	private bool IsMenuVisible { get; set;}
+	
     protected override void OnParametersSet()
     {
         /*ShowMapOption = Game.Menu.Package.MapSelectionMode != Sandbox.DataModel.Game.MapSelect.Hidden;
@@ -95,8 +100,15 @@
 
     protected override int BuildHash()
     {
-        return HashCode.Combine( Game.Clients.Count, Game.Server.MapIdent );
+        return HashCode.Combine( Game.Clients.Count, Game.Server.MapIdent, IsVisible );
     }
+
+	[GameEvent.Client.Frame]
+	private void Frame()
+	{
+		IsMenuVisible = IsVisible;
+		Log.Info( $"{IsMenuVisible}" );
+	}
 
     public override void Tick()
     {
