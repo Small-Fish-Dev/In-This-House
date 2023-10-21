@@ -50,7 +50,7 @@
 
 		foreach ( var player in players )
 		{
-			if ( nametags.TryGetValue( player, out var panel ) || Game.LocalPawn == player )
+			if ( player == null || nametags.TryGetValue( player, out var panel ) || Game.LocalPawn == player )
 				continue;
 
 			nametags.Add( player, new Nametag() { 

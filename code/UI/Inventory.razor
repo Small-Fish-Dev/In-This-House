@@ -5,7 +5,7 @@
 @inherits Panel
 
 <root>
-	<div class="background">
+	<div class="background" style="background-image: url(@getBorder());">
 		<label class="title">INVENTORY</label>
 		<div class="items">
 			@{
@@ -77,6 +77,17 @@
 	private KeyValuePair<ItemEntry?, int>? previousTooltip;
 	private KeyValuePair<ItemEntry?, int>? tooltipData;
 	private Panel? holdPanel;
+
+	private string getBorder()
+	{
+		return (MansionGame.Instance?.CurrentLevel?.Type ?? LevelType.Dungeon) switch
+		{
+			LevelType.Mansion => "ui/inventory_woods.png",
+			LevelType.Dungeon => "ui/inventory_bricks.png",
+			LevelType.Bathrooms => "ui/inventory_tiles.png",
+			_ => "ui/inventory.png",
+		};
+	}
 
 	private class LootIcon : Panel
 	{
@@ -211,10 +222,10 @@
 	protected override int BuildHash()
 	{
 		if ( player?.Inventory?.Loots == null )
-			return HashCode.Combine( tooltipData, previousTooltip );
+			return HashCode.Combine( tooltipData, previousTooltip, getBorder() );
 
 		var joined = String.Join( ' ', player.Inventory.Loots.Select( pair => $"{pair.Key?.Prefab.Name} {pair.Key?.Rarity} x{pair.Value}" ) );
-		return HashCode.Combine( tooltipData, previousTooltip, joined );
+		return HashCode.Combine( tooltipData, previousTooltip, joined, getBorder() );
 	}
 }
 
