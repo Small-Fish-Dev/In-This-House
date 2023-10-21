@@ -8,7 +8,7 @@ public partial class Loot : UsableEntity
 	
 	public override string UseString => $"take the {FullName}";
 
-	public override float InteractionDuration => 0;
+	public override float InteractionDuration => 0.2f;
 	[Net] public LootRarity Rarity { get; set; } = LootRarity.Common;
 	[Net] public int BaseMonetaryValue { get; set; } = 0;
 	[Net] public string BaseName { get; set; } = "Loot";

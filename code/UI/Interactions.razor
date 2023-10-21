@@ -4,6 +4,10 @@
 @inherits Panel
 
 <root>
+	@if ( Player.CurrentInteractionRequest?.IsActive ?? false )
+	{
+		<SingleInteraction @Request=@Player.CurrentInteractionRequest/>
+	}
 </root>
 
 <style>
@@ -19,47 +23,9 @@
 
 	public Player Player { get; set; }
 
-	private readonly List<SingleInteraction> interactionPanels = new();
-
-	public override void Tick()
-	{
-		base.Tick();
-
-		// Panels that we don't have to remove
-		var knownGoodPanels = new List<SingleInteraction>();
-
-		foreach ( var interactionRequest in Player.InteractionRequests )
-		{
-			var associatedPanel = interactionPanels
-				.FirstOrDefault( v => v.Request.Entity == interactionRequest.Entity );
-			if ( associatedPanel == null )
-			{
-				// Create a panel
-				associatedPanel = new SingleInteraction( interactionRequest );
-				AddChild( associatedPanel );
-				interactionPanels.Add( associatedPanel );
-			}
-			knownGoodPanels.Add( associatedPanel );
-		}
-
-		// Remove old panels
-		for ( var i = interactionPanels.Count - 1; i >= 0; i-- )
-		{
-			var panel = interactionPanels[i];
-			if ( knownGoodPanels.Contains( panel ) )
-				continue;
-			panel.ProgressIndicator.Value = 1;
-			if ( panel.Request.Complete > 0 )
-			{
-				// Stopped before it was finished, delete immediately
-				panel.Delete( true );
-			}
-			else
-			{
-				panel.Delete();
-			}
-			interactionPanels.RemoveAt( i );
-		}
-	}
+	protected override int BuildHash() => HashCode.Combine(
+		Player.CurrentInteractionRequest,
+		Player.CurrentInteractionRequest is null ? 0 : (float)Player.CurrentInteractionRequest.Complete
+		);
 
 }

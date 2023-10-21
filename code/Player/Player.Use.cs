@@ -1,9 +1,4 @@
-﻿using Sandbox;
-using System;
-using System.Collections.Immutable;
-using System.Linq;
-
-namespace BrickJam;
+﻿namespace BrickJam;
 
 partial class Player : AnimatedEntity
 {
@@ -11,54 +6,88 @@ partial class Player : AnimatedEntity
 	{
 		[Net] public UsableEntity Entity { get; set; }
 		[Net] public TimeUntil Complete { get; set; }
+
+		public InteractionRequest() { }
+
+		public InteractionRequest( UsableEntity usableEntity, Player user )
+		{
+			if ( !usableEntity.IsValid() )
+				throw new ArgumentNullException( nameof(usableEntity) );
+
+			Entity = usableEntity;
+			Complete = usableEntity.InteractionDuration;
+
+			usableEntity.User?.CancelInteraction();
+			usableEntity.User = user;
+		}
+
+		public bool IsValid => Entity.IsValid();
+		
+		public bool IsActive => IsValid && !Complete;
+
+		public void Finish()
+		{
+			if ( !Entity.IsValid() )
+				return;
+
+			Entity.Use( Entity.User );
+			Release();
+		}
+
+		public void Release()
+		{
+			Entity.User = null;
+		}
 	}
 
 	/// <summary>
 	/// Entity we're currently using
 	/// </summary>
 	[Net]
-	public IList<InteractionRequest> InteractionRequests { get; set; }
+	public InteractionRequest CurrentInteractionRequest { get; set; }
 
 	/// <summary>
 	/// A usable entity that we're looking at
 	/// </summary>
 	public UsableEntity UsableEntity { get; private set; }
 
+	public bool HasActiveInteractionRequest =>
+		CurrentInteractionRequest is not null && CurrentInteractionRequest.IsActive;
+	
+	public bool HasValidInteractionRequest =>
+		CurrentInteractionRequest is not null && CurrentInteractionRequest.IsValid;
+
 	public float UseRange => 100f;
+
+	private UsableEntity FindUsableEntity( float rayRadius = 0 )
+	{
+		var trace = Trace.Ray( EyePosition, EyePosition + InputRotation.Forward * (UseRange - rayRadius) )
+			.WithTag( "useable" ); // TODO: lol useable -> usable
+		if ( rayRadius != 0 )
+			trace = trace.Size( rayRadius );
+
+		var traceResult = trace.Run();
+
+		if ( traceResult.Entity is UsableEntity usable )
+			return usable;
+		return null;
+	}
 
 	protected void SimulateUse()
 	{
-		UsableEntity = null;
-
-		// First pass, looking directly at the object we want to use
-		var thinTrace = Trace.Ray( EyePosition, EyePosition + InputRotation.Forward * UseRange )
-			.WithTag( "useable" )
-			.Run();
-
-		if ( thinTrace.Entity is UsableEntity usableThin )
-			UsableEntity = usableThin;
-
-		// Second pass, looking somewhere around the object we want to use
-		if ( UsableEntity == null )
-		{
-			var thickTrace = Trace.Ray( EyePosition, EyePosition + InputRotation.Forward * UseRange )
-				.Size( 12f )
-				.WithTag( "useable" )
-				.Run();
-
-			if ( thickTrace.Entity is UsableEntity usableThick )
-				UsableEntity = usableThick;
-		}
+		// Do a pass with a thin ray, then with a 24 unit thick ray if failed
+		UsableEntity = FindUsableEntity() ?? FindUsableEntity( 12f );
 
 		// Third pass, wider search radius
-		if ( UsableEntity == null )
+		// rndtrash: I don't think we need it, it's very conchfusing
+		/*if ( UsableEntity == null )
 		{
 			var foundInSphere = FindInSphere( thinTrace.EndPosition, 20f );
 
 			foreach ( var found in foundInSphere )
 				if ( found is UsableEntity foundUsable && foundUsable.CanUse )
 					UsableEntity = foundUsable;
-		}
+		}*/
 
 		if ( Game.IsServer )
 		{
@@ -66,82 +95,57 @@ partial class Player : AnimatedEntity
 			// Also cancel if the player isn't holding use
 			if ( CommandsLocked || !Input.Down( "use" ) )
 			{
-				CancelInteractions();
+				CancelInteraction();
 				return;
 			}
-			
-			if ( UsableEntity is not null && Input.Pressed( "use" ) )
+
+			// If the player has not used anything yet
+			if ( UsableEntity is not null
+			     && Input.Pressed( "use" )
+			     && !HasActiveInteractionRequest )
 			{
-				// Grab if no one uses it
 				if ( UsableEntity.Locked )
 					UsableEntity.Lock.Lockpick( this );
+				// Grab if no one uses it
 				else if ( !UsableEntity.User.IsValid() )
 					EnqueueInteraction( UsableEntity );
-				// Interact with the item twice to cancel
-				else if ( UsableEntity.User == this )
-				{
-					var ir = InteractionRequests.FirstOrDefault(
-						interactionRequest => interactionRequest.Entity == UsableEntity
-					);
-					if ( ir is not null )
-						InteractionRequests.Remove( ir );
-
-					CancelInteraction( UsableEntity );
-				}
 			}
 
-			// Go through each interaction request, remove those that are either finished or not valid 
-			foreach ( var interactionRequest in InteractionRequests.Where( ShouldRemoveEntityFromQueue ).ToList() )
-				InteractionRequests.Remove( interactionRequest );
+			if ( HasValidInteractionRequest && CurrentInteractionRequest.Complete )
+				FinishInteraction();
+			
+			// Remove the invalid or complete interaction request
+			if ( !HasActiveInteractionRequest
+			     || CurrentInteractionRequest.Entity.Position.Distance( Position ) > UseRange * 2f )
+			{
+				CancelInteraction();
+			}
 		}
-	}
-
-	private bool ShouldRemoveEntityFromQueue( InteractionRequest interactionRequest )
-	{
-		// Remove the invalid interaction requests
-		if ( !interactionRequest.Entity.IsValid()
-		     || interactionRequest.Entity.Position.Distance( Position ) > UseRange + 20 )
-		{
-			CancelInteraction( interactionRequest.Entity );
-			return true;
-		}
-
-		if ( !interactionRequest.Complete )
-			return false;
-
-		FinishInteraction( interactionRequest.Entity );
-		return true;
 	}
 
 	private void EnqueueInteraction( UsableEntity entity )
 	{
 		Game.AssertServer();
 
-		entity.User = this;
-		InteractionRequests.Add( new InteractionRequest { Complete = entity.InteractionDuration, Entity = entity } );
+		CurrentInteractionRequest = new InteractionRequest( entity, this );
 	}
 
-	private void FinishInteraction( UsableEntity entity )
+	private void FinishInteraction()
 	{
 		Game.AssertServer();
 
-		entity.Use( this );
-		entity.User = null;
+		CurrentInteractionRequest.Finish();
+		CurrentInteractionRequest = null;
 	}
 
-	private void CancelInteraction( UsableEntity entity )
+	private void CancelInteraction()
 	{
 		Game.AssertServer();
 
-		if ( entity.IsValid() )
-			entity.User = null;
-	}
-
-	private void CancelInteractions()
-	{
-		foreach ( var interactionRequest in InteractionRequests )
-			CancelInteraction( interactionRequest.Entity );
-
-		InteractionRequests.Clear();
+		if ( !HasValidInteractionRequest )
+			return;
+		
+		CurrentInteractionRequest.Release();
+		CurrentInteractionRequest = null;
 	}
 }

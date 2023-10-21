@@ -19,7 +19,7 @@ public partial class Door : UsableEntity
 	[Net] public bool Locked { get; set; }
 
 	public override float InteractionDuration => 0.3f;
-	public override string UseString => "open the door";
+	public override string UseString => ( State == DoorState.Open || State == DoorState.Opening ) ? "close the door" :"open the door";
 
 	private Transform initialTransform;
 	private Vector3? _hinge;
