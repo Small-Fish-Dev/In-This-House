@@ -110,7 +110,7 @@ partial class Player : AnimatedEntity, IPushable
 	{
 		base.FrameSimulate( cl );
 
-		HandleBodyiew();
+		HandleBodyview( this );
 
 		if ( CameraTarget == null )
 		{

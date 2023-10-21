@@ -2,17 +2,18 @@
 
 partial class Player
 {
-	protected void HandleBodyiew()
+	public static void HandleBodyview( AnimatedEntity entity )
 	{
-		if ( SceneObject is not SceneModel model || Game.LocalPawn != this )
+		var target = Camera.FirstPersonViewer as AnimatedEntity;
+		if ( target?.SceneObject is not SceneModel model )
 			return;
 
-		var index = GetBoneIndex( "head" );
-		var transform = GetBoneTransform( index );
+		var index = entity.GetBoneIndex( "head" );
+		var transform = entity.GetBoneTransform( index );
 
 		model.SetBoneWorldTransform( 
 			index, 
-			transform.WithPosition( transform.Position + Rotation.Backward * 50f ) 
+			transform.WithPosition( transform.Position + entity.Rotation.Backward * 50f ) 
 		);
 	}
 }
