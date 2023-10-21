@@ -1,4 +1,4 @@
-﻿@using Sandbox;
+@using Sandbox;
 @using Sandbox.UI;
 
 @namespace BrickJam.UI
@@ -13,14 +13,12 @@
 		var isPlayer = Game.LocalPawn is BrickJam.Player;
 	}
 
-	@if ( MansionGame.Instance?.TimerActive ?? false )
-	{
-		<Timer @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
-	}
+	<Timer Active="@(MansionGame.Instance.TimerActive)" @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
 
 	@if( Game.LocalPawn is BrickJam.Player ply && ply.IsValid )
 	{
 		<Inventory/>
+		<Eventlog/>
 	}
 
 	<Shop/>

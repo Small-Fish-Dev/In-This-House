@@ -5,6 +5,8 @@ public struct ItemEntry : IEquatable<ItemEntry>
 	public LootPrefab Prefab;
 	public LootRarity Rarity;
 
+	public string Name => $"{Rarity} {Prefab?.Name ?? "unknown"}";
+
 	public bool Equals( ItemEntry other )
 	{
 		return other.Prefab == Prefab 
