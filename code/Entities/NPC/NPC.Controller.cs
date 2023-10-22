@@ -4,8 +4,8 @@ namespace BrickJam;
 
 public partial class NPC
 {
-	public virtual float WalkSpeed { get; set; } = 140f;
-	public virtual float RunSpeed { get; set; } = 400f;
+	public virtual float WalkSpeed { get; set; } = 120f;
+	public virtual float RunSpeed { get; set; } = 380f;
 	public Vector3 Direction { get; set; } = Vector3.Zero;
 	public float WishSpeed => Direction.IsNearlyZero() ? 0 : ( HasArrivedDestination ? 0f : (Target.IsValid() ? RunSpeed : WalkSpeed) );
 	public Vector3 WishVelocity => Direction * WishSpeed;

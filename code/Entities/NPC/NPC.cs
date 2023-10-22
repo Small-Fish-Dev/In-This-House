@@ -6,7 +6,6 @@ namespace BrickJam;
 public partial class NPC : AnimatedEntity, IPushable
 {
 	public Level Level { get; private set; }
-	internal TimeUntil nextIdle { get; set; } = 0f;
 	public virtual string ModelPath { get; set; } = "models/citizen/citizen.vmdl";
 	public virtual float CollisionRadius { get; set; } = 12f;
 	public virtual float CollisionHeight { get; set; } = 72f;
@@ -18,11 +17,13 @@ public partial class NPC : AnimatedEntity, IPushable
 	public virtual float MaxRememberTime { get; set; } = 2f; // How long will it keep tracking your position when you're out of sight (This lets them get into rooms or corridors you hide in)
 	public virtual float AttackAnimationDuration { get; set; } = 1.5f;
 	public virtual float KillAfterAttackTime { get; set; } = 1f;
-	public virtual float SetDistanceWhenAttacking { get; set; } = 50f;
+	public virtual float SetDistanceWhenAttacking { get; set; } = 40f;
+	public virtual float KillRange { get; set; } = 60f;
 	public Dictionary<Player, TimeSince> PlayersInVision { get; private set; } = new();
 	public Player Target { get; set; } = null;
 	public Player LastTarget { get; set; } = null;
 	public Player CurrentlyMurdering { get; set; } = null;
+	internal TimeUntil nextIdle { get; set; } = 0f;
 
 	public NPC() { }
 	public NPC( Level level ) : base()
@@ -49,31 +50,41 @@ public partial class NPC : AnimatedEntity, IPushable
 			Target = PlayersInVision.OrderBy( x => x.Key.Position.Distance( Position ) )
 				.FirstOrDefault().Key;
 			LastTarget = Target;
-
-			nextIdle = MansionGame.Random.Float( 3f, 6f );
 		}
 		else
 			Target = null;
 
 		if ( Target == null )
 		{
-			if ( nextIdle && !IsFollowingPath )
+			if ( !IsFollowingPath )
 			{
-				var randomPosition = Level.WorldBox.RandomPointInside;
-				var targetCell = Level.Grid?.GetCell( randomPosition, false ) ?? null;
-
-				if ( targetCell != null )
+				if ( nextIdle )
 				{
-					NavigateTo( targetCell );
-					nextIdle = MansionGame.Random.Float( 3f, 6f );
-				}
+					var isLongIdle = MansionGame.Random.Float() <= 0.2f;
 
-				LastTarget = null;
+					Cell chosenCell = null;
+					var tried = 0;
+					while ( chosenCell != null && isLongIdle ? chosenCell.Position.Distance( Position ) < 1000f : chosenCell?.Position.Distance( Position ) > 200f || chosenCell == null )
+					{
+						chosenCell = MansionGame.Random.FromList( Level.Grid?.AllCells.ToList() ) ?? null;
+						tried++;
+
+						if ( tried >= 20 )
+							break;
+					}
+
+					if ( chosenCell != null )
+						NavigateTo( chosenCell );
+
+					nextIdle = MansionGame.Random.Float( 1f, 2f );
+
+					LastTarget = null;
+				}
 			}
 		}
 
 		if ( Target != null ) // Kill player is in range
-			if ( Target.Position.Distance( Position ) <= 40f )
+			if ( Target.Position.Distance( Position ) <= KillRange )
 				CatchPlayer( Target );
 
 		if ( IsFollowingPath )
