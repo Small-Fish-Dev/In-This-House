@@ -48,6 +48,8 @@ public partial class Player
 		//	.SetVolume( multiplier );
 
 		SlipLeft = SlipDuration;
+
+		Velocity = (Velocity.WithZ( 0 ).Normal * RunSpeed).WithZ( Velocity.z );
 	}
 
 	public void ResetStatus()
