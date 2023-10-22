@@ -1,4 +1,4 @@
-﻿@using Sandbox;
+@using Sandbox;
 @using Sandbox.UI;
 
 @namespace BrickJam.UI
@@ -18,7 +18,7 @@
 
 @code {
 	// Valid range for our lockpicking.
-	public const float RANGE = 10f;
+	public const float RANGE = 20f;
 
 	public static bool Active => instance != null && !instance.IsDeleting && instance.IsValid && instance.IsVisible;
 	public LockedComponent Component { get; }
@@ -35,7 +35,7 @@
 		instance = this;
 
 		Component = component;
-		CorrectAngle = Game.Random.Float( 0f, 90f );
+		CorrectAngle = Game.Random.Float( 0f, 360f );
 	}
 
 	public override void OnButtonEvent( ButtonEvent e )
@@ -134,14 +134,12 @@
 		var center = pivot - panel.MousePosition;
 
 		var targetRotation = down 
-			? MathX.Clamp( 90f, 0f, 90f - MathF.Abs( mouseAngle - CorrectAngle ) ) 
+			? MathX.Clamp( 90f, 0f, 90f - 90f * MathF.Abs( mouseAngle - CorrectAngle ) / 360f ) 
 			: 0;
 		rotation = MathX.Lerp( rotation, targetRotation, 10f * Time.Delta );
 		mouseAngle = down 
 			? mouseAngle 
-			: MathX.Clamp( 
-				90 - MathF.Atan2( center.x, center.y ) * (180f / MathF.PI), 
-				0, 90 );
+			: (MathF.Atan2( center.y, center.x ) * (180f / MathF.PI) + 270f) % 360;
 
 		// Check if we've succesfully lockpicked!
 		if ( !solved && down
@@ -168,7 +166,7 @@
 			hole.Rotation
 				.RotateAroundAxis( Vector3.Up, 90f )
 				.RotateAroundAxis( Vector3.Forward, 45f )
-				.RotateAroundAxis( Vector3.Up + Vector3.Left, mouseAngle )
+				.RotateAroundAxis( Vector3.Up + Vector3.Left, mouseAngle ) // order
 		);
 		pick.Transform = lTransform;
 

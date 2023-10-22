@@ -192,6 +192,11 @@
 												m_data = true
 											}
 										},
+										{
+											_class = "CTimeCondition"
+											m_comparisonOp = 3
+											m_comparisonValue = 0.8
+										},
 									]
 									m_blendDuration = 0.3
 									m_destState = 
@@ -375,7 +380,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "attack"
-					m_playbackSpeed = 0.7
+					m_playbackSpeed = 0.65
 					m_bLoop = false
 				}
 			},
