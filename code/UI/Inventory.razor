@@ -195,6 +195,7 @@
 		);
 		entity.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 		entity.ApplyAbsoluteImpulse( player.InputRotation.Forward * force );
+		entity.Scale = 0;
 	}
 
 	public override void Tick()
