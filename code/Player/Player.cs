@@ -37,6 +37,7 @@ partial class Player : AnimatedEntity, IPushable
 		mask.SetParent( this, true );
 		mask.Transmit = TransmitType.Always;
 		mask.EnableHideInFirstPerson = true;
+		mask.RenderColor = Client.GetColor();
 	}
 
 	public void RebuildCollisions()
@@ -295,6 +296,7 @@ partial class Player : AnimatedEntity, IPushable
 	{
 		Event.Run( "MoneyChanged", this, Money, value );
 		Money = value;
+		Client.SetInt( "money", Money );
 	}
 
 	// Add to the players money
