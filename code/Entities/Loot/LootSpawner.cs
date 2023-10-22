@@ -27,7 +27,7 @@ public partial class LootSpawner : Entity
 	{
 		var chance = MansionGame.Random.Float();
 
-		if ( chance <= ChanceToSpawn )
+		if ( chance <= ChanceToSpawn * Game.Clients.Count() * 0.25f )
 		{
 			if ( IsContainer )
 			{
