@@ -1,4 +1,5 @@
 ﻿using BrickJam.UI;
+using Sandbox;
 using static Sandbox.Gizmo;
 
 namespace BrickJam;
@@ -63,6 +64,15 @@ public abstract partial class Level : Entity // Easy replication to client
 
 		foreach ( var player in Entity.All.OfType<Player>().Where( p => p.Client is null ) )
 			player.Delete();
+
+		foreach ( var player in Entity.All.OfType<Player>() )
+		{
+			var doob = new Doob( this );
+			doob.Position = player.Position;
+			doob.Rotation = player.Rotation;
+			doob.Owner = player;
+			player.Doob = doob;
+		}
 
 		Exit?.Delete(); // Just make sure
 
@@ -135,6 +145,12 @@ public abstract partial class Level : Entity // Easy replication to client
 			loot.Delete();
 
 		MansionGame.Instance.TimerStop();
+		
+		foreach ( var doob in Entity.All.OfType<Doob>() )
+		{
+			doob.Owner.Doob = null;
+			doob.Delete();
+		}
 
 		return;
 	}
