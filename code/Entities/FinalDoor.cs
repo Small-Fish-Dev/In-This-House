@@ -14,7 +14,7 @@ public class FinalDoor : UsableEntity
 	{
 		base.Spawn();
 
-		SetModel( "models/furniture/mansion_furniture/mansion_door.vmdl" );
+		SetModel( "models/furniture/exit_door.vmdl" );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		Tags.Add( "door" );
 	}
