@@ -44,8 +44,23 @@ public partial class Doob : NPC
 			}
 		}
 	}
+	public override AStarPathBuilder PathBuilder => new AStarPathBuilder( CurrentGrid )
+		.WithPathCreator( this )
+		.WithPartialEnabled()
+		.WithMaxDistance( 2000f )
+		.AvoidTag( "door", 400f )
+		.AvoidTag( "edge", 50f )
+		.AvoidTag( "outeredge", 40f )
+		.AvoidTag( "inneredge", 30f )
+		.AvoidTag( "monsterNearRange", 50f )
+		.AvoidTag( "monsterMidRange", 30f )
+		.AvoidTag( "monsterLongRange", 10f );
 
 	public override void FindTargets()
+	{
+	}
+
+	public override void AssignNearbyTags()
 	{
 	}
 
