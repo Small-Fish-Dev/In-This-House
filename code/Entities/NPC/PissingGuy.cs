@@ -9,12 +9,12 @@ public partial class PissingGuy : NPC
 	public override float RunSpeed { get; set; } = 120f;
 	public override float MaxVisionAngle { get; set; } = 360f;
 	public override float MaxVisionRange { get; set; } = 150f;
-	public override float MaxVisionRangeWhenChasing { get; set; } = 1024f;
+	public override float MaxVisionRangeWhenChasing { get; set; } = 512f;
 	public override float MaxVisionAngleWhenChasing { get; set; } = 180f;
-	public override float MaxRememberTime { get; set; } = 3f;
+	public override float MaxRememberTime { get; set; } = 2f;
 
-	Vector3 startingPosition = Vector3.Zero;
-	Rotation startingRotation = Rotation.Identity;
+	public Vector3 StartingPosition { get; set; } = Vector3.Zero;
+	public Rotation StartingRotation { get; set; } = Rotation.Identity;
 
 	public PissingGuy() { }
 	public PissingGuy( Level level ) : base( level ) { }
@@ -35,12 +35,6 @@ public partial class PissingGuy : NPC
 				.FirstOrDefault().Key;
 			LastTarget = Target;
 
-			if ( startingPosition == Vector3.Zero )
-				startingPosition = Position;
-
-			if ( startingRotation == Rotation.Identity )
-				startingRotation = Rotation;
-
 			nextIdle = MansionGame.Random.Float( 3f, 6f );
 		}
 		else
@@ -50,13 +44,13 @@ public partial class PissingGuy : NPC
 		{
 			if ( !IsFollowingPath )
 			{
-				if ( startingPosition != Vector3.Zero )
+				if ( StartingPosition != Vector3.Zero )
 				{
-					if ( Position.Distance( startingPosition ) <= 30f )
-						Rotation = Rotation.Lerp( Rotation, startingRotation, Time.Delta * 5f );
+					if ( Position.Distance( StartingPosition ) <= 30f )
+						Rotation = Rotation.Lerp( Rotation, StartingRotation, Time.Delta * 5f );
 					else
 					{
-						var targetCell = Level.Grid?.GetCell( startingPosition, false ) ?? null;
+						var targetCell = Level.Grid?.GetCell( StartingPosition, false ) ?? null;
 
 						if ( targetCell != null )
 							NavigateTo( targetCell );
@@ -118,5 +112,7 @@ public partial class PissingGuy : NPC
 		var npc = new PissingGuy( MansionGame.Instance.CurrentLevel );
 		npc.Position = caller.Position + caller.Rotation.Forward * 300f;
 		npc.Rotation = caller.Rotation;
+		npc.StartingPosition = npc.Position;
+		npc.StartingRotation = npc.Rotation;
 	}
 }

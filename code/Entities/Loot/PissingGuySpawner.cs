@@ -25,6 +25,8 @@ public partial class PissingGuySpawner : Entity
 			var guy = new PissingGuy( MansionGame.Instance.CurrentLevel );
 			guy.Position = Position;
 			guy.Rotation = Rotation;
+			guy.StartingPosition = Position;
+			guy.StartingRotation = Rotation;
 
 			return guy;
 		}
