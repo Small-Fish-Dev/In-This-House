@@ -7,7 +7,7 @@ public partial class NPC
 	public virtual float WalkSpeed { get; set; } = 120f;
 	public virtual float RunSpeed { get; set; } = 380f;
 	public Vector3 Direction { get; set; } = Vector3.Zero;
-	public float WishSpeed => Direction.IsNearlyZero() ? 0 : ( HasArrivedDestination ? 0f : (Target.IsValid() ? RunSpeed : WalkSpeed) );
+	public virtual float WishSpeed => Direction.IsNearlyZero() ? 0 : ( HasArrivedDestination ? 0f : (Target.IsValid() ? RunSpeed : WalkSpeed) );
 	public Vector3 WishVelocity => Direction * WishSpeed;
 	public Rotation WishRotation => Rotation.LookAt( Direction, Vector3.Up );
 	public bool Blocked { get; set; } = false;

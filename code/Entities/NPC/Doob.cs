@@ -5,13 +5,14 @@ namespace BrickJam;
 public partial class Doob : NPC
 {
 	public override string ModelPath { get; set; } = "models/doob/doob.vmdl";
-	public override float WalkSpeed { get; set; } = 180f;
-	public override float RunSpeed { get; set; } = 360f;
+	public override float WalkSpeed { get; set; } = 140f;
+	public override float RunSpeed { get; set; } = 380f;
 	public override float CollisionHeight { get; set; } = 34f;
 	public override float CollisionRadius { get; set; } = 16f;
 	public bool IsBeingChased { get; set; } = false;
 	public new Player Owner { get; set; } = null;
-	public new float PushForce { get; set; } = 1000f;
+	public new float PushForce { get; set; } = 500f;
+	public override float WishSpeed => Direction.IsNearlyZero() ? 0 : (HasArrivedDestination ? 0f : (IsBeingChased ? RunSpeed : WalkSpeed));
 
 	public Doob() { }
 	public Doob( Level level ) : base( level ) { }
@@ -24,7 +25,7 @@ public partial class Doob : NPC
 
 	public override void ComputeAnimations()
 	{
-		SetAnimParameter( "move_x", MathX.Remap( Velocity.WithZ(0).Length, 0f, RunSpeed, 0, 1 ) );
+		SetAnimParameter( "move_x", MathX.Remap( Velocity.WithZ(0).Length, 0f, RunSpeed, 0, 3 ) );
 	}
 
 	public override void ComputeIdleAndSeek()
@@ -33,13 +34,55 @@ public partial class Doob : NPC
 		{
 			if ( nextIdle )
 			{
-				var randomDirection = MansionGame.Random.VectorInCircle( 80f );
-				var closestCell = Level.Grid?.GetNearestCell( Owner.Position + new Vector3( randomDirection.x, randomDirection.y, 50 ), false ) ?? null;
+				if ( !IsBeingChased )
+				{
+					var randomDirection = MansionGame.Random.VectorInCircle( 80f );
+					var closestCell = Level.Grid?.GetNearestCell( Owner.Position + new Vector3( randomDirection.x, randomDirection.y, 50 ), false ) ?? null;
 
-				if ( closestCell != null )
-					NavigateTo( closestCell );
+					if ( closestCell != null )
+						NavigateTo( closestCell );
 
-				nextIdle = MansionGame.Random.Float( 0.5f, 1f );
+					nextIdle = MansionGame.Random.Float( 0.5f, 1f );
+				}
+				else
+				{
+					var closestMonster = Entity.All.OfType<NPC>().Where( x => x.Target == this ).FirstOrDefault();
+
+					if ( closestMonster == null ) return;
+
+					Cell chosenCell = null;
+					var tried = 0;
+
+					while ( chosenCell == null )
+					{
+						tried++;
+
+						if ( tried >= 40 ) // We get desperate after 20 tries so we accept worse positions
+							break;
+
+						var randomCell = MansionGame.Random.FromList( Level.Grid?.AllCells.ToList() ) ?? null;
+
+						if ( randomCell.Position.Distance( closestMonster.Position ) >= ( tried > 20 ? 300f : 600f ) )
+						{
+							var relativePosition = closestMonster.Transform.PointToLocal( randomCell.Position );
+							var angle = Vector3.GetAngle( relativePosition.WithZ(0), Vector3.Forward );
+
+							var acceptableAngle = tried > 20 ? 90f : 140f;
+
+							if ( angle <= acceptableAngle && angle >= -acceptableAngle ) // Only pick cells that are on doob's side, not the monster's
+							{
+								chosenCell = randomCell;
+							}
+						}
+
+						
+					}
+
+					if ( chosenCell != null )
+						NavigateTo( chosenCell );
+
+					nextIdle = MansionGame.Random.Float( 0.3f, 0.6f );
+				}
 			}
 		}
 	}
