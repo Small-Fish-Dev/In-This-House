@@ -1,4 +1,5 @@
-﻿using Sandbox.Utility;
+﻿using GridAStar;
+using Sandbox.Utility;
 
 namespace BrickJam;
 
@@ -55,6 +56,66 @@ public partial class Specter : NPC
 				if ( IsRising )
 					lampLight.Brightness = Math.Max( MathX.Remap( LastTeleport, TimeToTeleport / 2f + 1f, TimeToTeleport + 1f, -2f, 0f ) + Noise.Perlin( Time.Now * 200f, 100f, 1000f ), 0f );
 			}
+		}
+	}
+	public override void ComputeIdleAndSeek()
+	{
+		if ( !IsTeleporting )
+		{
+			if ( PlayersInVision.Count > 0 )
+			{
+				Target = PlayersInVision.OrderBy( x => x.Key.Position.Distance( Position ) )
+					.FirstOrDefault().Key;
+				LastTarget = Target;
+			}
+			else
+				Target = null;
+
+			if ( Target == null )
+			{
+				if ( !IsFollowingPath )
+				{
+					if ( nextIdle )
+					{
+						var isLongIdle = MansionGame.Random.Float() <= 0.2f;
+
+						Cell chosenCell = null;
+						var tried = 0;
+						while ( chosenCell != null && isLongIdle ? chosenCell.Position.Distance( Position ) < 1000f : chosenCell?.Position.Distance( Position ) > 400f || chosenCell == null )
+						{
+							chosenCell = MansionGame.Random.FromList( Level.Grid?.AllCells.ToList() ) ?? null;
+							tried++;
+
+							if ( tried >= 20 )
+								break;
+						}
+
+						if ( chosenCell != null )
+						{
+							if ( !isLongIdle )
+								NavigateTo( chosenCell );
+							else
+								Teleport( chosenCell.Position );
+						}
+
+						nextIdle = MansionGame.Random.Float( 1f, 2f );
+
+						LastTarget = null;
+					}
+				}
+			}
+
+			if ( Target != null ) // Kill player is in range
+				if ( Target.Position.Distance( Position ) <= KillRange )
+					CatchPlayer( Target );
+
+			if ( IsFollowingPath )
+				foreach ( var door in Entity.All.OfType<Door>() )
+				{
+					if ( door.Position.Distance( Position ) <= 60f )
+						if ( door.State == DoorState.Closed )
+							door.State = DoorState.Open;
+				}
 		}
 	}
 

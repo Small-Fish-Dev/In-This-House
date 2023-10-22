@@ -74,7 +74,6 @@ public partial class NPC : AnimatedEntity, IPushable
 
 	public virtual void ComputeIdleAndSeek()
 	{
-
 		if ( PlayersInVision.Count > 0 )
 		{
 			Target = PlayersInVision.OrderBy( x => x.Key.Position.Distance( Position ) )
