@@ -94,7 +94,7 @@ public partial class NPC
 
 	public Cell GetTargetPathCell()
 	{
-		if ( Target != null )
+		if ( Target != null && Target.IsValid() )
 			return CurrentGrid.GetCell( Target.Position ) ?? CurrentGrid.GetNearestCell( Target.Position );
 		else if ( IsFollowingPath )
 			return LastPathNode.Current;
@@ -121,13 +121,16 @@ public partial class NPC
 				return;
 			}
 
+			if ( CurrentGrid == null )
+				return;
+
 			var startingCell = CurrentGrid.GetCell( Position ) ?? CurrentGrid.GetNearestCell( Position );
 
 			if ( startingCell == null || targetCell == null || startingCell == targetCell ) return;
 
 			var pathBuilder = PathBuilder;
 
-			if ( false && CurrentGrid.LineOfSight( startingCell, targetCell ) ) // If there's direct line of sight, move in a straight path from A to B
+			if ( CurrentGrid.LineOfSight( startingCell, targetCell ) ) // If there's direct line of sight, move in a straight path from A to B
 			{
 				var nodeList = new List<AStarNode>() { new AStarNode( startingCell ), new AStarNode( targetCell ) };
 				CurrentPath = AStarPath.From( pathBuilder, nodeList );

@@ -15,6 +15,7 @@ partial class Player : AnimatedEntity, IPushable
 	[Net] public Doob Doob { get; set; } = null;
 
 	[Net] public NPC CameraTarget { get; set; } = null;
+	public float PushForce { get; set; } = 2500f;
 
 	public override void Spawn()
 	{

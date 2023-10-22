@@ -19,11 +19,12 @@ public partial class NPC : AnimatedEntity, IPushable
 	public virtual float KillAfterAttackTime { get; set; } = 1f;
 	public virtual float SetDistanceWhenAttacking { get; set; } = 40f;
 	public virtual float KillRange { get; set; } = 60f;
-	public Dictionary<Player, TimeSince> PlayersInVision { get; private set; } = new();
-	public Player Target { get; set; } = null;
-	public Player LastTarget { get; set; } = null;
-	public Player CurrentlyMurdering { get; set; } = null;
+	public Dictionary<AnimatedEntity, TimeSince> InVision { get; private set; } = new();
+	public AnimatedEntity Target { get; set; } = null;
+	public AnimatedEntity LastTarget { get; set; } = null;
+	public AnimatedEntity CurrentlyMurdering { get; set; } = null;
 	internal TimeUntil nextIdle { get; set; } = 0f;
+	public float PushForce { get; set; } = 3000f;
 
 	public NPC() { }
 	public NPC( Level level ) : base()
@@ -75,10 +76,14 @@ public partial class NPC : AnimatedEntity, IPushable
 
 	public virtual void ComputeIdleAndSeek()
 	{
-		if ( PlayersInVision.Count > 0 )
+		if ( InVision.Count > 0 )
 		{
-			Target = PlayersInVision.OrderBy( x => x.Key.Position.Distance( Position ) )
+			Target = InVision.OrderBy( x => x.Key.Position.Distance( Position ) )
 				.FirstOrDefault().Key;
+			if ( Target is Player player )
+				if ( player.Doob != null )
+					Target = player.Doob;
+
 			LastTarget = Target;
 		}
 		else
@@ -115,7 +120,12 @@ public partial class NPC : AnimatedEntity, IPushable
 
 		if ( Target != null ) // Kill player is in range
 			if ( Target.Position.Distance( Position ) <= KillRange )
-				CatchPlayer( Target );
+			{
+				if ( Target is Player player )
+					CatchPlayer( player );
+				if ( Target is Doob doob )
+					CatchDoob( doob );
+			}
 	}
 
 	public virtual void ComputeOpenDoors()
@@ -163,6 +173,29 @@ public partial class NPC : AnimatedEntity, IPushable
 		Blocked = false;
 	}
 
+	public async virtual void CatchDoob( Doob doob )
+	{
+		SetAnimParameter( "attack", true );
+
+		var currentDirection = (doob.Position - Position).Normal;
+		doob.Position = Position + currentDirection * SetDistanceWhenAttacking;
+		doob.Blocked = true;
+
+		CurrentlyMurdering = doob;
+		Blocked = true;
+
+		await GameTask.DelaySeconds( KillAfterAttackTime );
+
+		doob.Kill();
+
+		await GameTask.DelaySeconds( AttackAnimationDuration );
+
+		doob.Blocked = false;
+
+		CurrentlyMurdering = null;
+		Blocked = false;
+	}
+
 	[GameEvent.Tick]
 	public virtual void ComputeAnimations()
 	{
@@ -172,44 +205,59 @@ public partial class NPC : AnimatedEntity, IPushable
 	public virtual void FindTargets()
 	{
 		// Remove all the invalid players
-		foreach (var player in PlayersInVision.Where( x => !x.Key.IsValid()).ToList()) // Make a copy of PlayersInVision
-			PlayersInVision.Remove( player.Key );
+		foreach (var player in InVision.Where( x => !x.Key.IsValid()).ToList()) // Make a copy of InVision
+			InVision.Remove( player.Key );
 
 		// Remove all dead players
-		foreach ( var player in PlayersInVision.Where( x => !x.Key.IsAlive ).ToList() ) // Make a copy of PlayersInVision
-			PlayersInVision.Remove( player.Key );
+		foreach ( var player in InVision.Where( x => x.Key is Player player && !player.IsAlive ).ToList() ) // Make a copy of InVision
+			InVision.Remove( player.Key );
 
 		foreach ( var player in Entity.All.OfType<Player>().Where( x => x.IsAlive ).ToList() )
 		{
-			if ( IsPlayerInVision( player ) )
+			if ( IsInVision( player ) )
 			{
-				if ( !PlayersInVision.ContainsKey( player ) )
-					PlayersInVision.Add( player, 0f );
+				if ( !InVision.ContainsKey( player ) )
+					InVision.Add( player, 0f );
 				else
-					PlayersInVision[ player ] = 0f;
+					InVision[ player ] = 0f;
 			}
 			else
-				if ( PlayersInVision.ContainsKey( player ) )
-					if ( PlayersInVision[player] >= MaxRememberTime ) // Stops following if lost sight after 1 second (This means it will follow you into rooms or behind corridors)
-						PlayersInVision.Remove( player );
+				if ( InVision.ContainsKey( player ) )
+					if ( InVision[player] >= MaxRememberTime ) // Stops following if lost sight after 1 second (This means it will follow you into rooms or behind corridors)
+						InVision.Remove( player );
+		}
+
+		foreach ( var doob in Entity.All.OfType<Doob>().ToList() )
+		{
+			if ( IsInVision( doob ) )
+			{
+				if ( !InVision.ContainsKey( doob ) )
+					InVision.Add( doob, 0f );
+				else
+					InVision[doob] = 0f;
+			}
+			else
+				if ( InVision.ContainsKey( doob ) )
+				if ( InVision[doob] >= MaxRememberTime ) // Stops following if lost sight after 1 second (This means it will follow you into rooms or behind corridors)
+					InVision.Remove( doob );
 		}
 	}
 
-	public virtual bool IsPlayerInVision( Player player )
+	public virtual bool IsInVision( AnimatedEntity entity )
 	{
-		var visionRange = player == Target ? MaxVisionRangeWhenChasing : MaxVisionRange;
-		var visionAngle = player == Target ? MaxVisionAngleWhenChasing : MaxVisionAngle;
+		var visionRange = entity == Target ? MaxVisionRangeWhenChasing : MaxVisionRange;
+		var visionAngle = entity == Target ? MaxVisionAngleWhenChasing : MaxVisionAngle;
 
-		if ( player.Position.Distance( Position ) >= visionRange ) return false;
+		if ( entity.Position.Distance( Position ) >= visionRange ) return false;
 
-		var relativePosition = Transform.PointToLocal( player.Position );
+		var relativePosition = Transform.PointToLocal( entity.Position );
 		var angle = Vector3.GetAngle( relativePosition, Vector3.Forward );
 
 		if ( angle > visionAngle / 2f || angle < -visionAngle / 2f ) return false;
 
-		var losTrace = Trace.Ray( Position + Vector3.Up * CollisionCapsule.CenterB.z, player.EyePosition )
+		var losTrace = Trace.Ray( Position + Vector3.Up * CollisionCapsule.CenterB.z, entity.Position + Vector3.Up * 64f )
 			.Ignore( this )
-			.Ignore( player )
+			.Ignore( entity )
 			.Run();
 
 		if ( losTrace.Hit ) return false;

@@ -94,7 +94,7 @@ public partial class Player
 			var direction = (Position - toucher.Position).WithZ( 0 ).Normal;
 			var distance = Position.Distance( toucher.Position );
 
-			var pushOffset = direction * MathE.SmoothKernel( CollisionRadius * 2f, distance ) * Time.Delta * 3000f;
+			var pushOffset = direction * MathE.SmoothKernel( CollisionRadius * 2f, distance ) * Time.Delta * PushForce;
 			Velocity += pushOffset.WithY( 0 );
 		}
 

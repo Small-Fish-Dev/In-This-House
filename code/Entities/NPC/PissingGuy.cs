@@ -30,9 +30,9 @@ public partial class PissingGuy : NPC
 	public override void ComputeIdleAndSeek()
 	{
 
-		if ( PlayersInVision.Count > 0 )
+		if ( InVision.Count > 0 )
 		{
-			Target = PlayersInVision.OrderBy( x => x.Key.Position.Distance( Position ) )
+			Target = InVision.OrderBy( x => x.Key.Position.Distance( Position ) )
 				.FirstOrDefault().Key;
 			LastTarget = Target;
 
@@ -64,7 +64,8 @@ public partial class PissingGuy : NPC
 
 		if ( Target != null ) // Kill player is in range
 			if ( Target.Position.Distance( Position ) <= KillRange )
-				CatchPlayer( Target );
+				if ( Target is Player player )
+					CatchPlayer( player );
 
 		if ( IsFollowingPath )
 			foreach ( var door in Entity.All.OfType<Door>() )

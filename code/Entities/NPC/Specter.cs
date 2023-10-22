@@ -62,10 +62,14 @@ public partial class Specter : NPC
 	{
 		if ( !IsTeleporting )
 		{
-			if ( PlayersInVision.Count > 0 )
+			if ( InVision.Count > 0 )
 			{
-				Target = PlayersInVision.OrderBy( x => x.Key.Position.Distance( Position ) )
-					.FirstOrDefault().Key;
+				Target = InVision.OrderBy( x => x.Key.Position.Distance( Position ) )
+				.FirstOrDefault().Key;
+				if ( Target is Player player )
+					if ( player.Doob != null )
+						Target = player.Doob;
+
 				LastTarget = Target;
 			}
 			else
@@ -107,14 +111,11 @@ public partial class Specter : NPC
 
 			if ( Target != null ) // Kill player is in range
 				if ( Target.Position.Distance( Position ) <= KillRange )
-					CatchPlayer( Target );
-
-			if ( IsFollowingPath )
-				foreach ( var door in Entity.All.OfType<Door>() )
 				{
-					if ( door.Position.Distance( Position ) <= 60f )
-						if ( door.State == DoorState.Closed )
-							door.State = DoorState.Open;
+					if ( Target is Player player )
+						CatchPlayer( player );
+					if ( Target is Doob doob )
+						CatchDoob( doob );
 				}
 		}
 	}

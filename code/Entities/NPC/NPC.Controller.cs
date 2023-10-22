@@ -19,7 +19,7 @@ public partial class NPC
 		else
 			Velocity = Vector3.Zero.WithZ( Velocity.z );
 
-		if ( CurrentlyMurdering == null )
+		if ( CurrentlyMurdering == null || !CurrentlyMurdering.IsValid() )
 			Rotation = Rotation.Lerp( Rotation, WishRotation, Time.Delta * 5f );
 		else
 			Rotation = Rotation.LookAt( CurrentlyMurdering.Position - Position, Vector3.Up );

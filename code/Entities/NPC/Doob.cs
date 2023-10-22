@@ -11,6 +11,7 @@ public partial class Doob : NPC
 	public override float CollisionRadius { get; set; } = 16f;
 	public bool IsBeingChased { get; set; } = false;
 	public new Player Owner { get; set; } = null;
+	public new float PushForce { get; set; } = 1000f;
 
 	public Doob() { }
 	public Doob( Level level ) : base( level ) { }
@@ -72,6 +73,11 @@ public partial class Doob : NPC
 	public override void ComputeOpenDoors()
 	{
 		base.ComputeOpenDoors();
+	}
+
+	public void Kill()
+	{
+		DeleteAsync( 1f ); // TODO KILL
 	}
 
 
