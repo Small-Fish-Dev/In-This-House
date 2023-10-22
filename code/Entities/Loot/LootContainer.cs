@@ -71,7 +71,7 @@ public partial class LootContainer : UsableEntity
 			loot.Scale = 0.01f;
 			loot.Rarity = (LootRarity)Math.Min( (int)loot.Rarity + 4, 8 );
 
-			await GameTask.Delay( 1250 );
+			await GameTask.Delay( (int)( 1500 / lootCount ) );
 		}
 	}
 
