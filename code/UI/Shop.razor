@@ -55,14 +55,6 @@
 
     public override void Tick()
     {
-        if ( IsOpen )
-            if ( Input.Pressed("Use") )
-            {
-                GameTask.RunInThreadAsync(async () =>
-                {
-                    await GameTask.Delay( 50 + Game.LocalClient.Ping); // Funny way to stop it from closing too early, then the Shop.Use reopens it
-                    instance.SetClass("open", false);
-                });
-            }
+      
     }
 }

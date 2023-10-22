@@ -199,6 +199,7 @@
 	{
 		if ( Input.Pressed( "Inventory" ) )
 		{
+			Shop.Close();
 			deleteHoldPanel();
 			SetClass( "visible", !HasClass( "visible" ) );
 		}
