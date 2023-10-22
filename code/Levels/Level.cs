@@ -65,7 +65,7 @@ public abstract partial class Level : Entity // Easy replication to client
 		foreach ( var player in Entity.All.OfType<Player>().Where( p => p.Client is null ) )
 			player.Delete();
 
-		foreach ( var player in Entity.All.OfType<Player>() )
+		foreach ( var player in Entity.All.OfType<Player>().ToList() )
 		{
 			var doob = new Doob( this );
 			doob.Position = player.Position;

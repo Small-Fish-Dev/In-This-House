@@ -9,9 +9,9 @@ public partial class MansionLevel : Level
 	{
 		await base.Start();
 
-		//var monster = new AoNyobo( this );
-		//monster.Position = Exit.Position;
-		//RegisterMonster( monster );
+		var monster = new AoNyobo( this );
+		monster.Position = Exit.Position;
+		RegisterMonster( monster );
 
 		return;
 	}
