@@ -19,7 +19,7 @@
 @code {
 
 	public Player.InteractionRequest Request { get; set; }
-	
+
 	private RadialProgress ProgressIndicator { get; set; }
 
 	protected override void Act()
@@ -29,7 +29,14 @@
 		if ( Request?.IsActive ?? false )
 		{
 			ProgressIndicator.Value = 1 - Request.Complete / Request.Entity.InteractionDuration;
-			MoveToWorldPoint( Request.HitPoint );
+			if ( !Request.Entity.ShouldCenterInteractionHint )
+			{
+				MoveToWorldPoint( Request.HitPoint );
+			}
+			else
+			{
+				MoveToWorldPoint( Request.Entity.WorldSpaceBounds.Center );
+			}
 		}
 	}
 

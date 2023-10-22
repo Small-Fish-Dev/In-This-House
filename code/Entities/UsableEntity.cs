@@ -2,10 +2,14 @@
 
 public class UsableEntity : AnimatedEntity
 {
-	[BindComponent]
-	public LockedComponent Lock { get; }
+	[BindComponent] public LockedComponent Lock { get; }
 
 	public virtual float InteractionDuration => 1.0f;
+	
+	/// <summary>
+	/// Whether the interaction circle should be at the world center of the entity
+	/// </summary>
+	public virtual bool ShouldCenterInteractionHint => true;
 	public virtual string UseString => $"interact with {GetType().FullName}";
 	public virtual bool CanUse => true;
 	public virtual bool StartLocked => false;

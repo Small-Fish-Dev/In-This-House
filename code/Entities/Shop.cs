@@ -6,6 +6,7 @@ namespace BrickJam;
 [EditorModel( "models/furniture/shop/shop_counter.vmdl" )]
 public partial class Shop : UsableEntity
 {
+	public override bool ShouldCenterInteractionHint => false;
 	public override float InteractionDuration => 0.5f;
 	public override string UseString => "open the upgrades shop";
 
