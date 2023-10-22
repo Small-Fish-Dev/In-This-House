@@ -248,6 +248,17 @@
 					},
 				]
 			},
+			{
+				_class = "ModelDataList"
+				children = 
+				[
+					{
+						_class = "Bounds View"
+						mins = [ 110.0, -65.0, -10.0 ]
+						maxs = [ -180.0, 220.0, 120.0 ]
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
