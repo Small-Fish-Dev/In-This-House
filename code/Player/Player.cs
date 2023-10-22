@@ -17,6 +17,8 @@ partial class Player : AnimatedEntity, IPushable
 	[Net] public NPC CameraTarget { get; set; } = null;
 	public float PushForce { get; set; } = 2500f;
 
+	protected ModelEntity Mask { get; set; }
+
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -32,12 +34,11 @@ partial class Player : AnimatedEntity, IPushable
 		Components.GetOrCreate<ContainerComponent>();
 
 		// Mask
-		var mask = new ModelEntity();
-		mask.SetModel( "models/robber/mask.vmdl" );
-		mask.SetParent( this, true );
-		mask.Transmit = TransmitType.Always;
-		mask.EnableHideInFirstPerson = true;
-		mask.RenderColor = Client.GetColor();
+		Mask = new ModelEntity();
+		Mask.SetModel( "models/robber/mask.vmdl" );
+		Mask.SetParent( this, true );
+		Mask.Transmit = TransmitType.Always;
+		Mask.EnableHideInFirstPerson = true;
 	}
 
 	public void RebuildCollisions()
@@ -266,6 +267,8 @@ partial class Player : AnimatedEntity, IPushable
 		EnableDrawing = true;
 		EnableAllCollisions = true;
 		Blocked = false;
+		
+		Mask.RenderColor = Client.GetColor();
 	}
 
 	public void Kill()
