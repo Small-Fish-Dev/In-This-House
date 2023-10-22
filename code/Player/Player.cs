@@ -17,7 +17,7 @@ partial class Player : AnimatedEntity, IPushable
 	[Net] public NPC CameraTarget { get; set; } = null;
 	public float PushForce { get; set; } = 2500f;
 
-	protected ModelEntity Mask { get; set; }
+	[Net] protected ModelEntity Mask { get; set; }
 
 	public override void Spawn()
 	{
@@ -268,7 +268,14 @@ partial class Player : AnimatedEntity, IPushable
 		EnableAllCollisions = true;
 		Blocked = false;
 		
-		Mask.RenderColor = Client.GetColor();
+		SetMaskTint(Client.GetColor());
+	}
+
+	[ClientRpc]
+	protected void SetMaskTint(Color color)
+	{
+		// color.Desaturate( 0.1f ) if needed
+		Mask.SceneObject.Attributes.Set( "maskTint", color );
 	}
 
 	public void Kill()
