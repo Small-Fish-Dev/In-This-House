@@ -58,6 +58,10 @@
 						children = 
 						[
 							{
+								_class = "AnimStartLoop"
+								start_loop_frame = 19
+							},
+							{
 								_class = "AnimSmoothLoop"
 								frames_from_start = 2
 								frames_from_end = 2
@@ -72,7 +76,7 @@
 						delta = false
 						worldSpace = false
 						hidden = false
-						anim_markup_ordered = false
+						anim_markup_ordered = true
 						disable_compression = false
 						enable_scale = false
 						source_filename = "models/doob/walk.fbx"
@@ -112,8 +116,272 @@
 						take = 0
 						reverse = false
 					},
+					{
+						_class = "AnimFile"
+						name = "run"
+						children = 
+						[
+							{
+								_class = "AnimStartLoop"
+								start_loop_frame = 18
+							},
+							{
+								_class = "AnimSmoothLoop"
+								frames_from_start = 2
+								frames_from_end = 2
+							},
+						]
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = true
+						disable_compression = false
+						enable_scale = false
+						source_filename = "models/doob/run.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = 48.0
+						take = 0
+						reverse = false
+					},
 				]
 				default_root_bone_name = ""
+			},
+			{
+				_class = "IKData"
+				children = 
+				[
+					{
+						_class = "IKChain"
+						name = "Foot_L"
+						children = 
+						[
+							{
+								_class = "IKChainJoint"
+								name = "upperleg_L"
+								children = 
+								[
+									{
+										_class = "IKChainJoint"
+										name = "lowerleg_L"
+										children = 
+										[
+											{
+												_class = "IKChainJoint"
+												name = "foot_L1"
+												bone = "foot_L"
+											},
+										]
+										bone = "lowerleg_L"
+									},
+								]
+								bone = "upperleg_L"
+							},
+						]
+						m_bDoBonesOrientAlongPositiveX = true
+						"m_DefaultSolverSettings.m_nNumIterations" = 6
+						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
+						"m_DefaultTargetSettings.m_Bone" = 
+						{
+							m_Name = "foot_IK_L"
+						}
+						"m_DefaultTargetSettings.m_TargetSource" = "Bone"
+						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
+						{
+							m_id = 4294967295
+						}
+						"m_Data.m_EndEffectorFixedOffsetAttachment" = 
+						{
+							m_Name = ""
+						}
+						"m_Data.m_bParentJointRequiresAlignment" = true
+					},
+					{
+						_class = "IKChain"
+						name = "Foot_R"
+						children = 
+						[
+							{
+								_class = "IKChainJoint"
+								name = "upperleg_R"
+								children = 
+								[
+									{
+										_class = "IKChainJoint"
+										name = "lowerleg_R"
+										children = 
+										[
+											{
+												_class = "IKChainJoint"
+												name = "foot_R1"
+												bone = "foot_R"
+											},
+										]
+										bone = "lowerleg_R"
+									},
+								]
+								bone = "upperleg_R"
+							},
+						]
+						m_bDoBonesOrientAlongPositiveX = true
+						"m_DefaultSolverSettings.m_nNumIterations" = 6
+						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
+						"m_DefaultTargetSettings.m_Bone" = 
+						{
+							m_Name = "foot_IK_R"
+						}
+						"m_DefaultTargetSettings.m_TargetSource" = "Bone"
+						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
+						{
+							m_id = 4294967295
+						}
+						"m_Data.m_EndEffectorFixedOffsetAttachment" = 
+						{
+							m_Name = ""
+						}
+						"m_Data.m_bParentJointRequiresAlignment" = true
+					},
+					{
+						_class = "IKChain"
+						name = "Hand_L"
+						children = 
+						[
+							{
+								_class = "IKChainJoint"
+								name = "upperarm_L"
+								children = 
+								[
+									{
+										_class = "IKChainJoint"
+										name = "lowerarm_L"
+										children = 
+										[
+											{
+												_class = "IKChainJoint"
+												name = "hand_L1"
+												bone = "hand_L"
+											},
+										]
+										bone = "lowerarm_L"
+									},
+								]
+								bone = "upperarm_L"
+							},
+						]
+						m_bDoBonesOrientAlongPositiveX = true
+						"m_DefaultSolverSettings.m_nNumIterations" = 6
+						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
+						"m_DefaultTargetSettings.m_Bone" = 
+						{
+							m_Name = "hand_IK_L"
+						}
+						"m_DefaultTargetSettings.m_TargetSource" = "Bone"
+						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
+						{
+							m_id = 4294967295
+						}
+						"m_Data.m_EndEffectorFixedOffsetAttachment" = 
+						{
+							m_Name = ""
+						}
+						"m_Data.m_bParentJointRequiresAlignment" = true
+					},
+					{
+						_class = "IKChain"
+						name = "Hand_R"
+						children = 
+						[
+							{
+								_class = "IKChainJoint"
+								name = "upperarm_R"
+								children = 
+								[
+									{
+										_class = "IKChainJoint"
+										name = "lowerarm_R"
+										children = 
+										[
+											{
+												_class = "IKChainJoint"
+												name = "hand_R1"
+												bone = "hand_R"
+											},
+										]
+										bone = "lowerarm_R"
+									},
+								]
+								bone = "upperarm_R"
+							},
+						]
+						m_bDoBonesOrientAlongPositiveX = true
+						"m_DefaultSolverSettings.m_nNumIterations" = 6
+						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
+						"m_DefaultTargetSettings.m_Bone" = 
+						{
+							m_Name = "hand_IK_R"
+						}
+						"m_DefaultTargetSettings.m_TargetSource" = "Bone"
+						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
+						{
+							m_id = 4294967295
+						}
+						"m_Data.m_EndEffectorFixedOffsetAttachment" = 
+						{
+							m_Name = ""
+						}
+						"m_Data.m_bParentJointRequiresAlignment" = true
+					},
+				]
+			},
+			{
+				_class = "BoneMarkupList"
+				bone_cull_type = "None"
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "LookAtChain"
+						name = "look"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "head"
+									weight = 1.0
+								},
+								{
+									name = "neck"
+									weight = 0.75
+								},
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "forward"
+						parent_bone = "head"
+						relative_origin = [ 5.294422, -3.059519, -0.000167 ]
+						relative_angles = [ -0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+				]
 			},
 		]
 		model_archetype = ""
