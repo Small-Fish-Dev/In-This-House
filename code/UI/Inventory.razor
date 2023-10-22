@@ -190,7 +190,7 @@
 		);
 		entity.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 		entity.ApplyAbsoluteImpulse( player.InputRotation.Forward * force );
-		entity.Scale = 0;
+		entity.Scale = 0.01f;
 
 		Eventlog.Send( $"You threw 1x <gray>{entry.Name}.", To.Single( player ) );
 	}

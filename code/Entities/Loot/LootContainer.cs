@@ -67,7 +67,7 @@ public partial class LootContainer : UsableEntity
 			var loot = Loot.CreateFromGameResource( prefab, transform.Position, Game.Random.Rotation() );
 			loot.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 			loot.ApplyAbsoluteImpulse( force * normal + Vector3.Up * 300f );
-			loot.Scale = 0;
+			loot.Scale = 0.01f;
 
 			await GameTask.Delay( 1250 );
 		}

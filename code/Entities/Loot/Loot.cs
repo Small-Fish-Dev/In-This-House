@@ -124,8 +124,8 @@ public partial class Loot : UsableEntity
 			return;
 		}
 
-		Scale = MathX.Lerp( Scale, 0, 5f * Time.Delta );
-		if ( Scale.AlmostEqual( 0, 0.1f ) && !deleting )
+		Scale = MathX.Lerp( Scale, 0.01f, 5f * Time.Delta );
+		if ( Scale.AlmostEqual( 0.01f, 0.1f ) && !deleting )
 		{
 			deleting = true;
 
