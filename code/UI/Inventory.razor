@@ -186,11 +186,13 @@
 		var entity = Loot.CreateFromEntry( 
 			entry, 
 			player.EyePosition, 
-			Rotation.FromYaw( player.Rotation.Inverse.Yaw() ) 
+			Rotation.FromYaw( player.Rotation.Yaw() ) 
 		);
 		entity.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 		entity.ApplyAbsoluteImpulse( player.InputRotation.Forward * force );
 		entity.Scale = 0;
+
+		Eventlog.Send( $"You threw 1x <gray>{entry.Name}.", To.Single( player ) );
 	}
 
 	public override void Tick()
@@ -357,6 +359,7 @@
 
 				&:hover {
 					background-color: rgba(white, 0.1);
+					cursor: pointer;
 				}
 			}
 		}

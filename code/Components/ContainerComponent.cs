@@ -70,7 +70,7 @@ public partial class ContainerComponent : EntityComponent
 		if ( client != null && success )
 			sendUpdate( To.Single( client ), entry.Prefab.ResourceName, entry.Rarity, items[entry] );
 
-		Event.Run( "InventoryChanged", client, entry, items[entry] );
+		Event.Run( "InventoryChanged", client, entry, items.ContainsKey( entry ) ? items[entry] : 0 );
 
 		return success;
 	}

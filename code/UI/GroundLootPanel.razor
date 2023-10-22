@@ -41,9 +41,10 @@
 
 		var rotation = Rotation.LookAt( Camera.Position - Position );
 		var targetRoll = 5f * MathF.Sin( sinceCreation * 1.5f );
+		var roll = MathF.Floor( targetRoll * 2f + 0.5f ) / 2f;
 		Rotation =  Loot.Prefab.DisplayFront
-			? Loot.Rotation.RotateAroundAxis( Vector3.Up, 90f ).RotateAroundAxis( Vector3.Right, 90f )
-			: Rotation.From( rotation.Pitch(), rotation.Yaw(), MathF.Floor( targetRoll * 2f + 0.5f ) / 2f );
+			? Loot.Rotation.RotateAroundAxis(Vector3.Up, 90f + roll).RotateAroundAxis(Vector3.Right, 90f)
+			: Rotation.From(rotation.Pitch(), rotation.Yaw(), roll);
 		WorldScale = Loot.Scale;
 
 		var dist = Game.LocalPawn?.Position.Distance( Position ) ?? 0;
