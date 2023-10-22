@@ -45,6 +45,36 @@ public partial class NPC : AnimatedEntity, IPushable
 	{
 		FindTargets();
 
+		ComputeIdleAndSeek();
+		ComputeOpenDoors();
+		ComputeNavigation();
+		ComputeMotion();
+	}
+
+	internal List<AnimatedEntity> toPush = new();
+
+	public override void StartTouch( Entity other )
+	{
+		base.Touch( other );
+
+		if ( !Game.IsServer ) return;
+		if ( other is IPushable toucher )
+			toPush.Add( toucher as AnimatedEntity );
+	}
+
+	public override void EndTouch( Entity other )
+	{
+		base.Touch( other );
+
+		if ( !Game.IsServer ) return;
+
+		if ( other is IPushable toucher && toPush.Contains( toucher as AnimatedEntity ) )
+			toPush.Remove( toucher as AnimatedEntity );
+	}
+
+	public virtual void ComputeIdleAndSeek()
+	{
+
 		if ( PlayersInVision.Count > 0 )
 		{
 			Target = PlayersInVision.OrderBy( x => x.Key.Position.Distance( Position ) )
@@ -91,34 +121,9 @@ public partial class NPC : AnimatedEntity, IPushable
 			foreach ( var door in Entity.All.OfType<Door>() )
 			{
 				if ( door.Position.Distance( Position ) <= 60f )
-				if ( door.State == DoorState.Closed )
-					door.State = DoorState.Open;
+					if ( door.State == DoorState.Closed )
+						door.State = DoorState.Open;
 			}
-
-		ComputeOpenDoors();
-		ComputeNavigation();
-		ComputeMotion();
-	}
-
-	internal List<AnimatedEntity> toPush = new();
-
-	public override void StartTouch( Entity other )
-	{
-		base.Touch( other );
-
-		if ( !Game.IsServer ) return;
-		if ( other is IPushable toucher )
-			toPush.Add( toucher as AnimatedEntity );
-	}
-
-	public override void EndTouch( Entity other )
-	{
-		base.Touch( other );
-
-		if ( !Game.IsServer ) return;
-
-		if ( other is IPushable toucher && toPush.Contains( toucher as AnimatedEntity ) )
-			toPush.Remove( toucher as AnimatedEntity );
 	}
 
 	public virtual void ComputeOpenDoors()
