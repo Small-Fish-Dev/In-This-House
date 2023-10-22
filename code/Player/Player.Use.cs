@@ -8,23 +8,33 @@ partial class Player : AnimatedEntity
 	{
 		[Net] public UsableEntity Entity { get; set; }
 		[Net] public TimeUntil Complete { get; set; }
+		[Net] public Vector3 HitPoint { get; set; }
 
 		public InteractionRequest() { }
 
-		public InteractionRequest( UsableEntity usableEntity, Player user )
+		public InteractionRequest( UsableEntity usableEntity, Player user, Vector3? hitPoint = null )
 		{
 			if ( !usableEntity.IsValid() )
 				throw new ArgumentNullException( nameof(usableEntity) );
 
 			Entity = usableEntity;
 			Complete = usableEntity.InteractionDuration;
+			if ( hitPoint == null )
+			{
+				Log.Warning( "hitPoint == null?" );
+				HitPoint = usableEntity.WorldSpaceBounds.Center;
+			}
+			else
+			{
+				HitPoint = hitPoint.Value;
+			}
 
 			usableEntity.User?.CancelInteraction();
 			usableEntity.User = user;
 		}
 
 		public bool IsValid => Entity.IsValid();
-		
+
 		public bool IsActive => IsValid && !Complete;
 
 		public void Finish()
@@ -53,15 +63,20 @@ partial class Player : AnimatedEntity
 	/// </summary>
 	public UsableEntity UsableEntity { get; private set; }
 
+	/// <summary>
+	/// The position we see of the usable entity
+	/// </summary>
+	public Vector3 UsableEntityTouchPos { get; private set; }
+
 	public bool HasActiveInteractionRequest =>
 		CurrentInteractionRequest is not null && CurrentInteractionRequest.IsActive;
-	
+
 	public bool HasValidInteractionRequest =>
 		CurrentInteractionRequest is not null && CurrentInteractionRequest.IsValid;
 
 	public float UseRange => 100f;
 
-	private UsableEntity FindUsableEntity( float rayRadius = 0 )
+	private bool UpdateUsableEntity( float rayRadius = 0 )
 	{
 		var trace = Trace.Ray( EyePosition, EyePosition + InputRotation.Forward * (UseRange - rayRadius) )
 			.WithTag( "useable" ); // TODO: lol useable -> usable
@@ -71,15 +86,22 @@ partial class Player : AnimatedEntity
 		var traceResult = trace.Run();
 
 		if ( traceResult.Entity is UsableEntity usable )
-			return usable;
+		{
+			UsableEntity = usable;
+			UsableEntityTouchPos = traceResult.HitPosition;
+			return true;
+		}
 
-		return null;
+		UsableEntity = null;
+		UsableEntityTouchPos = Vector3.Zero;
+		return false;
 	}
 
 	protected void SimulateUse()
 	{
 		// Do a pass with a thin ray, then with a 24 unit thick ray if failed
-		UsableEntity = FindUsableEntity() ?? FindUsableEntity( 12f );
+		if ( !UpdateUsableEntity() )
+			UpdateUsableEntity( 12 );
 
 		// Third pass, wider search radius
 		// rndtrash: I don't think we need it, it's very conchfusing
@@ -106,32 +128,32 @@ partial class Player : AnimatedEntity
 			if ( UsableEntity is not null
 			     && Input.Pressed( "use" )
 			     && !HasActiveInteractionRequest
-				 && UsableEntity.CanUse )
+			     && UsableEntity.CanUse )
 			{
 				if ( UsableEntity.Locked )
 					UsableEntity.Lock.Lockpick( this );
 				// Grab if no one uses it
 				else if ( !UsableEntity.User.IsValid() )
-					EnqueueInteraction( UsableEntity );
+					EnqueueInteraction();
 			}
 
 			if ( HasValidInteractionRequest && CurrentInteractionRequest.Complete )
 				FinishInteraction();
-			
+
 			// Remove the invalid or complete interaction request
 			if ( !HasActiveInteractionRequest
-			     || CurrentInteractionRequest.Entity.Position.Distance( Position ) > UseRange * 2f )
+			     || CurrentInteractionRequest.HitPoint.Distance( EyePosition ) > UseRange + 10 )
 			{
 				CancelInteraction();
 			}
 		}
 	}
 
-	private void EnqueueInteraction( UsableEntity entity )
+	private void EnqueueInteraction()
 	{
 		Game.AssertServer();
 
-		CurrentInteractionRequest = new InteractionRequest( entity, this );
+		CurrentInteractionRequest = new InteractionRequest( UsableEntity, this, UsableEntityTouchPos );
 	}
 
 	private void FinishInteraction()
@@ -148,7 +170,7 @@ partial class Player : AnimatedEntity
 
 		if ( !HasValidInteractionRequest )
 			return;
-		
+
 		CurrentInteractionRequest.Release();
 		CurrentInteractionRequest = null;
 	}

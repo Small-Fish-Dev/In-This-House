@@ -29,7 +29,7 @@
 		if ( Request?.IsActive ?? false )
 		{
 			ProgressIndicator.Value = 1 - Request.Complete / Request.Entity.InteractionDuration;
-			MoveToWorldPoint( Request.Entity.WorldSpaceBounds.Center );
+			MoveToWorldPoint( Request.HitPoint );
 		}
 	}
 
