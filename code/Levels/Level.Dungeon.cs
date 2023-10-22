@@ -3,11 +3,16 @@
 public partial class DungeonLevel : Level
 {
 	public override LevelType Type { get; set; } = LevelType.Dungeon;
-	public override BBox WorldBox => new BBox( new Vector3( -1550f, -1550f, -640f ), new Vector3( 1550f, 1550f, -500f ) );
+	public override BBox WorldBox => new BBox( new Vector3( -3200f, -2000f, -2700f ), new Vector3( 3200f, 2000f, -600f ) );
 
 	public async override Task Start()
 	{
 		await base.Start();
+
+		var monster = new Specter( this );
+		monster.Position = Exit.Position;
+		RegisterMonster( monster );
+
 		return;
 	}
 

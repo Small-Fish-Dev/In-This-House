@@ -3,7 +3,7 @@
 public partial class BathroomsLevel : Level
 {
 	public override LevelType Type { get; set; } = LevelType.Bathrooms;
-	public override BBox WorldBox => new BBox( new Vector3( -1550f, -1550f, -1660f ), new Vector3( 1550f, 1550f, -1520f ) );
+	public override BBox WorldBox => new BBox( new Vector3( -3200f, -2000f, -3400f ), new Vector3( 3200f, 2000f, -5400f ) );
 
 	public async override Task Start()
 	{
