@@ -7,7 +7,7 @@ namespace BrickJam;
 public partial class Shop : UsableEntity
 {
 	public override bool ShouldCenterInteractionHint => false;
-	public override float InteractionDuration => 0f;
+	public override float InteractionDuration => 0.7f;
 	public override string UseString => "open the upgrades shop";
 
 	public override void Spawn()
