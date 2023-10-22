@@ -5,13 +5,14 @@ namespace BrickJam;
 public partial class PissingGuy : NPC
 {
 	public override string ModelPath { get; set; } = "models/pissing_guy/pissing_guy.vmdl";
-	public override float WalkSpeed { get; set; } = 80f;
+	public override float WalkSpeed { get; set; } = 120f;
 	public override float RunSpeed { get; set; } = 120f;
 	public override float MaxVisionAngle { get; set; } = 360f;
-	public override float MaxVisionRange { get; set; } = 150f;
+	public override float MaxVisionRange { get; set; } = 160f;
 	public override float MaxVisionRangeWhenChasing { get; set; } = 512f;
 	public override float MaxVisionAngleWhenChasing { get; set; } = 180f;
 	public override float MaxRememberTime { get; set; } = 2f;
+	public override float KillRange { get; set; } = 40f;
 
 	public Vector3 StartingPosition { get; set; } = Vector3.Zero;
 	public Rotation StartingRotation { get; set; } = Rotation.Identity;
@@ -72,6 +73,10 @@ public partial class PissingGuy : NPC
 					if ( door.State == DoorState.Closed )
 						door.State = DoorState.Open;
 			}
+	}
+	public override void ComputeAnimations()
+	{
+		SetAnimParameter( "walking", Velocity.WithZ(0).Length >= 5f ? true : false );
 	}
 
 	public override void AssignNearbyTags()
