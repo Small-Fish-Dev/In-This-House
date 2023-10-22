@@ -136,7 +136,7 @@
 		var targetRotation = down 
 			? MathX.Clamp( 90f, 0f, 90f - MathF.Abs( mouseAngle - CorrectAngle ) ) 
 			: 0;
-		rotation = MathX.Lerp( rotation, targetRotation, 4f * Time.Delta );
+		rotation = MathX.Lerp( rotation, targetRotation, 10f * Time.Delta );
 		mouseAngle = down 
 			? mouseAngle 
 			: MathX.Clamp( 
