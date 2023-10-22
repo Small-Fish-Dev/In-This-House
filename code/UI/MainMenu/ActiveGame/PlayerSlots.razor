@@ -34,7 +34,6 @@
 		foreach ( var client in Game.Clients )
 		{
 			var slot = client.GetSlot();
-			Log.Info( $"DEBUG {Game.Server.MaxPlayers} {list.Count} {slot}" );
 			if ( slot >= 0 )
 				list[slot] = client;
 		}
