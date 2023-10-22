@@ -1,10 +1,12 @@
-﻿namespace BrickJam;
+﻿using GridAStar;
+
+namespace BrickJam;
 
 public partial class PissingGuy : NPC
 {
 	public override string ModelPath { get; set; } = "models/pissing_guy/pissing_guy.vmdl";
-	public override float WalkSpeed { get; set; } = 100f;
-	public override float RunSpeed { get; set; } = 140f;
+	public override float WalkSpeed { get; set; } = 80f;
+	public override float RunSpeed { get; set; } = 120f;
 	public override float MaxVisionAngle { get; set; } = 360f;
 	public override float MaxVisionRange { get; set; } = 150f;
 	public override float MaxVisionRangeWhenChasing { get; set; } = 1024f;
@@ -23,9 +25,9 @@ public partial class PissingGuy : NPC
 
 		//PlaySound( "sounds/wega.sound" );
 	}
-	public override void Think()
+
+	public override void ComputeIdleAndSeek()
 	{
-		FindTargets();
 
 		if ( PlayersInVision.Count > 0 )
 		{
@@ -66,7 +68,7 @@ public partial class PissingGuy : NPC
 		}
 
 		if ( Target != null ) // Kill player is in range
-			if ( Target.Position.Distance( Position ) <= 40f )
+			if ( Target.Position.Distance( Position ) <= KillRange )
 				CatchPlayer( Target );
 
 		if ( IsFollowingPath )
@@ -76,10 +78,35 @@ public partial class PissingGuy : NPC
 					if ( door.State == DoorState.Closed )
 						door.State = DoorState.Open;
 			}
+	}
 
-		ComputeOpenDoors();
-		ComputeNavigation();
-		ComputeMotion();
+	public override void AssignNearbyTags()
+	{
+		if ( CurrentGrid == null ) return;
+
+		if ( nextTagsCheck )
+		{
+			var nearRadius = 50f;
+			var bbox = new BBox( Position, nearRadius * 2f );
+
+			foreach ( var oldCell in currentCells.ToList() )
+			{
+				oldCell.Tags.Remove( "monsterNearRange" );
+
+				currentCells.Remove( oldCell );
+			}
+
+			foreach ( var nearCell in CurrentGrid.GetCellsInBBox( bbox ) )
+			{
+				if ( nearCell.Position.Distance( Position ) <= nearRadius )
+				{
+					nearCell.Tags.Add( "monsterNearRange" );
+					currentCells.Add( nearCell );
+				}
+			}
+
+			nextTagsCheck = 0.5f + Game.Random.Float( -0.1f, 0.1f ); // Gotta add some randomness with these guys or else they'll all do this at the same tick which gets expensive
+		}
 	}
 
 
