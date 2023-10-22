@@ -1,0 +1,20 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Rendering ----
+	F_TINT_MASK 1
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "models/furniture/exit_door_color.png"
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	Metalness "models/furniture/exit_door_metal.png"
+	Normal "models/furniture/exit_door_normal.png"
+	Roughness "models/furniture/exit_door_rough.png"
+	TintMask "materials/default/default.tga"
+}
