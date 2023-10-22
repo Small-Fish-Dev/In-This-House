@@ -1,0 +1,16 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/default.shader"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	Color "models/furniture/dungeon_props/dungeon_wood_door_color.png"
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	Metalness "models/furniture/dungeon_props/dungeon_wood_door_metal.png"
+	Normal "models/furniture/dungeon_props/dungeon_wood_door_normal.png"
+	Roughness "models/furniture/dungeon_props/dungeon_wood_door_rough.png"
+}
