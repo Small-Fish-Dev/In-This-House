@@ -9259,6 +9259,27 @@
 			{
 				key = 
 				{
+					m_id = 187546724
+				}
+				value = 
+				{
+					_class = "CSingleFrameAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 1872.0, 432.0 ]
+					m_nNodeID = 
+					{
+						m_id = 187546724
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_sequenceName = "lockpicking"
+					m_nFrameIndex = 7
+					m_tagSpans = [  ]
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 190520519
 				}
 				value = 
@@ -10740,6 +10761,179 @@
 							},
 						]
 					}
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 239680500
+				}
+				value = 
+				{
+					_class = "CChoiceAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 2144.0, 224.0 ]
+					m_nNodeID = 
+					{
+						m_id = 239680500
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_children = 
+					[
+						{
+							m_inputConnection = 
+							{
+								m_nodeID = 
+								{
+									m_id = 1259759715
+								}
+								m_outputID = 
+								{
+									m_id = 4294967295
+								}
+							}
+							m_name = ""
+							m_weight = 0.0
+							m_blendTime = 0.2
+						},
+						{
+							m_inputConnection = 
+							{
+								m_nodeID = 
+								{
+									m_id = 542057564
+								}
+								m_outputID = 
+								{
+									m_id = 4294967295
+								}
+							}
+							m_name = ""
+							m_weight = 0.0
+							m_blendTime = 0.2
+						},
+						{
+							m_inputConnection = 
+							{
+								m_nodeID = 
+								{
+									m_id = 666220233
+								}
+								m_outputID = 
+								{
+									m_id = 4294967295
+								}
+							}
+							m_name = ""
+							m_weight = 0.0
+							m_blendTime = 0.2
+						},
+						{
+							m_inputConnection = 
+							{
+								m_nodeID = 
+								{
+									m_id = 1940462202
+								}
+								m_outputID = 
+								{
+									m_id = 4294967295
+								}
+							}
+							m_name = ""
+							m_weight = 0.0
+							m_blendTime = 0.2
+						},
+						{
+							m_inputConnection = 
+							{
+								m_nodeID = 
+								{
+									m_id = 1738994180
+								}
+								m_outputID = 
+								{
+									m_id = 4294967295
+								}
+							}
+							m_name = ""
+							m_weight = 0.0
+							m_blendTime = 0.2
+						},
+						{
+							m_inputConnection = 
+							{
+								m_nodeID = 
+								{
+									m_id = 1566971026
+								}
+								m_outputID = 
+								{
+									m_id = 4294967295
+								}
+							}
+							m_name = ""
+							m_weight = 0.0
+							m_blendTime = 0.2
+						},
+						{
+							m_inputConnection = 
+							{
+								m_nodeID = 
+								{
+									m_id = 1589568181
+								}
+								m_outputID = 
+								{
+									m_id = 4294967295
+								}
+							}
+							m_name = ""
+							m_weight = 0.0
+							m_blendTime = 0.2
+						},
+						{
+							m_inputConnection = 
+							{
+								m_nodeID = 
+								{
+									m_id = 187546724
+								}
+								m_outputID = 
+								{
+									m_id = 4294967295
+								}
+							}
+							m_name = ""
+							m_weight = 0.0
+							m_blendTime = 0.2
+						},
+						{
+							m_inputConnection = 
+							{
+								m_nodeID = 
+								{
+									m_id = 1192879694
+								}
+								m_outputID = 
+								{
+									m_id = 4294967295
+								}
+							}
+							m_name = ""
+							m_weight = 0.0
+							m_blendTime = 0.2
+						},
+					]
+					m_seed = 1891414662
+					m_choiceMethod = "WeightedRandom"
+					m_choiceChangeMethod = "OnReset"
+					m_blendMethod = "SingleBlendTime"
+					m_blendTime = 0.2
+					m_bCrossFade = false
+					m_bResetChosen = true
+					m_bDontResetSameSelection = false
 				}
 			},
 			{
@@ -13497,7 +13691,7 @@
 					{
 						m_nodeID = 
 						{
-							m_id = 946008546
+							m_id = 587744495
 						}
 						m_outputID = 
 						{
@@ -16308,6 +16502,27 @@
 			{
 				key = 
 				{
+					m_id = 542057564
+				}
+				value = 
+				{
+					_class = "CSingleFrameAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 1872.0, 144.0 ]
+					m_nNodeID = 
+					{
+						m_id = 542057564
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_sequenceName = "lockpicking"
+					m_nFrameIndex = 1
+					m_tagSpans = [  ]
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 542623064
 				}
 				value = 
@@ -16324,6 +16539,60 @@
 					m_commentText = "The position of the feet can be interpolated between different animations much more cleanly, without the rotations of the upper & lower legs contributing, as they normally would.\n\nTry looking inside the \'2D - Crouch Walk\' node, with the position of the playback set exactly halfway between 0 and the \'ring\' of animations. You\'ll see the legs and feet clip into the ground. And if you try previewing that with the entire graph active (set \'move_x\' to 30, and \'duck\' to 1), you\'ll see that clipping with the ground is almost entirely gone."
 					m_size = [ 448.0, 512.0 ]
 					m_color = [ 75, 50, 100, 255 ]
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 547545639
+				}
+				value = 
+				{
+					_class = "CBoneMaskAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 2496.0, 176.0 ]
+					m_nNodeID = 
+					{
+						m_id = 547545639
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_weightListName = "Only_Foot_IK"
+					m_inputConnection1 = 
+					{
+						m_nodeID = 
+						{
+							m_id = 1748137180
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_inputConnection2 = 
+					{
+						m_nodeID = 
+						{
+							m_id = 391619027
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_blendSpace = "BlendSpace_Parent"
+					m_bUseBlendScale = false
+					m_blendValueSource = "Parameter"
+					m_blendParameter = 
+					{
+						m_id = 4294967295
+					}
+					m_timingBehavior = "UseChild1"
+					m_flTimingBlend = 0.5
+					m_flRootMotionBlend = 0.0
+					m_footMotionTiming = "Child1"
+					m_bResetChild1 = true
+					m_bResetChild2 = false
 				}
 			},
 			{
@@ -17279,6 +17548,163 @@
 							},
 						]
 					}
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 587744495
+				}
+				value = 
+				{
+					_class = "CStateMachineAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 3088.0, 240.0 ]
+					m_nNodeID = 
+					{
+						m_id = 587744495
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_states = 
+					[
+						{
+							_class = "CAnimState"
+							m_transitions = 
+							[
+								{
+									_class = "CAnimStateTransition"
+									m_conditions = 
+									[
+										{
+											_class = "CParameterAnimCondition"
+											m_comparisonOp = 0
+											m_paramID = 
+											{
+												m_id = 1592445370
+											}
+											m_comparisonValue = 
+											{
+												m_nType = 1
+												m_data = true
+											}
+										},
+									]
+									m_blendDuration = 0.2
+									m_destState = 
+									{
+										m_id = 776019950
+									}
+									m_bReset = true
+									m_resetCycleOption = "Beginning"
+									m_flFixedCycleValue = 0.0
+									m_blendCurve = 
+									{
+										m_vControlPoint1 = [ 0.5, 0.0 ]
+										m_vControlPoint2 = [ 0.5, 1.0 ]
+									}
+									m_bForceFootPlant = false
+									m_bDisabled = false
+									m_bRandomTimeBetween = false
+									m_flRandomTimeStart = 0.0
+									m_flRandomTimeEnd = 0.0
+								},
+							]
+							m_tags = [  ]
+							m_tagBehaviors = [  ]
+							m_name = "base"
+							m_inputConnection = 
+							{
+								m_nodeID = 
+								{
+									m_id = 946008546
+								}
+								m_outputID = 
+								{
+									m_id = 4294967295
+								}
+							}
+							m_stateID = 
+							{
+								m_id = 1373850348
+							}
+							m_position = [ -16.0, -32.0 ]
+							m_bIsStartState = true
+							m_bIsEndtState = false
+							m_bIsPassthrough = false
+							m_bIsRootMotionExclusive = false
+							m_bAlwaysEvaluate = false
+						},
+						{
+							_class = "CAnimState"
+							m_transitions = 
+							[
+								{
+									_class = "CAnimStateTransition"
+									m_conditions = 
+									[
+										{
+											_class = "CParameterAnimCondition"
+											m_comparisonOp = 0
+											m_paramID = 
+											{
+												m_id = 1592445370
+											}
+											m_comparisonValue = 
+											{
+												m_nType = 1
+												m_data = false
+											}
+										},
+									]
+									m_blendDuration = 0.2
+									m_destState = 
+									{
+										m_id = 1373850348
+									}
+									m_bReset = true
+									m_resetCycleOption = "Beginning"
+									m_flFixedCycleValue = 0.0
+									m_blendCurve = 
+									{
+										m_vControlPoint1 = [ 0.5, 0.0 ]
+										m_vControlPoint2 = [ 0.5, 1.0 ]
+									}
+									m_bForceFootPlant = false
+									m_bDisabled = false
+									m_bRandomTimeBetween = false
+									m_flRandomTimeStart = 0.0
+									m_flRandomTimeEnd = 0.0
+								},
+							]
+							m_tags = [  ]
+							m_tagBehaviors = [  ]
+							m_name = "lockpicking"
+							m_inputConnection = 
+							{
+								m_nodeID = 
+								{
+									m_id = 1149180875
+								}
+								m_outputID = 
+								{
+									m_id = 4294967295
+								}
+							}
+							m_stateID = 
+							{
+								m_id = 776019950
+							}
+							m_position = [ -16.0, 112.0 ]
+							m_bIsStartState = false
+							m_bIsEndtState = false
+							m_bIsPassthrough = false
+							m_bIsRootMotionExclusive = false
+							m_bAlwaysEvaluate = false
+						},
+					]
+					m_bBlockWaningTags = false
+					m_bLockStateWhenWaning = false
 				}
 			},
 			{
@@ -18412,6 +18838,27 @@
 					}
 					m_bFinishEarly = false
 					m_bResetOnFinish = false
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 666220233
+				}
+				value = 
+				{
+					_class = "CSingleFrameAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 1872.0, 192.0 ]
+					m_nNodeID = 
+					{
+						m_id = 666220233
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_sequenceName = "lockpicking"
+					m_nFrameIndex = 2
+					m_tagSpans = [  ]
 				}
 			},
 			{
@@ -23406,6 +23853,90 @@
 					m_commentText = "There may be a cool opportunity for a fun little hack that prevents orientation snap back if the transition from \'Roll\' straight to another state happens to be at the wrong moment. Maybe add something in the exit that sneakily rotates the pelvis back to upright for maximum transition compatibility"
 					m_size = [ 368.0, 304.0 ]
 					m_color = [ 178, 34, 34, 255 ]
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1149180875
+				}
+				value = 
+				{
+					_class = "CSolveIKChainAnimNode"
+					m_sName = "Global Feet IK"
+					m_vecPosition = [ 2592.0, 256.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1149180875
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 547545639
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_IkChains = 
+					[
+						{
+							_class = "CSolveIKChainAnimNodeChainData"
+							m_IkChain = "right_leg_IK"
+							m_SolverSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+							m_OverrideSolverSettings = 
+							{
+								m_SolverType = "IKSOLVER_TwoBone"
+							}
+							m_TargetSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+							m_OverrideTargetSettings = 
+							{
+								m_TargetSource = "Bone"
+								m_Bone = 
+								{
+									m_Name = ""
+								}
+								m_AnimgraphParameterNamePosition = 
+								{
+									m_id = 4294967295
+								}
+								m_TargetCoordSystem = "World Space"
+							}
+							m_DebugSetting = "SOLVEIKCHAINANIMNODEDEBUGSETTING_None"
+							m_flDebugNormalizedLength = 1.0
+							m_vDebugOffset = [ 0.0, 0.0, 0.0 ]
+						},
+						{
+							_class = "CSolveIKChainAnimNodeChainData"
+							m_IkChain = "left_leg_IK"
+							m_SolverSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+							m_OverrideSolverSettings = 
+							{
+								m_SolverType = "IKSOLVER_TwoBone"
+							}
+							m_TargetSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+							m_OverrideTargetSettings = 
+							{
+								m_TargetSource = "Bone"
+								m_Bone = 
+								{
+									m_Name = ""
+								}
+								m_AnimgraphParameterNamePosition = 
+								{
+									m_id = 4294967295
+								}
+								m_TargetCoordSystem = "World Space"
+							}
+							m_DebugSetting = "SOLVEIKCHAINANIMNODEDEBUGSETTING_None"
+							m_flDebugNormalizedLength = 1.0
+							m_vDebugOffset = [ 0.0, 0.0, 0.0 ]
+						},
+					]
 				}
 			},
 			{
@@ -28721,6 +29252,27 @@
 			{
 				key = 
 				{
+					m_id = 1192879694
+				}
+				value = 
+				{
+					_class = "CSingleFrameAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 1872.0, 480.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1192879694
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_sequenceName = "lockpicking"
+					m_nFrameIndex = 8
+					m_tagSpans = [  ]
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 1195930607
 				}
 				value = 
@@ -29000,6 +29552,27 @@
 							}
 						},
 					]
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1259759715
+				}
+				value = 
+				{
+					_class = "CSingleFrameAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 1872.0, 96.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1259759715
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_sequenceName = "lockpicking"
+					m_nFrameIndex = 0
+					m_tagSpans = [  ]
 				}
 			},
 			{
@@ -45497,6 +46070,27 @@
 			{
 				key = 
 				{
+					m_id = 1566971026
+				}
+				value = 
+				{
+					_class = "CSingleFrameAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 1872.0, 336.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1566971026
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_sequenceName = "lockpicking"
+					m_nFrameIndex = 5
+					m_tagSpans = [  ]
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 1586620113
 				}
 				value = 
@@ -45775,6 +46369,27 @@
 					m_commentText = "Some floats will need to be \"dampened\"/\"smoothed\" by the controller itself, such as duck and skid. This is because State Machines don\'t implement something I\'d call \"reversible transitions\" — if you\'re switching from state A to state B but have to \"cancel\" it halfway through, it will *snap* to B before switching to A.\n\n— USEFUL WAYS TO PREVIEW IN-GAME AND DEBUG THINGS:\n\n(THIS IS CURRENTLY BROKEN AS OF 2023-01-22, A REPLACEMENT FOR THIS FEATURE IS BEING ENVISIONED.)\n\nthirdperson_orbit 1 to\n\n• Hold ALT and drag to orbit the camera.\n• ALT + LEFT CLICK and DRAG to dolly in/out.\n• ALT + RIGHT CLICK and DRAG to pedestal up/down."
 					m_size = [ 704.0, 576.0 ]
 					m_color = [ 100, 0, 50, 255 ]
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1589568181
+				}
+				value = 
+				{
+					_class = "CSingleFrameAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 1872.0, 384.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1589568181
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_sequenceName = "lockpicking"
+					m_nFrameIndex = 6
+					m_tagSpans = [  ]
 				}
 			},
 			{
@@ -46215,6 +46830,155 @@
 			{
 				key = 
 				{
+					m_id = 1716331450
+				}
+				value = 
+				{
+					_class = "CStateMachineAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 2352.0, 464.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1716331450
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_states = 
+					[
+						{
+							_class = "CAnimState"
+							m_transitions = 
+							[
+								{
+									_class = "CAnimStateTransition"
+									m_conditions = 
+									[
+										{
+											_class = "CParameterAnimCondition"
+											m_comparisonOp = 0
+											m_paramID = 
+											{
+												m_id = 1592445370
+											}
+											m_comparisonValue = 
+											{
+												m_nType = 1
+												m_data = true
+											}
+										},
+									]
+									m_blendDuration = 0.2
+									m_destState = 
+									{
+										m_id = 1931916710
+									}
+									m_bReset = true
+									m_resetCycleOption = "Beginning"
+									m_flFixedCycleValue = 0.0
+									m_blendCurve = 
+									{
+										m_vControlPoint1 = [ 0.5, 0.0 ]
+										m_vControlPoint2 = [ 0.5, 1.0 ]
+									}
+									m_bForceFootPlant = false
+									m_bDisabled = false
+									m_bRandomTimeBetween = false
+									m_flRandomTimeStart = 0.0
+									m_flRandomTimeEnd = 0.0
+								},
+							]
+							m_tags = [  ]
+							m_tagBehaviors = [  ]
+							m_name = "base"
+							m_inputConnection = 
+							{
+								m_nodeID = 
+								{
+									m_id = 1259759715
+								}
+								m_outputID = 
+								{
+									m_id = 4294967295
+								}
+							}
+							m_stateID = 
+							{
+								m_id = 1448157950
+							}
+							m_position = [ 16.0, -16.0 ]
+							m_bIsStartState = true
+							m_bIsEndtState = false
+							m_bIsPassthrough = false
+							m_bIsRootMotionExclusive = false
+							m_bAlwaysEvaluate = false
+						},
+						{
+							_class = "CAnimState"
+							m_transitions = 
+							[
+								{
+									_class = "CAnimStateTransition"
+									m_conditions = 
+									[
+										{
+											_class = "CTimeCondition"
+											m_comparisonOp = 3
+											m_comparisonValue = 0.15
+										},
+									]
+									m_blendDuration = 0.2
+									m_destState = 
+									{
+										m_id = 1448157950
+									}
+									m_bReset = true
+									m_resetCycleOption = "Beginning"
+									m_flFixedCycleValue = 0.0
+									m_blendCurve = 
+									{
+										m_vControlPoint1 = [ 0.5, 0.0 ]
+										m_vControlPoint2 = [ 0.5, 1.0 ]
+									}
+									m_bForceFootPlant = false
+									m_bDisabled = false
+									m_bRandomTimeBetween = false
+									m_flRandomTimeStart = 0.0
+									m_flRandomTimeEnd = 0.0
+								},
+							]
+							m_tags = [  ]
+							m_tagBehaviors = [  ]
+							m_name = "choose"
+							m_inputConnection = 
+							{
+								m_nodeID = 
+								{
+									m_id = 239680500
+								}
+								m_outputID = 
+								{
+									m_id = 4294967295
+								}
+							}
+							m_stateID = 
+							{
+								m_id = 1931916710
+							}
+							m_position = [ 16.0, 112.0 ]
+							m_bIsStartState = false
+							m_bIsEndtState = false
+							m_bIsPassthrough = false
+							m_bIsRootMotionExclusive = false
+							m_bAlwaysEvaluate = false
+						},
+					]
+					m_bBlockWaningTags = false
+					m_bLockStateWhenWaning = false
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 1718491140
 				}
 				value = 
@@ -46362,6 +47126,73 @@
 					m_commentText = "There is a hole here.\nIt\'s not gone yet."
 					m_size = [ 224.0, 96.0 ]
 					m_color = [ 178, 34, 34, 255 ]
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1738994180
+				}
+				value = 
+				{
+					_class = "CSingleFrameAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 1872.0, 288.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1738994180
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_sequenceName = "lockpicking"
+					m_nFrameIndex = 4
+					m_tagSpans = [  ]
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1748137180
+				}
+				value = 
+				{
+					_class = "CAddAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 2396.481689, 308.756531 ]
+					m_nNodeID = 
+					{
+						m_id = 1748137180
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_baseInput = 
+					{
+						m_nodeID = 
+						{
+							m_id = 391619027
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_additiveInput = 
+					{
+						m_nodeID = 
+						{
+							m_id = 1716331450
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_timingBehavior = "UseChild2"
+					m_flTimingBlend = 0.5
+					m_footMotionTiming = "Child1"
+					m_bResetBase = false
+					m_bResetAdditive = true
+					m_bApplyChannelsSeparately = true
 				}
 			},
 			{
@@ -58241,6 +59072,27 @@
 			{
 				key = 
 				{
+					m_id = 1940462202
+				}
+				value = 
+				{
+					_class = "CSingleFrameAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 1872.0, 240.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1940462202
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_sequenceName = "lockpicking"
+					m_nFrameIndex = 3
+					m_tagSpans = [  ]
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 1940731229
 				}
 				value = 
@@ -61065,6 +61917,20 @@
 				m_bNetwork = true
 				m_bUseMostRecentValue = false
 				m_bAutoReset = true
+				m_bPredicted = true
+				m_bDefaultValue = false
+			},
+			{
+				_class = "CBoolAnimParameter"
+				m_name = "lockpicking"
+				m_id = 
+				{
+					m_id = 1592445370
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = true
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
 				m_bPredicted = true
 				m_bDefaultValue = false
 			},
