@@ -118,7 +118,7 @@ partial class Player : AnimatedEntity, IPushable
 			if ( !MovementLocked )
 			{
 				Camera.Rotation = InputRotation;
-				Camera.Position = GetAttachment( "eyes" )?.Position - InputRotation.Forward * 4f ?? EyePosition;
+				Camera.Position = GetAttachment( "eyes" )?.Position - InputRotation.Up * 2f ?? EyePosition;
 				Camera.FirstPersonViewer = this;
 			}
 			else
@@ -133,7 +133,7 @@ partial class Player : AnimatedEntity, IPushable
 		{
 			var headPos = CameraTarget.GetBoneTransform( CameraTarget.GetBoneIndex( "head" ) ).Position;
 			var rotation = Rotation.LookAt( headPos - Camera.Position );
-			Camera.Position = GetAttachment( "eyes" )?.Position - rotation.Forward * 4f ?? EyePosition;
+			Camera.Position = GetAttachment( "eyes" )?.Position - rotation.Up * 2f ?? EyePosition;
 			Camera.Rotation = rotation;
 		}
 		
