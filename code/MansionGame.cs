@@ -6,6 +6,7 @@ global using System;
 global using Sandbox.UI.Construct;
 global using System.IO;
 using BrickJam.UI;
+using BrickJam.Upgrading;
 using BrickJam.VoiceLines;
 using Sandbox.Component;
 using Sandbox.UI;
@@ -28,7 +29,7 @@ public partial class MansionGame : GameManager
 
 	public MansionGame()
 	{
-		
+		Creator.Build();
 	}
 
 	public override void Spawn()

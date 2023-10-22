@@ -5,7 +5,7 @@ public static class Creator
 	static Creator() => Build();
 
 	[Event.Hotload]
-	private static void Build()
+	internal static void Build()
 	{
 		Upgrade.ClearAll();
 
@@ -13,8 +13,10 @@ public static class Creator
 		new Upgrade.Builder( "Jellyfish Jam", "Applies jellyfish jam on your body. Makes you faster." )
 			.ConfigureWith( v =>
 				v.SpeedMultiplier = 0.05f )
+			.WithPrice( 100 )
 			.Build();
 
+		
 		/*new Upgrade.Builder( "Aura of Fear I", "Enemies around you have lower diligence." )
 			.ConfigureWith( v =>
 			{
