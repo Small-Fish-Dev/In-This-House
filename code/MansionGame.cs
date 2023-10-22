@@ -28,13 +28,7 @@ public partial class MansionGame : GameManager
 
 	public MansionGame()
 	{
-		ClientSlots = Enumerable.Repeat<IClient>( null, Game.Server.MaxPlayers ).ToList();
-
-		if ( Game.IsClient )
-		{
-			InitializeEffects();
-			_ = new Hud();
-		}
+		
 	}
 
 	public override void Spawn()
@@ -44,6 +38,8 @@ public partial class MansionGame : GameManager
 		_instance = new WeakReference( this );
 		_ = new VoiceLinePlayer();
 
+		ClientSlots = Enumerable.Repeat<IClient>( null, Game.Server.MaxPlayers ).ToList();
+
 		ResetRandomSeed();
 	}
 
@@ -51,6 +47,11 @@ public partial class MansionGame : GameManager
 	{
 		base.ClientSpawn();
 		_ = new VoiceLinePlayer();
+
+		ClientSlots = Enumerable.Repeat<IClient>( null, Game.Server.MaxPlayers ).ToList();
+
+		InitializeEffects();
+		_ = new Hud();
 
 		_instance = new WeakReference( this );
 	}
