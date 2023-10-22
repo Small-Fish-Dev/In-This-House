@@ -167,7 +167,7 @@ public partial class Player
 			higherCapsule.CenterA = Vector3.Up * (CollisionRadius + StepSize);
 			helper.Trace = Trace.Capsule( higherCapsule, helper.Position, helper.Position + helper.Velocity.WithZ( 0 ) * Time.Delta );
 			helper.Trace = helper.Trace
-				.WithoutTags( "nocollide", "loot" )
+				.WithoutTags( "nocollide", "loot", "doob" )
 				.Ignore( this );
 			var tr = helper.Trace.Run();
 

@@ -19,6 +19,7 @@ public partial class Doob : NPC
 	public override void Spawn()
 	{
 		base.Spawn();
+		Tags.Add( "doob" );
 	}
 
 	public override void ComputeAnimations()
@@ -28,20 +29,17 @@ public partial class Doob : NPC
 
 	public override void ComputeIdleAndSeek()
 	{
-		if ( Target == null )
+		if ( !IsFollowingPath )
 		{
-			if ( !IsFollowingPath )
+			if ( nextIdle )
 			{
-				if ( nextIdle )
-				{
-					var randomDirection = MansionGame.Random.VectorInCircle( 80f );
-					var closestCell = Level.Grid?.GetNearestCell( Owner.Position + new Vector3( randomDirection.x, randomDirection.y, 50 ), false ) ?? null;
+				var randomDirection = MansionGame.Random.VectorInCircle( 80f );
+				var closestCell = Level.Grid?.GetNearestCell( Owner.Position + new Vector3( randomDirection.x, randomDirection.y, 50 ), false ) ?? null;
 
-					if ( closestCell != null )
-						NavigateTo( closestCell );
+				if ( closestCell != null )
+					NavigateTo( closestCell );
 
-					nextIdle = MansionGame.Random.Float( 0.5f, 1f );
-				}
+				nextIdle = MansionGame.Random.Float( 0.5f, 1f );
 			}
 		}
 	}
@@ -79,12 +77,7 @@ public partial class Doob : NPC
 	{
 		base.Think();
 
-		IsBeingChased = MansionGame.Instance.CurrentLevel.Monsters.ToList().Any( x => x.Target == this );
-
-		if ( IsBeingChased )
-		{
-			Position += Vector3.Up * 10f;
-		}
+		IsBeingChased = Entity.All.OfType<NPC>().Any( x => x.Target == this );
 	}
 
 	public void Kill()
