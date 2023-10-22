@@ -117,15 +117,15 @@ partial class Player : AnimatedEntity, IPushable
 		{
 			if ( !MovementLocked )
 			{
-				Camera.Position = GetAttachment( "eyes" )?.Position ?? EyePosition;
 				Camera.Rotation = InputRotation;
+				Camera.Position = GetAttachment( "eyes" )?.Position - InputRotation.Forward * 4f ?? EyePosition;
 				Camera.FirstPersonViewer = this;
 			}
 			else
 			{
 				var newPos = Position - Velocity.WithZ( 0 ).Normal * 30f + Vector3.Up * 50f;
-				Camera.Position = Vector3.Lerp( Camera.Position, newPos, Time.Delta * 10 );
 				Camera.Rotation = Rotation.LookAt( Position + Vector3.Up * 16f - Camera.Position );
+				Camera.Position = Vector3.Lerp( Camera.Position, newPos, Time.Delta * 10 );
 				Camera.FirstPersonViewer = null;
 			}
 		}
@@ -133,7 +133,7 @@ partial class Player : AnimatedEntity, IPushable
 		{
 			var headPos = CameraTarget.GetBoneTransform( CameraTarget.GetBoneIndex( "head" ) ).Position;
 			var rotation = Rotation.LookAt( headPos - Camera.Position );
-			Camera.Position = GetAttachment( "eyes" )?.Position ?? EyePosition;
+			Camera.Position = GetAttachment( "eyes" )?.Position - rotation.Forward * 4f ?? EyePosition;
 			Camera.Rotation = rotation;
 		}
 		
