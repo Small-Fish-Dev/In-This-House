@@ -75,6 +75,18 @@ public partial class Doob : NPC
 		base.ComputeOpenDoors();
 	}
 
+	public override void Think()
+	{
+		base.Think();
+
+		IsBeingChased = MansionGame.Instance.CurrentLevel.Monsters.ToList().Any( x => x.Target == this );
+
+		if ( IsBeingChased )
+		{
+			Position += Vector3.Up * 10f;
+		}
+	}
+
 	public void Kill()
 	{
 		DeleteAsync( 1f ); // TODO KILL

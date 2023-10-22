@@ -5,8 +5,8 @@ namespace BrickJam;
 public partial class PissingGuy : NPC
 {
 	public override string ModelPath { get; set; } = "models/pissing_guy/pissing_guy.vmdl";
-	public override float WalkSpeed { get; set; } = 120f;
-	public override float RunSpeed { get; set; } = 120f;
+	public override float WalkSpeed { get; set; } = 100f;
+	public override float RunSpeed { get; set; } = 100f;
 	public override float MaxVisionAngle { get; set; } = 360f;
 	public override float MaxVisionRange { get; set; } = 160f;
 	public override float MaxVisionRangeWhenChasing { get; set; } = 512f;
@@ -34,6 +34,10 @@ public partial class PissingGuy : NPC
 		{
 			Target = InVision.OrderBy( x => x.Key.Position.Distance( Position ) )
 				.FirstOrDefault().Key;
+			if ( Target is Player player )
+				if ( player.Doob != null )
+					Target = player.Doob;
+
 			LastTarget = Target;
 
 			nextIdle = MansionGame.Random.Float( 3f, 6f );
@@ -64,15 +68,11 @@ public partial class PissingGuy : NPC
 
 		if ( Target != null ) // Kill player is in range
 			if ( Target.Position.Distance( Position ) <= KillRange )
+			{
 				if ( Target is Player player )
 					CatchPlayer( player );
-
-		if ( IsFollowingPath )
-			foreach ( var door in Entity.All.OfType<Door>() )
-			{
-				if ( door.Position.Distance( Position ) <= 60f )
-					if ( door.State == DoorState.Closed )
-						door.State = DoorState.Open;
+				if ( Target is Doob doob )
+					CatchDoob( doob );
 			}
 	}
 	public override void ComputeAnimations()

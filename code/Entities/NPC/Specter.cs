@@ -7,7 +7,7 @@ public partial class Specter : NPC
 {
 	public override string ModelPath { get; set; } = "models/specter/specter.vmdl";
 	public override float WalkSpeed { get; set; } = 100f;
-	public override float RunSpeed { get; set; } = 320f;
+	public override float RunSpeed { get; set; } = 270f;
 	public float TimeToTeleport => 3f; // 4f = 2 seconds to go into ground, (1 second always added to stay underground) 2 seconds to rise up
 	public bool IsLowering => LastTeleport <= TimeToTeleport / 2f + 0.5f;
 	public bool IsRising => LastTeleport <= TimeToTeleport + 1f && LastTeleport > TimeToTeleport / 2f + 0.5f;
@@ -110,13 +110,15 @@ public partial class Specter : NPC
 			}
 
 			if ( Target != null ) // Kill player is in range
+			{
 				if ( Target.Position.Distance( Position ) <= KillRange )
 				{
 					if ( Target is Player player )
 						CatchPlayer( player );
-					if ( Target is Doob doob )
-						CatchDoob( doob );
+					if ( Target is Doob doobie )
+						CatchDoob( doobie );
 				}
+			}
 		}
 	}
 
