@@ -364,7 +364,7 @@
 			m_InputValue = 
 			{
 				m_nType = "PVEC_TYPE_LITERAL"
-				m_vLiteralValue = [ 0.3, 0.3, 0.3 ]
+				m_vLiteralValue = [ 0.2, 0.2, 0.2 ]
 				m_NamedValue = ""
 				m_LiteralColor = [ 0, 0, 0, 0 ]
 				m_nVectorAttribute = 6
