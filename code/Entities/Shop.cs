@@ -4,7 +4,7 @@ namespace BrickJam;
 
 [HammerEntity]
 [EditorModel( "models/containers/chest/chest.vmdl" )]
-public class Shop : UsableEntity
+public partial class Shop : UsableEntity
 {
 	public override float InteractionDuration => 0f;
 	public override string UseString => "open the upgrades shop";
@@ -22,6 +22,14 @@ public class Shop : UsableEntity
 	{
 		base.Use( user );
 
-		// OPEN THE SHOPPE
+		OpenShop( To.Single( user.Client ) );
+
+		user.Velocity = Vector3.Zero;
+	}
+
+	[ClientRpc]
+	internal void OpenShop()
+	{
+		UI.Shop.Toggle();
 	}
 }

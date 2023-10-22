@@ -30,26 +30,33 @@
 
 @code {
 
-	private static Shop instance;
+    private static Shop instance;
+    private static bool isOpen = false;
 
-	public Shop()
-	{
-		instance = this;
-	}
+    public Shop()
+    {
+        instance = this;
+    }
 
-	public static void Open()
-	{
-		instance.SetClass( "open", true );
-	}
+    public static void Open()
+    {
+        instance.SetClass( "open", true );
+    }
 
-	public static void Close()
-	{
-		instance.SetClass( "open", false );
-	}
+    public static void Close()
+    {
+        instance.SetClass( "open", false );
+    }
 
-	public static void Toggle()
-	{
-		instance.SetClass( "open", !instance.HasClass( "open" ) );
-	}
+    public static void Toggle()
+    {
+        instance.SetClass( "open", !instance.HasClass( "open" ) );
+    }
 
+    public override void Tick()
+    {
+        if (instance.HasClass("open"))
+            if (Input.Pressed("Use"))
+                instance.SetClass("open", false);
+    }
 }
