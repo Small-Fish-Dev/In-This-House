@@ -58,17 +58,6 @@
 						children = 
 						[
 							{
-								_class = "ExtractMotion"
-								extract_tx = true
-								extract_ty = true
-								extract_tz = false
-								extract_rz = false
-								linear = false
-								quadratic = false
-								root_bone_name = ""
-								motion_type = "Single"
-							},
-							{
 								_class = "AnimSmoothLoop"
 								frames_from_start = 2
 								frames_from_end = 2
@@ -86,10 +75,10 @@
 						anim_markup_ordered = false
 						disable_compression = false
 						enable_scale = false
-						source_filename = "models/doob/walking.fbx"
+						source_filename = "models/doob/walk.fbx"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 36.0
 						take = 0
 						reverse = false
 					},
