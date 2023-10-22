@@ -3,7 +3,7 @@
 namespace BrickJam;
 
 [HammerEntity]
-[EditorModel( "models/containers/chest/chest.vmdl" )]
+[EditorModel( "models/furniture/shop/shop_counter.vmdl" )]
 public partial class Shop : UsableEntity
 {
 	public override float InteractionDuration => 0f;
@@ -13,7 +13,7 @@ public partial class Shop : UsableEntity
 	{
 		base.Spawn();
 
-		SetModel( "models/containers/chest/chest.vmdl" );
+		SetModel( "models/furniture/shop/shop_counter.vmdl" );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		Tags.Add( "solid" );
 	}
