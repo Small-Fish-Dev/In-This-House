@@ -9,13 +9,206 @@
 			{
 				key = 
 				{
+					m_id = 763421
+				}
+				value = 
+				{
+					_class = "CLookAtAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 48.0, -112.0 ]
+					m_nNodeID = 
+					{
+						m_id = 763421
+					}
+					m_networkMode = "ServerAuthoritative"
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 1326910313
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_target = "VectorParameter"
+					m_param = 
+					{
+						m_id = 526283596
+					}
+					m_weightParam = 
+					{
+						m_id = 4294967295
+					}
+					m_lookatChainName = "look"
+					m_attachmentName = "forward"
+					m_flYawLimit = 60.0
+					m_flPitchLimit = 90.0
+					m_bResetBase = false
+					m_bLockWhenWaning = true
+					m_bUseHysteresis = false
+					m_flHysteresisInnerAngle = 1.0
+					m_flHysteresisOuterAngle = 20.0
+					m_damping = 
+					{
+						_class = "CAnimInputDamping"
+						m_speedFunction = "NoDamping"
+						m_fSpeedScale = 1.0
+						m_fMinSpeed = 10.0
+						m_fMaxTension = 1000.0
+						m_fTension = 100.0
+						m_fDamping = 5.0
+					}
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1326910313
+				}
+				value = 
+				{
+					_class = "CSolveIKChainAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -144.0, -112.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1326910313
+					}
+					m_networkMode = "ServerAuthoritative"
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 1671403274
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_IkChains = 
+					[
+						{
+							_class = "CSolveIKChainAnimNodeChainData"
+							m_IkChain = "Foot_L"
+							m_SolverSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+							m_OverrideSolverSettings = 
+							{
+								m_SolverType = "IKSOLVER_TwoBone"
+							}
+							m_TargetSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+							m_OverrideTargetSettings = 
+							{
+								m_TargetSource = "Bone"
+								m_Bone = 
+								{
+									m_Name = ""
+								}
+								m_AnimgraphParameterNamePosition = 
+								{
+									m_id = 4294967295
+								}
+								m_TargetCoordSystem = "World Space"
+							}
+							m_DebugSetting = "SOLVEIKCHAINANIMNODEDEBUGSETTING_None"
+							m_flDebugNormalizedLength = 1.0
+							m_vDebugOffset = [ 0.0, 0.0, 0.0 ]
+						},
+						{
+							_class = "CSolveIKChainAnimNodeChainData"
+							m_IkChain = "Foot_R"
+							m_SolverSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+							m_OverrideSolverSettings = 
+							{
+								m_SolverType = "IKSOLVER_TwoBone"
+							}
+							m_TargetSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+							m_OverrideTargetSettings = 
+							{
+								m_TargetSource = "Bone"
+								m_Bone = 
+								{
+									m_Name = ""
+								}
+								m_AnimgraphParameterNamePosition = 
+								{
+									m_id = 4294967295
+								}
+								m_TargetCoordSystem = "World Space"
+							}
+							m_DebugSetting = "SOLVEIKCHAINANIMNODEDEBUGSETTING_None"
+							m_flDebugNormalizedLength = 1.0
+							m_vDebugOffset = [ 0.0, 0.0, 0.0 ]
+						},
+						{
+							_class = "CSolveIKChainAnimNodeChainData"
+							m_IkChain = "Hand_L"
+							m_SolverSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+							m_OverrideSolverSettings = 
+							{
+								m_SolverType = "IKSOLVER_TwoBone"
+							}
+							m_TargetSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+							m_OverrideTargetSettings = 
+							{
+								m_TargetSource = "Bone"
+								m_Bone = 
+								{
+									m_Name = ""
+								}
+								m_AnimgraphParameterNamePosition = 
+								{
+									m_id = 4294967295
+								}
+								m_TargetCoordSystem = "World Space"
+							}
+							m_DebugSetting = "SOLVEIKCHAINANIMNODEDEBUGSETTING_None"
+							m_flDebugNormalizedLength = 1.0
+							m_vDebugOffset = [ 0.0, 0.0, 0.0 ]
+						},
+						{
+							_class = "CSolveIKChainAnimNodeChainData"
+							m_IkChain = "Hand_R"
+							m_SolverSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+							m_OverrideSolverSettings = 
+							{
+								m_SolverType = "IKSOLVER_TwoBone"
+							}
+							m_TargetSettingSource = "SOLVEIKCHAINANIMNODESETTINGSOURCE_Default"
+							m_OverrideTargetSettings = 
+							{
+								m_TargetSource = "Bone"
+								m_Bone = 
+								{
+									m_Name = ""
+								}
+								m_AnimgraphParameterNamePosition = 
+								{
+									m_id = 4294967295
+								}
+								m_TargetCoordSystem = "World Space"
+							}
+							m_DebugSetting = "SOLVEIKCHAINANIMNODEDEBUGSETTING_None"
+							m_flDebugNormalizedLength = 1.0
+							m_vDebugOffset = [ 0.0, 0.0, 0.0 ]
+						},
+					]
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 1671403274
 				}
 				value = 
 				{
 					_class = "CBlend2DAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -352.0, -112.0 ]
+					m_vecPosition = [ -336.0, -112.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1671403274
@@ -35,6 +228,12 @@
 							m_tagSpans = [  ]
 							m_sequenceName = "walking"
 							m_blendValue = [ 0.0, 1.0 ]
+						},
+						{
+							_class = "CBlend2DItem"
+							m_tagSpans = [  ]
+							m_sequenceName = "run"
+							m_blendValue = [ 0.0, 3.0 ]
 						},
 					]
 					m_blendSourceX = "Parameter"
@@ -72,7 +271,7 @@
 				{
 					_class = "CRootAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -112.0, -112.0 ]
+					m_vecPosition = [ 240.0, -112.0 ]
 					m_nNodeID = 
 					{
 						m_id = 2130191604
@@ -83,7 +282,7 @@
 					{
 						m_nodeID = 
 						{
-							m_id = 1671403274
+							m_id = 763421
 						}
 						m_outputID = 
 						{
@@ -113,7 +312,22 @@
 				m_bPredicted = false
 				m_fDefaultValue = 0.0
 				m_fMinValue = 0.0
-				m_fMaxValue = 1.0
+				m_fMaxValue = 3.0
+				m_bInterpolate = false
+			},
+			{
+				_class = "CVectorAnimParameter"
+				m_name = "lookat"
+				m_id = 
+				{
+					m_id = 526283596
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = true
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = false
+				m_defaultValue = [ 10.0, 0.0, 0.0 ]
 				m_bInterpolate = false
 			},
 		]
