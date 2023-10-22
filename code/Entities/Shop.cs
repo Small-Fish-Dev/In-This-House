@@ -30,6 +30,7 @@ public partial class Shop : UsableEntity
 	[ClientRpc]
 	internal void OpenShop()
 	{
-		UI.Shop.Toggle();
+		if ( !UI.Shop.IsOpen )
+			UI.Shop.Open();
 	}
 }
