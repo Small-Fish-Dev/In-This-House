@@ -49,7 +49,7 @@ public partial class LootContainer : UsableEntity
 		Spitting = true;
 		SetAnimParameter( "open", true );
 
-		await GameTask.Delay( 500 );
+		await GameTask.Delay( 100 );
 
 		var lootCount = Game.Random.Int( 2, 5 );
 		var levelLoot = LootPrefab.All
