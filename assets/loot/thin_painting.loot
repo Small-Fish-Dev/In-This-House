@@ -4,6 +4,7 @@
   "Level": "Mansion",
   "Model": "models/items/paintings/thin_painting.vmdl",
   "MonetaryValue": 40,
+  "DisplayFront": true,
   "IconOffset": "60,0,0",
   "IconAngles": "0,90,-90",
   "__references": []

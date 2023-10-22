@@ -15,6 +15,7 @@ public class LootPrefab : GameResource
 	[ResourceType( "vmdl" )]
 	public string Model { get; set; }
 	public int MonetaryValue { get; set; }
+	public bool DisplayFront { get; set; }
 
 	[Category( "Icon" )]
 	public Vector3 IconOffset { get; set; }
