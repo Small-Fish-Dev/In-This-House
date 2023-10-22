@@ -49,6 +49,7 @@ public partial class NPC : AnimatedEntity, IPushable
 		ComputeOpenDoors();
 		ComputeNavigation();
 		ComputeMotion();
+		AssignNearbyTags();
 	}
 
 	internal List<AnimatedEntity> toPush = new();
@@ -229,5 +230,69 @@ public partial class NPC : AnimatedEntity, IPushable
 		if ( losTrace.Hit ) return false;
 
 		return true;
+	}
+
+	List<Cell> currentCells = new List<Cell>();
+	TimeUntil nextTagsCheck = 0.5f;
+	public virtual void AssignNearbyTags()
+	{
+		if ( CurrentGrid == null ) return;
+
+		if ( nextTagsCheck )
+		{
+			var nearRadius = 50f;
+			var midRadius = 100f;
+			var longRadius = 150f;
+			var bbox = new BBox( Position, longRadius * 2f );
+
+			foreach ( var oldCell in currentCells.ToList() )
+			{
+				oldCell.Tags.Remove( "monsterNearRange" );
+				oldCell.Tags.Remove( "monsterMidRange" );
+				oldCell.Tags.Remove( "monsterLongRange" );
+
+				currentCells.Remove( oldCell );
+			}
+
+			foreach ( var nearCell in CurrentGrid.GetCellsInBBox( bbox ) )
+			{
+				if ( nearCell.Position.Distance( Position ) <= nearRadius )
+				{
+					nearCell.Tags.Add( "monsterNearRange" );
+					currentCells.Add( nearCell );
+					continue;
+				}
+
+				if ( nearCell.Position.Distance( Position ) <= midRadius )
+				{
+					nearCell.Tags.Add( "monsterMidRange" );
+					currentCells.Add( nearCell );
+					continue;
+				}
+
+				if ( nearCell.Position.Distance( Position ) <= longRadius )
+				{
+					nearCell.Tags.Add( "monsterLongRange" );
+					currentCells.Add( nearCell );
+					continue;
+				}
+			}
+
+			nextTagsCheck = 0.5f;
+		}
+	}
+
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+
+		if ( CurrentGrid == null ) return;
+
+		foreach ( var oldCell in currentCells.ToList() )
+		{
+			oldCell.Tags.Remove( "monsterNearRange" );
+			oldCell.Tags.Remove( "monsterMidRange" );
+			oldCell.Tags.Remove( "monsterLongRange" );
+		}
 	}
 }
