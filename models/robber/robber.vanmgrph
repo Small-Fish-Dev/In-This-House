@@ -18507,7 +18507,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 2608.0, -64.0 ]
+					m_vecPosition = [ 2592.0, -80.0 ]
 					m_nNodeID = 
 					{
 						m_id = 683926295
@@ -21446,6 +21446,52 @@
 							},
 						]
 					}
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1018852975
+				}
+				value = 
+				{
+					_class = "CAddAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 2732.481689, 52.756519 ]
+					m_nNodeID = 
+					{
+						m_id = 1018852975
+					}
+					m_networkMode = "ClientPredicted"
+					m_sNote = ""
+					m_baseInput = 
+					{
+						m_nodeID = 
+						{
+							m_id = 391619027
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_additiveInput = 
+					{
+						m_nodeID = 
+						{
+							m_id = 683926295
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_timingBehavior = "UseChild2"
+					m_flTimingBlend = 0.5
+					m_footMotionTiming = "Child1"
+					m_bResetBase = false
+					m_bResetAdditive = true
+					m_bApplyChannelsSeparately = true
 				}
 			},
 			{
@@ -39131,7 +39177,7 @@
 					{
 						m_nodeID = 
 						{
-							m_id = 683926295
+							m_id = 1018852975
 						}
 						m_outputID = 
 						{

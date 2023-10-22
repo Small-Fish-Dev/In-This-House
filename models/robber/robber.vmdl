@@ -157,6 +157,14 @@
 					{
 						_class = "AnimFile"
 						name = "grab"
+						children = 
+						[
+							{
+								_class = "AnimSubtract"
+								anim_name = "IdlePose_Default"
+								frame = 0
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
