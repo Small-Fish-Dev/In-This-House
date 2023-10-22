@@ -78,11 +78,12 @@ public partial class Doob : NPC
 	[ConCmd.Server( "doob" )]
 	public static void SpawnNPC()
 	{
-		var caller = ConsoleSystem.Caller.Pawn;
+		if ( ConsoleSystem.Caller.Pawn is not Player player ) return;
 
 		var npc = new Doob( MansionGame.Instance.CurrentLevel );
-		npc.Position = caller.Position + caller.Rotation.Forward * 100f;
-		npc.Rotation = caller.Rotation;
-		npc.Owner = caller as Player;
+		npc.Position = player.Position + player.Rotation.Forward * 100f;
+		npc.Rotation = player.Rotation;
+		npc.Owner = player;
+		player.Doob = npc;
 	}
 }

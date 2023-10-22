@@ -112,11 +112,11 @@ public partial class PissingGuy : NPC
 	[ConCmd.Server( "PissingGuy" )]
 	public static void SpawnNPC()
 	{
-		var caller = ConsoleSystem.Caller.Pawn;
+		if ( ConsoleSystem.Caller.Pawn is not Player player ) return;
 
 		var npc = new PissingGuy( MansionGame.Instance.CurrentLevel );
-		npc.Position = caller.Position + caller.Rotation.Forward * 300f;
-		npc.Rotation = caller.Rotation;
+		npc.Position = player.Position + player.Rotation.Forward * 300f;
+		npc.Rotation = player.Rotation;
 		npc.StartingPosition = npc.Position;
 		npc.StartingRotation = npc.Rotation;
 	}
