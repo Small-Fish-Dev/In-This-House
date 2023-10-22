@@ -4,7 +4,7 @@ namespace BrickJam;
 
 public partial class Loot : UsableEntity
 {
-	public LootPrefab Prefab;
+	[Net] public LootPrefab Prefab { get; set; }
 	
 	public override string UseString => $"take the {FullName}";
 
@@ -110,9 +110,9 @@ public partial class Loot : UsableEntity
 		picker = user;
 		SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 
-		var normal = (user.Position - Position).Normal.WithZ( 1.4f );
-		var force = 100f + Position.Distance( user.Position );
-		ApplyAbsoluteImpulse( force * normal );
+		var normal = (user.EyePosition - Position).Normal;
+		var force = 100f + Position.Distance( user.EyePosition );
+		ApplyAbsoluteImpulse( force * (normal + Vector3.Up * 0.5f) );
 	}
 
 	[GameEvent.Tick.Server]
