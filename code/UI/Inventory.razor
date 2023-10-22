@@ -9,29 +9,24 @@
 		<label class="title">INVENTORY</label>
 		<div class="items">
 			@{
-				if ( player?.Inventory?.Loots == null )
-					return;
+				if ( items != null )
+					foreach ( var pair in items )
+					{
+						var item = pair.Key;
+						var amount = pair.Value;
 
-				foreach ( var pair in player?.Inventory?.Loots )
-				{
-					if ( !pair.Key.HasValue )
-						continue;
-
-					var item = pair.Key.Value;
-					var amount = pair.Value;
-
-					<div class="item"
-					@onmouseover=@(() => { 
-						tooltipData = pair; 
-					})
-				 	@onmouseout=@(() => { 
-						 previousTooltip = tooltipData; 
-						 tooltipData = null; 
-					})>
-						<looticon class="icon" prefab="@(item.Prefab.ResourceName)" />
-						<label class="amount">x@(amount)</label>
-					</div>
-				}
+						<div class="item"
+						@onmouseover=@(() => { 
+							tooltipData = pair; 
+						})
+				 		@onmouseout=@(() => { 
+							 previousTooltip = tooltipData; 
+							 tooltipData = null; 
+						})>
+							<looticon class="icon" prefab="@(item.Prefab.ResourceName)" />
+							<label class="amount">x@(amount)</label>
+						</div>
+					}
 			}
 		</div>
 	</div>
@@ -42,7 +37,7 @@
 			if ( targetTooltip != null )
 			{
 				var data = targetTooltip.Value;
-				var entry = data.Key.Value;
+				var entry = data.Key;
 				var prefab = entry.Prefab;
 
 				<div class="container">
@@ -73,8 +68,8 @@
 </root>
 
 @code {
-	private KeyValuePair<ItemEntry?, int>? previousTooltip;
-	private KeyValuePair<ItemEntry?, int>? tooltipData;
+	private KeyValuePair<ItemEntry, int>? previousTooltip;
+	private KeyValuePair<ItemEntry, int>? tooltipData;
 	private Panel? holdPanel;
 
 	private string getBorder()
@@ -113,13 +108,13 @@
 		}
 	}
 
-	private void createHoldPanel( KeyValuePair<ItemEntry?, int> pair )
+	private void createHoldPanel( KeyValuePair<ItemEntry, int> pair )
 	{
 		deleteHoldPanel();
 		holdPanel = AddChild<Panel>( "drag" );
 
-		var prefab = pair.Key.Value.Prefab;
-		var rarity = pair.Key.Value.Rarity;
+		var prefab = pair.Key.Prefab;
+		var rarity = pair.Key.Rarity;
 
 		var icon = holdPanel.AddChild<Panel>( "icon" );
 		icon.Style.SetBackgroundImage( prefab.Icon );
@@ -162,7 +157,7 @@
 			if ( previousTooltip == null )
 				return;
 
-			var entry = previousTooltip.Value.Key.Value;
+			var entry = previousTooltip.Value.Key;
 			throwItem( entry.Prefab.ResourceName, entry.Rarity );
 		} );
 	}
@@ -221,11 +216,22 @@
 
 	protected override int BuildHash()
 	{
-		if ( player?.Inventory?.Loots == null )
-			return HashCode.Combine( tooltipData, previousTooltip, getBorder() );
+		return HashCode.Combine( tooltipData, previousTooltip, getBorder() );
+	}
 
-		var joined = String.Join( ' ', player.Inventory.Loots.Select( pair => $"{pair.Key?.Prefab.Name} {pair.Key?.Rarity} x{pair.Value}" ) );
-		return HashCode.Combine( tooltipData, previousTooltip, joined, getBorder() );
+	private Dictionary<ItemEntry, int> items;
+
+	[Event( "InventoryChanged" )]
+	void updated( IClient cl, ItemEntry entry, int count )
+	{
+		if ( Game.IsServer || cl != Game.LocalClient )
+			return;
+
+		items = player?.Inventory?.Loots?
+			.OrderByDescending( x => x.Key?.Price ?? 0 )
+			.ToDictionary( k => k.Key.Value, v => v.Value );
+
+		StateHasChanged();
 	}
 }
 

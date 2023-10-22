@@ -1,4 +1,4 @@
-﻿namespace BrickJam;
+namespace BrickJam;
 
 public struct ItemEntry : IEquatable<ItemEntry>
 {
@@ -70,6 +70,8 @@ public partial class ContainerComponent : EntityComponent
 		if ( client != null && success )
 			sendUpdate( To.Single( client ), entry.Prefab.ResourceName, entry.Rarity, items[entry] );
 
+		Event.Run( "InventoryChanged", client, entry, items[entry] );
+
 		return success;
 	}
 
@@ -97,6 +99,8 @@ public partial class ContainerComponent : EntityComponent
 		if ( client != null )
 			sendUpdate( To.Single( client ), entry.Prefab.ResourceName, entry.Rarity, delete ? 0 : items[entry] );
 
+		Event.Run( "InventoryChanged", client, entry, delete ? 0 : items[entry] );
+
 		return true;
 	}
 
@@ -123,6 +127,7 @@ public partial class ContainerComponent : EntityComponent
 			return;
 		}
 
+		var delete = false;
 		var entry = new ItemEntry
 		{
 			Prefab = prefab,
@@ -131,6 +136,11 @@ public partial class ContainerComponent : EntityComponent
 
 		items[entry] = amount;
 		if ( items[entry] <= 0 )
+		{
 			items.Remove( entry );
+			delete = true;
+		}
+		
+		Event.Run( "InventoryChanged", client, entry, delete ? 0 : items[entry] );
 	}
 }
