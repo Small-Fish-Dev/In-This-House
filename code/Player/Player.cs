@@ -12,6 +12,7 @@ partial class Player : AnimatedEntity, IPushable
 	public float CollisionRadius => IsCrouching ? 22f : 12f;
 	public float CollisionHeight => IsCrouching ?  36f : 72f;
 	public Capsule CollisionCapsule => new Capsule( Vector3.Up * CollisionRadius, Vector3.Up * (CollisionHeight - CollisionRadius), CollisionRadius );
+	[Net] public Doob Doob { get; set; } = null;
 
 	[Net] public NPC CameraTarget { get; set; } = null;
 

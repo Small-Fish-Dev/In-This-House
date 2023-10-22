@@ -116,20 +116,12 @@ public partial class NPC : AnimatedEntity, IPushable
 		if ( Target != null ) // Kill player is in range
 			if ( Target.Position.Distance( Position ) <= KillRange )
 				CatchPlayer( Target );
-
-		if ( IsFollowingPath )
-			foreach ( var door in Entity.All.OfType<Door>() )
-			{
-				if ( door.Position.Distance( Position ) <= 60f )
-					if ( door.State == DoorState.Closed )
-						door.State = DoorState.Open;
-			}
 	}
 
 	public virtual void ComputeOpenDoors()
 	{
 		var allDoors = Entity.All.OfType<Door>();
-		var nearbyDoors = allDoors.Where( x => x.Position.Distance( Position ) <= 80f ).ToList();
+		var nearbyDoors = allDoors.Where( x => x.Position.Distance( Position ) <= 60f ).ToList();
 
 		foreach ( var door in nearbyDoors )
 		{
@@ -139,7 +131,7 @@ public partial class NPC : AnimatedEntity, IPushable
 
 				GameTask.RunInThreadAsync( async () =>
 				{
-					await GameTask.Delay( 3000 );
+					await GameTask.Delay( 1500 );
 					door.Close();
 				} );
 			}
@@ -174,7 +166,7 @@ public partial class NPC : AnimatedEntity, IPushable
 	[GameEvent.Tick]
 	public virtual void ComputeAnimations()
 	{
-		SetAnimParameter( "move_x", MathX.Remap( Velocity.Length, 0f, RunSpeed, 0, 3 ) );
+		SetAnimParameter( "move_x", MathX.Remap( Velocity.WithZ(0).Length, 0f, RunSpeed, 0, 3 ) );
 	}
 
 	public virtual void FindTargets()

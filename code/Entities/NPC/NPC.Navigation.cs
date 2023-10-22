@@ -102,7 +102,16 @@ public partial class NPC
 			return null;
 	}
 
-	public void NavigateTo( Cell targetCell )
+	public virtual AStarPathBuilder PathBuilder => new AStarPathBuilder( CurrentGrid )
+			.WithPathCreator( this )
+			.WithPartialEnabled()
+			.WithMaxDistance( 2000f )
+			.AvoidTag( "door", 400f )
+			.AvoidTag( "edge", 50f )
+			.AvoidTag( "outeredge", 40f )
+			.AvoidTag( "inneredge", 30f );
+
+	public virtual void NavigateTo( Cell targetCell )
 	{
 		GameTask.RunInThreadAsync( async () =>
 		{
@@ -116,14 +125,7 @@ public partial class NPC
 
 			if ( startingCell == null || targetCell == null || startingCell == targetCell ) return;
 
-			var pathBuilder = new AStarPathBuilder( CurrentGrid )
-			.WithPathCreator( this )
-			.WithPartialEnabled()
-			.WithMaxDistance( 2000f )
-			.AvoidTag( "door", 400f )
-			.AvoidTag( "edge", 50f )
-			.AvoidTag( "outeredge", 40f )
-			.AvoidTag( "inneredge", 30f );
+			var pathBuilder = PathBuilder;
 
 			if ( false && CurrentGrid.LineOfSight( startingCell, targetCell ) ) // If there's direct line of sight, move in a straight path from A to B
 			{
@@ -140,7 +142,7 @@ public partial class NPC
 				if ( computedPath.IsEmpty || computedPath.Length < 1 )
 					return;
 
-				computedPath.Simplify( 2, 3, "door", "edge" );
+				computedPath.Simplify( 2, 3, "door", "edge", "inneredge", "outeredge" );
 
 				CurrentPath = computedPath;
 			}
