@@ -72,7 +72,7 @@ PS
         float dist = length(coords);
 
         float value = max(min((dist - g_flMinDistance) / (g_flMaxDistance + g_flMinDistance), g_flMaxOpacity), 0);
-        float3 color = lerp(col.rgb, g_vColor.rgb * g_vColor.a, value);
+        float3 color = lerp(col.rgb, g_vColor.rgb * g_vColor.a, smoothstep(-0.075, 1, value));
 
         return float4( color.rgb, 1 );
     }
