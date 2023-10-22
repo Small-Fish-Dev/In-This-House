@@ -55,8 +55,6 @@
 
 	protected override int BuildHash()
 	{
-		Log.Info( Client?.GetInt( "money" ) );
-		
 		return HashCode.Combine( Client?.Id ?? -1, Client?.GetInt( "money" ) );
 	}
 
