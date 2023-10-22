@@ -128,29 +128,22 @@ public partial class NPC : AnimatedEntity, IPushable
 
 	public virtual void ComputeOpenDoors()
 	{
-		var startPos = Position + Vector3.Up * CollisionCapsule.CenterB.z;
-		var endPos = startPos + Rotation.Forward * 60;
-		var doorTrace = Trace.Ray( startPos, endPos )
-			.Size( 20f )
-			.DynamicOnly()
-			.WithAnyTags( "door" )
-			.Ignore( this )
-			.Run();
+		var allDoors = Entity.All.OfType<Door>();
+		var nearbyDoors = allDoors.Where( x => x.Position.Distance( Position ) <= 80f ).ToList();
 
-		if ( doorTrace.Hit )
-			if ( doorTrace.Entity is Door door )
+		foreach ( var door in nearbyDoors )
+		{
+			if ( door.State == DoorState.Closed || door.State == DoorState.Closing )
 			{
-				if ( door.State == DoorState.Closed || door.State == DoorState.Closing )
-				{
-					door.Open( this );
+				door.Open( this );
 
-					GameTask.RunInThreadAsync( async () =>
-					{
-						await GameTask.Delay( 3000 );
-						door.Close();
-					} );
-				}
+				GameTask.RunInThreadAsync( async () =>
+				{
+					await GameTask.Delay( 3000 );
+					door.Close();
+				} );
 			}
+		}
 	}
 
 	public async virtual void CatchPlayer( Player player )

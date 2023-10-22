@@ -3,9 +3,9 @@
 public class ScreenFogEffect : RenderHook
 {
 	public Color Color { get; set; } = new Color( 0.5f ).WithAlpha( 1f );
-	public float MaximumDistance { get; set; } = 4000f;
+	public float MaximumDistance { get; set; } = 6000f;
 	public float MinimumDistance { get; set; } = 50f;
-	public float MaxOpacity { get; set; } = 0.8f;
+	public float MaxOpacity { get; set; } = 0.7f;
 
 	public override void OnStage( SceneCamera target, Stage stage )
 	{
