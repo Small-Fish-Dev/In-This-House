@@ -34,7 +34,6 @@ public partial class MansionGame : GameManager
 		{
 			InitializeEffects();
 			_ = new Hud();
-			_ = new VoiceLinePlayer();
 		}
 	}
 
@@ -43,6 +42,7 @@ public partial class MansionGame : GameManager
 		base.Spawn();
 
 		_instance = new WeakReference( this );
+		_ = new VoiceLinePlayer();
 
 		ResetRandomSeed();
 	}
@@ -50,6 +50,7 @@ public partial class MansionGame : GameManager
 	public override void ClientSpawn()
 	{
 		base.ClientSpawn();
+		_ = new VoiceLinePlayer();
 
 		_instance = new WeakReference( this );
 	}
