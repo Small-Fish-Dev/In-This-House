@@ -8,6 +8,7 @@ public class UsableEntity : AnimatedEntity
 	public virtual float InteractionDuration => 1.0f;
 	public virtual string UseString => $"interact with {GetType().FullName}";
 	public virtual bool CanUse => true;
+	public virtual bool StartLocked => false;
 	public virtual bool Locked => Lock?.Locked ?? false;
 	public virtual string LockText => $"lockpick {GetType().FullName}";
 	public Player User { get; set; }
@@ -29,7 +30,7 @@ public class UsableEntity : AnimatedEntity
 		base.OnNewModel( model );
 
 		var attachment = model?.GetAttachment( "lock" );
-		if ( Game.IsServer && attachment != null )
+		if ( Game.IsServer && StartLocked && attachment != null )
 			Components.GetOrCreate<LockedComponent>()?.Initialize();
 	}
 }

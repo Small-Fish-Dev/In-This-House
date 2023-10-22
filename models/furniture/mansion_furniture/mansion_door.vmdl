@@ -73,6 +73,21 @@
 					},
 				]
 			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "lock"
+						parent_bone = ""
+						relative_origin = [ 3664.0, -573.0, 2912.0 ]
+						relative_angles = [ 0.0, -90.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""

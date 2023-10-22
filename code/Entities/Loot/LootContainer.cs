@@ -8,6 +8,7 @@ public partial class LootContainer : UsableEntity
 	public override bool CanUse => !Spitting;
 	public override string UseString => CanUse ? "open the container" : string.Empty;
 	public override string LockText => "lockpick the container";
+	public override bool StartLocked => true;
 
 	private static IReadOnlyDictionary<LevelType, string> models = new Dictionary<LevelType, string>()
 	{
