@@ -23,7 +23,7 @@ public partial class Player
 	public bool IsAboveWalkingSpeed => Velocity.WithZ( 0 ).Length >= MathX.Lerp( WalkSpeed, RunSpeed, 0.5f );
 
 	public float StepSize => 16f;
-	public float WalkAngle => 46f;
+	public float WalkAngle => 70f;
 	public float StunBounceVelocity => 550f;
 
 	static string[] ignoreTags = new[] { "player", "npc", "nocollide", "loot" };
