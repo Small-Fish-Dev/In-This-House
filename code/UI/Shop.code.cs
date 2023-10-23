@@ -16,12 +16,14 @@ public partial class Shop : Panel
 	}
 
 	[Event( "UpgradeBought" )]
-	private void OnUpgradeBought()
+	private void OnUpgradeBought(string identifier)
 	{
 		if ( Game.IsServer )
 			return;
 
 		UpdateUpgradeList();
+		
+		Log.Info( $"OnUpgradeBought: {identifier}" );
 	}
 
 	private bool CanBuyUpgrade( Upgrade upgrade )
@@ -57,5 +59,22 @@ public partial class Shop : Panel
 			else
 				LockedUpgrades.Add( upgrade );
 		}
+		
+		StateHasChanged();
+	}
+
+	private void BuyUpgrade( Upgrade upgrade )
+	{
+		if ( Game.LocalPawn is not Player player )
+			return;
+
+		if ( !CanBuyUpgrade( upgrade ) )
+		{
+			// This shouldn't be possible - let's be careful though
+			Log.Warning( "BuyUpgrade tried to buy weird upgrade!!!" );
+			return;
+		}
+		
+		Player.BuyUpgrade( upgrade.Identifier );
 	}
 }

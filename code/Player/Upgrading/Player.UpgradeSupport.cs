@@ -9,7 +9,16 @@ public partial class Player
 	private static Upgrade _combinedUpgrades;
 	public static Upgrade CombinedUpgrades => _combinedUpgrades;
 
-	private void NetUpgradesEvent() => CombineUpgrades();
+	private void NetUpgradesEvent()
+	{
+		CombineUpgrades();
+	}
+
+	[ClientRpc]
+	private void OnUpgradeRpc( string identifier )
+	{
+		Event.Run( "UpgradeBought", identifier );
+	}
 
 	public void CombineUpgrades()
 	{
@@ -30,6 +39,7 @@ public partial class Player
 		Upgrades.Add( identifier );
 		CombineUpgrades();
 		Event.Run( "UpgradeBought", identifier );
+		OnUpgradeRpc( To.Single( this ), identifier );
 	}
 
 	public void RemoveUpgrade( string identifier )
