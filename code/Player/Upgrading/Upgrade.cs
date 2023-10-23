@@ -86,7 +86,7 @@ public class Upgrade
 		private readonly string _identifier;
 		private readonly string _title;
 		private readonly string _description;
-		private float _price = 5;
+		private int _price = 5;
 
 		private Action<Upgrade> _postBuild;
 
@@ -126,7 +126,7 @@ public class Upgrade
 			return this;
 		}
 
-		public Builder WithPrice( float v )
+		public Builder WithPrice( int v )
 		{
 			_price = v;
 			return this;
@@ -145,7 +145,10 @@ public class Upgrade
 		public Upgrade Build()
 		{
 			var instance =
-				new Upgrade( _identifier, _title, _description ) { Position = _position, Texture = _texture };
+				new Upgrade( _identifier, _title, _description )
+				{
+					Position = _position, Texture = _texture, Price = _price
+				};
 			_postBuild?.Invoke( instance );
 
 			instance.Dependencies ??= new List<string>();
