@@ -123,8 +123,24 @@ public partial class ContainerComponent : EntityComponent
 
 	public void Clear()
 	{
+		forceReloadItemInfo( To.Single( Entity ) );
 		Game.AssertServer();
 		items.Clear();
+	}
+
+	[ClientRpc]
+	private void forceReloadItemInfo()
+	{
+		try
+		{
+			Log.Warning( "FORCE RELOADING INVENTORY!" );
+			Event.Run( "InventoryChanged", client, "", 0 );
+		}
+		catch ( Exception e )
+		{
+			Log.Warning( "Failed to force reload inventory!" );
+			Log.Warning( e );
+		}
 	}
 
 	[ClientRpc]

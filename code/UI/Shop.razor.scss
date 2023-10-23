@@ -175,6 +175,14 @@
                                 }
                             }
                             
+                            &.bought {
+                                .price {
+                                    color: #000000;
+                                    margin-left: 0;
+                                    font-size: 30px;
+                                }
+                            }
+                            
                             &:not(.locked):hover {
                                 background-image: url("ui/shop/buy-button.hover.png");
                             }
