@@ -1,0 +1,18 @@
+{
+  "UI": false,
+  "Volume": "1.00,1.00,0",
+  "Pitch": "0.90,1.10,1",
+  "Decibels": 90,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "sounds/screams/scream1.vsnd",
+    "sounds/screams/scream2.vsnd",
+    "sounds/screams/scream3.vsnd",
+    "sounds/screams/scream4.vsnd",
+    "sounds/screams/scream5.vsnd",
+    "sounds/screams/scream6.vsnd"
+  ],
+  "MaximumDistance": 1870.0942,
+  "MinimumDistance": 93.504715,
+  "__references": []
+}
