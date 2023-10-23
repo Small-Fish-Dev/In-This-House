@@ -205,9 +205,13 @@ public partial class Player
 
 					Stun( difference );
 
-					Particles.Create( "particles/smoke/smoke_impact.vpcf", Position + Rotation.Forward * CollisionRadius + Rotation.Up * CollisionHeight / 2f );
-					var impact = Particles.Create( "particles/impact/impact.vpcf", Position + Rotation.Forward * CollisionRadius + Rotation.Up * CollisionHeight / 2f );
-					impact.SetPosition( 1, tr.Normal );
+					if ( Game.IsServer )
+					{
+						Particles.Create( "particles/smoke/smoke_impact.vpcf", Position + Rotation.Forward * CollisionRadius + Rotation.Up * CollisionHeight / 2f );
+						var impact = Particles.Create( "particles/impact/impact.vpcf", Position + Rotation.Forward * CollisionRadius + Rotation.Up * CollisionHeight / 2f );
+
+						impact.SetForward( 1, tr.Normal );
+					}
 
 					Velocity += tr.Normal * (CollisionRadius + StunBounceVelocity);
 					Rotation = Rotation.LookAt( -tr.Normal, Vector3.Up );
