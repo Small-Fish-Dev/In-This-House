@@ -188,6 +188,7 @@
 			player.EyePosition, 
 			Rotation.FromYaw( player.Rotation.Yaw() ) 
 		);
+		entity.LastPlayer = player;
 		entity.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 		entity.ApplyAbsoluteImpulse( player.InputRotation.Forward * force );
 		entity.Scale = 0.01f;

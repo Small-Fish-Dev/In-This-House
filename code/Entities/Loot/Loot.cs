@@ -12,6 +12,7 @@ public partial class Loot : UsableEntity
 	[Net] public LootRarity Rarity { get; set; } = LootRarity.Common;
 	[Net] public int BaseMonetaryValue { get; set; } = 0;
 	[Net] public string BaseName { get; set; } = "Loot";
+	[Net] public Player LastPlayer { get; set; }
 	public string FullName => $"{Rarity} {BaseName}";
 	public int MonetaryValue => (int)(BaseMonetaryValue * RarityMap[Rarity]);
 	public static Dictionary<LootRarity, float> RarityMap { get; set; } = new()
