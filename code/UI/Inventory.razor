@@ -24,6 +24,10 @@
 							tooltipData = null; 
 						})
 						@onrightclick=@(() => {
+							if ( holdPanel != null )
+								return;
+								
+							deleteHoldPanel();
 							throwItem( item.Prefab.ResourceName, item.Rarity );
 						})>
 							<looticon class="icon" prefab="@(item.Prefab.ResourceName)" />

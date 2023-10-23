@@ -75,6 +75,9 @@ public class LootPrefab : GameResource
 	private void renderIcon( bool display = false )
 	{
 		// Create our scene.
+		if ( string.IsNullOrEmpty( Model ) )
+			return;
+			
 		var world = new SceneWorld();
 		var camera = new SceneCamera()
 		{
