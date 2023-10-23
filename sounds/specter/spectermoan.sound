@@ -1,0 +1,16 @@
+{
+  "UI": false,
+  "Volume": "1.00,1.00,0",
+  "Pitch": "0.90,1.10,1",
+  "Decibels": 80,
+  "SelectionMode": "RandomExclusive",
+  "Sounds": [
+    "sounds/specter/spectermoan1.vsnd",
+    "sounds/specter/spectermoan2.vsnd",
+    "sounds/specter/spectermoan3.vsnd",
+    "sounds/specter/spectermoan4.vsnd"
+  ],
+  "MaximumDistance": 1484.3214,
+  "MinimumDistance": 74.21607,
+  "__references": []
+}
