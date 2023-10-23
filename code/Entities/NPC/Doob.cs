@@ -99,11 +99,11 @@ public partial class Doob : NPC
 		.WithMaxDistance( 2000f )
 		.AvoidTag( "door", 400f )
 		.AvoidTag( "edge", 50f )
-		.AvoidTag( "outeredge", 40f )
-		.AvoidTag( "inneredge", 30f )
-		.AvoidTag( "monsterNearRange", 50f )
-		.AvoidTag( "monsterMidRange", 30f )
-		.AvoidTag( "monsterLongRange", 10f );
+		.AvoidTag( "outeredge", 60f )
+		.AvoidTag( "inneredge", 40f )
+		.AvoidTag( "monsterNearRange", 200f )
+		.AvoidTag( "monsterMidRange", 100f )
+		.AvoidTag( "monsterLongRange", 50f );
 
 	public override void FindTargets()
 	{

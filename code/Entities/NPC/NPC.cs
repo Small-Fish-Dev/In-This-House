@@ -266,7 +266,7 @@ public partial class NPC : AnimatedEntity, IPushable
 	}
 
 	protected List<Cell> currentCells = new List<Cell>();
-	protected TimeUntil nextTagsCheck = 0.5f;
+	internal virtual TimeUntil nextTagsCheck { get; set; } = 0.2f;
 	public virtual void AssignNearbyTags()
 	{
 		if ( CurrentGrid == null ) return;
