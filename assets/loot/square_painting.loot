@@ -1,6 +1,6 @@
 {
   "Name": "Painting",
-  "Description": "",
+  "Description": "A painting of a man. He has a very distinct look to him almost like a general. A thousand yard stare. You can tell he\u0027s been through a lot. ",
   "Level": "Mansion",
   "Model": "models/items/paintings/square_painting.vmdl",
   "MonetaryValue": 25,

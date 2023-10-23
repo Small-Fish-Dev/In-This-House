@@ -1,6 +1,6 @@
 {
   "Name": "Painting",
-  "Description": "",
+  "Description": "A strange painting of three men. Theres no distinct features about them, and the painting gives me chills down my spine if I look at it too long. Theres a menacing aura to it.  ",
   "Level": "Mansion",
   "Model": "models/items/paintings/wide_painting.vmdl",
   "MonetaryValue": 35,

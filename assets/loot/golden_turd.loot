@@ -1,9 +1,10 @@
 {
   "Name": "Golden Turd",
-  "Description": null,
+  "Description": "Time lost. Fear of the unknown. A feeling of missing. A longing for when time was right. Is there no carthasis? Is there no truth to any of this?",
   "Level": "Bathrooms",
   "Model": "models/items/golden_turd/golden_turd.vmdl",
   "MonetaryValue": 200,
+  "DisplayFront": false,
   "IconOffset": "15,0,-3",
   "IconAngles": "-30,0,0",
   "__references": []

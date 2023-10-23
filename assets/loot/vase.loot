@@ -1,9 +1,10 @@
 {
   "Name": "Vase",
-  "Description": "",
+  "Description": "A very old hand made vase. I can tell that the porcelin used to make it is of very high quality. On the inside a name is scribed the name: \u0022Kicho\u0022. ",
   "Level": "Mansion",
   "Model": "models/items/vase/vase.vmdl",
   "MonetaryValue": 40,
+  "DisplayFront": false,
   "IconOffset": "27,3,-8",
   "IconAngles": "-45,0,15",
   "__references": []

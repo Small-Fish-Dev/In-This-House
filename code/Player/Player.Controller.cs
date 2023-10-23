@@ -31,6 +31,7 @@ public partial class Player
 	float baseSkiddingVolume = 0.3f;
 	float skiddingVolume;
 	TimeSince lastAcceleration;
+	internal Particles skiddingParticle { get; set; }
 
 	protected void SimulateController()
 	{
@@ -80,9 +81,15 @@ public partial class Player
 		{
 			if ( !skiddingSound.IsPlaying )
 				skiddingSound = PlaySound( "sounds/drift.sound" );
+
+			if ( skiddingParticle == null )
+				skiddingParticle = Particles.Create( "particles/dust/dust.vpcf", this, true );
 		}
 		else
+		{
 			skiddingSound.Stop();
+			skiddingParticle?.Destroy();
+		}
 
 		skiddingSound.SetVolume( skiddingVolume );
 
