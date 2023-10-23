@@ -55,6 +55,26 @@
 							</div>
 						</div>
 					}
+
+					@foreach ( var upgrade in BoughtUpgrades )
+					{
+						<div class="item locked">
+							<div class="info">
+								<div class="header">
+									@upgrade.Title
+									<div class="icon locked" style="background-image: url('@upgrade.Texture');"></div>
+								</div>
+								<div class="description">
+									@upgrade.Description
+								</div>
+							</div>
+							<div class="buy-button locked bought">
+								<div class="price">
+									BOUGHT
+								</div>
+							</div>
+						</div>
+					}
 				</div>
 			</div>
 			<div class="border-overlay"></div>

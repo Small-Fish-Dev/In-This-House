@@ -7,6 +7,7 @@ public partial class Shop : Panel
 {
 	private List<Upgrade> PossibleUpgrades { get; set; } = new();
 	private List<Upgrade> LockedUpgrades { get; set; } = new();
+	private List<Upgrade> BoughtUpgrades { get; set; } = new();
 
 	public Shop()
 	{
@@ -67,7 +68,15 @@ public partial class Shop : Panel
 			if ( CanBuyUpgrade( upgrade ) )
 				PossibleUpgrades.Add( upgrade );
 			else
+			{
+				if ( player.HasUpgrade( upgrade.Identifier ) )
+				{
+					BoughtUpgrades.Add( upgrade );
+					continue;
+				}
+
 				LockedUpgrades.Add( upgrade );
+			}
 		}
 
 		StateHasChanged();
