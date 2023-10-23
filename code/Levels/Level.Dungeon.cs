@@ -4,9 +4,9 @@ public partial class DungeonLevel : Level
 {
 	public override LevelType Type { get; set; } = LevelType.Dungeon;
 	public override string Music => "sounds/music/malevolent_sightings_in_the_room.sound";
-	Vector3 pos => new Vector3( 1032f, 384f, -1908f );
-	Vector3 size => new Vector3( 3100f, 4200f, 400f );
-	public override BBox WorldBox => new BBox( pos - size / 2f, pos + size / 2f );
+	Vector3 min => new Vector3( 500f, -2700f, -2000f );
+	Vector3 max => new Vector3( 3500f, 2000f, -1500f );
+	public override BBox WorldBox => new BBox( min, max );
 
 	public async override Task Start()
 	{
