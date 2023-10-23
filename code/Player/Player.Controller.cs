@@ -88,8 +88,7 @@ public partial class Player
 		else
 		{
 			skiddingSound.Stop();
-
-			skiddingParticle.Destroy();
+			skiddingParticle?.Destroy();
 		}
 
 		skiddingSound.SetVolume( skiddingVolume );
