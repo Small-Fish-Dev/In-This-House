@@ -69,7 +69,7 @@ public partial class LootContainer : UsableEntity
 			loot.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 			loot.ApplyAbsoluteImpulse( force * normal + Vector3.Up * 300f );
 			loot.Scale = 0.01f;
-			loot.Rarity = (LootRarity)Math.Min( (int)loot.Rarity + 4, 8 );
+			loot.Rarity = (LootRarity)Math.Min( (int)loot.Rarity + 2, 8 );
 
 			await GameTask.Delay( (int)( 1500 / lootCount ) );
 		}
