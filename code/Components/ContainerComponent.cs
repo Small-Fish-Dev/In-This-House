@@ -123,9 +123,9 @@ public partial class ContainerComponent : EntityComponent
 
 	public void Clear()
 	{
-		forceReloadItemInfo( To.Single( Entity ) );
 		Game.AssertServer();
 		items.Clear();
+		forceReloadItemInfo( To.Single( Entity ) );
 	}
 
 	[ClientRpc]
