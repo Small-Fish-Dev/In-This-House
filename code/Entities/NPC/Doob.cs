@@ -14,6 +14,7 @@ public partial class Doob : NPC
 	public new float PushForce { get; set; } = 500f;
 	public override float WishSpeed => Direction.IsNearlyZero() ? 0 : (HasArrivedDestination ? 0f : (IsBeingChased ? RunSpeed : WalkSpeed));
 
+	internal Sound runningSound { get; set; }
 	public Doob() { }
 	public Doob( Level level ) : base( level ) { }
 
@@ -43,9 +44,15 @@ public partial class Doob : NPC
 						NavigateTo( closestCell );
 
 					nextIdle = MansionGame.Random.Float( 0.5f, 1f );
+
+					if ( runningSound.IsPlaying )
+						runningSound.Stop();
 				}
 				else
 				{
+					if ( !runningSound.IsPlaying )
+						runningSound = PlaySound( "sounds/running.sound" );
+
 					var closestMonster = Entity.All.OfType<NPC>().Where( x => x.Target == this ).FirstOrDefault();
 
 					if ( closestMonster == null ) return;
