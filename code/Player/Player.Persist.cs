@@ -14,7 +14,7 @@ partial class Player
 
 		public static ItemSave FromItemEntry( ItemEntry entry, int count )
 		{
-			var x = new ItemSave { PrefabPath = entry.Name, Rarity = entry.Rarity, Count = count };
+			var x = new ItemSave { PrefabPath = entry.Prefab.ResourceName, Rarity = entry.Rarity, Count = count };
 			return x;
 		}
 	}
@@ -96,6 +96,7 @@ partial class Player
 
 	public void StoreSave()
 	{
+		Log.Info( "Saving client data" );
 		PlayerSave.FromPlayer( this ).SaveStored();
 	}
 
