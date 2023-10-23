@@ -82,6 +82,13 @@ public partial class PissingGuy : NPC
 			}
 	}
 
+	public override void OnAnimEventFootstep( Vector3 position, int foot, float volume )
+	{
+		base.OnAnimEventFootstep( position, foot, volume );
+
+		Sound.FromWorld( "sounds/piss/pisstomp.sound", position );
+	}
+
 	TimeUntil nextDoor = 0f;
 	public override void ComputeOpenDoors()
 	{
