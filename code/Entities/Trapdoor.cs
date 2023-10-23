@@ -8,6 +8,7 @@ public class Trapdoor : UsableEntity
 		.Where( x => x.IsAlive )
 		.All( x => x.Position.Distance( Position ) <= 400f ) && ( Game.IsClient ? HasKey : true );
 	public bool HasKey => (Game.IsClient ? Game.LocalPawn as Player : User)?.HasUpgrade( MansionGame.Instance.CurrentLevel.Type == LevelType.Mansion ? "Mansion Key" : "Dungeon Key" ) ?? false;
+	internal Sound windSound;
 
 	public override void Spawn()
 	{
@@ -17,6 +18,14 @@ public class Trapdoor : UsableEntity
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		Tags.Add( "solid" );
 		Tags.Add( "trapdoor" );
+
+		windSound = PlaySound( "sounds/doors/blizzard.sound" );
+	}
+
+	protected override void OnDestroy()
+	{
+		windSound.Stop();
+		base.OnDestroy();
 	}
 
 	public override void Use( Player user )
