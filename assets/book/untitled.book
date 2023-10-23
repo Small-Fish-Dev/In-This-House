@@ -1,0 +1,12 @@
+{
+  "Text": "Hello, world!",
+  "Name": "Book of Hello World",
+  "Description": "",
+  "Level": "None",
+  "Model": null,
+  "MonetaryValue": 0,
+  "DisplayFront": false,
+  "IconOffset": "0,0,0",
+  "IconAngles": "0,0,0",
+  "__references": []
+}
