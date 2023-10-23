@@ -16,6 +16,7 @@ public enum LevelType // We need this to categorize hammer entities
 public abstract partial class Level : Entity // Easy replication to client
 {
 	public virtual LevelType Type { get; set; } = LevelType.None;
+	public abstract string Music { get; }
 	[Net] public UsableEntity Exit { get; set; } = null;
 	[Net] public IList<NPC> Monsters { get; set; }
 	[Net] public TimeSince SinceStarted { get; set; } = 0f;
@@ -183,9 +184,44 @@ public partial class MansionGame
 {
 	[Net, Change] public Level CurrentLevel { get; set; }
 
+	public float MusicVolumeChangeRate => 0.5f;
+
+	[Net] public Sound CurrentMusic { get; set; }
+	[Net] public float CurrentMusicVolume { get; set; } = 0;
+	[Net] public float TargetMusicVolume { get; set; } = 0;
+	[Net] public TimeSince MusicChange { get; set; } = 0;
+
+	[GameEvent.Tick.Server]
+	protected void ProcessMusic()
+	{
+		Game.AssertServer();
+		
+		// No level or the music is mute
+		if ( CurrentLevel is null
+		     || CurrentLevel.Music?.Length == 0
+		     || CurrentMusicVolume.AlmostEqual( 0, 0.001f ) && TargetMusicVolume == 0 )
+		{
+			if ( CurrentMusic.IsPlaying )
+				CurrentMusic.Stop();
+
+			return;
+		}
+
+		if ( !CurrentMusic.IsPlaying && MusicChange > 1 )
+		{
+			CurrentMusic = Sound.FromScreen( CurrentLevel.Music );
+			MusicChange = 0;
+		}
+
+		CurrentMusicVolume = CurrentMusicVolume.LerpTo( TargetMusicVolume, MusicVolumeChangeRate );
+		CurrentMusic.SetVolume( CurrentMusicVolume );
+	}
+
 	public static async void SetLevel<T>() where T : Level
 	{
 		if ( !Game.IsServer ) return;
+
+		Instance.TargetMusicVolume = 0;
 
 		if ( Instance.CurrentLevel != null )
 		{
@@ -195,6 +231,7 @@ public partial class MansionGame
 
 		Instance.CurrentLevel = Activator.CreateInstance<T>();
 		await Instance.CurrentLevel.Start();
+		Instance.TargetMusicVolume = 1;
 	}
 
 	public static void NextLevel()

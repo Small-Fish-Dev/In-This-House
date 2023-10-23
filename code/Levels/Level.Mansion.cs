@@ -3,6 +3,7 @@
 public partial class MansionLevel : Level
 {
 	public override LevelType Type { get; set; } = LevelType.Mansion;
+	public override string Music => "sounds/music/looming_trees_in_eerie_woods.sound";
 	public override BBox WorldBox => new BBox( new Vector3( -3200f, -2000f, -80f ), new Vector3( 3200f, 2000f, 1700f ) );
 
 	public async override Task Start()
