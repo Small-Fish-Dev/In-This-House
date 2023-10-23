@@ -300,11 +300,9 @@ partial class Player : AnimatedEntity, IPushable
 		EnableAllCollisions = false;
 		Blocked = false;
 
-		if ( Components.TryGet<ContainerComponent>( out ContainerComponent inventory ) )
+		if ( Game.IsServer && Components.TryGet<ContainerComponent>( out ContainerComponent inventory ) )
 			inventory.Clear();
-
-		ClearInventory( To.Single( Client ) );
-
+		
 		Particles.Create( "particles/blood/blood_explosion.vpcf", Position );
 		Sound.FromWorld( "sounds/death.sound", Position );
 
@@ -314,13 +312,6 @@ partial class Player : AnimatedEntity, IPushable
 			var spectator = new Spectator { Position = EyePosition, Rotation = Rotation, Body = this }; // TODO: Rotation->InputRotation
 			Client.Pawn = spectator;
 		}
-	}
-
-	[ClientRpc]
-	public void ClearInventory()
-	{
-		if ( Components.TryGet<ContainerComponent>( out ContainerComponent inventory ) )
-			inventory.Clear();
 	}
 
 	// Client callback for UI purposes
