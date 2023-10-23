@@ -20,8 +20,11 @@
 							tooltipData = pair; 
 						})
 				 		@onmouseout=@(() => { 
-							 previousTooltip = tooltipData; 
-							 tooltipData = null; 
+							previousTooltip = tooltipData; 
+							tooltipData = null; 
+						})
+						@onrightclick=@(() => {
+							throwItem( item.Prefab.ResourceName, item.Rarity );
 						})>
 							<looticon class="icon" prefab="@(item.Prefab.ResourceName)" />
 							<label class="amount">x@(amount)</label>
