@@ -1,0 +1,17 @@
+{
+  "UI": false,
+  "Volume": "0.80,1.00,1",
+  "Pitch": "0.80,1.05,1",
+  "Decibels": 100,
+  "SelectionMode": "RandomExclusive",
+  "Sounds": [
+    "sounds/piss/pisstomp1.vsnd",
+    "sounds/piss/pisstomp2.vsnd",
+    "sounds/piss/pisstomp3.vsnd",
+    "sounds/piss/pisstomp4.vsnd",
+    "sounds/piss/pisstomp5.vsnd"
+  ],
+  "MaximumDistance": 2301.2522,
+  "MinimumDistance": 115.062614,
+  "__references": []
+}
