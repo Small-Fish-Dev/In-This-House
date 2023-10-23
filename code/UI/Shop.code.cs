@@ -16,13 +16,13 @@ public partial class Shop : Panel
 	}
 
 	[Event( "UpgradeBought" )]
-	private void OnUpgradeBought(string identifier)
+	private void OnUpgradeBought( string identifier )
 	{
 		if ( Game.IsServer )
 			return;
 
 		UpdateUpgradeList();
-		
+
 		Log.Info( $"OnUpgradeBought: {identifier}" );
 	}
 
@@ -59,7 +59,7 @@ public partial class Shop : Panel
 			else
 				LockedUpgrades.Add( upgrade );
 		}
-		
+
 		StateHasChanged();
 	}
 
@@ -74,7 +74,9 @@ public partial class Shop : Panel
 			Log.Warning( "BuyUpgrade tried to buy weird upgrade!!!" );
 			return;
 		}
-		
+
 		Player.BuyUpgrade( upgrade.Identifier );
+		
+		player.StoreSave();
 	}
 }

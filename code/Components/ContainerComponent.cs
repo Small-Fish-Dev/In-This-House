@@ -10,14 +10,14 @@ public struct ItemEntry : IEquatable<ItemEntry>
 
 	public bool Equals( ItemEntry other )
 	{
-		return other.Prefab == Prefab 
-			&& other.Rarity == Rarity;
+		return other.Prefab == Prefab
+		       && other.Rarity == Rarity;
 	}
 
 	public override bool Equals( object obj )
 	{
 		return obj is ItemEntry other
-			&& Equals( other );
+		       && Equals( other );
 	}
 
 	public override int GetHashCode()
@@ -31,7 +31,8 @@ public partial class ContainerComponent : EntityComponent
 	/// <summary>
 	/// Limited amount of space
 	/// </summary>
-	[Net] public int Limit { get; set; } = 20;
+	[Net]
+	public int Limit { get; set; } = 20;
 
 	/// <summary>
 	/// Dictionary of all the items and amounts.
@@ -120,6 +121,12 @@ public partial class ContainerComponent : EntityComponent
 		return amount;
 	}
 
+	public void Clear()
+	{
+		Game.AssertServer();
+		items.Clear();
+	}
+
 	[ClientRpc]
 	private void sendUpdate( string prefabName, LootRarity rarity, int amount )
 	{
@@ -131,11 +138,7 @@ public partial class ContainerComponent : EntityComponent
 		}
 
 		var delete = false;
-		var entry = new ItemEntry
-		{
-			Prefab = prefab,
-			Rarity = rarity
-		};
+		var entry = new ItemEntry { Prefab = prefab, Rarity = rarity };
 
 		items[entry] = amount;
 		if ( items[entry] <= 0 )
@@ -143,7 +146,7 @@ public partial class ContainerComponent : EntityComponent
 			items.Remove( entry );
 			delete = true;
 		}
-		
+
 		Event.Run( "InventoryChanged", client, entry, delete ? 0 : items[entry] );
 	}
 }
