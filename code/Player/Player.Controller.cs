@@ -14,6 +14,7 @@ public partial class Player
 	[Net] public float JumpHeight { get; set; } = 250f;
 	[Net] public float Acceleration { get; set; } = 1000f;
 	[Net] public float Deceleration { get; set; } = 400f;
+	public bool HasFrictionUpgrade => HasUpgrade( "Work Shoes" );
 
 	public float StunSpeed => (float)(WalkSpeed + (RunSpeed - WalkSpeed) * Math.Sin( 45f.DegreeToRadian() ));
 	public float WishSpeed => InputDirection.IsNearlyZero() ? 0 : ( IsCrouching ? CrouchSpeed : (IsRunning ? RunSpeed : WalkSpeed) );
@@ -40,7 +41,7 @@ public partial class Player
 			if ( WishVelocity.Length >= Velocity.WithZ( 0 ).Length ) // Accelerating
 			{
 				var momentumCoefficent = Velocity.WithZ( 0 ).Length / WalkSpeed * 50f; // Slower you move, less momentum you have, easier to start
-				Velocity += WishVelocity.WithZ( 0 ).Normal * ( Acceleration - momentumCoefficent ) * Time.Delta;
+				Velocity += WishVelocity.WithZ( 0 ).Normal * ( Acceleration - momentumCoefficent ) * ( HasFrictionUpgrade ? 3f : 1f ) * Time.Delta;
 				Velocity = Velocity.WithZ( 0 ).ClampLength( WishSpeed ).WithZ( Velocity.z );
 
 				if ( WishVelocity.WithZ( 0 ).Normal.Angle( Velocity.WithZ( 0 ).Normal ) >= 65f )
@@ -58,7 +59,7 @@ public partial class Player
 			else // Decelerating
 			{
 				var momentumCoefficent = Velocity.WithZ( 0 ).Length / WalkSpeed * 1.2f; // Faster you move, more momentum you have, harder to stop
-				Velocity = Velocity.WithZ( 0 ).ClampLength( Math.Max( Velocity.WithZ( 0 ).Length - Deceleration / momentumCoefficent * Time.Delta, 0 ) ).WithZ( Velocity.z );
+				Velocity = Velocity.WithZ( 0 ).ClampLength( Math.Max( Velocity.WithZ( 0 ).Length - (Deceleration * (HasFrictionUpgrade ? 3f : 1f)) / momentumCoefficent * Time.Delta, 0 ) ).WithZ( Velocity.z );
 
 				if ( lastAcceleration >= 0.1f )
 				{

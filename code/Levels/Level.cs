@@ -68,11 +68,14 @@ public abstract partial class Level : Entity // Easy replication to client
 
 		foreach ( var player in Entity.All.OfType<Player>().ToList() )
 		{
-			var doob = new Doob( this );
-			doob.Position = player.Position;
-			doob.Rotation = player.Rotation;
-			doob.Owner = player;
-			player.Doob = doob;
+			if ( player.HasUpgrade( "Cartoony Sidekick" ) )
+			{
+				var doob = new Doob( this );
+				doob.Position = player.Position;
+				doob.Rotation = player.Rotation;
+				doob.Owner = player;
+				player.Doob = doob;
+			}
 		}
 
 		Exit?.Delete(); // Just make sure

@@ -344,4 +344,13 @@ partial class Player : AnimatedEntity, IPushable
 
 		_sendMessage( pawn.NetworkIdent, message );
 	}
+
+	[ConCmd.Server]
+	public static void GiveMoney( int amount )
+	{
+		if ( ConsoleSystem.Caller.Pawn is not Player pawn )
+			return;
+
+		pawn.AddMoney( amount );
+	}
 }

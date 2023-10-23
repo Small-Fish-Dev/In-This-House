@@ -39,11 +39,11 @@ public class Upgrade
 	// Example
 	[Effect] public float FrictionMultiplier { get; set; } = 1f;
 	[Effect] public float UseMultiplier { get; set; } = 1f;
-	[Effect] public bool BreakLocks { get; set; } = false;
-	[Effect] public bool Doob { get; set; } = false;
-	[Effect] public bool KeyToDungeon { get; set; } = false;
-	[Effect] public bool KeyToBathrooms { get; set; } = false;
-	[Effect] public bool KeyToExit { get; set; } = false;
+	[Effect] public float BreakLocks { get; set; } = 1f;
+	[Effect] public float Doob { get; set; } = 1f;
+	[Effect] public float KeyToDungeon { get; set; } = 1f;
+	[Effect] public float KeyToBathrooms { get; set; } = 1f;
+	[Effect] public float KeyToExit { get; set; } = 1f;
 
 	#endregion
 
