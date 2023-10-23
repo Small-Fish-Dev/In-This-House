@@ -1,0 +1,12 @@
+{
+  "Text": null,
+  "Model": "models/sbox_props/watermelon/watermelon_gib08.vmdl",
+  "Name": null,
+  "Description": null,
+  "Level": "None",
+  "MonetaryValue": 0,
+  "DisplayFront": false,
+  "IconOffset": "0,0,0",
+  "IconAngles": "0,0,0",
+  "__references": []
+}
