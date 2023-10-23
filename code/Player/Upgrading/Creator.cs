@@ -14,9 +14,17 @@ public static class Creator
 			.ConfigureWith( v =>
 				v.SpeedMultiplier = 0.05f )
 			.WithPrice( 100 )
+			// .WithTexture( "ui/icon/jellyfish-jam.png" )
 			.Build();
 
+		new Upgrade.Builder( "Fish Log", "Add a log to the game." )
+			.ConfigureWith( v =>
+				v.SpeedMultiplier = 0.05f )
+			.WithPrice( 0 )
+			// .WithTexture( "ui/icon/jellyfish-jam.png" )
+			.Build();
 		
+
 		/*new Upgrade.Builder( "Aura of Fear I", "Enemies around you have lower diligence." )
 			.ConfigureWith( v =>
 			{
