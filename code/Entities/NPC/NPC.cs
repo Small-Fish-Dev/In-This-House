@@ -151,6 +151,7 @@ public partial class NPC : AnimatedEntity, IPushable
 	public async virtual void CatchPlayer( Player player )
 	{
 		SetAnimParameter( "attack", true );
+		Sound.FromWorld( "sounds/screams/scream.sound", player.Position );
 
 		var currentDirection = (player.Position - Position).Normal;
 		player.Position = Position + currentDirection * SetDistanceWhenAttacking;

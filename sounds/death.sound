@@ -2,12 +2,12 @@
   "UI": false,
   "Volume": "0.90,1.00,1",
   "Pitch": "0.85,1.15,1",
-  "Decibels": 180,
+  "Decibels": 90,
   "SelectionMode": "Random",
   "Sounds": [
     "sounds/death.vsnd"
   ],
-  "MaximumDistance": 7384.377,
-  "MinimumDistance": 369.21884,
+  "MaximumDistance": 1870.0942,
+  "MinimumDistance": 93.504715,
   "__references": []
 }

@@ -287,6 +287,7 @@ partial class Player : AnimatedEntity, IPushable
 		EnableAllCollisions = false;
 		Blocked = false;
 		Particles.Create( "particles/blood/blood_explosion.vpcf", Position );
+		Sound.FromWorld( "sounds/death.sound", Position );
 
 		if ( Entity.All.OfType<Player>().Where( x => x.IsAlive ).Count() > 0 )
 		{
