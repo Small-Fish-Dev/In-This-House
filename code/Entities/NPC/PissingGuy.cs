@@ -24,7 +24,7 @@ public partial class PissingGuy : NPC
 	{
 		base.Spawn();
 
-		//PlaySound( "sounds/wega.sound" );
+		funny();
 	}
 
 	public override void ComputeIdleAndSeek()
@@ -75,9 +75,22 @@ public partial class PissingGuy : NPC
 					CatchDoob( doob );
 			}
 	}
+
+	bool fixing = true;
+	// ANIMATINO FIX!!
+	private async void funny()
+	{
+		await GameTask.Delay( 500 );
+		SetAnimParameter( "walking", true );
+		await GameTask.Delay( 500 );
+		SetAnimParameter( "walking", false );
+		fixing = false;
+	}
+
 	public override void ComputeAnimations()
 	{
-		SetAnimParameter( "walking", Velocity.WithZ(0).Length >= 5f ? true : false );
+		if ( !fixing )
+			SetAnimParameter( "walking", Velocity.WithZ(0).Length >= 5f ? true : false );
 	}
 
 	public override void AssignNearbyTags()
