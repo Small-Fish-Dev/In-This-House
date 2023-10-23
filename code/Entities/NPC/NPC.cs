@@ -14,7 +14,7 @@ public partial class NPC : AnimatedEntity, IPushable
 	public virtual float MaxVisionAngle { get; set; } = 120f; // Degrees
 	public virtual float MaxVisionAngleWhenChasing { get; set; } = 180f;
 	public virtual float MaxVisionRangeWhenChasing { get; set; } = 2048f;
-	public virtual float MaxRememberTime { get; set; } = 2f; // How long will it keep tracking your position when you're out of sight (This lets them get into rooms or corridors you hide in)
+	public virtual float MaxRememberTime { get; set; } = 1f; // How long will it keep tracking your position when you're out of sight (This lets them get into rooms or corridors you hide in)
 	public virtual float AttackAnimationDuration { get; set; } = 1.5f;
 	public virtual float KillAfterAttackTime { get; set; } = 1f;
 	public virtual float SetDistanceWhenAttacking { get; set; } = 40f;

@@ -5,6 +5,10 @@ public partial class AoNyobo : NPC
 	public override string ModelPath { get; set; } = "models/nyobo/nyobo.vmdl";
 	public override float WalkSpeed { get; set; } = 80f;
 	public override float RunSpeed { get; set; } = 260f;
+	public override float MaxVisionAngle { get; set; } = 240f;
+	public override float MaxVisionRange { get; set; } = 700f;
+	public override float MaxVisionRangeWhenChasing { get; set; } = 600f;
+	public override float MaxVisionAngleWhenChasing { get; set; } = 180f;
 
 	public AoNyobo() { }
 	public AoNyobo( Level level ) : base( level ) { }
