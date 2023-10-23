@@ -2,8 +2,8 @@
 @inherits Panel
 @namespace BrickJam.UI.MainMenu
 
-<root style="opacity: @(Hide < 1 ? 0 : 1)">
-	<div class="container">
+<root>
+	<div class="container" style="opacity: @(Hide < 0.5f ? 0 : 1)">
 		<div class="logo"/>
 	</div>
 </root>
@@ -15,10 +15,6 @@
 	
 		padding: 0;
 		
-		opacity: 1;
-		
-		transition: opacity 1s ease-in;
-		
 		> .container
 		{
 			flex-grow: 1;
@@ -28,8 +24,10 @@
 		
 			background-image: none;
 			background-color: #2446f7;
+		
+			opacity: 1;	
 			
-			transition: background-color 2s ease-out;
+			transition: background-color 1s ease-out, opacity 0.5s ease-in;
 			
 			&:intro
 			{
@@ -64,7 +62,7 @@
 
 @code {
 
-	float Delay => 5f;
+	float Delay => 3f;
 	
 	TimeUntil Hide = 0;
 
