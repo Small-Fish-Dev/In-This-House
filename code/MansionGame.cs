@@ -29,7 +29,6 @@ public partial class MansionGame : GameManager
 
 	public MansionGame()
 	{
-		Creator.Build();
 	}
 
 	public override void Spawn()
@@ -42,6 +41,7 @@ public partial class MansionGame : GameManager
 		ClientSlots = Enumerable.Repeat<IClient>( null, Game.Server.MaxPlayers ).ToList();
 
 		ResetRandomSeed();
+		Creator.Build();
 	}
 
 	public override void ClientSpawn()
@@ -55,6 +55,7 @@ public partial class MansionGame : GameManager
 		_ = new Hud();
 
 		_instance = new WeakReference( this );
+		Creator.Build();
 	}
 
 	public static void ResetRandomSeed()

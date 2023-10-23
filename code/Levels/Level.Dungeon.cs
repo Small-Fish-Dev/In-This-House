@@ -13,7 +13,13 @@ public partial class DungeonLevel : Level
 		await base.Start();
 
 		var monster = new Specter( this );
-		monster.Position = Exit.Position;
+
+		var allValidTrapdoors = Entity.All.OfType<ValidTrapdoorPosition>()
+			.Where( x => x.LevelType == Type )
+			.ToList();
+		var randomValidTrapdoor = MansionGame.Random.FromList( allValidTrapdoors );
+
+		monster.Position = randomValidTrapdoor.Position;
 		RegisterMonster( monster );
 
 		return;
