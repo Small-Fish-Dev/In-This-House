@@ -25,6 +25,10 @@ public partial class NPC : AnimatedEntity, IPushable
 	public AnimatedEntity CurrentlyMurdering { get; set; } = null;
 	internal TimeUntil nextIdle { get; set; } = 0f;
 	public float PushForce { get; set; } = 3000f;
+	public virtual string IdleSound => "sounds/nyobo/nyobo_laugh.sound";
+	public virtual float IdleVolume => 2f;
+	public virtual string AttackSound => "sounds/nyobo/nyobo_attack.sound";
+	public virtual float AttackVolume => 2f;
 
 	public NPC() { }
 	public NPC( Level level ) : base()
@@ -74,6 +78,7 @@ public partial class NPC : AnimatedEntity, IPushable
 			toPush.Remove( toucher as AnimatedEntity );
 	}
 
+	internal TimeUntil nextIdleSound = 2f;
 	public virtual void ComputeIdleAndSeek()
 	{
 		if ( InVision.Count > 0 )
@@ -126,6 +131,12 @@ public partial class NPC : AnimatedEntity, IPushable
 				if ( Target is Doob doob )
 					CatchDoob( doob );
 			}
+
+		if ( nextIdleSound )
+		{
+			var idle = PlaySound( IdleSound );
+			idle.SetVolume( IdleVolume );
+		}
 	}
 
 	public virtual void ComputeOpenDoors()
@@ -155,6 +166,9 @@ public partial class NPC : AnimatedEntity, IPushable
 		SetAnimParameter( "attack", true );
 		Sound.FromWorld( "sounds/screams/scream.sound", player.Position );
 
+		var attack = PlaySound( AttackSound );
+		attack.SetVolume( AttackVolume );
+
 		var currentDirection = (player.Position - Position).Normal;
 		player.Position = Position + currentDirection * SetDistanceWhenAttacking;
 		player.CameraTarget = this;
@@ -181,6 +195,9 @@ public partial class NPC : AnimatedEntity, IPushable
 		if ( CurrentlyMurdering != null || CurrentlyMurdering.IsValid() ) return;
 
 		SetAnimParameter( "attack", true );
+
+		var attack = PlaySound( AttackSound );
+		attack.SetVolume( AttackVolume );
 
 		var currentDirection = (doob.Position - Position).Normal;
 		doob.Position = Position + currentDirection * SetDistanceWhenAttacking;

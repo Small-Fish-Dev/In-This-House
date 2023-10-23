@@ -17,6 +17,10 @@ public partial class PissingGuy : NPC
 	public Vector3 StartingPosition { get; set; } = Vector3.Zero;
 	public Rotation StartingRotation { get; set; } = Rotation.Identity;
 	internal Particles pissingParticle { get; set; }
+	public override string IdleSound => "";
+	public override float IdleVolume => 0f;
+	public override string AttackSound => "sounds/piss/pissattack.sound";
+	public override float AttackVolume => 3f;
 
 	public PissingGuy() { }
 	public PissingGuy( Level level ) : base( level ) { }

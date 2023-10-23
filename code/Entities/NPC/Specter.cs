@@ -20,6 +20,10 @@ public partial class Specter : NPC
 	[Net] public TimeSince LastTeleport { get; set; } = 999f; // screw it
 	internal CapsuleLightEntity lampLight { get; set; }
 	internal Particles teleport { get; set; }
+	public override string IdleSound => "sounds/specter/spectermoan.sound";
+	public override float IdleVolume => 1.5f;
+	public override string AttackSound => "sounds/specter/spectermoan.sound";
+	public override float AttackVolume => 2f;
 
 	public Specter() { }
 	public Specter( Level level ) : base( level ) { }
@@ -128,6 +132,12 @@ public partial class Specter : NPC
 						CatchDoob( doobie );
 				}
 			}
+		}
+
+		if ( nextIdleSound )
+		{
+			var idle = PlaySound( IdleSound );
+			idle.SetVolume( IdleVolume );
 		}
 	}
 

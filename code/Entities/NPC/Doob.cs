@@ -13,6 +13,10 @@ public partial class Doob : NPC
 	public new Player Owner { get; set; } = null;
 	public new float PushForce { get; set; } = 500f;
 	public override float WishSpeed => Direction.IsNearlyZero() ? 0 : (HasArrivedDestination ? 0f : (IsBeingChased ? RunSpeed : WalkSpeed));
+	public override string IdleSound => "sounds/dooblaugh.sound";
+	public override float IdleVolume => 1.5f;
+	public override string AttackSound => "";
+	public override float AttackVolume => 2f;
 
 	internal Sound runningSound { get; set; }
 	public Doob() { }
@@ -91,6 +95,13 @@ public partial class Doob : NPC
 					nextIdle = MansionGame.Random.Float( 0.3f, 0.6f );
 				}
 			}
+		}
+
+
+		if ( nextIdleSound )
+		{
+			var idle = PlaySound( IdleSound );
+			idle.SetVolume( IdleVolume );
 		}
 	}
 	public override AStarPathBuilder PathBuilder => new AStarPathBuilder( CurrentGrid )

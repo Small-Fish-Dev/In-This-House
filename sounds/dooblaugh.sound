@@ -2,12 +2,12 @@
   "UI": false,
   "Volume": "1.00,1.00,0",
   "Pitch": "0.95,1.10,1",
-  "Decibels": 180,
+  "Decibels": 80,
   "SelectionMode": "Random",
   "Sounds": [
     "sounds/dooblaugh.vsnd"
   ],
-  "MaximumDistance": 7384.377,
-  "MinimumDistance": 369.21884,
+  "MaximumDistance": 1484.3214,
+  "MinimumDistance": 74.21607,
   "__references": []
 }

@@ -2,14 +2,14 @@
   "UI": false,
   "Volume": "1.00,1.00,0",
   "Pitch": "0.80,1.00,1",
-  "Decibels": 70,
+  "Decibels": 100,
   "SelectionMode": "RandomExclusive",
   "Sounds": [
     "sounds/specter/specterscream1.vsnd",
     "sounds/specter/specterscream2.vsnd",
     "sounds/specter/specterscream3.vsnd"
   ],
-  "MaximumDistance": 1143.9335,
-  "MinimumDistance": 57.196674,
+  "MaximumDistance": 2301.2522,
+  "MinimumDistance": 115.062614,
   "__references": []
 }
