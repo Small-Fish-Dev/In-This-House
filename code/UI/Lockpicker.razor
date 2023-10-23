@@ -50,21 +50,21 @@
             down = e.Pressed;
 
             if (e.Pressed)
-                makeSound(mouseAngle < CorrectAngle - RANGE && mouseAngle > CorrectAngle + RANGE);
+                makeSound(mouseAngle >= CorrectAngle - RANGE && mouseAngle <= CorrectAngle + RANGE );
         }
     }
 
     [ConCmd.Server]
-    static void makeSound( bool fail )
+    static void makeSound( bool success )
     {
         var pawn = ConsoleSystem.Caller.Pawn;
 
         if (pawn == null) return;
 
-        if ( fail )
-            Sound.FromWorld("sounds/lockpicking/lock_fail.sound", pawn.Position + pawn.Rotation.Forward * 30f + Vector3.Up * 30f);
-        else
+        if (success)
             Sound.FromWorld("sounds/lockpicking/lock_success.sound", pawn.Position + pawn.Rotation.Forward * 30f + Vector3.Up * 30f);
+        else
+            Sound.FromWorld("sounds/lockpicking/lock_fail.sound", pawn.Position + pawn.Rotation.Forward * 30f + Vector3.Up * 30f);
     }
 
 	public static void Open( LockedComponent component )
