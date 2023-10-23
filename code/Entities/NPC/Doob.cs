@@ -130,9 +130,21 @@ public partial class Doob : NPC
 		IsBeingChased = Entity.All.OfType<NPC>().Any( x => x.Target == this );
 	}
 
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+
+		if ( runningSound.IsPlaying )
+			runningSound.Stop();
+	}
+
 	public void Kill()
 	{
 		Particles.Create( "particles/blood/blood_explosion.vpcf", Position );
+
+		if ( runningSound.IsPlaying )
+			runningSound.Stop();
+
 		DeleteAsync( 0.1f );
 	}
 
