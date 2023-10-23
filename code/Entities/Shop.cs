@@ -27,6 +27,7 @@ public partial class Shop : UsableEntity
 		base.Use( user );
 
 		OpenShop( To.Single( user.Client ) );
+		Sound.FromWorld( "sounds/store/store.sound", user.Position + user.Rotation.Forward * 50f );
 
 		user.Velocity = Vector3.Zero;
 	}
