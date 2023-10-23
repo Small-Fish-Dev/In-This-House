@@ -115,11 +115,20 @@
 							{
 								_class = "AnimEvent"
 								event_class = "AE_CL_BODYGROUP_SET_VALUE"
-								event_frame = 0
+								event_frame = 2
 								event_keys = 
 								{
 									bodygroup = "pants"
 									value = 1
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_ENABLE_BODYGROUP"
+								event_frame = 4
+								event_keys = 
+								{
+									name = "pants"
 								}
 							},
 						]
@@ -166,11 +175,42 @@
 							{
 								_class = "AnimEvent"
 								event_class = "AE_CL_BODYGROUP_SET_VALUE"
-								event_frame = 0
+								event_frame = 2
 								event_keys = 
 								{
 									bodygroup = "pants"
 									value = 0
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_FOOTSTEP"
+								event_frame = 13
+								event_keys = 
+								{
+									Attachment = "right"
+									Foot = "1"
+									Volume = 1.0
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_FOOTSTEP"
+								event_frame = 32
+								event_keys = 
+								{
+									Attachment = "left"
+									Foot = "0"
+									Volume = 1.0
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_DISABLE_BODYGROUP"
+								event_frame = 4
+								event_keys = 
+								{
+									name = "pants"
 								}
 							},
 						]
@@ -195,6 +235,30 @@
 					},
 				]
 				default_root_bone_name = ""
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "left"
+						parent_bone = "foot_L"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+					{
+						_class = "Attachment"
+						name = "right"
+						parent_bone = "foot_R"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+				]
 			},
 		]
 		model_archetype = ""
