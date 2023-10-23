@@ -1,0 +1,15 @@
+{
+  "UI": false,
+  "Volume": "0.90,1.00,1",
+  "Pitch": "0.95,1.05,1",
+  "Decibels": 70,
+  "SelectionMode": "RandomExclusive",
+  "Sounds": [
+    "sounds/store/store1.vsnd",
+    "sounds/store/store2.vsnd",
+    "sounds/store/store3.vsnd"
+  ],
+  "MaximumDistance": 1143.9335,
+  "MinimumDistance": 57.196674,
+  "__references": []
+}
