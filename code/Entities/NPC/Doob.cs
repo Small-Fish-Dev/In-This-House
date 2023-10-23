@@ -125,7 +125,8 @@ public partial class Doob : NPC
 
 	public void Kill()
 	{
-		DeleteAsync( 1f ); // TODO KILL
+		Particles.Create( "particles/blood/blood_explosion.vpcf", Position );
+		DeleteAsync( 0.1f );
 	}
 
 
