@@ -105,10 +105,11 @@ public abstract partial class Level : Entity // Easy replication to client
 			spawners[i]?.SpawnLoot();
 
 		var allDoorsInLevel = Entity.All.OfType<Door>()
-			.Where( x => x.LevelType == Type );
+			.Where( x => x.LevelType == Type )
+			.ToList();
 
-		foreach ( var door in allDoorsInLevel )
-			door.Close();
+		for ( int i = 0; i < allDoorsInLevel.Count; i++ )
+			allDoorsInLevel[i]?.Close();
 
 		await GameTask.Delay( 1000 ); // Wait for any door to close lol :-)
 

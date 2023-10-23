@@ -32,11 +32,11 @@ public partial class LootSpawner : Entity
 		{
 			if ( IsContainer )
 			{
+				Log.Info( "I'M HERE" );
 				EntitySpawned = new LootContainer()
 				{
 					Position = Position,
 					Rotation = Rotation,
-					LevelType = LevelType,
 				};
 
 				return;

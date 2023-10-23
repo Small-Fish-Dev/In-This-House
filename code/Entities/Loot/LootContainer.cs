@@ -9,7 +9,6 @@ public partial class LootContainer : UsableEntity
 	public override string UseString => CanUse ? "open the container" : string.Empty;
 	public override string LockText => "lockpick the container";
 	public override bool StartLocked => true;
-	public LevelType LevelType { get; set; } = LevelType.None;
 
 	private static IReadOnlyDictionary<LevelType, string> models = new Dictionary<LevelType, string>()
 	{
@@ -29,7 +28,7 @@ public partial class LootContainer : UsableEntity
 
 	public override void Spawn()
 	{
-		if ( !models.TryGetValue( LevelType, out var model ) )
+		if ( !models.TryGetValue( MansionGame.Instance.CurrentLevel.Type, out var model ) )
 		{
 			Delete();
 			Log.Warning( "Failed to spawn loot container!!" );
@@ -43,7 +42,6 @@ public partial class LootContainer : UsableEntity
 
 		funny();
 	}
-
 	private async void spit()
 	{
 		Spitting = true;
@@ -53,7 +51,7 @@ public partial class LootContainer : UsableEntity
 
 		var lootCount = Game.Random.Int( 2, 5 );
 		var levelLoot = LootPrefab.All
-			.Where( x => x.Value.Level == LevelType )
+			.Where( x => x.Value.Level == MansionGame.Instance.CurrentLevel.Type )
 			.Select( x => x.Value )
 			.ToArray();
 		var def = LootPrefab.All.FirstOrDefault().Value;
