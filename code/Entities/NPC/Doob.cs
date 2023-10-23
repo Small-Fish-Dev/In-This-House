@@ -138,8 +138,13 @@ public partial class Doob : NPC
 			runningSound.Stop();
 	}
 
+	bool isDead = false;
 	public void Kill()
 	{
+		if ( isDead || !IsValid ) return;
+
+		isDead = true;
+
 		Particles.Create( "particles/blood/blood_explosion.vpcf", Position );
 
 		if ( runningSound.IsPlaying )
