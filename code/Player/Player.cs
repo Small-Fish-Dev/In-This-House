@@ -286,6 +286,7 @@ partial class Player : AnimatedEntity, IPushable
 		EnableDrawing = false;
 		EnableAllCollisions = false;
 		Blocked = false;
+
 		Particles.Create( "particles/blood/blood_explosion.vpcf", Position );
 		Sound.FromWorld( "sounds/death.sound", Position );
 

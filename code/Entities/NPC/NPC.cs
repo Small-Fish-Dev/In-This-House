@@ -150,6 +150,8 @@ public partial class NPC : AnimatedEntity, IPushable
 
 	public async virtual void CatchPlayer( Player player )
 	{
+		if ( CurrentlyMurdering != null || CurrentlyMurdering.IsValid() ) return;
+
 		SetAnimParameter( "attack", true );
 		Sound.FromWorld( "sounds/screams/scream.sound", player.Position );
 
@@ -176,6 +178,8 @@ public partial class NPC : AnimatedEntity, IPushable
 
 	public async virtual void CatchDoob( Doob doob )
 	{
+		if ( CurrentlyMurdering != null || CurrentlyMurdering.IsValid() ) return;
+
 		SetAnimParameter( "attack", true );
 
 		var currentDirection = (doob.Position - Position).Normal;
