@@ -26,6 +26,12 @@ public partial class LootContainer : UsableEntity
 		SetAnimParameter( "open", false );
 	}
 
+	protected override void OnDestroy()
+	{
+		Lock?.Lock?.Delete();
+		base.OnDestroy();
+	}
+
 	public override void Spawn()
 	{
 		if ( !models.TryGetValue( MansionGame.Instance.CurrentLevel.Type, out var model ) )

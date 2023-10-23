@@ -48,6 +48,12 @@ public partial class LockedComponent : EntityComponent
 		component.Unlock();
 	}
 
+	protected override void OnDeactivate()
+	{
+		Lock?.Delete();
+		base.OnDeactivate();
+	}
+
 	public void Unlock()
 	{
 		Locked = false;
