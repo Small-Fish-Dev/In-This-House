@@ -21,7 +21,7 @@
     transition: opacity 0.3s ease;
 
     .window {
-        width: 1200px;
+        width: 800px;
         height: 900px;
 
         background-color: #61577C;
@@ -81,12 +81,10 @@
                 padding: 35px;
                 
                 .items {
-                    width: 70%;
+                    width: 100%;
                     height: 100%;
 
                     pointer-events: all;
-
-                    margin-right: 30px;
                     
                     justify-content: center;
                     align-items: center;
@@ -130,13 +128,38 @@
                         }
                         
                         .buy-button {
-                            width: 20%;
+                            width: 30%;
                             height: 100%;
 
                             image-rendering: pixelated;
                             background-size: 100%;
                             background-position: center;
                             background-image: url("ui/shop/buy-button.png");
+                            
+                            color: white;
+                            
+                            justify-content: center;
+                            align-items: center;
+
+                            .buy {
+                                font-size: 30px;
+                            }
+                            
+                            .price {
+                                margin-left: 10px;
+                                font-size: 20px;
+                            }
+                            
+                            &.locked {
+                                .price {
+                                    margin-left: 0;
+                                    font-size: 30px;
+                                }
+                            }
+                            
+                            &:not(.locked):hover {
+                                background-image: url("ui/shop/buy-button.hover.png");
+                            }
                         }
                         
                         &.locked {
@@ -147,16 +170,6 @@
                             background-image: url("ui/shop/upgrade.png");
                         }
                     }
-                }
-
-                .details {
-                    width: 30%;
-                    height: 100%;
-
-                    image-rendering: pixelated;
-                    background-image: url("ui/shop/upgrade.png");
-                    background-size: 100%;
-                    background-position: center;
                 }
             }
         }
