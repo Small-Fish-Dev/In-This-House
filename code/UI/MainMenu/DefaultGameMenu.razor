@@ -19,8 +19,9 @@
 {
     public DefaultGameMenu()
     {
-        DefaultUrl = "/";
+        DefaultUrl = "/intro";
 
+	    AddDestination( "/intro", typeof(SmallFishIntro) );
         AddDestination("/", typeof(FrontPage));
         AddDestination("/active", typeof(ActivePage));
         AddDestination("/settings", typeof(SettingsPage));
