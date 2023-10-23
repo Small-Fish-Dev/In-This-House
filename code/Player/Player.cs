@@ -19,6 +19,19 @@ partial class Player : AnimatedEntity, IPushable
 
 	[Net] protected ModelEntity Mask { get; set; }
 
+	public override void ClientSpawn()
+	{
+		base.ClientSpawn();
+
+		// Load save
+		var save = PlayerSave.LoadStored();
+		if ( save != null )
+		{
+			Log.Info( "Sending save to the server" );
+			SendSaveToServer( save.Value );
+		}
+	}
+	
 	public override void Spawn()
 	{
 		base.Spawn();
