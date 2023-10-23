@@ -81,7 +81,7 @@ partial class Player : AnimatedEntity, IPushable
 				InputDirection = Input.AnalogMove;
 
 				InputAngles += Input.AnalogLook;
-				InputAngles = InputAngles.WithPitch( Math.Clamp( InputAngles.pitch, -89.9f, 89.9f ) );
+				InputAngles = InputAngles.WithPitch( Math.Clamp( InputAngles.pitch, -80f, 80f ) );
 			}
 			else
 			{
@@ -121,7 +121,7 @@ partial class Player : AnimatedEntity, IPushable
 			if ( !MovementLocked )
 			{
 				Camera.Rotation = InputRotation;
-				Camera.Position = GetAttachment( "eyes" )?.Position - InputRotation.Up * 2f ?? EyePosition;
+				Camera.Position = GetAttachment( "eyes" )?.Position - InputRotation.Up * 2f - Rotation.Forward * 3f ?? EyePosition;
 				Camera.FirstPersonViewer = this;
 			}
 			else
@@ -136,7 +136,7 @@ partial class Player : AnimatedEntity, IPushable
 		{
 			var headPos = CameraTarget.GetBoneTransform( CameraTarget.GetBoneIndex( "head" ) ).Position;
 			var rotation = Rotation.LookAt( headPos - Camera.Position );
-			Camera.Position = GetAttachment( "eyes" )?.Position - rotation.Up * 2f ?? EyePosition;
+			Camera.Position = GetAttachment( "eyes" )?.Position - rotation.Up * 2f - rotation.Forward * 3f ?? EyePosition;
 			Camera.Rotation = rotation;
 		}
 		
