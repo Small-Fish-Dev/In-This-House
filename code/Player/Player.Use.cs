@@ -114,35 +114,43 @@ partial class Player : AnimatedEntity
 					UsableEntity = foundUsable;
 		}*/
 
-		if ( Game.IsServer )
+		// Cancel and return if we're unable to interact with anything (stunned, tied up or what not)
+		// Also cancel if the player isn't holding use
+		if ( CommandsLocked || !Input.Down( "use" ) )
 		{
-			// Cancel and return if we're unable to interact with anything (stunned, tied up or what not)
-			// Also cancel if the player isn't holding use
-			if ( CommandsLocked || !Input.Down( "use" ) )
-			{
+			if ( Game.IsServer )
 				CancelInteraction();
-				return;
-			}
+
+			return;
+		}
 
 			// If the player has not used anything yet
-			if ( UsableEntity is not null
-			     && Input.Pressed( "use" )
-			     && !HasActiveInteractionRequest
-			     && UsableEntity.CanUse )
+		if ( UsableEntity is not null
+			 && Input.Pressed( "use" )
+			&& !HasActiveInteractionRequest
+			&& UsableEntity.CanUse )
+		{
+			if ( UsableEntity.Locked )
 			{
-				if ( UsableEntity.Locked )
+				if ( Game.IsServer )
 					UsableEntity.Lock.Lockpick( this );
-				// Grab if no one uses it
-				else if ( !UsableEntity.User.IsValid() )
-					EnqueueInteraction();
-			}
 
+				if ( UsableEntity.Locked )
+					SetAnimParameter( "lockpicking", true );
+			}
+			// Grab if no one uses it
+			else if ( !UsableEntity.User.IsValid() && Game.IsServer )
+				EnqueueInteraction();
+		}
+
+		if ( Game.IsServer )
+		{
 			if ( HasValidInteractionRequest && CurrentInteractionRequest.Complete )
 				FinishInteraction();
 
 			// Remove the invalid or complete interaction request
 			if ( !HasActiveInteractionRequest
-			     || CurrentInteractionRequest.HitPoint.Distance( EyePosition ) > UseRange + 10 )
+					|| CurrentInteractionRequest.HitPoint.Distance( EyePosition ) > UseRange + 10 )
 			{
 				CancelInteraction();
 			}

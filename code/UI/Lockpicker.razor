@@ -33,7 +33,6 @@
     {
         instance?.Delete( true );
         instance = this;
-
         Component = component;
         CorrectAngle = Game.Random.Float( 0f, 360f );
     }
@@ -42,8 +41,11 @@
     {
         base.OnButtonEvent( e );
 
-        if ( e.Button == "mouseright" && !IsDeleting )
-            Delete();
+        if (e.Button == "mouseright")
+            if (IsDeleting)
+                Delete(true);
+            else
+                Delete();
 
         if ( e.Button == "mouseleft" )
         {
@@ -67,83 +69,116 @@
             Sound.FromWorld("sounds/lockpicking/lock_fail.sound", pawn.Position + pawn.Rotation.Forward * 30f + Vector3.Up * 30f);
     }
 
-	public static void Open( LockedComponent component )
-	{
-		var panel = new Lockpicker( component );
-		Hud.Instance.AddChild( panel );
-	}
+    public static void Open( LockedComponent component )
+    {
+        var panel = new Lockpicker( component );
+        Hud.Instance.AddChild( panel );
+    }
 
-	SceneObject wrench;
-	SceneObject pick;
+    SceneObject wrench;
+    SceneObject pick;
 
-	SceneModel padlock;
-	SceneCamera camera => panel.Camera;
-	ScenePanel panel;
+    SceneModel padlock;
+    SceneCamera camera => panel.Camera;
+    ScenePanel panel;
 
-	Transform targetTransform => new Transform( Vector3.Down * 3.5f, Rotation.From( 60, 0, 0 ) );
+    Transform targetTransform => new Transform( Vector3.Down * 3.5f, Rotation.From( 60, 0, 0 ) );
 
-	bool down = false;
-	bool solved = false;
-	float rotation = 0f;
-	float mouseAngle = 0;
+    bool down = false;
+    bool solved = false;
+    float rotation = 0f;
+    float mouseAngle = 0;
 
-	protected override void OnAfterTreeRender( bool firstTime )
-	{
-		base.OnAfterTreeRender( firstTime );
+    protected override void OnAfterTreeRender( bool firstTime )
+    {
+        base.OnAfterTreeRender( firstTime );
 
-		if ( !firstTime )
-			return;
+        if ( !firstTime )
+            return;
 
-		// Initialize our scene.
-		var world = new SceneWorld()
+        // Initialize our scene.
+        var world = new SceneWorld()
 		{
 			AmbientLightColor = Color.White,
 		};
 
-		_ = new SceneLight( world, Vector3.Up * 15f + Vector3.Backward * 5f, 50f, Color.White * 0.2f );
-		_ = new SceneLight( world, Vector3.Up * 25f + Vector3.Forward * 10f, 50f, Color.White * 0.2f );
-		_ = new SceneLight( world, Vector3.Backward * 5f + Vector3.Down *35f, 50f, Color.White * 0.05f );
+        _ = new SceneLight( world, Vector3.Up * 15f + Vector3.Backward * 5f, 50f, Color.White * 0.2f );
+        _ = new SceneLight( world, Vector3.Up * 25f + Vector3.Forward * 10f, 50f, Color.White * 0.2f );
+        _ = new SceneLight( world, Vector3.Backward * 5f + Vector3.Down *35f, 50f, Color.White * 0.05f );
 
-		var transform = new Transform( Vector3.Down * 3.5f, Rotation.From( 0, 0, 0 ) );
-		padlock = new SceneModel( world, "models/items/lock/lock.vmdl", transform );
-		wrench = new SceneObject( world, "models/items/wrench/wrench.vmdl", Transform.Zero );
-		pick = new SceneObject( world, "models/items/pick/pick.vmdl", Transform.Zero );
+        var transform = new Transform( Vector3.Down * 3.5f, Rotation.From( 0, 0, 0 ) );
+        padlock = new SceneModel( world, "models/items/lock/lock.vmdl", transform );
+        wrench = new SceneObject( world, "models/items/wrench/wrench.vmdl", Transform.Zero );
+        pick = new SceneObject( world, "models/items/pick/pick.vmdl", Transform.Zero );
 
-		panel = new ScenePanel();
-		panel.AddClass( "scene" );
+        panel = new ScenePanel();
+        panel.AddClass( "scene" );
 
-		camera.World = world;
-		camera.Size = 1500;
-		camera.FieldOfView = 60f;
-		camera.ZFar = 1000;
-		camera.ZNear = 5f;
-		AddChild( panel );
-	}
+        camera.World = world;
+        camera.Size = 1500;
+        camera.FieldOfView = 60f;
+        camera.ZFar = 1000;
+        camera.ZNear = 5f;
+        AddChild( panel );
+    }
 
-	private async void solvedAsync()
-	{
-		solved = true;
-		padlock.SetAnimParameter( "unlocked", true );
-		Component?.RequestLockpicked();
+    private async void solvedAsync()
+    {
+        solved = true;
+        padlock.SetAnimParameter( "unlocked", true );
+        Component?.RequestLockpicked();
 
-		await GameTask.Delay( 500 );
-		Delete();
-	}
+        await GameTask.Delay( 500 );
 
-	public override void Tick()
-	{
-		if ( Component == null 
-		  || Component.Entity == null 
-		  || !Component.Locked )
-		{
-			if ( !IsDeleting )
-				Delete();
+        Delete();
+    }
 
-			return;
-		}
+    public override void Delete(bool immediate = false)
+    {
+        if (Game.LocalPawn is not AnimatedEntity player) return;
+        Log.Error("btw yes player!");
+        player.SetAnimParameter("lockpicking", false);
+        stopAnimations();
+        base.Delete(immediate);
+    }
 
-		if ( camera == null || padlock == null )
-			return;
+    [ConCmd.Server]
+    internal static void stopAnimations()
+    {
+        if (ConsoleSystem.Caller.Pawn is not AnimatedEntity player) return;
+        player.SetAnimParameter("lockpicking", false);
+    }
+
+    [ConCmd.Server]
+    internal static void startAnimations()
+    {
+        if (ConsoleSystem.Caller.Pawn is not AnimatedEntity player) return;
+
+        player.SetAnimParameter("lockpicking", true);
+    }
+
+    public override void Tick()
+    {
+        if ( Component == null 
+          || Component.Entity == null 
+          || !Component.Locked )
+        {
+            if ( !IsDeleting )
+                Delete();
+
+            return;
+        }
+
+        if ( camera == null || padlock == null )
+            return;
+
+        if (Game.LocalPawn is not AnimatedEntity player) return;
+
+        if (!player.GetAnimParameterBool("lockpicking"))
+            startAnimations();
+
+        player.SetAnimParameter("lockpicking", true);
+
 
 		// Input stuff..
 		var rect = panel.Box.Rect;
