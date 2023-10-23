@@ -78,6 +78,26 @@ public partial class PissingGuy : NPC
 			}
 	}
 
+	TimeUntil nextDoor = 0f;
+	public override void ComputeOpenDoors()
+	{
+		if ( nextDoor )
+		{
+			base.ComputeOpenDoors();
+			nextDoor = Game.Random.Float( 0.1f, 0.2f );
+		}
+	}
+
+	TimeUntil nextFind = 0f;
+	public override void FindTargets()
+	{
+		if ( nextFind )
+		{
+			base.FindTargets();
+			nextFind = Game.Random.Float( 0.1f, 0.2f );
+		}
+	}
+
 	internal async void piss()
 	{
 		pissingParticle = Particles.Create( "particles/piss/piss.vpcf", Target.Position );
@@ -111,31 +131,6 @@ public partial class PissingGuy : NPC
 
 	public override void AssignNearbyTags()
 	{
-		if ( CurrentGrid == null ) return;
-
-		if ( nextTagsCheck )
-		{
-			var nearRadius = 50f;
-			var bbox = new BBox( Position, nearRadius * 2f );
-
-			foreach ( var oldCell in currentCells.ToList() )
-			{
-				oldCell.Tags.Remove( "monsterNearRange" );
-
-				currentCells.Remove( oldCell );
-			}
-
-			foreach ( var nearCell in CurrentGrid.GetCellsInBBox( bbox ) )
-			{
-				if ( nearCell.Position.Distance( Position ) <= nearRadius )
-				{
-					nearCell.Tags.Add( "monsterNearRange" );
-					currentCells.Add( nearCell );
-				}
-			}
-
-			nextTagsCheck = 0.5f + Game.Random.Float( -0.1f, 0.1f ); // Gotta add some randomness with these guys or else they'll all do this at the same tick which gets expensive
-		}
 	}
 
 
