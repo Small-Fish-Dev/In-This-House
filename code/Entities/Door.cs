@@ -16,14 +16,15 @@ public enum DoorState : sbyte
 public partial class Door : UsableEntity
 {
 	[Net] public DoorState State { get; set; } = DoorState.Closed;
-	[Property] public LevelType LevelType { get; set; } = LevelType.None;
+	[Property, Net] public LevelType LevelType { get; set; } = LevelType.None;
+	[Property, Net] public bool AlternativeModel { get; set; } = false;
 	[Net] public bool Locked { get; set; }
 
-	private static IReadOnlyDictionary<LevelType, string> models = new Dictionary<LevelType, string>()
+	private static IReadOnlyDictionary<LevelType, (string, string)> models = new Dictionary<LevelType, (string, string)>()
 	{
-		[LevelType.Mansion] = "models/furniture/mansion_furniture/mansion_door.vmdl",
-		[LevelType.Dungeon] = "models/furniture/dungeon_props/dungeon_wood_door.vmdl",
-		[LevelType.Bathrooms] = "models/furniture/dungeon_props/bathroom_stall_door.vmdl"
+		[LevelType.Mansion] = ("models/furniture/mansion_furniture/mansion_door.vmdl", "models/furniture/mansion_furniture/mansion_door.vmdl"),
+		[LevelType.Dungeon] = ("models/furniture/dungeon_props/dungeon_wood_door.vmdl", "models/furniture/dungeon_props/dungeon_jail_door.vmdl"),
+		[LevelType.Bathrooms] = ("models/furniture/dungeon_props/bathroom_stall_door.vmdl", "models/furniture/dungeon_props/bathroom_stall_door.vmdl")
 	};
 
 
@@ -58,7 +59,7 @@ public partial class Door : UsableEntity
 			return;
 		}
 
-		SetModel( model );
+		SetModel( AlternativeModel ? model.Item2 : model.Item2 );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		Tags.Add( "door" );
 		initialTransform = Transform;
