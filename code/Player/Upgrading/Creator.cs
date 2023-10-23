@@ -9,44 +9,53 @@ public static class Creator
 	{
 		Upgrade.ClearAll();
 
-		// Example
-		new Upgrade.Builder( "Jellyfish Jam", "Applies jellyfish jam on your body. Makes you faster." )
+		new Upgrade.Builder( "Work Shoes", "Makes you slip less" )
 			.ConfigureWith( v =>
-				v.SpeedMultiplier = 0.05f )
-			.WithPrice( 100 )
+				v.FrictionMultiplier = 1.5f )
+			.WithPrice( 500 )
 			// .WithTexture( "ui/icon/jellyfish-jam.png" )
 			.Build();
 
-		new Upgrade.Builder( "Fish Log", "Add a log to the game." )
+		new Upgrade.Builder( "Cartoony Sidekick", "Summon Doob the Dog to protect you" )
 			.ConfigureWith( v =>
-				v.SpeedMultiplier = 0.05f )
-			.WithPrice( 0 )
+				v.Doob = true )
+			.WithPrice( 1000 )
+			// .WithTexture( "ui/icon/jellyfish-jam.png" )
+			.Build();
+
+		new Upgrade.Builder( "Mansion Key", "The key needed to unlock the trapdoor found in the mansion" )
+			.ConfigureWith( v =>
+				v.KeyToDungeon = true )
+			.WithPrice( 800 )
+			// .WithTexture( "ui/icon/jellyfish-jam.png" )
+			.Build();
+
+		new Upgrade.Builder( "Faster Use", "Interacting with items takes less time" )
+			.ConfigureWith( v =>
+				v.UseMultiplier = 1.5f )
+			.WithPrice( 1100 )
 			// .WithTexture( "ui/icon/jellyfish-jam.png" )
 			.Build();
 		
-
-		/*new Upgrade.Builder( "Aura of Fear I", "Enemies around you have lower diligence." )
+		new Upgrade.Builder( "Dungeon Key", "The key needed to unlock the trapdoor found in the mansion" )
 			.ConfigureWith( v =>
-			{
-				v.AuraOfFear = 0.05f; // -5%
-			} )
-			.WithTexture( "fear/fear1.png" )
-			.Next( "Aura of Fear II",
-				v =>
-					v.WithTexture( "fear/fear2.png" )
-						.PlaceAt( Vector2.Left * 150 ) )
-			.Next( "Aura of Fear III",
-				v =>
-					v.WithTexture( "fear/fear3.png" )
-						.PlaceAt( Vector2.Left * 300 ) )
-			.Next( "Aura of Fear IV",
-				v =>
-					v.WithTexture( "fear/fear4.png" )
-						.PlaceAt( Vector2.Left * 450 ) )
-			.Next( "Aura of Fear V",
-				v =>
-					v.WithTexture( "fear/fear5.png" )
-						.PlaceAt( Vector2.Left * 600 ) )
-			.Build();*/
+				v.KeyToBathrooms = true )
+			.WithPrice( 1600 )
+			// .WithTexture( "ui/icon/jellyfish-jam.png" )
+			.Build();
+
+		new Upgrade.Builder( "Lock Breaker", "No need to lockpick, just break the lock" )
+			.ConfigureWith( v =>
+				v.BreakLocks = true )
+			.WithPrice( 1800 )
+			// .WithTexture( "ui/icon/jellyfish-jam.png" )
+			.Build();
+		
+		new Upgrade.Builder( "Exit Key", "The key needed to exit from this cursed place" )
+			.ConfigureWith( v =>
+				v.KeyToExit = true )
+			.WithPrice( 2200 )
+			// .WithTexture( "ui/icon/jellyfish-jam.png" )
+			.Build();
 	}
 }

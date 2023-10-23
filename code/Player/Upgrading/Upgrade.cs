@@ -37,20 +37,13 @@ public class Upgrade
 	#region Effects
 
 	// Example
-	[Effect] public float SpeedMultiplier { get; set; }
-	/*[Effect] public float AuraOfFear { get; set; }
-	[Effect] public float AuraOfRespect { get; set; }
-	[Effect] public float GoblinSchool { get; set; }
-	[Effect] public float VillageSize { get; set; }
-	[Effect] public float RecoveryTraining { get; set; }
-	[Effect] public float EnduranceTraining { get; set; }
-	[Effect] public float Swiftness { get; set; }
-	[Effect] public float Fortitude { get; set; }
-	[Effect] public float BackseatGaming { get; set; }
-	[Effect] public float NatureCalls { get; set; }
-	[Effect] public float Weapons { get; set; }
-	[Effect] public float Milk { get; set; }
-	[Effect] public float MacMansion { get; set; }*/
+	[Effect] public float FrictionMultiplier { get; set; } = 1f;
+	[Effect] public float UseMultiplier { get; set; } = 1f;
+	[Effect] public bool BreakLocks { get; set; } = false;
+	[Effect] public bool Doob { get; set; } = false;
+	[Effect] public bool KeyToDungeon { get; set; } = false;
+	[Effect] public bool KeyToBathrooms { get; set; } = false;
+	[Effect] public bool KeyToExit { get; set; } = false;
 
 	#endregion
 
