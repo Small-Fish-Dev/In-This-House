@@ -37,4 +37,9 @@ public class UsableEntity : AnimatedEntity
 		if ( Game.IsServer && StartLocked && attachment != null )
 			Components.GetOrCreate<LockedComponent>()?.Initialize();
 	}
+
+	public virtual bool CheckUpgrades( Player player )
+	{
+		return true;
+	}
 }

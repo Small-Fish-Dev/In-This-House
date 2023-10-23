@@ -124,7 +124,7 @@ partial class Player : AnimatedEntity
 			return;
 		}
 
-			// If the player has not used anything yet
+		// If the player has not used anything yet
 		if ( UsableEntity is not null
 			 && Input.Pressed( "use" )
 			&& !HasActiveInteractionRequest
@@ -139,8 +139,12 @@ partial class Player : AnimatedEntity
 					SetAnimParameter( "lockpicking", true );
 			}
 			// Grab if no one uses it
-			else if ( !UsableEntity.User.IsValid() && Game.IsServer )
-				EnqueueInteraction();
+			else
+			{
+				if ( Game.IsServer )
+					if ( UsableEntity.CheckUpgrades( this ) )
+						EnqueueInteraction();
+			}
 		}
 
 		if ( Game.IsServer )
