@@ -235,7 +235,7 @@
 	private Dictionary<ItemEntry, int> items;
 
 	[Event( "InventoryChanged" )]
-	void updated( IClient cl )
+	void updated( IClient cl, ItemEntry entry, int count )
 	{
 		if ( Game.IsServer || cl != Game.LocalClient )
 			return;

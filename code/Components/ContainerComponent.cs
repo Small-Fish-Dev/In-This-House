@@ -73,7 +73,7 @@ public partial class ContainerComponent : EntityComponent
 			if ( client != null )
 				sendUpdate( To.Single( client ), entry.Prefab.ResourceName, entry.Rarity, items[entry] );
 
-			Event.Run( "InventoryChanged", client );
+			Event.Run( "InventoryChanged", client, entry, items[entry] );
 		}
 
 		return success;
@@ -103,7 +103,7 @@ public partial class ContainerComponent : EntityComponent
 		if ( client != null )
 			sendUpdate( To.Single( client ), entry.Prefab.ResourceName, entry.Rarity, delete ? 0 : items[entry] );
 
-		Event.Run( "InventoryChanged", client );
+		Event.Run( "InventoryChanged", client, entry, delete ? 0 : items[entry] );
 
 		return true;
 	}
@@ -134,7 +134,7 @@ public partial class ContainerComponent : EntityComponent
 		try
 		{
 			Log.Warning( "FORCE RELOADING INVENTORY!" );
-			Event.Run( "InventoryChanged", client );
+			Event.Run( "InventoryChanged", client, "", 0 );
 		}
 		catch ( Exception e )
 		{
@@ -163,7 +163,7 @@ public partial class ContainerComponent : EntityComponent
 			delete = true;
 		}
 
-		Event.Run( "InventoryChanged", client );
+		Event.Run( "InventoryChanged", client, entry, delete ? 0 : items[entry] );
 
 		// HACK: just save
 		(Game.LocalPawn as Player)?.StoreSave();
