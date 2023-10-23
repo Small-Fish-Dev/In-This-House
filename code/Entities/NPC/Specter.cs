@@ -14,6 +14,7 @@ public partial class Specter : NPC
 	public bool IsTeleporting => IsLowering || IsRising;
 	[Net] public TimeSince LastTeleport { get; set; } = 999f; // screw it
 	internal CapsuleLightEntity lampLight { get; set; }
+	internal Particles teleport { get; set; }
 
 	public Specter() { }
 	public Specter( Level level ) : base( level ) { }
@@ -39,6 +40,7 @@ public partial class Specter : NPC
 	{
 		base.OnDestroy();
 		lampLight?.Delete();
+		teleport?.Destroy();
 	}
 
 	[GameEvent.Tick.Client]
@@ -62,6 +64,8 @@ public partial class Specter : NPC
 	{
 		if ( !IsTeleporting )
 		{
+			teleport?.Destroy();
+
 			if ( InVision.Count > 0 )
 			{
 				Target = InVision.OrderBy( x => x.Key.Position.Distance( Position ) )
@@ -139,6 +143,7 @@ public partial class Specter : NPC
 	public async void Teleport( Vector3 position )
 	{
 		LastTeleport = 0;
+		teleport = Particles.Create( "particles/dust/specter_teleport.vpcf", this, true );
 
 		await GameTask.Delay( (int)( TimeToTeleport * 500 + 500 ));
 
