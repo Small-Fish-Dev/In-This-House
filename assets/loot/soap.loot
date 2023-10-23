@@ -1,0 +1,11 @@
+{
+  "Name": "Soap",
+  "Description": "The finest soap to ever be found, this surely is a rarety among the soap world, you better make sure not to drop it!",
+  "Level": "Bathrooms",
+  "Model": "models/furniture/bathrooms_furniture/soap.vmdl",
+  "MonetaryValue": 5,
+  "DisplayFront": false,
+  "IconOffset": "0,0,0",
+  "IconAngles": "0,0,0",
+  "__references": []
+}

@@ -1,0 +1,11 @@
+{
+  "Name": "Toilet Roll",
+  "Description": "This is the most soft, most wonderful butt wiping paper to exist, a blessing to the butt world.",
+  "Level": "Bathrooms",
+  "Model": "models/furniture/bathrooms_furniture/toilet_roll.vmdl",
+  "MonetaryValue": 10,
+  "DisplayFront": false,
+  "IconOffset": "0,0,0",
+  "IconAngles": "0,0,0",
+  "__references": []
+}
