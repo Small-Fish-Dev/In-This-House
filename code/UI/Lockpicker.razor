@@ -17,37 +17,55 @@
 </root>
 
 @code {
-	// Valid range for our lockpicking.
-	public const float RANGE = 20f;
+    // Valid range for our lockpicking.
+    public const float RANGE = 20f;
 
-	public static bool Active => instance != null && !instance.IsDeleting && instance.IsValid && instance.IsVisible;
-	public LockedComponent Component { get; }
-	public float CorrectAngle { get; }
+    public static bool Active => instance != null && !instance.IsDeleting && instance.IsValid && instance.IsVisible;
+    public LockedComponent Component { get; }
+    public float CorrectAngle { get; }
 
-	private static Lockpicker instance;
+    private static Lockpicker instance;
 
-	// Don't actually use this..
-	public Lockpicker() : this( null ) { }
+    // Don't actually use this..
+    public Lockpicker() : this( null ) { }
 
-	public Lockpicker( LockedComponent component )
-	{
-		instance?.Delete( true );
-		instance = this;
+    public Lockpicker( LockedComponent component )
+    {
+        instance?.Delete( true );
+        instance = this;
 
-		Component = component;
-		CorrectAngle = Game.Random.Float( 0f, 360f );
-	}
+        Component = component;
+        CorrectAngle = Game.Random.Float( 0f, 360f );
+    }
 
-	public override void OnButtonEvent( ButtonEvent e )
-	{
-		base.OnButtonEvent( e );
+    public override void OnButtonEvent( ButtonEvent e )
+    {
+        base.OnButtonEvent( e );
 
-		if ( e.Button == "mouseright" && !IsDeleting )
-			Delete();
+        if ( e.Button == "mouseright" && !IsDeleting )
+            Delete();
 
-		if ( e.Button == "mouseleft" )
-			down = e.Pressed;
-	}
+        if ( e.Button == "mouseleft" )
+        {
+            down = e.Pressed;
+
+            if (e.Pressed)
+                makeSound(mouseAngle < CorrectAngle - RANGE && mouseAngle > CorrectAngle + RANGE);
+        }
+    }
+
+    [ConCmd.Server]
+    static void makeSound( bool fail )
+    {
+        var pawn = ConsoleSystem.Caller.Pawn;
+
+        if (pawn == null) return;
+
+        if ( fail )
+            Sound.FromWorld("sounds/lockpicking/lock_fail.sound", pawn.Position + pawn.Rotation.Forward * 30f + Vector3.Up * 30f);
+        else
+            Sound.FromWorld("sounds/lockpicking/lock_success.sound", pawn.Position + pawn.Rotation.Forward * 30f + Vector3.Up * 30f);
+    }
 
 	public static void Open( LockedComponent component )
 	{

@@ -1,14 +1,14 @@
 {
   "UI": false,
-  "Volume": "1.00,1.00,0",
+  "Volume": "0.80,0.80,0",
   "Pitch": "0.90,1.10,1",
-  "Decibels": 60,
+  "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
     "sounds/lockpicking/lock_fail1.vsnd",
     "sounds/lockpicking/lock_fail2.vsnd"
   ],
-  "MaximumDistance": 848.93066,
-  "MinimumDistance": 42.446533,
+  "MaximumDistance": 1143.9335,
+  "MinimumDistance": 57.196674,
   "__references": []
 }
