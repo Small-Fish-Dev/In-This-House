@@ -14,7 +14,7 @@
 
         @if ( Game.InGame )
         {
-            <a class="button highlight" href="/active">Current Game</a>
+            <a class="button highlight" href="/active" onclick=@MakeSound>Current Game</a>
             <a class="button" onclick=@LeaveGame>Leave Game</a>
             <span style="height: 20px;"></span>
         }
@@ -24,11 +24,11 @@
         }
 
         <a class="button" onclick="@OpenServerList">Find a Game</a>
-        <a class="button" href="/settings">Settings</a>
+        <a class="button" href="/settings" onclick=@MakeSound>Settings</a>
 
         <span style="height: 20px;"></span>
         
-        <a class="button" href="/credits">Credits</a>
+        <a class="button" href="/credits" onclick=@MakeSound>Credits</a>
 
         <span style="height: 20px;"></span>
 
@@ -40,6 +40,10 @@
 
 @code
 {
+    void MakeSound()
+    {
+        Sound.FromScreen("sounds/ui/press.sound");
+    }
     void LoadSavedGame()
     {
         this.Navigate( "/load" );
@@ -48,12 +52,14 @@
     void LeaveGame()
     {
         Game.Menu.LeaveServer("Leaving");
+        Sound.FromScreen("sounds/ui/press.sound");
     }
 
     void CreateNewGame()
     {
         var options = new Sandbox.Modals.GameCreateModalOptions();
         options.Cookie = $"{Game.Menu.Package.FullIdent}.serverconfig";
+        Sound.FromScreen("sounds/ui/press.sound");
 
 	    options.MaxPlayers = 4;
 	    options.MapSelection = false;
@@ -76,6 +82,7 @@
         {
             Game.Menu.ConnectToServer(server.SteamId);
         };
+        Sound.FromScreen("sounds/ui/press.sound");
 
         Game.Overlay.ShowServerList(options);
     }
