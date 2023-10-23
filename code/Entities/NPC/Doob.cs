@@ -7,8 +7,8 @@ public partial class Doob : NPC
 	public override string ModelPath { get; set; } = "models/doob/doob.vmdl";
 	public override float WalkSpeed { get; set; } = 140f;
 	public override float RunSpeed { get; set; } = 380f;
-	public override float CollisionHeight { get; set; } = 34f;
-	public override float CollisionRadius { get; set; } = 16f;
+	public override float CollisionHeight { get; set; } = 24f;
+	public override float CollisionRadius { get; set; } = 10f;
 	public bool IsBeingChased { get; set; } = false;
 	public new Player Owner { get; set; } = null;
 	public new float PushForce { get; set; } = 500f;
