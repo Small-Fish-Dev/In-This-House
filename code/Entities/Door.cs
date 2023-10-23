@@ -89,6 +89,8 @@ public partial class Door : UsableEntity
 
 		var localPosition = Transform.PointToLocal( user.Position );
 		side = localPosition.y > 0 ? -1 : 1;
+
+		PlaySound( "sounds/doors/dooropen.sound" );
 	}
 
 	public void Close()
@@ -125,6 +127,9 @@ public partial class Door : UsableEntity
 				: DoorState.Closed;
 
 			Transform = Transform.WithRotation( targetRotation );
+
+			if ( State == DoorState.Closed )
+				PlaySound( "sounds/doors/doorclose.sound" );
 
 			OccupyCells();
 			return;
