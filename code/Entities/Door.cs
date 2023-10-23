@@ -51,8 +51,7 @@ public partial class Door : UsableEntity
 	{
 		base.Spawn();
 
-		var level = MansionGame.Instance?.CurrentLevel?.Type ?? LevelType.Mansion;
-		if ( !models.TryGetValue( level, out var model ) )
+		if ( !models.TryGetValue( LevelType, out var model ) )
 		{
 			Delete();
 			Log.Warning( "Failed to spawn door!!" );
