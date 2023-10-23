@@ -152,7 +152,6 @@ public partial class Specter : NPC
 		ResetInterpolation();
 	}
 
-
 	[ConCmd.Server( "Specter" )]
 	public static void SpawnNPC()
 	{

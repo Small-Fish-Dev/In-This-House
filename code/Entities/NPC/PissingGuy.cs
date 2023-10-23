@@ -16,6 +16,7 @@ public partial class PissingGuy : NPC
 
 	public Vector3 StartingPosition { get; set; } = Vector3.Zero;
 	public Rotation StartingRotation { get; set; } = Rotation.Identity;
+	internal Particles pissingParticle { get; set; }
 
 	public PissingGuy() { }
 	public PissingGuy( Level level ) : base( level ) { }
@@ -29,7 +30,6 @@ public partial class PissingGuy : NPC
 
 	public override void ComputeIdleAndSeek()
 	{
-
 		if ( InVision.Count > 0 )
 		{
 			Target = InVision.OrderBy( x => x.Key.Position.Distance( Position ) )
@@ -69,11 +69,20 @@ public partial class PissingGuy : NPC
 		if ( Target != null ) // Kill player is in range
 			if ( Target.Position.Distance( Position ) <= KillRange )
 			{
+				piss();
+
 				if ( Target is Player player )
 					CatchPlayer( player );
 				if ( Target is Doob doob )
 					CatchDoob( doob );
 			}
+	}
+
+	internal async void piss()
+	{
+		pissingParticle = Particles.Create( "particles/piss/piss.vpcf", Target.Position );
+		await GameTask.Delay( (int)(AttackAnimationDuration * 1000) );
+		pissingParticle?.Destroy();
 	}
 
 	bool fixing = true;
@@ -85,6 +94,13 @@ public partial class PissingGuy : NPC
 		await GameTask.Delay( 500 );
 		SetAnimParameter( "walking", false );
 		fixing = false;
+	}
+
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+
+		pissingParticle?.Destroy();
 	}
 
 	public override void ComputeAnimations()
