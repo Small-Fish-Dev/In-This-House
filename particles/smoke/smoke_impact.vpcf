@@ -2,6 +2,19 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_nBehaviorVersion = 10
+	m_nInitialParticles = 1
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_Decay"
+		},
+	]
 	m_Children = 
 	[
 		{
@@ -16,11 +29,8 @@
 		{
 			m_ChildRef = resource:"particles/smoke/smoke4.vpcf"
 		},
-	]
-	m_controlPointConfigurations = 
-	[
 		{
-			m_name = "preview"
+			m_ChildRef = resource:"particles/impact/impact.vpcf"
 		},
 	]
 }
