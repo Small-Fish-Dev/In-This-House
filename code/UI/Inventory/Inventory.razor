@@ -1,0 +1,114 @@
+﻿@using System.Runtime.CompilerServices
+@using Sandbox.UI;
+
+@namespace BrickJam.UI
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	<div class="window">
+		<!--<div class="header">
+			<div class="image"></div>
+		</div>-->
+		<div class="container">
+			<div class="container-content">
+				<div class="shelf">
+					<div class="item">
+						
+					</div>
+					
+					<div class="item">
+                    						
+					</div>
+					
+					<div class="item">
+                    						
+					</div>
+					
+					<div class="item">
+                    						
+					</div>
+					
+					<div class="item">
+                                        						
+					</div>
+					
+					<div class="item">
+                                        						
+					</div>
+					
+					<div class="item">
+                                        						
+					</div>
+					<div class="item">
+                                        						
+					</div>
+					<div class="item">
+                    						
+					</div>
+					<div class="item">
+                    						
+					</div>
+					<div class="item">
+                    						
+					</div>
+					<div class="item">
+                    						
+					</div>
+					<div class="item">
+                    						
+                    					</div>
+				</div>
+				<div class="shelf">
+					<div class="item">
+                    						
+					</div>
+					<div class="item">
+                    						
+					</div>
+					<div class="item">
+                    						
+					</div>
+					<div class="item">
+                    						
+					</div>
+					<div class="item">
+                    						
+					</div>
+					<div class="item">
+                    						
+					</div>
+					<div class="item">
+                    						
+                    					</div>
+				</div>
+				<div class="shelf">
+
+				</div>
+			</div>
+			<div class="border-overlay"></div>
+		</div>
+	</div>
+</root>
+
+@code {
+
+	private static Inventory instance;
+	public static bool IsOpen => instance.HasClass( "open" );
+
+	private static void SetOpen( bool v )
+	{
+		instance.SetClass( "open", v );
+	}
+
+	public override void Tick()
+	{
+		base.Tick();
+
+		if ( Input.Pressed( "Inventory" ) )
+		{
+			SetOpen( !IsOpen );
+		}
+	}
+
+}
