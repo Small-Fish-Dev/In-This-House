@@ -28,6 +28,8 @@ public partial class SellArea : BaseTrigger
 		Eventlog.Send( $"You sold the <gray>{loot.FullName}<white> for <green>${loot.MonetaryValue}.",
 			To.Single( loot.LastPlayer ) );
 
+		Sound.FromWorld( "sounds/store/store.sound", loot.Position + loot.Rotation.Forward * 50f );
+		
 		OnSellRpc( To.Everyone, loot.Position, loot.MonetaryValue );
 		
 		loot.Delete();
