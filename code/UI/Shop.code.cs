@@ -15,6 +15,16 @@ public partial class Shop : Panel
 		UpdateUpgradeList();
 	}
 
+	public override void Tick()
+	{
+		base.Tick();
+
+		if ( Input.Pressed( "use" ) && IsOpen )
+		{
+			Close();
+		}
+	}
+
 	[Event( "UpgradeBought" )]
 	private void OnUpgradeBought( string identifier )
 	{
@@ -76,7 +86,7 @@ public partial class Shop : Panel
 		}
 
 		Player.BuyUpgrade( upgrade.Identifier );
-		
+
 		player.StoreSave();
 	}
 }
