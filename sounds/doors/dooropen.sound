@@ -1,0 +1,17 @@
+{
+  "UI": false,
+  "Volume": "0.85,1.00,1",
+  "Pitch": "0.80,1.10,1",
+  "Decibels": 60,
+  "SelectionMode": "RandomExclusive",
+  "Sounds": [
+    "sounds/doors/dooropen1.vsnd",
+    "sounds/doors/dooropen2.vsnd",
+    "sounds/doors/dooropen3.vsnd",
+    "sounds/doors/dooropen4.vsnd",
+    "sounds/doors/dooropen5.vsnd"
+  ],
+  "MaximumDistance": 848.93066,
+  "MinimumDistance": 42.446533,
+  "__references": []
+}
