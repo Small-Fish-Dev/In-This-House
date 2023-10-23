@@ -116,6 +116,7 @@ public partial class Loot : UsableEntity
 		ApplyAbsoluteImpulse( force * (normal + Vector3.Up * 0.5f) );
 
 		Particles.Create( "particles/smoke/smoke_steal.vpcf", Position );
+		Sound.FromWorld( "sounds/grab/grab.sound", Position );
 	}
 
 	[GameEvent.Tick.Server]
