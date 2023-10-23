@@ -17,7 +17,7 @@
 				m_nType = "PF_TYPE_LITERAL"
 				m_nMapType = "PF_MAP_TYPE_DIRECT"
 				m_NamedValue = ""
-				m_flLiteralValue = 3.0
+				m_flLiteralValue = 5.0
 				m_nControlPoint = 0
 				m_nScalarAttribute = 3
 				m_nVectorAttribute = 6
@@ -263,7 +263,7 @@
 		},
 		{
 			_class = "C_INIT_CreateWithinSphere"
-			m_vecDistanceBiasAbs = [ 1.0, 0.0, 1.0 ]
+			m_vecDistanceBiasAbs = [ 0.0, 0.0, 1.0 ]
 			m_fSpeedMin = 
 			{
 				m_nType = "PF_TYPE_LITERAL"
