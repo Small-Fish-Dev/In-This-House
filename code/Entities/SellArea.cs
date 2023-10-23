@@ -25,7 +25,7 @@ public partial class SellArea : BaseTrigger
 
 		loot.LastPlayer.SetMoney( loot.LastPlayer.Money + loot.MonetaryValue );
 
-		Eventlog.Send( $"You sold the <gray>{loot.FullName}<white> for <green>${loot.MonetaryValue}.",
+		Eventlog.Send( $"You sold the <gray>{loot.FullName}<white> for <rgb(50, 205, 50)>$</><white>{loot.MonetaryValue}.",
 			To.Single( loot.LastPlayer ) );
 
 		Sound.FromWorld( "sounds/store/store.sound", loot.Position + loot.Rotation.Forward * 50f );
