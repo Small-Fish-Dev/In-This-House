@@ -16,7 +16,17 @@ public enum DoorState : sbyte
 public partial class Door : UsableEntity
 {
 	[Net] public DoorState State { get; set; } = DoorState.Closed;
+	[Property] public LevelType LevelType { get; set; } = LevelType.None;
 	[Net] public bool Locked { get; set; }
+
+	private static IReadOnlyDictionary<LevelType, string> models = new Dictionary<LevelType, string>()
+	{
+		[LevelType.Mansion] = "models/furniture/mansion_furniture/mansion_door.vmdl",
+		[LevelType.Dungeon] = "models/furniture/dungeon_props/dungeon_wood_door.vmdl",
+		[LevelType.Bathrooms] = "models/furniture/dungeon_props/bathroom_stall_door.vmdl"
+	};
+
+
 
 	public override float InteractionDuration => 0.3f;
 	public override string UseString => ( State == DoorState.Open || State == DoorState.Opening ) ? "close the door" :"open the door";
@@ -40,7 +50,15 @@ public partial class Door : UsableEntity
 	{
 		base.Spawn();
 
-		SetModel( "models/furniture/mansion_furniture/mansion_door.vmdl" );
+		var level = MansionGame.Instance?.CurrentLevel?.Type ?? LevelType.Mansion;
+		if ( !models.TryGetValue( level, out var model ) )
+		{
+			Delete();
+			Log.Warning( "Failed to spawn door!!" );
+			return;
+		}
+
+		SetModel( model );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		Tags.Add( "door" );
 		initialTransform = Transform;
