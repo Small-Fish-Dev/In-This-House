@@ -3,6 +3,7 @@
 public partial class ShopLevel : Level
 {
 	public override LevelType Type { get; set; } = LevelType.Shop;
+	public override string Music => "sounds/music/scary_quest_at_midnight.sound";
 
 	public async override Task Start()
 	{

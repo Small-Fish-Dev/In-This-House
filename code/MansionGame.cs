@@ -157,6 +157,8 @@ public partial class MansionGame : GameManager
 			v.Text( "small fish jam game" );
 			v.Value( "time", DateTime.Now );
 			v.Space();
+			v.Value( "music volume", CurrentMusicVolume );
+			v.Space();
 
 			v.Group( "local camera", () =>
 			{
