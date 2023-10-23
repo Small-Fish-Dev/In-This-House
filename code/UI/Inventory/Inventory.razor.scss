@@ -98,7 +98,7 @@
                     height: 180px;
 
                     overflow: scroll;
-                    
+
                     align-items: center;
 
                     background-color: red;
@@ -109,11 +109,8 @@
                     background-image: url("ui/inv3/shelf.png");
 
                     .item {
-                        width: 90px;
-                        height: 90px;
-
                         flex-shrink: 0;
-                        
+
                         background-color: green;
 
                         margin-left: 30px;
