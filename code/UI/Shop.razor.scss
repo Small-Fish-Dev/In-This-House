@@ -119,6 +119,23 @@
                                 width: 100%;
                                 font-size: 30px;
                                 //background-color: red;
+                                
+                                justify-content: flex-start;
+                                
+                                .icon {
+                                    margin-left: 10px;
+
+                                    width: 30px;
+                                    height: 30px;
+                                    
+                                    image-rendering: pixelated;
+                                    background-size: 100%;
+                                    background-position: center;
+                                    
+                                    &.locked {
+                                        filter: brightness(0.2);
+                                    }
+                                }
                             }    
                             
                             .description {
