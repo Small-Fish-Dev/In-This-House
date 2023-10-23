@@ -114,6 +114,9 @@ public partial class Loot : UsableEntity
 		var normal = (user.EyePosition - Position).Normal;
 		var force = 100f + Position.Distance( user.EyePosition );
 		ApplyAbsoluteImpulse( force * (normal + Vector3.Up * 0.5f) );
+
+		Particles.Create( "particles/bomb_explosion_smoke.vpcf", Position ); // DOesn't work??
+
 	}
 
 	[GameEvent.Tick.Server]
