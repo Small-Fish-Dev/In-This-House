@@ -1,8 +1,8 @@
 {
-  "Title": "In This House",
+  "Title": "In This House (Compat)",
   "Type": "game",
   "Org": "fish",
-  "Ident": "2023_jam",
+  "Ident": "2023_jam_compat",
   "Tags": null,
   "Schema": 1,
   "HasAssets": true,
