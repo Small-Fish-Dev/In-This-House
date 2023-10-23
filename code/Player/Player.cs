@@ -300,10 +300,10 @@ partial class Player : AnimatedEntity, IPushable
 		EnableAllCollisions = false;
 		Blocked = false;
 
-		if ( Components.TryGet<ContainerComponent>( out ContainerComponent inventory ) )
+		/*if ( Components.TryGet<ContainerComponent>( out ContainerComponent inventory ) )
 			inventory.Clear();
 
-		ClearInventory( To.Single( Client ) );
+		ClearInventory( To.Single( Client ) );*/ // Comment out in case of disaster
 
 		Particles.Create( "particles/blood/blood_explosion.vpcf", Position );
 		Sound.FromWorld( "sounds/death.sound", Position );
