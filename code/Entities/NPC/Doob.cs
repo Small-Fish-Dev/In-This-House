@@ -102,6 +102,7 @@ public partial class Doob : NPC
 		{
 			var idle = PlaySound( IdleSound );
 			idle.SetVolume( IdleVolume );
+			nextIdleSound = Game.Random.Float( 4f, 8f );
 		}
 	}
 	public override AStarPathBuilder PathBuilder => new AStarPathBuilder( CurrentGrid )

@@ -138,6 +138,7 @@ public partial class Specter : NPC
 		{
 			var idle = PlaySound( IdleSound );
 			idle.SetVolume( IdleVolume );
+			nextIdleSound = Game.Random.Float( 4f, 8f );
 		}
 	}
 

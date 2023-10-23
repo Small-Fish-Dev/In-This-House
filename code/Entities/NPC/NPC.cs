@@ -136,6 +136,7 @@ public partial class NPC : AnimatedEntity, IPushable
 		{
 			var idle = PlaySound( IdleSound );
 			idle.SetVolume( IdleVolume );
+			nextIdleSound = Game.Random.Float( 4f, 8f );
 		}
 	}
 
