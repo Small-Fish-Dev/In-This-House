@@ -1,9 +1,10 @@
 {
   "Name": "Gold Bar",
-  "Description": "",
+  "Description": "A solid gold bar. Theres an incantation circle scribed on the bottom of it, and it has something written in latin on the top. Age has made it illegable to read. Holding it makes my hands shake.",
   "Level": "Dungeon",
   "Model": "models/items/gold_bar/gold_bar.vmdl",
   "MonetaryValue": 100,
+  "DisplayFront": false,
   "IconOffset": "15,0,0",
   "IconAngles": "0,90,-45",
   "__references": []

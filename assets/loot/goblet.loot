@@ -1,9 +1,10 @@
 {
   "Name": "Goblet",
-  "Description": "",
+  "Description": "A silver goblet. Its very old and there are dark red splatters on the inside. The smell is quite awful. What were they drinking out of this?",
   "Level": "Dungeon",
   "Model": "models/items/goblet/goblet.vmdl",
-  "MonetaryValue": 12,
+  "MonetaryValue": 40,
+  "DisplayFront": false,
   "IconOffset": "20,-4,-7",
   "IconAngles": "-40,-40,0",
   "__references": []

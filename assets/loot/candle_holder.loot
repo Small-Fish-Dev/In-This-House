@@ -1,9 +1,10 @@
 {
   "Name": "Candle Holder",
-  "Description": "",
+  "Description": "Very old candle holder made of pure gold. Oda Nobunaga is inscribed at the base of the holder, seems to be some sort of tribute. I\u0027ve heard of him, japanese warlord during japans sengoku period. He ran a very successful war campaign until he was assasinated. ",
   "Level": "Mansion",
   "Model": "models/items/candle_holder/candle_holder.vmdl",
   "MonetaryValue": 35,
+  "DisplayFront": false,
   "IconOffset": "35,0,-15",
   "IconAngles": "0,0,0",
   "__references": []

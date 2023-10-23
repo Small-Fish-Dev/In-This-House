@@ -1,9 +1,10 @@
 {
   "Name": "Urinal Cake",
-  "Description": null,
+  "Description": "These creatures here. They remind me of the painting from the mansion. No distinct features. Menacing aura. It\u0027s like they can sense you. I dont know what will happen if they take me......but they will. I cant escape it.",
   "Level": "Bathrooms",
   "Model": "models/items/urinal_cake/urinal_cake.vmdl",
   "MonetaryValue": 70,
+  "DisplayFront": false,
   "IconOffset": "0,0,0",
   "IconAngles": "-45,0,0",
   "__references": []

@@ -1,9 +1,10 @@
 {
   "Name": "Helmet",
-  "Description": "",
+  "Description": "An ancient helmet. Looks to be gothic in origin. On the inner flap something is written. \u0022se non etterne, e io etterno duro\u0022. How old this must be!",
   "Level": "Dungeon",
   "Model": "models/items/helmet/helmet.vmdl",
   "MonetaryValue": 50,
+  "DisplayFront": false,
   "IconOffset": "15,0,-7",
   "IconAngles": "10,30,10",
   "__references": []
