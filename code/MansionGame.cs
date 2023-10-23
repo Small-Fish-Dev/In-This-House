@@ -182,4 +182,42 @@ public partial class MansionGame : GameManager
 		base.RenderHud();
 		Event.Run( "render" );
 	}
+
+
+	[GameEvent.Entity.PostSpawn]
+	static async void checkForLockedDoorLMFAO()
+	{
+		await GameTask.Delay( 200 );
+
+		var allShopDoors = Entity.All.OfType<ShopDoor>();
+		
+		if ( allShopDoors.Count() == 0 )
+		{
+			Log.Error( "ISSUE #4105 ENCOUNTERED [RESTART S&BOX IF THIS PERSISTS]" );
+			Game.ChangeLevel( "mansion" );
+			return;
+		}
+
+		await GameTask.Delay( 200 );
+
+		var firstShopDoor = allShopDoors.FirstOrDefault();
+
+		if ( firstShopDoor == null || !firstShopDoor.IsValid() )
+		{
+			Log.Error( "ISSUE #4105 ENCOUNTERED [RESTART S&BOX IF THIS PERSISTS]" );
+			Game.ChangeLevel( "mansion" );
+			return;
+		}
+
+		await GameTask.Delay( 200 );
+
+		var lockComponent = firstShopDoor.Components.TryGet<LockedComponent>( out LockedComponent component );
+
+		if ( !lockComponent )
+		{
+			Log.Error( "ISSUE #4105 ENCOUNTERED [RESTART S&BOX IF THIS PERSISTS]" );
+			Game.ChangeLevel( "mansion" );
+			return;
+		}
+	}
 }
