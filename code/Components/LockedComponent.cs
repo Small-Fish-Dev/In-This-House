@@ -50,6 +50,8 @@ public partial class LockedComponent : EntityComponent
 
 	protected override void OnDeactivate()
 	{
+		if ( !Game.IsServer ) return;
+
 		Lock?.Delete();
 		base.OnDeactivate();
 	}

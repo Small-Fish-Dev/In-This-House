@@ -28,7 +28,9 @@ public partial class LootContainer : UsableEntity
 
 	protected override void OnDestroy()
 	{
-		Lock?.Lock?.Delete();
+		if ( Game.IsServer )
+			Lock?.Lock?.Delete();
+
 		base.OnDestroy();
 	}
 
