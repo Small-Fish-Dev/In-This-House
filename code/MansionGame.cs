@@ -144,7 +144,7 @@ public partial class MansionGame : GameManager
 		if ( TimerActive && TimeOut )
 		{
 			TimerStop();
-			RestartLevel();
+			RestartGame();
 		}
 	}
 
