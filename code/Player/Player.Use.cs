@@ -135,7 +135,10 @@ partial class Player : AnimatedEntity
 				if ( Game.IsServer )
 				{
 					if ( HasUpgrade( "Lock Breaker" ) )
+					{
+						Sound.FromWorld( "sounds/lockpicking/lockfall.sound", UsableEntity.Lock.Lock.Position );
 						UsableEntity.Lock.Unlock();
+					}
 					else
 					{
 						UsableEntity.Lock.Lockpick( this );
