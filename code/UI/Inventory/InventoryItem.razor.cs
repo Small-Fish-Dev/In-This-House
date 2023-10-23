@@ -5,12 +5,13 @@ namespace BrickJam.UI;
 
 public partial class InventoryItem : Panel
 {
-	private ItemEntry ItemEntry { get; set; }
+	public ItemEntry ItemEntry { get; }
 	private int Count { get; set; }
 
-	public InventoryItem( ItemEntry entry )
+	public InventoryItem( ItemEntry entry, int count )
 	{
 		ItemEntry = entry;
+		Count = count;
 
 		Style.SetBackgroundImage( ItemEntry.Prefab.Icon );
 	}

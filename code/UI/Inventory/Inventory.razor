@@ -12,7 +12,7 @@
 		</div>-->
 		<div class="container">
 			<div class="container-content">
-				<div class="shelf">
+				<div class="shelf" @ref=RefItemContainer>
 				</div>
 				<div class="shelf">
 					<div class="item">
@@ -47,7 +47,7 @@
 </root>
 
 @code {
-	
+
 	private static Inventory instance;
 	public static bool IsOpen => instance.HasClass( "open" );
 
