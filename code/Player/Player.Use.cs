@@ -18,7 +18,7 @@ partial class Player : AnimatedEntity
 				throw new ArgumentNullException( nameof(usableEntity) );
 
 			Entity = usableEntity;
-			Complete = usableEntity.InteractionDuration;
+			Complete = usableEntity.InteractionDuration / ( user.HasUpgrade( "Faster Use" ) ? 3f : 1f );
 			if ( hitPoint == null )
 			{
 				Log.Warning( "hitPoint == null?" );
@@ -133,10 +133,15 @@ partial class Player : AnimatedEntity
 			if ( UsableEntity.Locked )
 			{
 				if ( Game.IsServer )
-					UsableEntity.Lock.Lockpick( this );
-
-				if ( UsableEntity.Locked )
-					SetAnimParameter( "lockpicking", true );
+				{
+					if ( HasUpgrade( "Lock Breaker" ) )
+						UsableEntity.Lock.Unlock();
+					else
+					{
+						UsableEntity.Lock.Lockpick( this );
+						SetAnimParameter( "lockpicking", true );
+					}
+				}
 			}
 			// Grab if no one uses it
 			else

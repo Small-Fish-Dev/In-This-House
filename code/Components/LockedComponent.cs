@@ -45,10 +45,15 @@ public partial class LockedComponent : EntityComponent
 		if ( component == null )
 			return;
 
-		component.Locked = false;
-		component.Lock.Parent = null;
-		component.Lock.SetAnimParameter( "unlocked", true );
-		component.Lock.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
+		component.Unlock();
+	}
+
+	public void Unlock()
+	{
+		Locked = false;
+		Lock.Parent = null;
+		Lock.SetAnimParameter( "unlocked", true );
+		Lock.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 	}
 
 	[ClientRpc]
