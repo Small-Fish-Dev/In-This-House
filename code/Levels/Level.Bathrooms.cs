@@ -4,7 +4,9 @@ public partial class BathroomsLevel : Level
 {
 	public override LevelType Type { get; set; } = LevelType.Bathrooms;
 	public override string Music => "sounds/music/depths_and_terror.sound";
-	public override BBox WorldBox => new BBox( new Vector3( -3200f, -2000f, -3400f ), new Vector3( 4000f, 3900f, -5400f ) );
+	Vector3 pos => new Vector3( 448f, 704.75f, -4800f );
+	Vector3 size => new Vector3( 6600f, 4800f, 200f );
+	public override BBox WorldBox => new BBox( pos - size / 2f, pos + size / 2f);
 	public async override Task Start()
 	{
 		await base.Start();
