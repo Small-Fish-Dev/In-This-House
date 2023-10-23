@@ -1,0 +1,13 @@
+{
+  "UI": false,
+  "Volume": "1.00,1.00,0",
+  "Pitch": "1.00,1.00,0",
+  "Decibels": 80,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "sounds/doors/blizzard.vsnd"
+  ],
+  "MaximumDistance": 1484.3214,
+  "MinimumDistance": 74.21607,
+  "__references": []
+}
