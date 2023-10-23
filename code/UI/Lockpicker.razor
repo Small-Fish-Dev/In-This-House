@@ -136,7 +136,7 @@
     public override void Delete(bool immediate = false)
     {
         if (Game.LocalPawn is not AnimatedEntity player) return;
-        Log.Error("btw yes player!");
+
         player.SetAnimParameter("lockpicking", false);
         stopAnimations();
         base.Delete(immediate);
