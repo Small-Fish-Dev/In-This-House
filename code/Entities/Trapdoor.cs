@@ -23,6 +23,9 @@ public class Trapdoor : UsableEntity
 		base.Use( user );
 
 		if ( CanUse )
+		{
 			MansionGame.NextLevel();
+			PlaySound( "sounds/doors/dooropen.sound" );
+		}
 	}
 }
