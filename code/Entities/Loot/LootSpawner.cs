@@ -14,6 +14,7 @@ public partial class LootSpawner : Entity
 
 	[Property]
 	public float ChanceToSpawn { get; set; } = 0.5f;
+	[Property] public LevelType LevelType { get; set; } = LevelType.None;
 
 	public IEntity EntitySpawned { get; set; }
 
@@ -35,6 +36,7 @@ public partial class LootSpawner : Entity
 				{
 					Position = Position,
 					Rotation = Rotation,
+					LevelType = LevelType,
 				};
 
 				return;
