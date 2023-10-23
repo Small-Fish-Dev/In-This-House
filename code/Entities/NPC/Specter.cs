@@ -6,8 +6,8 @@ namespace BrickJam;
 public partial class Specter : NPC
 {
 	public override string ModelPath { get; set; } = "models/specter/specter.vmdl";
-	public override float WalkSpeed { get; set; } = 100f;
-	public override float RunSpeed { get; set; } = 270f;
+	public override float WalkSpeed { get; set; } = 80f;
+	public override float RunSpeed { get; set; } = 220f;
 	public float TimeToTeleport => 3f; // 4f = 2 seconds to go into ground, (1 second always added to stay underground) 2 seconds to rise up
 	public bool IsLowering => LastTeleport <= TimeToTeleport / 2f + 0.5f;
 	public bool IsRising => LastTeleport <= TimeToTeleport + 1f && LastTeleport > TimeToTeleport / 2f + 0.5f;
