@@ -37,7 +37,7 @@ public partial class Player
 		TripLeft = TripDuration;
 	}
 
-	[Net] public float SlipDuration { get; set; } = 1f;
+	[Net] public float SlipDuration { get; set; } = 2f;
 	public bool IsSlipping => !SlipLeft;
 	[Net] public TimeUntil SlipLeft { get; set; }
 

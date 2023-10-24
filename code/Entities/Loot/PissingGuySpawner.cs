@@ -9,7 +9,7 @@ namespace BrickJam;
 public partial class PissingGuySpawner : Entity
 {
 	[Property]
-	public float ChanceToSpawn { get; set; } = 0.3f;
+	public float ChanceToSpawn { get; set; } = 0.35f;
 
 	public override void Spawn()
 	{
