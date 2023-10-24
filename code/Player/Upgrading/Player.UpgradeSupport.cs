@@ -26,7 +26,8 @@ public partial class Player
 		foreach ( var identifier in Upgrades )
 		{
 			var upgrade = Upgrade.Find( identifier );
-			if ( upgrade == null ) throw new Exception( $"Unknown upgrade {identifier}" );
+			if ( upgrade == null )
+				return;
 			upgrade.ForwardEffects( _combinedUpgrades );
 		}
 	}
