@@ -36,7 +36,8 @@ public partial class PissingGuy : NPC
 	{
 		if ( InVision.Count > 0 )
 		{
-			Target = InVision.OrderBy( x => x.Key.Position.Distance( Position ) )
+			Target = InVision.Where( x => x.Key != null && x.Key.IsValid() )
+				.OrderBy( x => x.Key.Position.Distance( Position ) )
 				.FirstOrDefault().Key;
 			if ( Target is Player player )
 				if ( player.Doob != null )
@@ -73,12 +74,12 @@ public partial class PissingGuy : NPC
 		if ( Target != null ) // Kill player is in range
 			if ( Target.Position.Distance( Position ) <= KillRange )
 			{
-				piss();
-
 				if ( Target is Player player )
 					CatchPlayer( player );
 				if ( Target is Doob doob )
 					CatchDoob( doob );
+
+				piss();
 			}
 	}
 
