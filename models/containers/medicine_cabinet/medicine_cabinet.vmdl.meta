@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Medicine Cabinet",
+      "Type": "model",
+      "Org": "fish",
+      "Ident": "medicine_cabinet",
+      "Tags": "retro cabinet bathroom",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/containers/medicine_cabinet/medicine_cabinet.vmdl"
+      }
+    }
+  }
+}

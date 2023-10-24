@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Soap",
+      "Type": "model",
+      "Org": "fish",
+      "Ident": "soap",
+      "Tags": "retro soap clean bathroom",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/furniture/bathrooms_furniture/soap.vmdl"
+      }
+    }
+  }
+}

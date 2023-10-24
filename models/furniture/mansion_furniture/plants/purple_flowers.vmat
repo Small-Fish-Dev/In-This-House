@@ -2,7 +2,7 @@
 
 Layer0
 {
-	shader "shaders/default.shader"
+	shader "shaders/retro.shader"
 
 	//---- Rendering ----
 	F_RENDER_BACKFACES 1

@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Dithering - PostProcessing",
+      "Type": "shader",
+      "Org": "fish",
+      "Ident": "dithering_postprocess",
+      "Tags": "retro dither postprocess post process",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "shaders/dithering_postprocess.shader"
+      }
+    }
+  }
+}

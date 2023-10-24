@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Wall Torch",
+      "Type": "model",
+      "Org": "fish",
+      "Ident": "wall_torch",
+      "Tags": "retro dungeon torch metal",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/furniture/dungeon_props/wall_torch.vmdl"
+      }
+    }
+  }
+}

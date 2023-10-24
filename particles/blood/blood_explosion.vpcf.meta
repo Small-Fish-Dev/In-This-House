@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Blood Explosion",
+      "Type": "particle",
+      "Org": "fish",
+      "Ident": "blood_explosion",
+      "Tags": "retro blood splatter",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "particles/blood/blood_explosion.vpcf"
+      }
+    }
+  }
+}

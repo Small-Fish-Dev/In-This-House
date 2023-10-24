@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Barrel",
+      "Type": "model",
+      "Org": "fish",
+      "Ident": "barrel",
+      "Tags": "retro barrel wood",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/furniture/dungeon_props/barrel.vmdl"
+      }
+    }
+  }
+}

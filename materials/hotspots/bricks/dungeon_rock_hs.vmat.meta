@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Rock Hotspot",
+      "Type": "material",
+      "Org": "fish",
+      "Ident": "dungeon_rock_hs",
+      "Tags": "retro rock hotspot",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "materials/hotspots/bricks/dungeon_rock_hs.vmat"
+      }
+    }
+  }
+}

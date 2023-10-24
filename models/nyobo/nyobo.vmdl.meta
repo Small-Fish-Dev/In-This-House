@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Ao Nyobo",
+      "Type": "model",
+      "Org": "fish",
+      "Ident": "nyobo",
+      "Tags": "retro monster ghost npc",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/nyobo/nyobo.vmdl"
+      }
+    }
+  }
+}

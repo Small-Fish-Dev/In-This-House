@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Small Smoke 2",
+      "Type": "particle",
+      "Org": "fish",
+      "Ident": "smoke_small2",
+      "Tags": "retro smoke cloud",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "particles/smoke/smoke_small2.vpcf"
+      }
+    }
+  }
+}

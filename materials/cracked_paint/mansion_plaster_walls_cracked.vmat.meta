@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Cracked Plaster",
+      "Type": "material",
+      "Org": "fish",
+      "Ident": "mansion_plaster_walls_cracked",
+      "Tags": "retro plaster worn",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "materials/cracked_paint/mansion_plaster_walls_cracked.vmat"
+      }
+    }
+  }
+}

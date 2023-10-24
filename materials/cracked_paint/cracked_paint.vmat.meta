@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Cracked Paint",
+      "Type": "material",
+      "Org": "fish",
+      "Ident": "cracked_paint",
+      "Tags": "retro paint worn",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "materials/cracked_paint/cracked_paint.vmat"
+      }
+    }
+  }
+}

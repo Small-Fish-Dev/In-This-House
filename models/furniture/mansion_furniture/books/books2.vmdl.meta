@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Book Set 2",
+      "Type": "model",
+      "Org": "fish",
+      "Ident": "books2",
+      "Tags": "retro book decoration",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/furniture/mansion_furniture/books/books2.vmdl"
+      }
+    }
+  }
+}

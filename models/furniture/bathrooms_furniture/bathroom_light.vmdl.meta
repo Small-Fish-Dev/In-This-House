@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Long Light",
+      "Type": "model",
+      "Org": "fish",
+      "Ident": "bathroom_light",
+      "Tags": "retro light bathroom",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/furniture/bathrooms_furniture/bathroom_light.vmdl"
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@ public class DitheringEffect : RenderHook
 			return;
 
 		var attributes = new RenderAttributes();
-		var mat = Material.FromShader( "shaders/dithering.shader" );
+		var mat = Material.FromShader( "shaders/dithering_postprocess.shader" );
 		Graphics.GrabFrameTexture( renderAttributes: attributes );
 		Graphics.Blit( mat, attributes );
 	}

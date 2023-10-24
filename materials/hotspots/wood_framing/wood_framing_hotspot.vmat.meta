@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Framing Wood Hotspot",
+      "Type": "material",
+      "Org": "fish",
+      "Ident": "wood_framing_hotspot",
+      "Tags": "retro wood hotspot",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "materials/hotspots/wood_framing/wood_framing_hotspot.vmat"
+      }
+    }
+  }
+}

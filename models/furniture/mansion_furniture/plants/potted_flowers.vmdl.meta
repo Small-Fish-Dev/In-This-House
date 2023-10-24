@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Potted Flowers ",
+      "Type": "model",
+      "Org": "fish",
+      "Ident": "potted_flowers",
+      "Tags": "retro pot flower plant",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/furniture/mansion_furniture/plants/potted_flowers.vmdl"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Worn Wodden Chair",
+      "Type": "model",
+      "Org": "fish",
+      "Ident": "shitty_chair",
+      "Tags": "retro wood chair",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/furniture/shop/shitty_chair.vmdl"
+      }
+    }
+  }
+}

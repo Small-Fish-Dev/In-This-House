@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Stone Bricks",
+      "Type": "material",
+      "Org": "fish",
+      "Ident": "dungeon_tilable_rock",
+      "Tags": "retro bricks stone rock",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "materials/floor/dungeon_tilable_rock.vmat"
+      }
+    }
+  }
+}

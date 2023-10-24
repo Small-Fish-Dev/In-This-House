@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Gold Turd",
+      "Type": "model",
+      "Org": "fish",
+      "Ident": "golden_turd",
+      "Tags": "retro gold metal",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/items/golden_turd/golden_turd.vmdl"
+      }
+    }
+  }
+}

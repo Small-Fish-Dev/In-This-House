@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Leaves Plant",
+      "Type": "model",
+      "Org": "fish",
+      "Ident": "big_leaves",
+      "Tags": "retro plant leaves",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/furniture/mansion_furniture/plants/big_leaves.vmdl"
+      }
+    }
+  }
+}

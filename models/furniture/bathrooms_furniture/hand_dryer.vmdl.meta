@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Hand Dryer",
+      "Type": "model",
+      "Org": "fish",
+      "Ident": "hand_dryer",
+      "Tags": "retro bathroom",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/furniture/bathrooms_furniture/hand_dryer.vmdl"
+      }
+    }
+  }
+}

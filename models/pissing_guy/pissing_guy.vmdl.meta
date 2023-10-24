@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Pissing Guy",
+      "Type": "model",
+      "Org": "fish",
+      "Ident": "pissing_guy",
+      "Tags": "retro bathrrom pee piss npc",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/pissing_guy/pissing_guy.vmdl"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Retro Single Bed",
+      "Type": "model",
+      "Org": "fish",
+      "Ident": "mansion_single_bed",
+      "Tags": "retro bed wood",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/furniture/mansion_furniture/mansion_single_bed.vmdl"
+      }
+    }
+  }
+}
