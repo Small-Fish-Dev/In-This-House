@@ -41,7 +41,7 @@ public partial class Specter : NPC
 		lampLight.Color = new Color( 0.5f, 0.4f, 0.2f );
 		lampLight.Range = 512f;
 		lampLight.Brightness = 0.4f;
-		lampLight.Position = GetAttachment( "lamp" ).Value.Position;
+		lampLight.Position = GetAttachment( "lamp" ).GetValueOrDefault().Position;
 		lampLight.SetParent( this, "lamp" );
 	}
 
