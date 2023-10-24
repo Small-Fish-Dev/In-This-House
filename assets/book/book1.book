@@ -1,9 +1,9 @@
 {
-  "Text": null,
-  "Model": "models/sbox_props/watermelon/watermelon_gib08.vmdl",
-  "Name": null,
-  "Description": null,
+  "Text": "",
+  "Name": "",
+  "Description": "",
   "Level": "None",
+  "Model": "models/furniture/mansion_furniture/books/books4.vmdl",
   "MonetaryValue": 0,
   "DisplayFront": false,
   "IconOffset": "0,0,0",
