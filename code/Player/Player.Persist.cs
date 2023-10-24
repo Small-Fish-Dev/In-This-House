@@ -94,6 +94,7 @@ partial class Player
 		Money = save.Money;
 	}
 
+
 	public void StoreSave()
 	{
 		Log.Info( "Saving client data" );

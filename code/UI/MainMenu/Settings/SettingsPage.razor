@@ -42,9 +42,13 @@
     </section>
     
     <div class="navbar">
-    
+
         <div class="left">
             <span class="button primary" onclick="@RestoreDefaults">Restore Defaults</span>
+        </div>
+
+        <div class="left">
+            <span class="button primary" onclick="@ClearSaved">[DELETE SAVE FILE]</span>
         </div>
 
         <div class="right">
@@ -79,6 +83,23 @@
         }
 
         Game.Menu.SaveBinds();
+    }
+
+    public void ClearSaved()
+    {
+        Game.AssertClientOrMenu();
+
+        var z = $"{Game.SteamId}.player";
+
+        if (FileSystem.Data.FileExists(z))
+        {
+            FileSystem.Data.DeleteFile(z);
+            Log.Error("DATA CLEARED");
+        }
+        else
+        {
+            Log.Error("No save found");
+        }
     }
 
 }
