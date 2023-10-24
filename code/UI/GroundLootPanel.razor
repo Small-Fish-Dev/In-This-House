@@ -27,7 +27,7 @@
 	{
 		try
 		{
-			if ( Loot == null || !Loot.IsValid )
+			if ( Loot == null || !Loot.IsValid || Loot.Prefab == null )
 			{
 				if ( !IsDeleting )
 					Delete();
