@@ -25,39 +25,31 @@
 
 	public override void Tick()
 	{
-		try
+		if ( IsDeleting || Loot == null || !Loot.IsValid || Loot.Prefab == null )
 		{
-			if ( Loot == null || !Loot.IsValid || Loot.Prefab == null )
-			{
-				if ( !IsDeleting )
-					Delete();
+			if ( !IsDeleting )
+				Delete();
 
-				return;
-			}
-
-			var bounce = 2f * MathF.Sin( sinceCreation );
-			var height = (Loot.CollisionBounds.Maxs * Loot.Rotation).z;
-			Position = Loot.Prefab.DisplayFront
-				? Loot.WorldSpaceBounds.Center + Loot.Rotation.Up * 4f + bounce * Loot.Rotation.Right
-				: Loot.Position + (height + bounce + 15f) * Vector3.Up * Loot.Scale;
-
-			var rotation = Rotation.LookAt( Camera.Position - Position );
-			var targetRoll = 5f * MathF.Sin( sinceCreation * 1.5f );
-			var roll = MathF.Floor( targetRoll * 2f + 0.5f ) / 2f;
-			Rotation = Loot.Prefab.DisplayFront
-				? Loot.Rotation.RotateAroundAxis( Vector3.Up, 90f + roll ).RotateAroundAxis( Vector3.Right, 90f )
-				: Rotation.From( rotation.Pitch(), rotation.Yaw(), roll );
-			WorldScale = Loot.Scale;
-
-			var dist = Game.LocalPawn?.Position.Distance( Position ) ?? 0;
-			var remapped = MathX.Remap( dist, 500, 700, 1, 0 );
-			Style.Opacity = remapped;
+			return;
 		}
-		catch ( Exception e )
-		{
-			// TODO: why is this erroring?
-			Log.Warning( $"GroundLootPanel err: ${e.Message}" );
-		}
+
+		var bounce = 2f * MathF.Sin( sinceCreation );
+		var height = (Loot.CollisionBounds.Maxs * Loot.Rotation).z;
+		Position = Loot.Prefab.DisplayFront
+			? Loot.WorldSpaceBounds.Center + Loot.Rotation.Up * 4f + bounce * Loot.Rotation.Right
+			: Loot.Position + (height + bounce + 15f) * Vector3.Up * Loot.Scale;
+
+		var rotation = Rotation.LookAt( Camera.Position - Position );
+		var targetRoll = 5f * MathF.Sin( sinceCreation * 1.5f );
+		var roll = MathF.Floor( targetRoll * 2f + 0.5f ) / 2f;
+		Rotation = Loot.Prefab.DisplayFront
+			? Loot.Rotation.RotateAroundAxis( Vector3.Up, 90f + roll ).RotateAroundAxis( Vector3.Right, 90f )
+			: Rotation.From( rotation.Pitch(), rotation.Yaw(), roll );
+		WorldScale = Loot.Scale;
+
+		var dist = Game.LocalPawn?.Position.Distance( Position ) ?? 0;
+		var remapped = MathX.Remap( dist, 500, 700, 1, 0 );
+		Style.Opacity = remapped;
 	}
 
 	protected override int BuildHash()
