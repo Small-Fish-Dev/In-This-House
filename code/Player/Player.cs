@@ -236,11 +236,13 @@ partial class Player : AnimatedEntity, IPushable
 			string levelSound = MansionGame.Instance.CurrentLevel.Type switch
 			{
 				LevelType.Mansion => "sounds/footsteps/footstep-wood.sound",
+				LevelType.Shop => "sounds/footsteps/footstep-wood.sound",
 				_ => "sounds/footsteps/footstep-concrete.sound",
 			};
 
 			var footstep = Sound.FromWorld( levelSound, position );
-			var newVolume = MathX.Remap( Velocity.Length, WalkSpeed, RunSpeed, 0.3f, 0.6f );
+
+			var newVolume = MathX.Remap( Velocity.Length, WalkSpeed, RunSpeed, 1f, 2f );
 			footstep.SetVolume( newVolume );
 		}	
 	}
@@ -250,6 +252,7 @@ partial class Player : AnimatedEntity, IPushable
 		string levelSound = MansionGame.Instance.CurrentLevel.Type switch
 		{
 			LevelType.Mansion => "sounds/footsteps/footstep-wood-jump.sound",
+			LevelType.Shop => "sounds/footsteps/footstep-wood.sound",
 			_ => "sounds/footsteps/footstep-concrete-jump.sound",
 		};
 
@@ -262,6 +265,7 @@ partial class Player : AnimatedEntity, IPushable
 		string levelSound = MansionGame.Instance.CurrentLevel.Type switch
 		{
 			LevelType.Mansion => "sounds/footsteps/footstep-wood-land.sound",
+			LevelType.Shop => "sounds/footsteps/footstep-wood.sound",
 			_ => "sounds/footsteps/footstep-concrete-land.sound",
 		};
 
