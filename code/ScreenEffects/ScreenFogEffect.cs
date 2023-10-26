@@ -12,7 +12,7 @@ public class ScreenFogEffect : RenderHook
 		if ( stage != Stage.AfterTransparent )
 			return;
 
-		var mat = Material.FromShader( "shaders/screenfogpostprocess.shader" );
+		var mat = Material.FromShader( "shaders/screenfog_postprocess.shader" );
 
 		var attributes = new RenderAttributes();
 		attributes.Set( "Color", Color );
