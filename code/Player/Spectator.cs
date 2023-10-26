@@ -50,7 +50,7 @@ public partial class Spectator : AnimatedEntity
 	{
 		base.FrameSimulate( cl );
 
-		if ( Following is not null )
+		if ( Following != null )
 		{
 			Camera.Position = Following.EyePosition;
 			Camera.Rotation = Following.Rotation;
