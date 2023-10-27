@@ -196,7 +196,7 @@
 
 		// Check if we've succesfully lockpicked!
 		if ( !solved && down
-		  && rotation.AlmostEqual( 90f, RANGE )
+		  && rotation.AlmostEqual( 90f, 1f )
 		  && mouseAngle >= CorrectAngle - RANGE && mouseAngle <= CorrectAngle + RANGE )
 			solvedAsync();
 
