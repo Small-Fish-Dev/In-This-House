@@ -89,7 +89,7 @@ public partial class Player
 			return;
 		}
 
-		caller.Money -= upgrade.Price;
+		caller.SetMoney( caller.Money - upgrade.Price );
 		caller.AddUpgrade( identifier );
 	}
 }

@@ -1,5 +1,4 @@
-﻿@using Sandbox;
-@using Sandbox.UI;
+﻿@using Sandbox.UI;
 
 @namespace BrickJam.UI
 @inherits WorldPanel
@@ -11,8 +10,8 @@
 </root>
 
 @code {
-	private static Dictionary<BrickJam.Player, Nametag> nametags = new();
-	public BrickJam.Player Player { get; private set; }
+	private static Dictionary<Player, Nametag> nametags = new();
+	public Player Player { get; private set; }
 	TimeSince sinceCreation = 0;
 
 	public Nametag()
@@ -36,7 +35,7 @@
 		}
 
 		var bounce = 2f * MathF.Sin( sinceCreation );
-		Position = Player.EyePosition + (10f + bounce) * Vector3.Up;
+		Position = Player.EyePosition + (12f + bounce) * Vector3.Up;
 
 		var rotation = Rotation.LookAt( Camera.Position - Position );
 		var targetRoll = 5f * MathF.Sin( sinceCreation * 1.5f );
@@ -51,12 +50,14 @@
 	private static void creator()
 	{
 		var players = Game.Clients
-			.Select( x => x.Pawn as BrickJam.Player );
+			.Select( x => x.Pawn as Player );
 
 		foreach ( var player in players )
 		{
-			if ( player == null || !player.IsAlive || nametags.TryGetValue( player, out var panel ) || Game.LocalPawn == player )
-				continue;
+			if ( player == null 
+				|| !player.IsAlive 
+				|| nametags.TryGetValue( player, out var panel ) 
+				|| Game.LocalPawn == player ) continue;
 
 			nametags.Add( player, new Nametag() { 
 				Player = player 

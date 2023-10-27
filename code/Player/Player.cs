@@ -42,6 +42,7 @@ partial class Player : AnimatedEntity, IPushable
 		EnableAllCollisions = true;
 		EnableDrawing = true;
 		EnableHideInFirstPerson = false;
+		Transmit = TransmitType.Always;
 
 		// Remember to create the container component!!!
 		Components.GetOrCreate<ContainerComponent>();
@@ -83,7 +84,8 @@ partial class Player : AnimatedEntity, IPushable
 	public bool crouching = false;
 
 	public Rotation InputRotation => InputAngles.ToRotation();
-	public Vector3 EyePosition => Position + Vector3.Up * ( IsCrouching ? 28f : 64f );
+	public Vector3 EyePosition => (GetAttachment( "eyes" )?.Position - InputRotation.Up * 2f - Rotation.Forward * 3f) 
+		?? (Position + Vector3.Up * ( IsCrouching ? 28f : 64f ));
 
 	public override void BuildInput()
 	{
@@ -134,7 +136,7 @@ partial class Player : AnimatedEntity, IPushable
 			if ( !MovementLocked )
 			{
 				Camera.Rotation = InputRotation;
-				Camera.Position = GetAttachment( "eyes" )?.Position - InputRotation.Up * 2f - Rotation.Forward * 3f ?? EyePosition;
+				Camera.Position = EyePosition;
 				Camera.FirstPersonViewer = this;
 			}
 			else
@@ -285,7 +287,7 @@ partial class Player : AnimatedEntity, IPushable
 		EnableAllCollisions = true;
 		Blocked = false;
 		
-		SetMaskTint(Client.GetColor());
+		SetMaskTint( Client.GetColor() );
 	}
 
 	[ClientRpc]

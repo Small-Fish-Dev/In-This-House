@@ -1,5 +1,4 @@
-﻿@using Sandbox;
-@using Sandbox.UI;
+﻿@using Sandbox.UI;
 
 @namespace BrickJam.UI
 @inherits RootPanel
@@ -7,27 +6,38 @@
 
 <root>
 	@{
-		var player = LocalPlayer;
+		var activePlayer = Game.LocalPawn is Player player
+			? player
+			: Game.LocalPawn is Spectator spectator
+				? spectator.Following
+				: null;
 
 		var isSpectator = Game.LocalPawn is Spectator;
-		var isPlayer = Game.LocalPawn is BrickJam.Player;
+		var isPlayer = Game.LocalPawn is Player;
 	}
 
 	<Timer Active="@(MansionGame.Instance.TimerActive)" @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
 
-	@if( Game.LocalPawn is BrickJam.Player ply && ply.IsValid )
+	@if ( isPlayer && activePlayer.IsValid )
 	{
 		<Inventory/>
 		<Eventlog/>
 	    <Shop/>
 	}
 
-	@if (player is not null)
+	@{
+		var targetPlayer = Game.LocalPawn is Spectator spec
+			? spec.Following ?? spec.Body
+			: activePlayer;
+
+		<MoneyCounter TargetMoney="@(targetPlayer.Money)" Player=@(targetPlayer) />
+	}
+
+	@if ( activePlayer != null )
 	{
 		<!-- The client either has a living pawn or is observing another player's pawn -->
-		<StunIndicator @Player=@player/>
-		<MoneyCounter @Player=@player/>
-		<Interactions @Player=@player/>
+		<StunIndicator Player=@(activePlayer) />
+		<Interactions Player=@activePlayer />
 
 		<Crosshair>
 			<Top>
@@ -40,14 +50,14 @@
 				<!--Some text on the bottom-->
 				@if (isPlayer)
 				{
-					<InteractionTip @Player=@player/>
+					<InteractionTip @Player=@activePlayer />
 				}
 			</Bottom>
 		</Crosshair>
 	}
 
 	<div class="input-hints">
-		@if (Game.LocalPawn is Spectator)
+		@if ( isSpectator )
 		{
 			<div class="hint"><inputglyph action="StopFollowing"/>Stop following</div>
 			<div class="hint"><inputglyph action="FollowNext"/>Next player</div>
@@ -73,14 +83,14 @@
 		input.SetClass( "visible", false );
 	}) />
 
-	<SubtitlesList @Pawn=@player />
+	<SubtitlesList @Pawn=@activePlayer />
 
-	<div class="death @(Game.LocalPawn is Spectator ? "visible" : "")">
+	<div class="death @(isSpectator ? "visible" : "")">
 		<div class="container">
 			<span class="title">YOU'RE DEAD!</span>
-			@if ( player is not null )
+			@if ( activePlayer != null && activePlayer.Client != Game.LocalClient )
 			{
-				<span>Observing @(player.Client.Name).</span>
+				<span>Observing @(activePlayer.Client.Name).</span>
 			}
 		</div>
 	</div>
@@ -90,13 +100,6 @@
 	public TextInput ChatInput { get; private set; }
 	public static Hud Instance => (Hud)_instance?.Target;
 	private static WeakReference _instance;
-
-	private static BrickJam.Player LocalPlayer => Game.LocalPawn switch
-	{
-		BrickJam.Player playerAlive => playerAlive,
-		Spectator playerSpectator => playerSpectator.Following,
-		_ => null
-	};
 
 	public Hud()
 	{
@@ -118,8 +121,9 @@
 
 	protected override int BuildHash()
 	{
-	// TODO: don't change it to "MansionGame.Instance?" !!! There's something that is calling this func from the menu
-		return HashCode.Combine( Game.LocalPawn, LocalPlayer, MansionGame.Instance.TimerActive );
+		return HashCode.Combine( 
+			Game.LocalPawn, 
+			(Game.LocalPawn as Spectator)?.Following?.NetworkIdent ?? 0,
+			MansionGame.Instance.TimerActive );
 	}
-
 }

@@ -1,5 +1,4 @@
-﻿@using Sandbox;
-@using Sandbox.UI;
+﻿@using Sandbox.UI;
 
 @namespace BrickJam.UI
 @inherits Panel
@@ -13,7 +12,7 @@
 </root>
 
 @code {
-	public BrickJam.Player Player;
+	public Player Player { get; set; }
 
 	private static MoneyCounter instance;
 	const float DELAY = 2f;
@@ -26,7 +25,7 @@
 
 	Label money;
 	float oldMoney;
-	float targetMoney = 0;
+	public float TargetMoney = 0;
 
 	int? initialMoney;
 	int currentTotal;
@@ -43,7 +42,7 @@
 		instance.change = null;
 
 		instance.initialMoney = null;
-		instance.targetMoney = instance.Player?.Money ?? 0;
+		instance.TargetMoney = instance.Player?.Money ?? 0;
 		instance.currentTotal = 0;
 	}
 
@@ -60,7 +59,7 @@
 		if ( Player == null || money == null )
 			return;
 
-		oldMoney = MathX.LerpTo( oldMoney, targetMoney, 10f * Time.Delta );
+		oldMoney = MathX.LerpTo( oldMoney, TargetMoney, 10f * Time.Delta );
 		money.Text = $"{(int)(oldMoney + 0.5f):n0}";
 	}
 
@@ -99,7 +98,7 @@
 
 	protected override int BuildHash()
 	{
-		return Player?.Money.GetHashCode() ?? 0;
+		return HashCode.Combine( Player?.NetworkIdent ?? 0, Player?.Money ?? 0 );
 	}
 }
 
