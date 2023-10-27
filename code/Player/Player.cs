@@ -365,6 +365,7 @@ partial class Player : AnimatedEntity, IPushable
 			return;
 
 		_sendMessage( pawn.NetworkIdent, message );
+		Eventlog.Send( $"<gray>{pawn.Client.Name}</> said \"{message}</>\".", To.Everyone, 15f );
 	}
 
 	[ConCmd.Server]
