@@ -27,7 +27,10 @@
 		if ( Player == null || !Player.IsValid || !Player.IsAlive )
 		{
 			if ( !IsDeleting )
+			{
+				nametags.Remove( Player );
 				Delete();
+			}
 
 			return;
 		}
