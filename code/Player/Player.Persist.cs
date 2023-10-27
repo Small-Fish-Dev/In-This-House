@@ -24,6 +24,7 @@ partial class Player
 		public int Money { get; set; }
 		public List<ItemSave> Inventory { get; set; }
 		public List<string> Upgrades { get; set; }
+		public bool SeenTips { get; set; }
 
 		public static PlayerSave Load( string data ) => Json.Deserialize<PlayerSave>( data );
 
@@ -46,7 +47,10 @@ partial class Player
 		{
 			var x = new PlayerSave
 			{
-				Inventory = new List<ItemSave>(), Upgrades = new List<string>(), Money = player.Money
+				Inventory = new List<ItemSave>(), 
+				Upgrades = new List<string>(), 
+				Money = player.Money,
+				SeenTips = player.SeenTips
 			};
 
 			foreach ( var (key, count) in player.Inventory.Loots )
@@ -91,6 +95,7 @@ partial class Player
 			Upgrades.Add( saveUpgrade );
 		}
 
+		SeenTips = save.SeenTips;
 		Money = save.Money;
 	}
 

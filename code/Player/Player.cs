@@ -16,6 +16,8 @@ partial class Player : AnimatedEntity, IPushable
 
 	[Net] public NPC CameraTarget { get; set; } = null;
 	public float PushForce { get; set; } = 2500f;
+	
+	public bool SeenTips { get; set; } = false;	
 
 	[Net] protected ModelEntity Mask { get; set; }
 
@@ -30,6 +32,10 @@ partial class Player : AnimatedEntity, IPushable
 			Log.Info( "Sending save to the server" );
 			SendSaveToServer( save.Value );
 		}
+
+		// Tutorial!
+		if ( !SeenTips )
+			Hud.Instance?.AddChild<TutorialTips>();
 	}
 	
 	public override void Spawn()

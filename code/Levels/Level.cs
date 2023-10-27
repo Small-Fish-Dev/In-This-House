@@ -1,5 +1,6 @@
 ﻿using BrickJam.UI;
 using Sandbox;
+using System.Diagnostics.Tracing;
 using static Sandbox.Gizmo;
 
 namespace BrickJam;
@@ -32,6 +33,7 @@ public abstract partial class Level : Entity // Easy replication to client
 		{
 			MansionGame.RestartGame();
 			GameIsEnding = true;
+			Eventlog.Send( "<red>Looks like everyone died, better luck next time!", To.Everyone );
 		}
 	}
 

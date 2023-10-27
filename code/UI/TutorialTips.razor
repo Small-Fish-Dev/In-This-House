@@ -1,0 +1,124 @@
+﻿@using Sandbox.UI;
+
+@namespace BrickJam.UI
+@inherits Panel
+
+<root>
+	<div class="container">
+		<div class="image" style="background-image: url(@(tip.Image));" />
+		<div style="flex-direction: row; align-items: center;">
+			<div style="flex-direction: column;">
+				<span class="text">@(tip.Text) (@(tipIndex + 1) of @tips.Count)</span>
+				<div class="other">
+					<span>Press</span>
+					<inputglyph action="@(TIP_ACTION)" />
+					<span>to go to the next tip.</span>
+				</div>
+			</div>
+			<RadialProgress @Progress=@( () => tipTime / TIP_TIME ) />
+		</div>
+	</div>
+</root>
+
+@code {
+	public const float TIP_TIME = 15f;
+	public const string TIP_ACTION = "use";
+
+	private int tipIndex;
+	private TimeSince tipTime;
+	private (string Image, string Text) tip => tips[tipIndex];
+
+	private List<(string Image, string Text)> tips = new()
+	{
+		("ui/tutorial/1.png", "Loot as much stuff as possible while avoiding the level's enemy!"),
+		("ui/tutorial/2.png", "Avoid tripping by staying away from obstacles on the floor."),
+		("ui/tutorial/3.png", "Look for an exit to the store or next level."),
+		("ui/tutorial/4.png", "Sell your stuff at the shop by dropping everything behind the counter."),
+		("ui/tutorial/5.png", "Invite a few friends over and have fun!")
+	};
+
+	private void NextTip()
+	{
+		tipIndex++;
+		if ( tipIndex >= tips.Count )
+		{
+			if ( !IsDeleting )
+				Delete();
+
+			if ( Game.LocalPawn is Player player )
+			{
+				player.SeenTips = true;
+				player.StoreSave();
+			}
+
+			return;
+		}
+
+		tipTime = 0;
+		StateHasChanged();
+	}
+
+	public override void Tick()
+	{
+		if ( Input.Pressed( TIP_ACTION ) || tipTime >= TIP_TIME )
+			NextTip();
+	}
+}
+
+<style>
+	TutorialTips {
+		position: absolute;
+		top: 0%;
+		right: 10px;
+		height: 100%;
+		pointer-events: none;
+		align-items: center;
+		z-index: 3;
+				
+		.container {
+			width: 600px;
+			flex-direction: column;
+			background-color: rgba(black, 0.5);
+			font-size: 32px;
+			color: white;
+			text-shadow: 4px 4px 0px black;
+			padding: 10px;
+
+			.image {
+				width: 100%;
+				aspect-ratio: 1.3333;
+				background-size: 100%;
+				background-position: center;
+				background-repeat: no-repeat;
+				border: 2px white;
+				margin-bottom: 10px;
+			}
+
+			.text {
+				padding-bottom: 10px;
+			}
+			
+			.other {
+				flex-direction: row;
+				color: gray;
+				font-size: 24px;
+
+				InputGlyph {
+					width: 24px;
+					aspect-ratio: 1;
+					margin-right: 10px;
+					margin-left: 10px;
+					background-image-tint: gray;
+				}
+			}
+
+			RadialProgress {
+				margin: 10px;
+				width: 48px;
+				aspect-ratio: 1;
+				margin-right: 10px;
+				filter: drop-shadow(3px 3px 1px black);
+			}
+		}
+	}
+</style>
