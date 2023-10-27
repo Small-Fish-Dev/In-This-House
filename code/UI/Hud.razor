@@ -31,6 +31,7 @@
 			: activePlayer;
 
 		<MoneyCounter TargetMoney="@(targetPlayer.Money)" Player=@(targetPlayer) />
+		<PlayerCounter Active="@(MansionGame.Instance.TimerActive)" />
 	}
 
 	@if ( activePlayer != null )
