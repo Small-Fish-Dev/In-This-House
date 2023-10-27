@@ -5,7 +5,7 @@
   "Model": "models/furniture/bathrooms_furniture/toilet_roll.vmdl",
   "MonetaryValue": 60,
   "DisplayFront": false,
-  "IconOffset": "0,0,0",
-  "IconAngles": "0,0,0",
+  "IconOffset": "10,-3,-2",
+  "IconAngles": "45,45,0",
   "__references": []
 }
