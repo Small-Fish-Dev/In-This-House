@@ -18,7 +18,7 @@
 
 @code {
     // Valid range for our lockpicking.
-    public const float RANGE = 20f;
+    public const float RANGE = 5f;
 
     public static bool Active => instance != null && !instance.IsDeleting && instance.IsValid && instance.IsVisible;
     public LockedComponent Component { get; }
@@ -196,8 +196,7 @@
 
 		// Check if we've succesfully lockpicked!
 		if ( !solved && down
-		  && rotation.AlmostEqual( 90f, 1f )
-		  && mouseAngle >= CorrectAngle - RANGE && mouseAngle <= CorrectAngle + RANGE )
+		  && rotation.AlmostEqual( 90f, RANGE ) )
 			solvedAsync();
 
 		// Camera stuff..
@@ -215,11 +214,12 @@
 
 		// Lockpick stuff..
 		var lTransform = new Transform( 
-			hole.Position + padlock.Rotation.Up * 1.2f + padlock.Rotation.Backward * 0.2f, 
+			hole.Position + padlock.Rotation.Up * 1.2f + padlock.Rotation.Forward * 0.1f, 
 			hole.Rotation
 				.RotateAroundAxis( Vector3.Up, 90f )
-				.RotateAroundAxis( Vector3.Forward, 45f )
-				.RotateAroundAxis( Vector3.Up + Vector3.Left, mouseAngle ) // order
+				.RotateAroundAxis( Vector3.Forward, 45 )
+				.RotateAroundAxis( Vector3.Up + Vector3.Left, mouseAngle )
+
 		);
 		pick.Transform = lTransform;
 
@@ -240,7 +240,7 @@
 		justify-content: center;
 		align-items: center;
 		pointer-events: all;	
-		background-color: rgba(white, 0.05);
+		background-color: rgba(black, 0.05);
 		backdrop-filter: blur(4px);
 		transition: opacity 0.5s ease-in-out;
 		z-index: 2;
