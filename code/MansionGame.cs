@@ -173,7 +173,7 @@ public partial class MansionGame : GameManager
 			var glow = player.Components.GetOrCreate<Glow>();
 			glow.Color = player.Client.GetColor();
 			glow.Width = 0.5f;
-			glow.Enabled = Game.LocalPawn is Spectator;
+			glow.Enabled = Game.LocalPawn is Spectator spec && spec.Following != player;
 		}
 	}
 

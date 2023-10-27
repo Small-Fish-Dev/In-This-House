@@ -54,6 +54,7 @@ public partial class Spectator : AnimatedEntity
 		{
 			Camera.Position = Following.EyePosition;
 			Camera.Rotation = Following.Rotation;
+			Following.EnableHideInFirstPerson = true;
 			Camera.FirstPersonViewer = Following;
 			Player.HandleBodyview();
 		}
@@ -64,7 +65,7 @@ public partial class Spectator : AnimatedEntity
 			Camera.FirstPersonViewer = this;
 		}
 
-		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Game.Preferences.FieldOfView );
+		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( 60f );
 		EnableDrawing = false; // Let's use this for now
 	}
 

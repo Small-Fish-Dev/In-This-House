@@ -41,7 +41,7 @@ partial class Player : AnimatedEntity, IPushable
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;
-		EnableHideInFirstPerson = false; // For firstperson legs!!
+		EnableHideInFirstPerson = false;
 
 		// Remember to create the container component!!!
 		Components.GetOrCreate<ContainerComponent>();

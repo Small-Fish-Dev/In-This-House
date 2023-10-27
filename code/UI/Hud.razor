@@ -22,7 +22,7 @@
 	    <Shop/>
 	}
 
-	@if ( player is not null )
+	@if (player is not null)
 	{
 		<!-- The client either has a living pawn or is observing another player's pawn -->
 		<StunIndicator @Player=@player/>
@@ -38,18 +38,27 @@
 			</Middle>
 			<Bottom>
 				<!--Some text on the bottom-->
-				@if ( isPlayer )
+				@if (isPlayer)
 				{
 					<InteractionTip @Player=@player/>
 				}
 			</Bottom>
 		</Crosshair>
+	}
 
-		<div class="input-hints">
+	<div class="input-hints">
+		@if (Game.LocalPawn is Spectator)
+		{
+			<div class="hint"><inputglyph action="StopFollowing"/>Stop following</div>
+			<div class="hint"><inputglyph action="FollowNext"/>Next player</div>
+			<div class="hint"><inputglyph action="FollowPrevious"/>Previous player</div>
+		}
+		else
+		{
 			<div class="hint"><inputglyph action="inventory"/>Inventory</div>
 			<div class="hint"><inputglyph action="chat"/>Chat</div>
-		</div>
-	}
+		}
+	</div>
 
 	<textinput ghost="..." class="chat-input" @ref=ChatInput onsubmit=@(( PanelEvent panelEvent ) => {
 		if ( panelEvent.Target is not TextInput input )
@@ -66,16 +75,15 @@
 
 	<SubtitlesList @Pawn=@player />
 
-	@if ( Game.LocalPawn is Spectator spectator )
-	{
-		<div>yuo're dead lol lmao git gud</div>
-
-		if ( player is not null )
-		{
-			<div>Observing @player.Client.Name</div>
-			<label>Press Space to stop following this player</label>
-		}
-	}
+	<div class="death @(Game.LocalPawn is Spectator ? "visible" : "")">
+		<div class="container">
+			<span class="title">YOU'RE DEAD!</span>
+			@if ( player is not null )
+			{
+				<span>Observing @(player.Client.Name).</span>
+			}
+		</div>
+	</div>
 </root>
 
 @code {
