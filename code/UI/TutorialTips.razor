@@ -6,16 +6,19 @@
 <root>
 	<div class="container">
 		<div class="image" style="background-image: url(@(tip.Image));" />
-		<div style="flex-direction: row; align-items: center;">
-			<div style="flex-direction: column;">
-				<span class="text">@(tip.Text) (@(tipIndex + 1) of @tips.Count)</span>
+		<div style="flex-direction: row; align-items: center; justify-content: space-between;">
+			<div class="column">
+				<span class="text">@tip.Text</span>
 				<div class="other">
 					<span>Press</span>
 					<inputglyph action="@(TIP_ACTION)" />
 					<span>to go to the next tip.</span>
 				</div>
 			</div>
-			<RadialProgress @Progress=@( () => tipTime / TIP_TIME ) />
+			<div class="column">
+				<RadialProgress @Progress=@( () => tipTime / TIP_TIME ) />
+				<span style="font-size: 24px; white-space: nowrap; padding-right: 10px;">@(tipIndex + 1) of @tips.Count</span>
+			</div>
 		</div>
 	</div>
 </root>
@@ -45,10 +48,16 @@
 			if ( !IsDeleting )
 				Delete();
 
-			if ( Game.LocalPawn is Player player )
+			var target = Game.LocalPawn is Spectator spectator
+				? spectator.Body
+				: Game.LocalPawn is Player player
+					 ? player
+					 : null;
+
+			if ( target != null )
 			{
-				player.SeenTips = true;
-				player.StoreSave();
+				target.SeenTips = true;
+				Player.DataChanged = true;
 			}
 
 			return;
@@ -74,7 +83,17 @@
 		pointer-events: none;
 		align-items: center;
 		z-index: 3;
+		transition: transform 0.5s ease-in-out;
+		transform: translateX(0%);
 				
+		&:outro {
+			transform: translateX(100%);
+		}
+		
+		&:intro {
+			transform: translateX(100%);
+		}
+
 		.container {
 			width: 600px;
 			flex-direction: column;
@@ -112,11 +131,16 @@
 				}
 			}
 
+			.column {
+				flex-direction: column; 
+			}
+
 			RadialProgress {
-				margin: 10px;
+				padding: 20px;
 				width: 48px;
-				aspect-ratio: 1;
+				height: 48px;
 				margin-right: 10px;
+				margin-bottom: 10px;
 				filter: drop-shadow(3px 3px 1px black);
 			}
 		}
