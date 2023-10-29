@@ -158,7 +158,10 @@ partial class Player : AnimatedEntity
 		if ( Game.IsServer )
 		{
 			if ( HasValidInteractionRequest && CurrentInteractionRequest.Complete )
+			{
+				SetAnimParameter( "grab", true );
 				FinishInteraction();
+			}
 
 			// Remove the invalid or complete interaction request
 			if ( !HasActiveInteractionRequest

@@ -34,7 +34,7 @@ partial class Player : AnimatedEntity, IPushable
 		}
 
 		// Tutorial!
-		if ( !SeenTips )
+		if ( !SeenTips && Game.LocalPawn == this )
 			Hud.Instance?.AddChild<TutorialTips>();
 	}
 	
