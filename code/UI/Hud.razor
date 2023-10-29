@@ -30,7 +30,7 @@
 			? spec.Following ?? spec.Body
 			: activePlayer;
 
-		<MoneyCounter TargetMoney="@(targetPlayer.Money)" Player=@(targetPlayer) />
+		<MoneyCounter TargetMoney="@(targetPlayer?.Money ?? 0)" Player=@(targetPlayer) />
 		<PlayerCounter Active="@(MansionGame.Instance.TimerActive)" />
 	}
 
