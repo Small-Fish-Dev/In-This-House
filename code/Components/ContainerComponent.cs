@@ -157,8 +157,6 @@ public partial class ContainerComponent : EntityComponent
 		}
 
 		Event.Run( "InventoryChanged", client, entry, delete ? 0 : items[entry] );
-
-		// HACK: just save
-		(Game.LocalPawn as Player)?.StoreSave();
+		Player.DataChanged = true;
 	}
 }

@@ -268,6 +268,7 @@ public partial class MansionGame
 	// For client callback
 	public void OnCurrentLevelChanged()
 	{
+		Player.StoreSave();
 	}
 
 	[GameEvent.Entity.PostSpawn]

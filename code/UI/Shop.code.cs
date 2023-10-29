@@ -95,7 +95,6 @@ public partial class Shop : Panel
 		}
 
 		Player.BuyUpgrade( upgrade.Identifier );
-
-		player.StoreSave();
+		Player.DataChanged = true;
 	}
 }

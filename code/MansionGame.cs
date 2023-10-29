@@ -118,9 +118,18 @@ public partial class MansionGame : GameManager
 		}
 	}
 
+	const float SAVE_TIME = 15f;
+	TimeSince lastSaved;
+
 	public override void Simulate( IClient cl )
 	{
 		base.Simulate( cl );
+
+		if ( Game.IsClient && lastSaved >= SAVE_TIME )
+		{
+			Player.StoreSave();
+			lastSaved = 0f;
+		}
 
 		if ( !IsAuthority )
 			return;

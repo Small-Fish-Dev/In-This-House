@@ -330,6 +330,7 @@ partial class Player : AnimatedEntity, IPushable
 	public void OnMoneyChanged( int oldValue, int newValue )
 	{
 		Event.Run( "MoneyChanged", this, oldValue, newValue );
+		Player.DataChanged = true;
 	}
 
 	// Set player's money

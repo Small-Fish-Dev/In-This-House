@@ -4,6 +4,8 @@ namespace BrickJam;
 
 partial class Player
 {
+	public static bool DataChanged { get; set; }
+
 	public struct ItemSave
 	{
 		public string PrefabPath { get; set; }
@@ -100,10 +102,29 @@ partial class Player
 	}
 
 
-	public void StoreSave()
+	public static void StoreSave()
 	{
-		Log.Info( "Saving client data" );
-		PlayerSave.FromPlayer( this ).SaveStored();
+		Game.AssertClient();
+
+		var target = Game.LocalPawn is Spectator spectator
+			? spectator.Body
+			: Game.LocalPawn is Player player
+				 ? player
+				 : null;
+
+		if ( !DataChanged )
+			return;
+
+		Log.Info( "Attempting to save client data." );
+
+		if ( target == null )
+		{
+			Log.Warning( $"Failed to find player to save." );
+			return;
+		}
+		
+		PlayerSave.FromPlayer( target ).SaveStored();
+		Player.DataChanged = false;
 	}
 
 	private void SendSaveToServer( PlayerSave save )
