@@ -55,15 +55,18 @@ partial class Player
 				SeenTips = player.SeenTips
 			};
 
-			foreach ( var (key, count) in player.Inventory.Loots )
+			if ( player.Inventory?.Loots != null )
 			{
-				if ( key == null )
+				foreach ( var (key, count) in player.Inventory.Loots )
 				{
-					Log.Warning( "item entry was null???" );
-					continue;
-				}
+					if ( key == null )
+					{
+						Log.Warning( "item entry was null???" );
+						continue;
+					}
 
-				x.Inventory.Add( ItemSave.FromItemEntry( key.Value, count ) );
+					x.Inventory.Add( ItemSave.FromItemEntry( key.Value, count ) );
+				}
 			}
 
 			foreach ( var key in player.Upgrades ) x.Upgrades.Add( key );
