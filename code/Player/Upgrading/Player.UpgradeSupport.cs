@@ -36,7 +36,11 @@ public partial class Player
 	{
 		Game.AssertServer();
 		if ( !Upgrade.Exists( identifier ) )
-			throw new Exception( $"Unknown upgrade {identifier}" );
+		{
+			Log.Warning( $"Unknown upgrade {identifier}" );
+			return;
+		}
+
 		Upgrades.Add( identifier );
 		CombineUpgrades();
 		Event.Run( "UpgradeBought", identifier );
@@ -47,7 +51,11 @@ public partial class Player
 	{
 		Game.AssertServer();
 		if ( !Upgrade.Exists( identifier ) )
-			throw new Exception( $"Unknown upgrade {identifier}" );
+		{
+			Log.Warning( $"Unknown upgrade {identifier}" );
+			return;
+		}
+
 		Upgrades.Remove( identifier );
 		CombineUpgrades();
 	}
