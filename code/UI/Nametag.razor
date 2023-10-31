@@ -42,7 +42,7 @@
 		Rotation = Rotation.From( 0, rotation.Yaw(), MathF.Floor( targetRoll * 2f + 0.5f ) / 2f );
 
 		var dist = Game.LocalPawn?.Position.Distance( Position ) ?? 0;
-		var remapped = MathX.Remap( dist, 500, 700, 1, 0 );
+		var remapped = Camera.FirstPersonViewer == Player ? 0 : MathX.Remap( dist, 500, 700, 1, 0 );
 		Style.Opacity = remapped;
 	}
 
@@ -56,8 +56,7 @@
 		{
 			if ( player == null 
 				|| !player.IsAlive 
-				|| nametags.TryGetValue( player, out var panel ) 
-				|| Game.LocalPawn == player ) continue;
+				|| nametags.TryGetValue( player, out var panel ) ) continue;
 
 			nametags.Add( player, new Nametag() { 
 				Player = player 

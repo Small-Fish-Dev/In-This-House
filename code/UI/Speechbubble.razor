@@ -1,5 +1,4 @@
-﻿﻿@using Sandbox;
-@using Sandbox.UI;
+﻿@using Sandbox.UI;
 
 @namespace BrickJam
 @inherits WorldPanel
@@ -11,7 +10,7 @@
 </root>
 
 @code {
-	private static Dictionary<BrickJam.Player, Speechbubble> all = new();
+	private static Dictionary<Player, Speechbubble> all = new();
 
 	public const float Delay = 0.05f;
 	public const float Time = 6f;
@@ -24,7 +23,7 @@
 	private TimeSince sinceCreation;
 	private TimeSince? finished = null;
 
-	protected Speechbubble( string text, BrickJam.Player player )
+	protected Speechbubble( string text, Player player )
 	{
 		if ( all.TryGetValue( player, out var bubble ) )
 		{
@@ -92,7 +91,7 @@
 	/// </summary>
 	/// <param name="text"></param>
 	/// <param name="from"></param>
-	public static void Create( string text, BrickJam.Player from )
+	public static void Create( string text, Player from )
 		=> new Speechbubble( text, from );
 
 	protected override int BuildHash()
