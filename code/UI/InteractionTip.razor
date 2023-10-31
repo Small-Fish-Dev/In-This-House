@@ -3,23 +3,21 @@
 @namespace BrickJam.UI
 @inherits Panel
 
-<root class="@(Player.UsableEntity?.UseString != null ? "visible" : "")">
-	@if ( Player.UsableEntity is not null )
+<root class="@(useString != string.Empty ? "visible" : "")">
+	@if( useString != string.Empty )
 	{
-        if (Player.UsableEntity.CanUse )
-        {
-            <span> @((Player.UsableEntity.InteractionDuration == 0f || Player.UsableEntity.Locked ) ? "Press" : "Hold" ) </span><inputglyph action="use" /><span>to @(Player.UsableEntity.Locked ? Player.UsableEntity.LockText : Player.UsableEntity.UseString).</span>
-        }
-		else if ( Player.UsableEntity.UseString != string.Empty )
-        {
-            <span>@(Player.UsableEntity.UseString).</span>
-        }
-
+		<span>@((Player.UsableEntity.InteractionDuration == 0f || Player.UsableEntity.Locked ) ? "Press" : "Hold" )</span>
+		<inputglyph action="use" />
+		<span>to @(Player.UsableEntity.Locked ? Player.UsableEntity.LockText : useString).</span>
 	}
 </root>
 
 @code {
 	public Player Player { get; set; }
+
+	string useString => Player?.UsableEntity != null && Player.UsableEntity.CanUse
+		? Player.UsableEntity?.UseString ?? string.Empty
+		: string.Empty;
 
 	protected override int BuildHash()
 	{
