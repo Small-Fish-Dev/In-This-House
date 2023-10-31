@@ -133,6 +133,7 @@ public partial class ContainerComponent : EntityComponent
 	private void clearClient()
 	{
 		items.Clear();
+		Player.StoreSave();
 		Event.Run( "InventoryChanged", client, default( ItemEntry ), 0 );
 	}
 
