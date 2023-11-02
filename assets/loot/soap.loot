@@ -5,7 +5,7 @@
   "Model": "models/furniture/bathrooms_furniture/soap.vmdl",
   "MonetaryValue": 90,
   "DisplayFront": false,
-  "IconOffset": "0,0,0",
-  "IconAngles": "0,0,0",
+  "IconOffset": "5,0,-1",
+  "IconAngles": "-45,-35,0",
   "__references": []
 }
