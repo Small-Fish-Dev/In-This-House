@@ -25,7 +25,7 @@
 
 	public override void Tick()
 	{
-		if ( IsDeleting || Loot == null || !Loot.IsValid || Loot.Prefab == null )
+		if ( IsDeleting || !Loot.IsValid() || Loot.Prefab == null )
 		{
 			if ( !IsDeleting )
 				Delete();

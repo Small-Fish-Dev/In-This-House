@@ -223,6 +223,11 @@
           "Name": "Crouch",
           "KeyboardCode": "CTRL",
           "GroupName": "Movement"
+        },
+        {
+          "Name": "Ping",
+          "KeyboardCode": "MOUSE3",
+          "GroupName": "Other"
         }
       ]
     },

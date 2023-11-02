@@ -6,16 +6,23 @@
 <root class="@(useString != string.Empty ? "visible" : "")">
 	@if( useString != string.Empty )
 	{
-		<span>@((Player.UsableEntity.InteractionDuration == 0f || Player.UsableEntity.Locked ) ? "Press" : "Hold" )</span>
-		<inputglyph action="use" />
-		<span>to @(Player.UsableEntity.Locked ? Player.UsableEntity.LockText : useString).</span>
+		@if( Player.UsableEntity.CanUse )
+		{
+			<span>@((Player.UsableEntity.InteractionDuration == 0f || Player.UsableEntity.Locked ) ? "Press" : "Hold" )</span>
+			<inputglyph action="use" />
+			<span>to @(Player.UsableEntity.Locked ? Player.UsableEntity.LockText : useString).</span>
+		}
+		else
+		{
+			<span>@(useString)</span>
+		}
 	}
 </root>
 
 @code {
 	public Player Player { get; set; }
 
-	string useString => Player?.UsableEntity != null && Player.UsableEntity.CanUse
+	string useString => Player?.UsableEntity != null
 		? Player.UsableEntity?.UseString ?? string.Empty
 		: string.Empty;
 

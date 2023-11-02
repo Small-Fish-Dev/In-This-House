@@ -23,7 +23,7 @@
 
 	public override void Tick()
 	{
-		if ( Player == null || !Player.IsValid || !Player.IsAlive )
+		if ( !Player.IsValid() || !Player.IsAlive )
 		{
 			if ( !IsDeleting )
 			{

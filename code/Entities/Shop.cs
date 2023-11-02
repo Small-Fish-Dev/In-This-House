@@ -19,7 +19,7 @@ public partial class Shop : UsableEntity
 
 		SetModel( "models/furniture/shop/shop_counter.vmdl" );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
-		Tags.Add( "solid" );
+		Tags.Add( "solid", "shop" );
 	}
 
 	public override void Use( Player user )
