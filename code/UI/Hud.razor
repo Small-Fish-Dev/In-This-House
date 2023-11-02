@@ -76,9 +76,17 @@
 		if ( panelEvent.Target is not TextInput input )
 			return;
 
-		if ( string.IsNullOrEmpty( input.Text ) || input.Text.Length > 200 )
-			Eventlog.Send( "<red>Input length must be greater than 1 and smaller than 200." );
-		else
+		var hide = false;
+		if ( string.IsNullOrEmpty( input.Text ) )
+			hide = true;
+
+		if ( input.Text.Length > 200 )
+		{
+			Eventlog.Send( "<red>Input length must smaller than 200." );
+			hide = true;
+		}
+		
+		if ( !hide )
 			BrickJam.Player.SendMessage( input.Text );
 
 		input.Text = "";
