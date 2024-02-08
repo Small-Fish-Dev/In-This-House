@@ -11,9 +11,7 @@
   "MenuResources": "/ui/*\n/UI/*\n/fonts/*\nsounds/ui/*",
   "HasCode": true,
   "CodePath": "/code/",
-  "PackageReferences": [
-    "fish.grid_and_astar"
-  ],
+  "PackageReferences": [],
   "EditorReferences": null,
   "Metadata": {
     "MaxPlayers": 64,

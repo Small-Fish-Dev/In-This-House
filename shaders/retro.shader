@@ -38,7 +38,7 @@ VS
 {
 	#include "common/vertex.hlsl"
 
-	PixelInput MainVs( INSTANCED_SHADER_PARAMS( VS_INPUT i ) )
+	PixelInput MainVs(  VS_INPUT i  )
 	{
 		PixelInput o = ProcessVertex( i );
 		return FinalizeVertex( o );
@@ -112,7 +112,8 @@ PS
 		#else
 			m.Albedo = color * g_vColorTint.rgb;
 		#endif
-        m.Normal = TransformNormal( i, DecodeNormal( Tex2DS( g_tNormal, Sampler, UV.xy ).rgb ) );
+
+        m.Normal = TransformNormal( DecodeNormal( Tex2DS( g_tNormal, Sampler, UV.xy ).rgb ), i.vNormalWs, i.vTangentUWs, i.vTangentVWs );
 
 		float2 rm = Tex2DS( g_tRm, Sampler, UV.xy ).rg;
         m.Roughness = rm.r;
