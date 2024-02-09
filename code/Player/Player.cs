@@ -8,7 +8,7 @@ public sealed class Player : Component
 	{
 		if ( !IsProxy )
 		{
-			if ( !Scene.IsEditor )
+			if ( !Game.IsEditor )
 				Model.RenderType = ModelRenderer.ShadowRenderType.ShadowsOnly;
 		}
 	}
