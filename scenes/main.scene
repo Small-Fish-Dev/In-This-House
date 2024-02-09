@@ -52,7 +52,7 @@
           "__type": "Player",
           "Model": {
             "_type": "component",
-            "go": "f51e4c0d-6b26-42d0-8550-6745975f081c",
+            "go": "2aaf8c76-3d1b-4917-b246-71f650f26562",
             "component_type": "SkinnedModelRenderer"
           }
         },
@@ -165,6 +165,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-08T19:56:25.8379528-06:00",
+  "LastSaved": "2024-02-08T19:58:32.6865286-06:00",
   "__references": []
 }
