@@ -6,9 +6,7 @@ public sealed partial class PlayerController : Component
 	[Property] public GameObject Eyes { get; set; }
 	[Property] public GameObject HeadBone { get; set; }
 	[Property] public SoundPointComponent skiddingSound { get; private set; }
-
-	// Particles are kinda fucking stupid right now
-	// [Property] public ParticleEffect skiddingParticles { get; private set; }
+	[Property] public GameObject skiddingParticlesPrefab { get; private set; }
 
 	public bool IsAlive { get; private set; } = true;
 
@@ -39,6 +37,7 @@ public sealed partial class PlayerController : Component
 	float baseSkiddingVolume = 0.3f;
 	float skiddingVolume;
 	TimeSince lastAcceleration;
+	TimeSince sinceSpawnedSkidParticle;
 
 	private Vector3 InputDirection;
 	private Angles InputAngles;
@@ -147,7 +146,11 @@ public sealed partial class PlayerController : Component
 			skiddingSound.Enabled = true;
 			skiddingSound.StartSound();
 
-			// skiddingParticles.Emit( 1 );
+			if ( sinceSpawnedSkidParticle >= 0.45f )
+			{
+				skiddingParticlesPrefab.Clone( GameObject, Vector3.Up * 2, Rotation.Identity, Vector3.One );
+				sinceSpawnedSkidParticle = 0;
+			}
 		}
 		else
 		{

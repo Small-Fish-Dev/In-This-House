@@ -28,7 +28,7 @@
           "__type": "CameraComponent",
           "BackgroundColor": "0.33333,0.46275,0.52157,1",
           "ClearFlags": "All",
-          "FieldOfView": 110.43002,
+          "FieldOfView": 110.45804,
           "IsMainCamera": true,
           "Orthographic": false,
           "OrthographicHeight": 1204,
@@ -71,10 +71,9 @@
             "go": "2aaf8c76-3d1b-4917-b246-71f650f26562",
             "component_type": "SkinnedModelRenderer"
           },
-          "skiddingParticles": {
-            "_type": "component",
-            "go": "f853b2ae-294e-45ea-ae38-c7742ee5432c",
-            "component_type": "ParticleEffect"
+          "skiddingParticlesPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/particles/dust_particles.prefab"
           },
           "skiddingSound": {
             "_type": "component",
@@ -931,6 +930,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-08T23:30:09.7915038-06:00",
+  "LastSaved": "2024-02-09T00:04:46.9633092-06:00",
   "__references": []
 }
