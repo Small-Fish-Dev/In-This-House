@@ -49,15 +49,16 @@
       "Enabled": true,
       "Components": [
         {
-          "__type": "Player",
+          "__type": "PlayerController",
+          "Eyes": {
+            "_type": "gameobject",
+            "go": "872232c7-55de-48a3-8188-ee57ce4814c9"
+          },
           "Model": {
             "_type": "component",
             "go": "2aaf8c76-3d1b-4917-b246-71f650f26562",
             "component_type": "SkinnedModelRenderer"
           }
-        },
-        {
-          "__type": "PlayerController"
         },
         {
           "__type": "CharacterController",
@@ -74,7 +75,7 @@
           "BodyWeight": 1,
           "EyeSource": {
             "_type": "gameobject",
-            "go": "fe43a735-830e-4e93-8646-08071b2a645e"
+            "go": "872232c7-55de-48a3-8188-ee57ce4814c9"
           },
           "EyesWeight": 1,
           "HeadWeight": 1,
@@ -111,6 +112,12 @@
               "Tint": "1,1,1,1"
             }
           ]
+        },
+        {
+          "Id": "872232c7-55de-48a3-8188-ee57ce4814c9",
+          "Name": "Eyes",
+          "Position": "0,0,61.06738",
+          "Enabled": true
         }
       ]
     },
@@ -165,6 +172,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-08T19:58:32.6865286-06:00",
+  "LastSaved": "2024-02-08T20:02:56.5909617-06:00",
   "__references": []
 }

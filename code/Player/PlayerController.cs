@@ -2,6 +2,9 @@ namespace ITH;
 
 public sealed class PlayerController : Component
 {
+	[Property] public SkinnedModelRenderer Model { get; set; }
+	[Property] public GameObject Eyes { get; set; }
+
 	[Net] public float CrouchSpeed { get; set; } = 80f;
 	[Net] public float WalkSpeed { get; set; } = 200f;
 	[Net] public float RunSpeed { get; set; } = 350f;
@@ -41,6 +44,12 @@ public sealed class PlayerController : Component
 
 	protected override void OnStart()
 	{
+		if ( !IsProxy )
+		{
+			if ( !Game.IsEditor )
+				Model.RenderType = ModelRenderer.ShadowRenderType.ShadowsOnly;
+		}
+
 		_controller = Components.Get<CharacterController>();
 		_animator = Components.Get<Sandbox.Citizen.CitizenAnimationHelper>();
 		_camera = Scene.Camera;
@@ -58,7 +67,7 @@ public sealed class PlayerController : Component
 			UpdateAnimation();
 
 			var lookDir = InputAngles.ToRotation();
-			_camera.Transform.Position = Transform.Position + Vector3.Up * 64;
+			_camera.Transform.Position = Eyes.Transform.Position;
 			_camera.Transform.Rotation = lookDir;
 			_camera.FieldOfView = 90;
 		}
