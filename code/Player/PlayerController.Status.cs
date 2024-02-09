@@ -2,13 +2,14 @@ namespace ITH;
 
 partial class PlayerController
 {
-	[Net] public bool Blocked { get; set; } = false;
+	public bool IsAlive { get; private set; } = true;
+	[Sync] public bool Blocked { get; set; } = false;
 	public bool CommandsLocked => IsStunned || MovementLocked || Blocked;
 	public bool MovementLocked => IsTripping || IsSlipping || !IsAlive;
 
-	[Net] public float StunDuration { get; set; } = 1.5f;
+	public float StunDuration { get; set; } = 1.5f;
 	public bool IsStunned => !StunLeft;
-	[Net] public TimeUntil StunLeft { get; set; }
+	[Sync( Query = true )] public TimeUntil StunLeft { get; set; }
 
 	public void Stun( float multiplier = 1f )
 	{
@@ -24,9 +25,9 @@ partial class PlayerController
 		StunLeft = StunDuration * multiplier;
 	}
 
-	[Net] public float TripDuration { get; set; } = 1.5f;
+	public float TripDuration { get; set; } = 1.5f;
 	public bool IsTripping => !TripLeft;
-	[Net] public TimeUntil TripLeft { get; set; }
+	[Sync( Query = true )] public TimeUntil TripLeft { get; set; }
 
 	public void Trip()
 	{
@@ -37,9 +38,9 @@ partial class PlayerController
 		TripLeft = TripDuration;
 	}
 
-	[Net] public float SlipDuration { get; set; } = 2f;
+	public float SlipDuration { get; set; } = 2f;
 	public bool IsSlipping => !SlipLeft;
-	[Net] public TimeUntil SlipLeft { get; set; }
+	[Sync( Query = true )] public TimeUntil SlipLeft { get; set; }
 
 	public void Slip()
 	{
@@ -125,7 +126,7 @@ partial class PlayerController
 			higherCapsule.CenterA = Vector3.Up * (CollisionRadius + StepSize);
 			var capsuleTrace = Scene.Trace.Capsule( higherCapsule, Transform.Position, Transform.Position + Velocity.WithZ( 0 ) * Time.Delta );
 			capsuleTrace = capsuleTrace
-				.WithoutTags( "nocollide", "loot", "doob" )
+				.WithoutTags( ITH.Tag.NoCollide, ITH.Tag.Loot, ITH.Tag.Doob )
 				.IgnoreGameObject( GameObject );
 			var tr = capsuleTrace.Run();
 
@@ -156,6 +157,7 @@ partial class PlayerController
 					// 	}
 					// }
 
+					Log.Info( $"{GameObject} : {difference}" );
 					Stun( difference );
 
 					// if ( Game.IsServer )

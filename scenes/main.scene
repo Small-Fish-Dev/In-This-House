@@ -21,14 +21,14 @@
     {
       "Id": "e8fad278-0314-4256-bfa1-edbb81b750b9",
       "Name": "Main Camera",
-      "Position": "-166.7807,-0.0003744481,860.1795",
+      "Position": "3.998227,-0.0003744481,63.23682",
       "Enabled": true,
       "Components": [
         {
           "__type": "CameraComponent",
           "BackgroundColor": "0.33333,0.46275,0.52157,1",
           "ClearFlags": "All",
-          "FieldOfView": 110.41178,
+          "FieldOfView": 110.419304,
           "IsMainCamera": true,
           "Orthographic": false,
           "OrthographicHeight": 1204,
@@ -44,13 +44,6 @@
           "__type": "AudioListener"
         }
       ]
-    },
-    {
-      "Id": "f51e4c0d-6b26-42d0-8550-6745975f081c",
-      "Name": "Player",
-      "Position": "-170.7789,0,796.9426",
-      "Enabled": true,
-      "__Prefab": "prefabs/player.prefab"
     },
     {
       "Id": "f1cd42cc-bd7d-43b3-86c5-0b11c55040df",
@@ -78,6 +71,185 @@
         }
       ],
       "Children": []
+    },
+    {
+      "Id": "091d4d10-8b1c-4334-96da-73107efc6f92",
+      "Name": "GameManager",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "MansionGame",
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/player.prefab"
+          },
+          "StartServer": true
+        }
+      ],
+      "Children": [
+        {
+          "Id": "02709227-fcff-453c-b94e-a9d0eec7af62",
+          "Name": "SpawnPoint",
+          "Position": "523.77,233.2984,3547.309",
+          "Rotation": "0,0,-0.991445,-0.130526",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SpawnPoint",
+              "Color": "0.8902,0.31765,0.05098,1"
+            }
+          ]
+        },
+        {
+          "Id": "09f84f82-dbe0-4bd4-86a6-eb4a1ea6ac37",
+          "Name": "SpawnPoint",
+          "Position": "555.2032,280.8177,3547.309",
+          "Rotation": "0,0,-0.991445,-0.130526",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SpawnPoint",
+              "Color": "0.8902,0.31765,0.05098,1"
+            }
+          ]
+        },
+        {
+          "Id": "8fb97398-8cf4-49b9-a61d-0e2efcabedc4",
+          "Name": "SpawnPoint",
+          "Position": "464.1801,245.237,3547.309",
+          "Rotation": "0,0,-0.991445,-0.130526",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SpawnPoint",
+              "Color": "0.8902,0.31765,0.05098,1"
+            }
+          ]
+        },
+        {
+          "Id": "4c8b2362-127d-436e-b81a-c5c0f188ccc7",
+          "Name": "SpawnPoint",
+          "Position": "485.6224,187.4337,3547.309",
+          "Rotation": "0,0,-0.991445,-0.130526",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SpawnPoint",
+              "Color": "0.8902,0.31765,0.05098,1"
+            }
+          ]
+        },
+        {
+          "Id": "7d96382c-5dd5-4639-a3f6-cc61dfc6de01",
+          "Name": "SpawnPoint",
+          "Position": "513.4241,300.1273,3547.309",
+          "Rotation": "0,0,-0.991445,-0.130526",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SpawnPoint",
+              "Color": "0.8902,0.31765,0.05098,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "803cbb75-70bb-43c2-8a29-19d047c16b89",
+      "Name": "Cube",
+      "Position": "390.1106,238.4712,3469.494",
+      "Scale": "19.95603,27.7962,1.232804",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": "materials/dev/dev_hotspot_layout01.vmat",
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "Id": "19322e1f-f373-4fca-80a4-f45bce4d37a4",
+      "Name": "Cube (1)",
+      "Position": "390.1106,238.4712,3469.494",
+      "Scale": "19.95603,27.7962,1.232804",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": "materials/core/lpvgridmaterial.vmat",
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "402db857-96cc-4b9f-a836-e27e01e2646a",
+      "Name": "Cube (2)",
+      "Position": "177.1219,238.4712,3618.583",
+      "Scale": "0.9401611,13.70911,4.321302",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": "materials/dev/dev_measuregeneric01.vmat",
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "342cdfec-0ad6-4680-94cd-9294959609b3",
+      "Name": "Cube (3)",
+      "Position": "493.2212,693.4946,3618.583",
+      "Rotation": "0,0,-0.6087614,0.7933534",
+      "Scale": "0.9401611,13.70911,4.321302",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": "materials/dev/dev_measuredoor01_vr.vmat",
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false,
+          "Surface": null
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -103,6 +275,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-09T00:08:49.4681486-06:00",
+  "LastSaved": "2024-02-09T05:00:05.3646256-06:00",
   "__references": []
 }

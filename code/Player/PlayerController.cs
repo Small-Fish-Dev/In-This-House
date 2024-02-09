@@ -7,15 +7,17 @@ public sealed partial class PlayerController : Component
 	[Property] public GameObject HeadBone { get; set; }
 	[Property] public SoundPointComponent skiddingSound { get; private set; }
 	[Property] public GameObject skiddingParticlesPrefab { get; private set; }
+	[Property] private CameraComponent _camera;
 
-	public bool IsAlive { get; private set; } = true;
+	private CharacterController _controller;
+	private Sandbox.Citizen.CitizenAnimationHelper _animator;
 
-	[Net] public float CrouchSpeed { get; set; } = 80f;
-	[Net] public float WalkSpeed { get; set; } = 200f;
-	[Net] public float RunSpeed { get; set; } = 350f;
-	[Net] public float JumpHeight { get; set; } = 250f;
-	[Net] public float Acceleration { get; set; } = 1000f;
-	[Net] public float Deceleration { get; set; } = 400f;
+	[Sync] public float CrouchSpeed { get; set; } = 80f;
+	[Sync] public float WalkSpeed { get; set; } = 200f;
+	[Sync] public float RunSpeed { get; set; } = 350f;
+	[Sync] public float JumpHeight { get; set; } = 250f;
+	[Sync] public float Acceleration { get; set; } = 1000f;
+	[Sync] public float Deceleration { get; set; } = 400f;
 	// public bool HasFrictionUpgrade => HasUpgrade( "Work Shoes" );
 	public bool HasFrictionUpgrade => false;
 
@@ -39,27 +41,16 @@ public sealed partial class PlayerController : Component
 	TimeSince lastAcceleration;
 	TimeSince sinceSpawnedSkidParticle;
 
-	private Vector3 InputDirection;
-	private Angles InputAngles;
-	private bool IsCrouching = false;
-	private bool IsRunning = true;
-	public Vector3 Velocity { get; private set; }
-
-	private CharacterController _controller;
-	private Sandbox.Citizen.CitizenAnimationHelper _animator;
-	[Property] private CameraComponent _camera;
-
 	protected override void OnStart()
 	{
-		// if ( !IsProxy )
-		// {
-		// 	if ( !Game.IsEditor )
-		// 		Model.RenderType = ModelRenderer.ShadowRenderType.ShadowsOnly;
-		// }
-
 		_controller = Components.Get<CharacterController>();
 		_animator = Components.Get<Sandbox.Citizen.CitizenAnimationHelper>();
 		_camera = Scene.Camera;
+
+		if ( !IsProxy )
+		{
+			Local.Pawn = GameObject;
+		}
 	}
 
 	protected override void OnFixedUpdate()
@@ -75,14 +66,17 @@ public sealed partial class PlayerController : Component
 		{
 			InputDirection = Input.AnalogMove;
 			InputAngles += Input.AnalogLook * Time.Delta * Preferences.Sensitivity * 16;
-			InputAngles.pitch = MathX.Clamp( InputAngles.pitch, -80.0f, 80f );
-
-			UpdateAnimation();
+			InputAngles = InputAngles.WithPitch( MathX.Clamp( InputAngles.pitch, -80.0f, 80f ) );
 		}
+
+		UpdateAnimation();
 	}
 
 	protected override void OnPreRender()
 	{
+		if ( IsProxy )
+			return;
+
 		Eyes.Transform.Position = Transform.Position.WithZ( Transform.Position.z + 60 ) + InputAngles.Forward.WithZ( 0 ) * 16;
 		var lookDir = InputAngles.ToRotation();
 		var eyesAtx = Model.GetAttachment( "eyes", true );
@@ -148,7 +142,8 @@ public sealed partial class PlayerController : Component
 
 			if ( sinceSpawnedSkidParticle >= 0.45f )
 			{
-				skiddingParticlesPrefab.Clone( GameObject, Vector3.Up * 2, Rotation.Identity, Vector3.One );
+				var dustParticles = skiddingParticlesPrefab.Clone( GameObject, Vector3.Up * 2, Rotation.Identity, Vector3.One );
+				dustParticles.NetworkSpawn();
 				sinceSpawnedSkidParticle = 0;
 			}
 		}
@@ -161,6 +156,7 @@ public sealed partial class PlayerController : Component
 		skiddingSound.Volume = skiddingVolume;
 
 		Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
+
 		_controller.Velocity = Velocity;
 		_controller.Move();
 
@@ -187,6 +183,11 @@ public sealed partial class PlayerController : Component
 		_animator.WithWishVelocity( WishVelocity );
 		_animator.WithVelocity( Velocity );
 		_animator.WithLook( InputAngles.Forward, 0.5f, 0.25f, 0.1f );
+		if ( IsStunned )
+		{
+			Log.Info( StunLeft );
+		}
+
 		Model.Set( "special_movement_states", IsStunned ? 1 : (IsTripping ? 2 : (IsSlipping ? 3 : 0)) );
 		Model.Set( "speed_scale", Velocity.WithZ( 0 ).Length / 150f );
 	}
