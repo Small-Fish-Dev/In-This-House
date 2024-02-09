@@ -45,8 +45,17 @@
     {
       "Id": "f51e4c0d-6b26-42d0-8550-6745975f081c",
       "Name": "Player",
+      "Position": "-170.7789,0,-4787.725",
       "Enabled": true,
       "Components": [
+        {
+          "__type": "Player",
+          "Model": {
+            "_type": "component",
+            "go": "f51e4c0d-6b26-42d0-8550-6745975f081c",
+            "component_type": "SkinnedModelRenderer"
+          }
+        },
         {
           "__type": "PlayerController"
         },
@@ -61,47 +70,53 @@
           "StepHeight": 18
         },
         {
-          "__type": "SkinnedModelRenderer",
-          "BodyGroups": 1,
-          "BoneMergeTarget": null,
-          "CreateBoneObjects": false,
-          "MaterialGroup": null,
-          "MaterialOverride": null,
-          "Model": "models/robber/robber.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
+          "__type": "CitizenAnimationHelper",
+          "BodyWeight": 1,
+          "EyeSource": {
+            "_type": "gameobject",
+            "go": "fe43a735-830e-4e93-8646-08071b2a645e"
+          },
+          "EyesWeight": 1,
+          "HeadWeight": 1,
+          "Height": 1,
+          "IkLeftFoot": null,
+          "IkLeftHand": null,
+          "IkRightFoot": null,
+          "IkRightHand": null,
+          "LookAt": null,
+          "LookAtEnabled": false,
+          "Target": {
+            "_type": "component",
+            "go": "2aaf8c76-3d1b-4917-b246-71f650f26562",
+            "component_type": "SkinnedModelRenderer"
+          }
         }
-      ]
-    },
-    {
-      "Id": "44ce5840-35c2-4283-814a-7db9ef4e7b0f",
-      "Name": "Cube",
-      "Position": "-124.3302,-107.0291,56.67237",
-      "Enabled": true,
-      "Components": [
+      ],
+      "Children": [
         {
-          "__type": "ModelRenderer",
-          "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
-          "MaterialOverride": null,
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "BoxCollider",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false,
-          "Surface": null
+          "Id": "2aaf8c76-3d1b-4917-b246-71f650f26562",
+          "Name": "Body",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SkinnedModelRenderer",
+              "BodyGroups": 1,
+              "BoneMergeTarget": null,
+              "CreateBoneObjects": false,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/robber/robber.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
         }
       ]
     },
     {
       "Id": "f1cd42cc-bd7d-43b3-86c5-0b11c55040df",
       "Name": "2D Skybox",
-      "Position": "105.7404,-83.30063,75.50711",
       "Enabled": true,
       "Components": [
         {
@@ -112,30 +127,19 @@
       ]
     },
     {
-      "Id": "72c3f306-750d-4818-aadb-b3d6f55cbcfc",
-      "Name": "Cube",
-      "Position": "0,0,-35.78556",
-      "Scale": "9.375615,13.14169,1.000001",
+      "Id": "37783d84-8318-4581-bcc2-46eea6293302",
+      "Name": "Map",
       "Enabled": true,
       "Components": [
         {
-          "__type": "ModelRenderer",
-          "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
-          "MaterialOverride": null,
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "BoxCollider",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false,
-          "Surface": null
+          "__type": "MapInstance",
+          "MapName": "maps/mansion.vmap",
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
         }
-      ]
+      ],
+      "Children": []
     }
   ],
   "SceneProperties": {
@@ -161,6 +165,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-08T00:45:17.1203601-06:00",
+  "LastSaved": "2024-02-08T19:56:25.8379528-06:00",
   "__references": []
 }

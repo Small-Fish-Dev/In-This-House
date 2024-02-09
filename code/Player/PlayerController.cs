@@ -36,11 +36,13 @@ public sealed class PlayerController : Component
 	public Vector3 Velocity { get; private set; }
 
 	private CharacterController _controller;
+	private Sandbox.Citizen.CitizenAnimationHelper _animator;
 	private CameraComponent _camera;
 
 	protected override void OnStart()
 	{
 		_controller = Components.Get<CharacterController>();
+		_animator = Components.Get<Sandbox.Citizen.CitizenAnimationHelper>();
 		_camera = Scene.Camera;
 	}
 
@@ -53,6 +55,7 @@ public sealed class PlayerController : Component
 			InputAngles.pitch = MathX.Clamp( InputAngles.pitch, -89.0f, 89.0f );
 
 			UpdateMovement();
+			UpdateAnimation();
 
 			var lookDir = InputAngles.ToRotation();
 			_camera.Transform.Position = Transform.Position + Vector3.Up * 64;
@@ -102,8 +105,26 @@ public sealed class PlayerController : Component
 		else
 			skiddingVolume = Math.Max( skiddingVolume - Time.Delta, 0f );
 
-
+		Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
 		_controller.Velocity = Velocity;
 		_controller.Move();
+	}
+
+	private void UpdateAnimation()
+	{
+		var body = _animator.Target.GameObject;
+		var rotateDifference = 0f;
+		if ( body is not null )
+		{
+			var targetAngle = new Angles( 0, InputAngles.yaw, 0 ).ToRotation();
+			rotateDifference = body.Transform.Rotation.Distance( targetAngle );
+			body.Transform.Rotation = Rotation.Lerp( body.Transform.Rotation, targetAngle, Time.Delta * 22.0f );
+		}
+
+		_animator.IsGrounded = _controller.IsOnGround;
+		_animator.FootShuffle = rotateDifference;
+		_animator.WithWishVelocity( WishVelocity );
+		_animator.WithVelocity( Velocity );
+		_animator.WithLook( InputAngles.Forward, 0.5f, 0.25f, 0.1f );
 	}
 }
