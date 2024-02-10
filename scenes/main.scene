@@ -47,6 +47,22 @@
       ]
     },
     {
+      "Id": "091d4d10-8b1c-4334-96da-73107efc6f92",
+      "Name": "GameManager",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "MansionGame",
+          "Levels": [],
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/player.prefab"
+          },
+          "StartServer": true
+        }
+      ]
+    },
+    {
       "Id": "6f142f65-1eae-4463-8dd9-32b8c2913c00",
       "Name": "Shop_Level",
       "Enabled": true,
@@ -144,6 +160,65 @@
               "Color": "0.8902,0.31765,0.05098,1"
             }
           ]
+        },
+        {
+          "Id": "731eeb1d-353a-4e8c-aab6-707e7c8ec0b9",
+          "Name": "shop_counter",
+          "Position": "655.3002,423.9382,3068.385",
+          "Rotation": "0,0,-1,0.0000001947072",
+          "Scale": "2.438447,2.438447,2.438447",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Prop",
+              "Health": 0,
+              "IsStatic": true,
+              "Model": "models/furniture/shop/shop_counter.vmdl",
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "ShowCreatedComponents": false
+            }
+          ]
+        },
+        {
+          "Id": "ff303968-7de2-409c-9c72-744217a167d8",
+          "Name": "ShopDoor",
+          "Position": "488.3698,3.288422,3072.09",
+          "Tags": "usable",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/furniture/mansion_furniture/mansion_door.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "BoxCollider",
+              "Center": "27.2,-23.5,0",
+              "IsTrigger": false,
+              "Scale": "50,50,230.5999",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "Usable",
+              "OnUsed": null,
+              "StartLocked": false,
+              "UseString": "interact"
+            },
+            {
+              "__type": "ShopDoor",
+              "_usable": {
+                "_type": "component",
+                "go": "ff303968-7de2-409c-9c72-744217a167d8",
+                "component_type": "Usable"
+              }
+            }
+          ]
         }
       ]
     },
@@ -228,81 +303,6 @@
           ]
         }
       ]
-    },
-    {
-      "Id": "091d4d10-8b1c-4334-96da-73107efc6f92",
-      "Name": "GameManager",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "MansionGame",
-          "Levels": [],
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/player.prefab"
-          },
-          "StartServer": true
-        }
-      ]
-    },
-    {
-      "Id": "ff303968-7de2-409c-9c72-744217a167d8",
-      "Name": "ShopDoor",
-      "Position": "488.3698,3.288422,3072.09",
-      "Tags": "usable",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "ModelRenderer",
-          "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
-          "MaterialOverride": null,
-          "Model": "models/furniture/mansion_furniture/mansion_door.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "BoxCollider",
-          "Center": "27.2,-23.5,0",
-          "IsTrigger": false,
-          "Scale": "50,50,230.5999",
-          "Static": false,
-          "Surface": null
-        },
-        {
-          "__type": "Usable",
-          "OnUsed": null,
-          "StartLocked": false,
-          "UseString": "interact"
-        },
-        {
-          "__type": "ShopDoor",
-          "_usable": {
-            "_type": "component",
-            "go": "ff303968-7de2-409c-9c72-744217a167d8",
-            "component_type": "Usable"
-          }
-        }
-      ]
-    },
-    {
-      "Id": "731eeb1d-353a-4e8c-aab6-707e7c8ec0b9",
-      "Name": "shop_counter",
-      "Position": "655.3002,423.9382,3068.385",
-      "Rotation": "0,0,-1,0.0000001947072",
-      "Scale": "2.438447,2.438447,2.438447",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": true,
-          "Model": "models/furniture/shop/shop_counter.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        }
-      ]
     }
   ],
   "SceneProperties": {
@@ -328,7 +328,7 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-09T22:26:45.6769524-06:00",
+  "LastSaved": "2024-02-09T22:28:41.9602532-06:00",
   "__references": [
     "fish.mansion_door"
   ]
