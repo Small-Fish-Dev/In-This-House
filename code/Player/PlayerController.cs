@@ -38,8 +38,8 @@ public sealed partial class PlayerController : Component
 	static string[] ignoreTags = new[] { "player", "npc", "nocollide", "loot" };
 	float baseSkiddingVolume = 0.3f;
 	float skiddingVolume;
+	[Property] ParticleEffect skidParticle;
 	TimeSince lastAcceleration;
-	TimeSince sinceSpawnedSkidParticle;
 
 	protected override void OnStart()
 	{
@@ -56,6 +56,7 @@ public sealed partial class PlayerController : Component
 	protected override void OnFixedUpdate()
 	{
 		UpdateMovement();
+		UpdateUse();
 	}
 
 	protected override void OnUpdate()
@@ -64,9 +65,7 @@ public sealed partial class PlayerController : Component
 		Model.SetBodyGroup( "head", 0 );
 		if ( !IsProxy )
 		{
-			InputDirection = Input.AnalogMove;
-			InputAngles += Input.AnalogLook * Time.Delta * Preferences.Sensitivity * 16;
-			InputAngles = InputAngles.WithPitch( MathX.Clamp( InputAngles.pitch, -80.0f, 80f ) );
+			BuildInput();
 		}
 
 		UpdateAnimation();
@@ -77,7 +76,6 @@ public sealed partial class PlayerController : Component
 		if ( IsProxy )
 			return;
 
-		Eyes.Transform.Position = Transform.Position.WithZ( Transform.Position.z + 60 ) + InputAngles.Forward.WithZ( 0 ) * 16;
 		var lookDir = InputAngles.ToRotation();
 		var eyesAtx = Model.GetAttachment( "eyes", true );
 		if ( !eyesAtx.HasValue )
@@ -86,6 +84,7 @@ public sealed partial class PlayerController : Component
 			return;
 		}
 
+		Eyes.Transform.Position = eyesAtx.Value.Position;
 		_camera.Transform.Position = eyesAtx.Value.Position + eyesAtx.Value.Left * 3;
 		_camera.Transform.Rotation = lookDir;
 		_camera.FieldOfView = Screen.CreateVerticalFieldOfView( Preferences.FieldOfView );
@@ -140,17 +139,15 @@ public sealed partial class PlayerController : Component
 			skiddingSound.Enabled = true;
 			skiddingSound.StartSound();
 
-			if ( sinceSpawnedSkidParticle >= 0.45f )
-			{
-				var dustParticles = skiddingParticlesPrefab.Clone( GameObject, Vector3.Up * 2, Rotation.Identity, Vector3.One );
-				dustParticles.NetworkSpawn();
-				sinceSpawnedSkidParticle = 0;
-			}
+			// skidParticle.Enabled = true;
+			skidParticle.Emit( 1 );
 		}
 		else
 		{
 			skiddingSound.Enabled = false;
 			skiddingSound.StopSound();
+
+			// skidParticle.Enabled = false;
 		}
 
 		skiddingSound.Volume = skiddingVolume;
@@ -183,12 +180,14 @@ public sealed partial class PlayerController : Component
 		_animator.WithWishVelocity( WishVelocity );
 		_animator.WithVelocity( Velocity );
 		_animator.WithLook( InputAngles.Forward, 0.5f, 0.25f, 0.1f );
-		if ( IsStunned )
-		{
-			Log.Info( StunLeft );
-		}
 
 		Model.Set( "special_movement_states", IsStunned ? 1 : (IsTripping ? 2 : (IsSlipping ? 3 : 0)) );
 		Model.Set( "speed_scale", Velocity.WithZ( 0 ).Length / 150f );
+	}
+
+	[Authority]
+	public void Respawn( Vector3 position )
+	{
+		Transform.Position = position;
 	}
 }

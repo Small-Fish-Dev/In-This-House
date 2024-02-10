@@ -1,0 +1,54 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "shop",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "shop",
+      "Tags": null,
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": "*",
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "fish.doob#42598",
+        "fish.mansion_plaster_walls#42459",
+        "fish.potted_flowers#42535",
+        "fish.books4#42591",
+        "fish.toilet_roll#42520",
+        "fish.golden_turd#42605",
+        "fish.candle_holder#42592",
+        "fish.barrel#42583",
+        "fish.mop#42624",
+        "fish.vase#42508",
+        "fish.urinal_cake#42523",
+        "fish.thin_painting#42560",
+        "fish.shitty_table#42462",
+        "fish.wall_torch#42517",
+        "fish.air_freshener#42582",
+        "fish.mansion_door#42614",
+        "fish.sell_sign#42479",
+        "fish.toilet#42512",
+        "fish.goblet#42603",
+        "fish.gold_bar#42604",
+        "fish.mansion_wood_hs#42457",
+        "fish.helmet#42607",
+        "fish.retro_crate#42597",
+        "fish.shitty_chair#42465",
+        "fish.books1#42588",
+        "fish.mansion_wood_floor#42452",
+        "fish.paint#42563",
+        "fish.dungeon_tilable_rock#42455"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "maps/shop.vmap"
+      }
+    }
+  }
+}

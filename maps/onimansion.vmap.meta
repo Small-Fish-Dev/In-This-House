@@ -1,0 +1,48 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "onimansion",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "onimansion",
+      "Tags": null,
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": "*",
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "fish.potted_big_leaves#42533",
+        "fish.mansion_wall_light#42620",
+        "fish.mansion_plaster_walls#42459",
+        "fish.potted_flowers#42535",
+        "fish.books4#42591",
+        "fish.mansion_wardrobe#42621",
+        "fish.piano_stool#42515",
+        "fish.mansion_chandelier#42612",
+        "fish.mansion_hallway_table#42616",
+        "fish.mansion_bookshelf#42610",
+        "fish.mansion_single_bed#42618",
+        "fish.books2#42589",
+        "fish.mansion_chair#42611",
+        "fish.mansion_table#42619",
+        "fish.mansion_wood_hs#42457",
+        "fish.mansion_plaster_walls_cracked#42451",
+        "fish.books1#42588",
+        "fish.mansion_drawers#42615",
+        "fish.piano#42514",
+        "fish.books3#42590",
+        "fish.mansion_bed#42609",
+        "fish.mansion_wood_floor#42452"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "maps/onimansion.vmap"
+      }
+    }
+  }
+}

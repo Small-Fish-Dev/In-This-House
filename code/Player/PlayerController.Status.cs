@@ -144,7 +144,7 @@ partial class PlayerController
 					// {
 					// 	difference /= 2f;
 
-					// 	if ( Game.IsServer )
+					// 	if ( Networking.IsHost )
 					// 	{
 					// 		var random = MansionGame.Random.Float( 0f, 1f );
 					// 		if ( random < DropChance )
@@ -157,10 +157,9 @@ partial class PlayerController
 					// 	}
 					// }
 
-					Log.Info( $"{GameObject} : {difference}" );
 					Stun( difference );
 
-					// if ( Game.IsServer )
+					// if ( Networking.IsHost )
 					// {
 					// 	Particles.Create( "particles/smoke/smoke_impact.vpcf", Position + Rotation.Forward * CollisionRadius + Rotation.Up * CollisionHeight / 2f );
 					// 	var impact = Particles.Create( "particles/impact/impact.vpcf", Position + Rotation.Forward * CollisionRadius + Rotation.Up * CollisionHeight / 2f );
@@ -172,7 +171,7 @@ partial class PlayerController
 					Transform.Rotation = Rotation.LookAt( -tr.Normal, Vector3.Up );
 
 					// Let's randomly throw out an item when we crash.
-					// if ( Game.IsServer )
+					// if ( Networking.IsHost )
 					// {
 					// 	var random = MansionGame.Random.Float( 0f, 1f );
 					// 	if ( random < DropChance )

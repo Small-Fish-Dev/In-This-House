@@ -1,13 +1,17 @@
 namespace ITH;
 
-public sealed class MansionGame : Component, Component.INetworkListener
+public sealed partial class MansionGame : Component, Component.INetworkListener
 {
+	public static MansionGame Instance;
+
 	/// <summary>
 	/// Create a server (if we're not joining one)
 	/// </summary>
 	[Property] public bool StartServer { get; set; } = true;
 	[Property] public GameObject PlayerPrefab { get; set; }
+	[Property] public List<Level> Levels { get; private set; }
 	private List<SpawnPoint> spawnPoints = new();
+	public Dictionary<Connection, Client> Clients = new();
 
 	protected override void OnAwake()
 	{
@@ -25,6 +29,15 @@ public sealed class MansionGame : Component, Component.INetworkListener
 				spawnPoints[0] = sc;
 			}
 		}
+
+		Levels = Scene.GetAllComponents<Level>().ToList();
+		Instance = this;
+	}
+
+	protected override void OnDestroy()
+	{
+		// Need this for the editor, it doesnt clear statics automatically
+		Instance = null;
 	}
 
 	protected override async Task OnLoad()
@@ -59,10 +72,10 @@ public sealed class MansionGame : Component, Component.INetworkListener
 		var client = clientGameObject.Components.Create<Client>();
 		client.Connect( channel );
 		clientGameObject.NetworkSpawn( channel );
-		// Clients.Add( channel, client );
+		Clients.Add( channel, client );
 
 		// Spawn this object and make the client the owner
-		var point = Random.Shared.FromList( spawnPoints );
+		var point = Random.Shared.FromList( Levels.First( x => x.Id == LevelType.Shop ).Spawns );
 		var player = PlayerPrefab.Clone( point.Transform.Position );
 		player.Name = $"Player - {channel.DisplayName}";
 		client.Pawn = player;
