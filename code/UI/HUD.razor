@@ -1,0 +1,24 @@
+@using Sandbox.UI;
+
+@namespace ITH.UI
+@inherits PanelComponent
+@attribute [StyleSheet]
+
+<root>
+	
+</root>
+
+
+@code {
+	public static HUD Instance;
+
+	public HUD()
+	{
+		Instance = this;
+	}
+
+	protected override void OnDestroy()
+	{
+		Instance = null;
+	}
+}

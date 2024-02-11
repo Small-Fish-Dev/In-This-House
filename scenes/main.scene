@@ -303,6 +303,89 @@
           ]
         }
       ]
+    },
+    {
+      "Id": "b8479db2-026f-4a3d-83f4-11dfa9c1a78c",
+      "Name": "Safe",
+      "Position": "546.0728,267.0676,3116.444",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "LootContainer",
+          "_lock": null,
+          "_usable": {
+            "_type": "component",
+            "go": "b8479db2-026f-4a3d-83f4-11dfa9c1a78c",
+            "component_type": "Usable"
+          },
+          "Test": {
+            "_type": "gameobject",
+            "go": "845c31c7-2f80-47a2-ad7a-57d00961201c"
+          }
+        },
+        {
+          "__type": "Usable",
+          "OnUsed": null,
+          "StartLocked": true,
+          "UseString": "interact"
+        },
+        {
+          "__type": "SkinnedModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "BoneMergeTarget": null,
+          "CreateBoneObjects": false,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": null,
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "Id": "92922483-b124-41c6-924e-b57ddf8212f3",
+      "Name": "LootManager",
+      "Position": "-1000,0,0",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "LootManager",
+          "Prefabs": [
+            {
+              "_type": "gameobject",
+              "prefab": "prefabs/loot/thin_painting.prefab"
+            }
+          ]
+        }
+      ],
+      "Children": [
+        {
+          "Id": "78e06afa-f1e8-47ae-bf69-c68ac049076d",
+          "Name": ":(",
+          "Position": "0,0,-68.51096",
+          "Scale": "13.76086,23.33193,1",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "BoxCollider",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false,
+              "Surface": null
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -328,8 +411,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-09T22:28:41.9602532-06:00",
-  "__references": [
-    "fish.mansion_door"
-  ]
+  "LastSaved": "2024-02-11T04:30:48.9014091-06:00",
+  "__references": []
 }

@@ -6,7 +6,7 @@ public sealed class Usable : Component
 	[Property] public bool StartLocked;
 	[Property] public Action<PlayerController> OnUsed;
 	public Lock? Lock => GameObject.Components.Get<Lock>();
-	public float InteractionDuration => 1.0f;
+	public float InteractionDuration { get; set; } = 1.0f;
 	public bool ShouldCenterInteractionHint => true;
 	public bool CanUse { get; set; }
 	public bool Locked => Lock?.Locked ?? false;

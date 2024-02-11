@@ -2,10 +2,15 @@ namespace ITH;
 
 public enum LevelType
 {
+	[Icon( "check_box_outline_blank" )]
 	None,
+	[Icon( "storefront" )]
 	Shop,
+	[Icon( "house" )]
 	Mansion,
+	[Icon( "house_siding" )]
 	Dungeon,
+	[Icon( "wc" )]
 	Bathrooms
 }
 
@@ -39,6 +44,12 @@ public sealed class Level : Component
 
 	private void HandleLevelChanged( Level upcomingLevel )
 	{
+		var isEnabled = upcomingLevel.Id == Id;
+		foreach ( var child in GameObject.GetAllObjects( true ) )
+		{
+			child.Enabled = isEnabled;
+		}
+
 		Map.GameObject.Enabled = upcomingLevel.Id == Id;
 		Log.Info( $"{Id} : {Map.Enabled}" );
 	}

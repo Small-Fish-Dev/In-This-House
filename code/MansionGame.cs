@@ -31,6 +31,9 @@ public sealed partial class MansionGame : Component, Component.INetworkListener
 		}
 
 		Levels = Scene.GetAllComponents<Level>().ToList();
+
+		// HACK: IM SORRY
+		CurrentLevel = Levels.First( x => x.Id == LevelType.Shop );
 		Instance = this;
 	}
 

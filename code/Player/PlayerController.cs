@@ -61,8 +61,6 @@ public sealed partial class PlayerController : Component
 
 	protected override void OnUpdate()
 	{
-		// TODO: (ARTIST) Put the head in a bodygroup so we can just turn it off.
-		Model.SetBodyGroup( "head", 0 );
 		if ( !IsProxy )
 		{
 			BuildInput();
@@ -83,6 +81,10 @@ public sealed partial class PlayerController : Component
 			Log.Error( "Eyes need an attachment fuck" );
 			return;
 		}
+
+		// TODO: (ARTIST) Put the head in a bodygroup so we can just turn it off.
+		// Model.SetBodyGroup( "head", 0 );
+		Model.SceneModel.GetBoneLocalTransform( "head" );
 
 		Eyes.Transform.Position = eyesAtx.Value.Position;
 		_camera.Transform.Position = eyesAtx.Value.Position + eyesAtx.Value.Left * 3;

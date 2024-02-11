@@ -38,7 +38,10 @@
         "fish.piano#42514",
         "fish.books3#42590",
         "fish.mansion_bed#42609",
-        "fish.mansion_wood_floor#42452"
+        "fish.mansion_wood_floor#42452",
+        "fish.mansion_curtains#42613",
+        "fish.paint#42563",
+        "fish.cracked_paint#42559"
       ],
       "Metadata": {
         "SingleAssetSource": "maps/onimansion.vmap"
