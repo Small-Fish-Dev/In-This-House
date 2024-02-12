@@ -15,6 +15,8 @@ public sealed partial class MansionGame : Component, Component.INetworkListener
 
 	protected override void OnAwake()
 	{
+		PrefabLibrary.Init();
+
 		spawnPoints ??= new();
 		if ( spawnPoints.Count <= 0 )
 		{
@@ -40,6 +42,7 @@ public sealed partial class MansionGame : Component, Component.INetworkListener
 	protected override void OnDestroy()
 	{
 		// Need this for the editor, it doesnt clear statics automatically
+		PrefabLibrary.Shutdown();
 		Instance = null;
 	}
 

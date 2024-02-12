@@ -78,40 +78,7 @@ public static class PrefabLibrary
 	public static IReadOnlyList<PrefabDefinition> All => all;
 
 	// Go through all PrefabFiles and store their data in structs.
-	private static List<PrefabDefinition> all = ResourceLibrary.GetAll<PrefabFile>()
-		.Select( prefab =>
-		{
-			var root = prefab.RootObject?.AsObject();
-			if ( root == null )
-				return null;
-
-			var components = new List<ComponentDefinition>();
-			var name = root["Name"]?.GetValue<string>();
-
-			// Go through all of the prefab's components.
-			foreach ( var component in prefab.RootObject?["Components"].AsArray() )
-			{
-				var obj = component.AsObject();
-				var typeName = obj?["__type"]?.GetValue<string>();
-				if ( typeName == null )
-					continue;
-
-				components.Add( new()
-				{
-					Type = GlobalGameNamespace.TypeLibrary.GetType( typeName ),
-					Object = obj
-				} );
-			}
-
-			// Return a PrefabDefinition with all relevant data.
-			return new PrefabDefinition
-			{
-				Name = name,
-				Prefab = prefab,
-				Components = components
-			};
-		} )
-		.ToList();
+	private static List<PrefabDefinition> all;
 
 	/// <summary>
 	/// Find all prefabs that contain a component.
@@ -138,4 +105,47 @@ public static class PrefabLibrary
 	/// <returns></returns>
 	public static bool TryGetByPath( string path, out PrefabDefinition prefab )
 		=> (prefab = all.FirstOrDefault( prefab => FileSystem.NormalizeFilename( path ).Equals( prefab?.Path ) )) != null;
+
+	public static void Init()
+	{
+		all = ResourceLibrary.GetAll<PrefabFile>()
+				.Select( prefab =>
+				{
+					var root = prefab.RootObject?.AsObject();
+					if ( root == null )
+						return null;
+
+					var components = new List<ComponentDefinition>();
+					var name = root["Name"]?.GetValue<string>();
+
+					// Go through all of the prefab's components.
+					foreach ( var component in prefab.RootObject?["Components"].AsArray() )
+					{
+						var obj = component.AsObject();
+						var typeName = obj?["__type"]?.GetValue<string>();
+						if ( typeName == null )
+							continue;
+
+						components.Add( new()
+						{
+							Type = GlobalGameNamespace.TypeLibrary.GetType( typeName ),
+							Object = obj
+						} );
+					}
+
+					// Return a PrefabDefinition with all relevant data.
+					return new PrefabDefinition
+					{
+						Name = name,
+						Prefab = prefab,
+						Components = components
+					};
+				} )
+				.ToList();
+	}
+
+	public static void Shutdown()
+	{
+		all = null;
+	}
 }
