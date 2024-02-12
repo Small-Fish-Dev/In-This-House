@@ -75,12 +75,9 @@ public partial class LootContainer : Component, Component.ExecuteInEditor
 		await GameTask.Delay( 100 );
 
 		var lootCount = Game.Random.Int( 2, 5 );
-		var levelLoot = LootManager.Instance.GetAll( x => x.LevelCanAppearOn == MansionGame.Instance.CurrentLevel.Id ).ToArray();
-		Log.Info( levelLoot.Length );
-		foreach ( var x in levelLoot )
-		{
-			Log.Info( x );
-		}
+
+		var allLoot = PrefabLibrary.FindByComponent<Loot>();
+		var levelLoot = allLoot.Where( x => x.GetComponent<Loot>().Get<LevelType>( "LevelCanAppearOn" ) == MansionGame.Instance.CurrentLevel.Id ).ToArray();
 
 		var def = levelLoot.FirstOrDefault();
 
@@ -90,7 +87,7 @@ public partial class LootContainer : Component, Component.ExecuteInEditor
 			var normal = (transform.Forward + Vector3.Random / 8f).WithZ( 0 );
 			var force = 100f;
 
-			var prefab = Game.Random.FromArray( levelLoot, def ).GameObject;
+			var prefab = SceneUtility.GetPrefabScene( Game.Random.FromArray( levelLoot, def ).Prefab );
 			var lootGameObject = prefab.Clone( transform.Position, Game.Random.Rotation() );
 			if ( lootGameObject.Components.TryGet<Rigidbody>( out var rb, FindMode.EverythingInSelf ) )
 			{
