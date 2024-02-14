@@ -1,11 +1,12 @@
 {
   "RootObject": {
-    "Id": "5f369f6b-bc2f-4b07-9dc7-bd6a78a31d9c",
+    "Id": "72a6ae83-85a3-4aa1-8811-a32a0c923b71",
     "Name": "thin_painting",
     "Enabled": true,
     "Components": [
       {
         "__type": "Loot",
+        "_usable": null,
         "Description": "This is a painting of Sir Luke and his wife Margaret. The painting was made by Leonardo da Vinci in the 15th century.",
         "DisplayFront": false,
         "LevelCanAppearOn": "Shop",
@@ -24,10 +25,12 @@
       },
       {
         "__type": "Rigidbody",
+        "__enabled": false,
         "AngularDamping": 0,
         "Gravity": true,
         "LinearDamping": 0,
         "Locking": {},
+        "MassOverride": 0,
         "RigidbodyFlags": 0,
         "StartAsleep": false
       },
@@ -37,6 +40,12 @@
         "Model": "models/items/paintings/thin_painting.vmdl",
         "Static": false,
         "Surface": null
+      },
+      {
+        "__type": "Usable",
+        "OnUsed": null,
+        "StartLocked": false,
+        "UseString": "interact"
       }
     ],
     "Children": []

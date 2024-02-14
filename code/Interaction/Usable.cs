@@ -4,13 +4,13 @@ public sealed class Usable : Component
 {
 	[Property] public string UseString = "interact";
 	[Property] public bool StartLocked;
-	[Property] public Action<PlayerController> OnUsed;
+	[Property] public Action<Player> OnUsed;
 	public Lock? Lock => GameObject.Components.Get<Lock>();
 	public float InteractionDuration { get; set; } = 1.0f;
 	public bool ShouldCenterInteractionHint => true;
 	public bool CanUse { get; set; }
 	public bool Locked => Lock?.Locked ?? false;
-	public PlayerController User { get; set; }
+	public Player User { get; set; }
 	public string LockText { get; set; }
-	public bool CheckUpgrades( PlayerController player ) => true;
+	public bool CheckUpgrades( Player player ) => true;
 }

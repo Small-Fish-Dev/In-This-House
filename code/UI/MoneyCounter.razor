@@ -17,7 +17,6 @@
 
 	private static MoneyCounter instance;
 	const float DELAY = 2f;
-
 	Panel changes;
 	Panel change;
 	Label signLabel;
@@ -50,6 +49,7 @@
 	public MoneyCounter()
 	{
 		instance = this;
+		Player.OnMoneyChanged += HandleMoneyChanged;
 	}
 
 	public override void Tick()
@@ -64,8 +64,7 @@
 		money.Text = $"{(int)(oldMoney + 0.5f):n0}";
 	}
 
-	[Event("MoneyChanged")]
-	private async void moneyChanged(Player player, int oldValue, int newValue)
+	private async void HandleMoneyChanged(Player player, int oldValue, int newValue)
 	{
 		if (player != Player || changes == null)
 			return;

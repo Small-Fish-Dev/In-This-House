@@ -44,6 +44,11 @@ public sealed class Level : Component
 	public async Task Start()
 	{
 		SetEnabled( true );
+		foreach ( var lootSpawner in GameObject.Components.GetAll<LootSpawner>( FindMode.EnabledInSelfAndDescendants ) )
+		{
+			lootSpawner.SpawnLoot();
+		}
+
 		foreach ( var client in MansionGame.Instance.Clients.Values )
 		{
 			if ( client.Pawn.Components.TryGet<PlayerController>( out var player ) )
@@ -58,9 +63,9 @@ public sealed class Level : Component
 
 	public async Task End()
 	{
-
-		BlackScreen.Start();
-		await GameTask.DelayRealtimeSeconds( 1f );
+		// TODO: I just have this off because of dev time lol
+		// BlackScreen.Start();
+		// await GameTask.DelayRealtimeSeconds( 1f );
 		MansionGame.Instance.SetTimerStatus( true );
 		SetEnabled( false );
 

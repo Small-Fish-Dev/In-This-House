@@ -1,5 +1,6 @@
 namespace ITH;
 
+// TODO: We can keep this cleanly generic by just using ActionGraph and hooking into the Usable OnUse and just use Door.cs component.
 public sealed class ShopDoor : Component
 {
 	[Property] private Usable _usable;
@@ -16,7 +17,7 @@ public sealed class ShopDoor : Component
 		_usable.UseString = _usable.CanUse ? "enter the mansion" : "ALL PLAYERS NEED TO BE NEARBY TO PROCEED";
 	}
 
-	private void Use( PlayerController user )
+	private void Use( Player user )
 	{
 		Log.Info( user );
 		MansionGame.Instance.SetLevel( LevelType.Mansion );

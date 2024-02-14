@@ -67,6 +67,7 @@ public partial class LootContainer : Component
 		var lootCount = Game.Random.Int( 2, 5 );
 
 		var allLoot = PrefabLibrary.FindByComponent<Loot>();
+		// TODO: Figure out some caching instead of doing this stuff every time we spit loot. Unless it's not a big hit or something.
 		var levelLoot = allLoot.Where( x => x.GetComponent<Loot>().Get<LevelType>( "LevelCanAppearOn" ) == MansionGame.Instance.CurrentLevel.Id ).ToArray();
 
 		var def = levelLoot.FirstOrDefault();
@@ -93,7 +94,7 @@ public partial class LootContainer : Component
 		}
 	}
 
-	public void Use( PlayerController user )
+	public void Use( Player user )
 	{
 		if ( Spitting || !Networking.IsHost )
 			return;

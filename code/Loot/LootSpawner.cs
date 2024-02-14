@@ -32,7 +32,9 @@ public sealed class LootSpawner : Component
 			if ( LootPrefab == null )
 				return;
 
-			// LootSpawned = Loot.CreateFromGameResource( LootToSpawn, Position, Rotation );
+			LootSpawned = LootPrefab.Clone( Transform.Position, Transform.Rotation );
+			LootSpawned.NetworkSpawn();
+			Log.Info( LootSpawned );
 
 			if ( LootSpawned is null )
 				Log.Error( $"{this} Couldn't spawn item! item: {LootPrefab}" );
@@ -40,4 +42,22 @@ public sealed class LootSpawner : Component
 	}
 
 	public void DeleteLoot() => LootSpawned?.Destroy();
+
+	protected override void DrawGizmos()
+	{
+		var distance = Vector3.DistanceBetween( Transform.Position, Gizmo.CameraTransform.Position );
+
+		if ( distance >= 512 )
+		{
+			Gizmo.Draw.IgnoreDepth = true;
+			Gizmo.Draw.LineCircle( Vector3.Zero, 8 );
+			return;
+		}
+
+		Gizmo.Draw.Text( "LootSpawner", new global::Transform( Vector3.Zero, Rotation.Identity, 1 ) );
+		if ( Gizmo.Control.Sphere( null, 6, out _, Color.Green ) )
+		{
+			Gizmo.Select( false, false );
+		}
+	}
 }

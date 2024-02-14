@@ -240,6 +240,7 @@
         {
           "Id": "c55dbb5b-e083-4308-87ff-baab7345676a",
           "Name": "Mansion_Map",
+          "Enabled": true,
           "Components": [
             {
               "__type": "MapInstance",
@@ -248,7 +249,8 @@
               "OnMapUnloaded": null,
               "UseMapFromLaunch": false
             }
-          ]
+          ],
+          "Children": []
         },
         {
           "Id": "3552cf5a-b0d1-4239-a9bf-f939a40da1c8",
@@ -299,6 +301,5936 @@
             {
               "__type": "SpawnPoint",
               "Color": "0.8902,0.31765,0.05098,1"
+            }
+          ]
+        },
+        {
+          "Id": "f6d1cff6-4aa0-4b6d-a7d8-b62a82f48976",
+          "Name": "LootSpawner",
+          "Position": "-535.9999,-890.9997,781.625",
+          "Rotation": "-0.4999996,-0.5000004,0.5000004,0.4999996",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "19a5f1d5-65ee-4c12-8aa3-d21066554e04",
+          "Name": "LootSpawner",
+          "Position": "-630.4589,-933.4658,735.6252",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "d8706f85-abac-47c4-b947-a0deabfd3b75",
+          "Name": "LootSpawner",
+          "Position": "-497.3404,-116.9998,735.6251",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "03825e6c-e19a-4f54-9182-dccf3edde50f",
+          "Name": "LootSpawner",
+          "Position": "80.00006,-116.9998,735.6251",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "57b907fb-a834-4823-90c7-26315d48938c",
+          "Name": "LootSpawner",
+          "Position": "-31.03241,-848.4146,738.2587",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "ff34b487-9fb2-4fe7-8e6e-b7d4b3ae48c5",
+          "Name": "LootSpawner",
+          "Position": "-991.9999,-443.9363,779.625",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3c648ffe-7e28-45f9-b447-1e31bdf4e7c7",
+          "Name": "LootSpawner",
+          "Position": "-1436,-229.2327,738.2585",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "9ccd146f-9b99-442b-b252-73406b329fd7",
+          "Name": "LootSpawner",
+          "Position": "-1654.376,-215.3116,735.6251",
+          "Rotation": "0,0,0.1305263,-0.9914448",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "2b23ab9c-5d6d-4010-b4d3-09868e9d70aa",
+          "Name": "LootSpawner",
+          "Position": "-1656.367,-426.2518,735.625",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "813864a3-b9ef-4e63-9710-e654db594ed2",
+          "Name": "LootSpawner",
+          "Position": "-1415.931,-765.9811,780.0449",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "7d5c599f-c37e-418e-aa04-d8be77045a7b",
+          "Name": "LootSpawner",
+          "Position": "-1393.777,-1066.22,735.6252",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3e6d3c80-5df0-4e71-a873-4832a10dc847",
+          "Name": "LootSpawner",
+          "Position": "-1067.722,-1069.212,735.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "675cd7ac-202e-47e9-91fb-2596449f9039",
+          "Name": "LootSpawner",
+          "Position": "-1047.557,-888.553,785.7219",
+          "Rotation": "-0.5000005,-0.4999995,0.4999995,0.5000005",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "d1df8bb2-148f-4439-a28d-eb04632c2cd2",
+          "Name": "LootSpawner",
+          "Position": "-900.2748,-1181.138,778.8453",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "724bfdc5-7540-4b34-9c00-bb54d3f5ac5a",
+          "Name": "LootSpawner",
+          "Position": "-1032.889,-957.1812,782.4935",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "59fc6280-0fd2-4688-9b7e-12b0888110d2",
+          "Name": "LootSpawner",
+          "Position": "543.9388,-755.1703,738.2588",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "5cf2ca41-b5ab-43e0-b5b7-5f3137cdefd0",
+          "Name": "LootSpawner",
+          "Position": "784.8626,190.8772,735.6251",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "27d19c4c-aa6c-436e-bb03-f8ec19e9c9e1",
+          "Name": "LootSpawner",
+          "Position": "830.335,190.16,735.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "cf43f890-714d-498b-9a3e-b2d504efaee9",
+          "Name": "LootSpawner",
+          "Position": "727.0225,108.4115,782.3882",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "9f08ae1e-991e-466c-93d1-32a97b83b2a8",
+          "Name": "LootSpawner",
+          "Position": "-559.9999,-515.9998,699.625",
+          "Rotation": "0,0,0.7071061,0.7071075",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "08378c10-a8c0-48f9-b7b8-6ba24c435032",
+          "Name": "LootSpawner",
+          "Position": "1097.011,-510.9502,781.9263",
+          "Rotation": "-0.4999996,-0.5000004,0.5000004,0.4999996",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "999f98c3-08cc-4836-b778-939089fcf162",
+          "Name": "LootSpawner",
+          "Position": "927.6387,-194.1354,787.1147",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "4dbfe6c1-981e-4be5-8772-48aff443ce59",
+          "Name": "LootSpawner",
+          "Position": "683.8045,-193.8822,788.0641",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "d3ca19d4-3605-4c11-b2fa-1f724fa528ae",
+          "Name": "LootSpawner",
+          "Position": "105.3431,32.25537,785.0123",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 55,
+              "IsContainer": false,
+              "LevelType": "Mansion",
+              "LootPrefab": {
+                "_type": "gameobject",
+                "prefab": "prefabs/loot/thin_painting.prefab"
+              }
+            }
+          ]
+        },
+        {
+          "Id": "45dcb319-7156-4921-9f75-23e68f647194",
+          "Name": "LootSpawner",
+          "Position": "-520.9097,32.25537,785.0123",
+          "Rotation": "0.4999999,-0.4999999,0.5000001,-0.5000001",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "7a004024-ca57-410c-943b-cef1d93b8cde",
+          "Name": "LootSpawner",
+          "Position": "648.0001,-797.6501,781.9263",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "33a4d926-4760-434d-b42f-87f4318098f7",
+          "Name": "LootSpawner",
+          "Position": "-31.99994,-874.4786,781.9263",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "ab3f426d-95f9-49c9-857a-7bfac78d45ad",
+          "Name": "LootSpawner",
+          "Position": "921.1602,-603.8247,722.67",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "76f5accd-ab3f-48f4-b6b4-3312c6f64fd1",
+          "Name": "LootSpawner",
+          "Position": "488.0001,-195.9998,787.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "02606762-3902-4056-82ac-f7d1903326ba",
+          "Name": "LootSpawner",
+          "Position": "412.0001,-43.99976,787.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3d4e3e21-6245-4906-acef-b984f718999d",
+          "Name": "LootSpawner",
+          "Position": "228.0001,-43.41113,785.0123",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "72a42cdf-cc13-4fe6-9aaf-be253d57f52a",
+          "Name": "LootSpawner",
+          "Position": "744.0001,-43.41113,785.0123",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "321a5a5e-f4a6-4de6-be85-bde48b5bba3d",
+          "Name": "LootSpawner",
+          "Position": "1044,-43.99976,787.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "b6c6a474-b2c7-435b-9b99-ee7acb9b3b1e",
+          "Name": "LootSpawner",
+          "Position": "132.9427,-167.5835,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "d6d73463-1e84-42d6-88d4-714c3060f446",
+          "Name": "LootSpawner",
+          "Position": "1086,-167.9998,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c05235b3-9abb-40db-a983-04f6ff9b28a3",
+          "Name": "LootSpawner",
+          "Position": "713.2623,112.0002,785.0123",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "eb3f42fe-196b-4c96-b7aa-3d252f54c199",
+          "Name": "LootSpawner",
+          "Position": "359.2697,28.00024,785.0123",
+          "Rotation": "0.4999999,-0.4999999,0.5000001,-0.5000001",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "b35e9343-44cb-41e5-a3de-96da11541d28",
+          "Name": "LootSpawner",
+          "Position": "417.1983,62.89966,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "d5e4b96b-e276-4a68-afcd-ff506efc2cbc",
+          "Name": "LootSpawner",
+          "Position": "629.9504,187.5081,735.6249",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3898e5fa-2d1f-48ed-af13-b3fb70529784",
+          "Name": "LootSpawner",
+          "Position": "679.8887,187.2125,735.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "12bc1718-1dec-4dd2-b422-97a932932e58",
+          "Name": "LootSpawner",
+          "Position": "118.5948,28.00024,785.0123",
+          "Rotation": "0.4999999,-0.4999999,0.5000001,-0.5000001",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "e82cad13-34d9-4b26-8290-31d06f87eb3b",
+          "Name": "LootSpawner",
+          "Position": "344.6365,28.00024,785.0123",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "74480d2b-218a-439b-8ed5-a973a72b4e2b",
+          "Name": "LootSpawner",
+          "Position": "320.4174,182.5913,735.6251",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3f85ba44-d73f-4e57-b62b-fe1e1a1847bf",
+          "Name": "LootSpawner",
+          "Position": "321.379,128.0002,735.6251",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "b1055530-8fce-4fb8-9111-b2c8b4c6450f",
+          "Name": "LootSpawner",
+          "Position": "537.6022,188.0002,699.625",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f4d863f0-8d27-43aa-9395-a3a5132443a7",
+          "Name": "LootSpawner",
+          "Position": "950.3355,100.9689,699.625",
+          "Rotation": "0,0,0.7071074,0.7071062",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "2203c6de-b641-4de3-b9ec-88936871fdba",
+          "Name": "LootSpawner",
+          "Position": "-695.9999,-958.3418,782.4935",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "a4bf2560-e624-4515-91c2-0335a30e7e62",
+          "Name": "LootSpawner",
+          "Position": "-695.9999,-1181.449,782.4935",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "041e792a-efaa-4661-8221-d874277468a7",
+          "Name": "LootSpawner",
+          "Position": "-704.9837,-995.9998,699.625",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "7fb86b85-e2ea-4271-b621-1f298869d843",
+          "Name": "LootSpawner",
+          "Position": "-710.1093,-929.3993,699.625",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "e66160a8-bf21-4430-8ed0-e9822c0c946e",
+          "Name": "LootSpawner",
+          "Position": "-580.4831,-935.4771,735.6251",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "5a0daf8e-248f-414e-b59b-92ab51638a1b",
+          "Name": "LootSpawner",
+          "Position": "-695.9999,-714.6861,782.4935",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "56c8e39b-7973-49c1-8820-21297dd4b5da",
+          "Name": "LootSpawner",
+          "Position": "-674.7018,-777.3402,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "44653910-bf3f-4d41-be9a-0b4ba1e25d45",
+          "Name": "LootSpawner",
+          "Position": "-1010.309,-874.7317,735.6249",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "477a0332-56d5-4ecd-a901-89979d522d48",
+          "Name": "LootSpawner",
+          "Position": "-1010.352,-930.2811,735.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c2089fad-fb4f-4720-a207-334c5f34ee2a",
+          "Name": "LootSpawner",
+          "Position": "-1004.778,-962.7539,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "73c628ec-192a-4bb8-b471-5b9d4d440108",
+          "Name": "LootSpawner",
+          "Position": "-810.7033,-982.2552,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "dfd7931d-cb82-4d4b-83a1-fb4813408c6b",
+          "Name": "LootSpawner",
+          "Position": "-701.0847,-587.1709,786.4108",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "ab56956c-6ec3-4ed0-a5e4-df9e2df6b8fb",
+          "Name": "LootSpawner",
+          "Position": "-689.8149,-701.1629,795.5165",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "965d9a7f-b421-49d9-999d-ee549ea93415",
+          "Name": "LootSpawner",
+          "Position": "-945.3143,-701.8962,784.2609",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "506c8f98-a1cb-4933-b50c-79956ba753dd",
+          "Name": "LootSpawner",
+          "Position": "-928.1905,-586.7916,791.3564",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "10f93111-e0ec-4b0a-9790-e481d4d0f919",
+          "Name": "LootSpawner",
+          "Position": "-1012,-475.9998,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "ca0435d9-7150-407e-bfe5-b6f62232c5ed",
+          "Name": "LootSpawner",
+          "Position": "-1012,-555.9998,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "6a30dbf0-a967-459b-b9b1-75bb5412f031",
+          "Name": "LootSpawner",
+          "Position": "-689.8149,-572.9133,795.5165",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "93999467-39f7-4e89-8660-78dd7ef3f679",
+          "Name": "LootSpawner",
+          "Position": "-943.9999,-572.9133,795.5165",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "560ee219-f970-48a2-88b8-04e968d806cd",
+          "Name": "LootSpawner",
+          "Position": "-943.9999,-459.8345,795.5165",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "2a4ba70b-4865-40d4-9af3-52d4ff433305",
+          "Name": "LootSpawner",
+          "Position": "-699.9999,-459.8345,795.5165",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "65489011-6041-4d2d-a9b6-0d54590893fa",
+          "Name": "LootSpawner",
+          "Position": "-644.1713,-476.8817,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c56208cb-980e-486e-b893-09b552574edd",
+          "Name": "LootSpawner",
+          "Position": "-647.8751,-560.229,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "025fb267-e1f8-4305-8bcd-fbf48c27bbe2",
+          "Name": "LootSpawner",
+          "Position": "-1016.224,-607.7915,735.6249",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "fbd39999-1d55-4bc7-951f-c7d68a9f0fd3",
+          "Name": "LootSpawner",
+          "Position": "-1018.456,-681.6035,735.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "74d50624-491f-46bf-83ad-1b29045e9637",
+          "Name": "LootSpawner",
+          "Position": "-1194.116,-670.7605,731.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "413aeb81-f6b8-41b2-9dce-1c5346874a9a",
+          "Name": "LootSpawner",
+          "Position": "-1218.222,-862.3241,731.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "bac9ff12-5df4-46cf-a4cb-32422fb715cb",
+          "Name": "LootSpawner",
+          "Position": "-1229.344,-704.8708,731.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f8fbfdaf-f90d-45a7-b2ef-160cd9f7e11b",
+          "Name": "LootSpawner",
+          "Position": "-1179.431,-807.262,731.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "51fb74ed-1614-45c3-95eb-463233154583",
+          "Name": "LootSpawner",
+          "Position": "-1534.795,-659.3729,738.2586",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "d65abcb0-d2f0-465d-9b70-acc3aff311e2",
+          "Name": "LootSpawner",
+          "Position": "-1762.507,-964.0458,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "5db12589-0345-413c-9847-e7fc5d9a0189",
+          "Name": "LootSpawner",
+          "Position": "-1801.568,-871.9998,782.4935",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "8d5a1ade-f42c-49e0-ab80-f969c04c5d90",
+          "Name": "LootSpawner",
+          "Position": "-1430.727,-871.9998,782.4935",
+          "Rotation": "-0.4999996,-0.5000004,0.5000004,0.4999996",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "140aab4d-98fd-41f6-bd1b-c9330ebd2450",
+          "Name": "LootSpawner",
+          "Position": "-1496,-706.4467,782.4935",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "07c255c4-6d55-4274-951f-2bca76f81414",
+          "Name": "LootSpawner",
+          "Position": "-1428,-458.3761,782.4935",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c30b765d-2b56-41b0-bea2-61e02570ddfe",
+          "Name": "LootSpawner",
+          "Position": "-1108,-458.3761,782.4935",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "92fc14e9-0147-4893-87e1-e5b29f9e2ccd",
+          "Name": "LootSpawner",
+          "Position": "-1566.343,-654.2908,738.2585",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "88a48815-c8dc-44cc-8852-8ed95a9e947e",
+          "Name": "LootSpawner",
+          "Position": "-1077.761,-484.0657,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "5f49d2b8-d2bf-455d-9b8e-a8c3fa342ebc",
+          "Name": "LootSpawner",
+          "Position": "-689.8149,-444.2686,779.625",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "fc1a4583-df56-40de-aa5b-dc450a5c03b6",
+          "Name": "LootSpawner",
+          "Position": "-1248,-444.2686,779.625",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "41022aa6-1688-4faa-a5f5-3894101da119",
+          "Name": "LootSpawner",
+          "Position": "-1580,-444.2686,779.625",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3de24829-dbb8-4b58-b766-621f091a91e5",
+          "Name": "LootSpawner",
+          "Position": "-1673.672,-321.5938,786.8666",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "8c8c9698-9b6b-4589-b8cd-656e56de2e19",
+          "Name": "LootSpawner",
+          "Position": "-1513.658,-193.5933,783.625",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "8a2d7aef-77bd-4814-aa14-07188e4b1502",
+          "Name": "LootSpawner",
+          "Position": "-1292,-193.5933,783.625",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "0de4d54f-c651-4bb2-8e36-22f4d5661832",
+          "Name": "LootSpawner",
+          "Position": "-1088,-193.5933,783.625",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "06f43733-ecea-4a98-854e-f3d9256a744c",
+          "Name": "LootSpawner",
+          "Position": "-875.9999,-194.5287,779.625",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "a6613a06-47d2-4728-aae0-060db1648096",
+          "Name": "LootSpawner",
+          "Position": "-1040.882,-231.4985,738.2586",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "0abbc6f4-aaa2-48f7-b11c-58b2d36ea69b",
+          "Name": "LootSpawner",
+          "Position": "-1000.338,-233.9769,738.2585",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "8eaa234c-7b7e-4435-b673-7f7d8afe1347",
+          "Name": "LootSpawner",
+          "Position": "-1404.895,-231.3181,738.2585",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "19298701-8463-4113-bd40-1c040dcd88fa",
+          "Name": "LootSpawner",
+          "Position": "-928.8961,-424.1274,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "92b7418e-e8eb-438a-981f-018993a19252",
+          "Name": "LootSpawner",
+          "Position": "-561.0127,-407.527,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "5b6ea6cc-41c0-429a-b1e5-462dcae370ef",
+          "Name": "LootSpawner",
+          "Position": "-671.9999,-15.99976,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3a31ed6a-ea49-4274-a4f2-f84596811b0c",
+          "Name": "LootSpawner",
+          "Position": "-1031.737,-156.6119,735.6252",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "fe8ea332-10e9-45c5-8279-3833d234d7cd",
+          "Name": "LootSpawner",
+          "Position": "-1081.143,-157.6675,735.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "97896947-7aaf-420f-9738-6ed6ba282145",
+          "Name": "LootSpawner",
+          "Position": "-671.9999,-63.99976,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "27820a0b-3780-4fa7-903a-d6d947c1e965",
+          "Name": "LootSpawner",
+          "Position": "-924.3575,-16.24365,738.2582",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "1e981050-af76-4251-8846-46628b4ac29c",
+          "Name": "LootSpawner",
+          "Position": "-897.6857,33.76306,738.2585",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "45d240be-062a-4769-9924-a4230735e40b",
+          "Name": "LootSpawner",
+          "Position": "-923.9999,16.00024,738.2585",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "93e3b2e8-bbe6-4aae-90a3-384e3122d9e4",
+          "Name": "LootSpawner",
+          "Position": "-667.9999,-180.4092,779.625",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c0364dbf-590e-4349-a878-69bec4ebd11e",
+          "Name": "LootSpawner",
+          "Position": "-1016,-180.4092,779.625",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "13955844-8333-4d5a-99fa-c3ca138036c8",
+          "Name": "LootSpawner",
+          "Position": "-1088,180.9617,783.625",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "1018ba9d-f007-4ce4-a04d-d282a9e2cf2e",
+          "Name": "LootSpawner",
+          "Position": "-815.9999,180.9617,783.625",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "ab735ef4-4fdb-4683-aaa9-f8dab50c564b",
+          "Name": "LootSpawner",
+          "Position": "-579.9999,180.9617,783.625",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "4f91dbec-ce24-4dc5-af21-aba56185f0a6",
+          "Name": "LootSpawner",
+          "Position": "-1138.597,-99.99976,779.625",
+          "Rotation": "0.4999999,-0.4999999,0.5000001,-0.5000001",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "e6751f63-49df-4cfb-9543-50dd1b4970d7",
+          "Name": "LootSpawner",
+          "Position": "-1138.597,112.0002,779.625",
+          "Rotation": "0.4999999,-0.4999999,0.5000001,-0.5000001",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "0e3bf9da-085f-45cf-9286-d3b6cd29a3bf",
+          "Name": "LootSpawner",
+          "Position": "-1282.148,-99.99976,779.625",
+          "Rotation": "0.4999999,-0.4999999,0.5000001,-0.5000001",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3b9e5389-5a02-40ab-b757-3a0a7c7991aa",
+          "Name": "LootSpawner",
+          "Position": "-1282.148,108.0002,779.625",
+          "Rotation": "0.4999999,-0.4999999,0.5000001,-0.5000001",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f5f6b018-18ca-41cf-9ce5-32dd2a228427",
+          "Name": "LootSpawner",
+          "Position": "-1150.889,108.0002,779.625",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c59df418-ceda-45db-949b-31cdb5690f33",
+          "Name": "LootSpawner",
+          "Position": "-1150.889,-115.9998,779.625",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "9c47c5c3-f146-4f23-aaa8-9971d7ffd85b",
+          "Name": "LootSpawner",
+          "Position": "-1256,156.0002,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "e709c8a2-835e-41b0-b479-63476cfe3986",
+          "Name": "LootSpawner",
+          "Position": "-1172.827,161.3529,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "84308cfd-be98-49b7-b7a7-63c152f62363",
+          "Name": "LootSpawner",
+          "Position": "-1647.514,-103.0742,735.6253",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "ee53827c-631f-4ad5-9f13-4209c4e0baa8",
+          "Name": "LootSpawner",
+          "Position": "-1647.724,28.00024,735.6254",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "eefbb476-0bcb-4295-a3d3-58f57b2a70ac",
+          "Name": "LootSpawner",
+          "Position": "-1370.249,180.8112,778.8271",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "e0aa29ab-70e6-4178-93e0-582e893f83bf",
+          "Name": "LootSpawner",
+          "Position": "-1601.084,181.1436,790.1804",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "33191901-9784-4d38-a5bd-ad9bc316e065",
+          "Name": "LootSpawner",
+          "Position": "-1294.985,-111.4394,781.3282",
+          "Rotation": "-0.4999996,-0.5000004,0.5000004,0.4999996",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c8121cae-4dee-47a0-b403-5a148072cab4",
+          "Name": "LootSpawner",
+          "Position": "-1550.547,-180.5034,780.5619",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "69716ff6-1428-4156-9f10-cfa11137e242",
+          "Name": "LootSpawner",
+          "Position": "-1293.673,88.13123,777.0602",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "35dede45-dad5-4017-8252-8f395a7ce120",
+          "Name": "LootSpawner",
+          "Position": "-1357.399,88.15161,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "1677f142-98ea-4587-826b-cf481b51db29",
+          "Name": "LootSpawner",
+          "Position": "-1399.088,132.0651,699.625",
+          "Rotation": "0,0,0.9914448,-0.1305269",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3f1e4f20-91b9-44d7-9c62-700f5d33ab19",
+          "Name": "LootSpawner",
+          "Position": "-1047.557,-543.9998,785.7219",
+          "Rotation": "-0.5000005,-0.4999995,0.4999995,0.5000005",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "a05ea869-a71c-4350-b777-6a06acfe9823",
+          "Name": "LootSpawner",
+          "Position": "-1248,-1085.108,779.625",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "a58a67b4-c457-43df-bd1d-096440cb0608",
+          "Name": "LootSpawner",
+          "Position": "-560.7151,-158.3434,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "56d44d61-4228-40d8-8221-4715442e3fc9",
+          "Name": "LootSpawner",
+          "Position": "-740.5219,-421.6023,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "fa833247-3b4a-498c-b97b-443659cfee66",
+          "Name": "LootSpawner",
+          "Position": "-521.2066,-370.5549,777.3748",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "773c4d16-3eeb-4fe9-b20b-b64f9e4dd7f6",
+          "Name": "LootSpawner",
+          "Position": "-521.2556,-541.7411,781.5342",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "6ffc6658-410e-4c56-8342-e60a48786f92",
+          "Name": "LootSpawner",
+          "Position": "63.53339,-189.4503,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "412c5b6a-a9e4-4c93-b409-9b037128d731",
+          "Name": "LootSpawner",
+          "Position": "-493.3659,-158.8167,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "6368fa74-898d-49e7-9fb4-5251eacbc59e",
+          "Name": "LootSpawner",
+          "Position": "33.79498,-843.2691,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "a35256fa-5b68-40c4-8179-1f342289f7bb",
+          "Name": "LootSpawner",
+          "Position": "-99.8421,-846.7236,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "0c9f027e-809e-42a3-8a35-747457e02eaf",
+          "Name": "LootSpawner",
+          "Position": "637.6252,12.20227,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "4187e1cd-3419-4707-b302-695cf10329da",
+          "Name": "LootSpawner",
+          "Position": "677.3841,77.91394,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "95bca653-7749-4696-807e-288b10ff274b",
+          "Name": "LootSpawner",
+          "Position": "949.5499,49.60132,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "a0a328f1-fe46-47ca-a4ab-b3668b4f084a",
+          "Name": "LootSpawner",
+          "Position": "945.2344,155.1946,699.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "7c240bde-53b4-4db1-8c02-53b982db13e5",
+          "Name": "LootSpawner",
+          "Position": "816.0001,-29.08246,782.3882",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "d13f04bb-c7ce-4324-a75b-c97d16bad4d5",
+          "Name": "LootSpawner",
+          "Position": "1052,-29.08246,782.3882",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c454c56a-084b-4b67-8229-ed71d6017b35",
+          "Name": "LootSpawner",
+          "Position": "1052,-179.9996,782.3882",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "fab28ea4-05ad-48fc-b46e-0fdecce4cab1",
+          "Name": "LootSpawner",
+          "Position": "912.0001,-179.9996,782.3882",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "ea160b73-76d7-4e4b-9275-c40473d0c30f",
+          "Name": "LootSpawner",
+          "Position": "624.0001,-179.9996,782.3882",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "2d2635e6-dc0a-460a-a3b0-60c57033a896",
+          "Name": "LootSpawner",
+          "Position": "424.0001,-179.9996,782.3882",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "8cd0fde0-f08a-4ba6-b25c-b29851d679bf",
+          "Name": "LootSpawner",
+          "Position": "180.0001,-179.9996,782.3882",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "76f20138-dbb7-4ec3-a587-60b8315755b2",
+          "Name": "LootSpawner",
+          "Position": "-140.1096,-1190.206,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "6b76a95c-c2f3-4544-8701-b1399755598e",
+          "Name": "LootSpawner",
+          "Position": "67.98199,-1183.959,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "ddf150f5-89c5-4e43-87ac-750cceebefc1",
+          "Name": "LootSpawner",
+          "Position": "-140.8032,-1542.531,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c64bf4c3-c328-4747-a372-8a0ff3e1af52",
+          "Name": "LootSpawner",
+          "Position": "87.83173,-1531.173,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c66620ce-3a4f-4224-a359-e3e1b0414faa",
+          "Name": "LootSpawner",
+          "Position": "-144.4396,-1690.648,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f131bc78-1bb7-437f-83d7-e252505a9ccc",
+          "Name": "LootSpawner",
+          "Position": "24.00629,-1856.664,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "2c498b55-1355-41b2-a80d-564098c1d866",
+          "Name": "LootSpawner",
+          "Position": "-199.9999,-1885.738,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "36cb3330-f155-4756-9f23-728abf032d3c",
+          "Name": "LootSpawner",
+          "Position": "-463.9999,-1885.56,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "8286942c-bf6b-4336-9fdf-daa3275d365c",
+          "Name": "LootSpawner",
+          "Position": "-723.9999,-1885.738,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "5323b987-a94b-4b5b-b290-0dc5e934cbf2",
+          "Name": "LootSpawner",
+          "Position": "-979.9999,-1885.56,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "a95b7da8-98c0-4ccc-b889-df2a927858a1",
+          "Name": "LootSpawner",
+          "Position": "-1236,-1885.738,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "26c59d2a-2e26-46a8-9931-8a5d9fd2701c",
+          "Name": "LootSpawner",
+          "Position": "-1500,-1885.56,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "4f19f233-e0f1-4bad-a250-28414dc5864d",
+          "Name": "LootSpawner",
+          "Position": "-1752,-1885.738,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "871e91ca-099a-43dd-b791-74df6975d862",
+          "Name": "LootSpawner",
+          "Position": "-2020,-1885.56,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "874508fc-f20f-414c-a057-cc579554b902",
+          "Name": "LootSpawner",
+          "Position": "-2364,-1885.738,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "362855e2-af43-4681-a112-6d39aaf19fe9",
+          "Name": "LootSpawner",
+          "Position": "-2557.625,-1885.719,911.85",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "b8994fd8-e992-4ff8-a88e-a8108881068c",
+          "Name": "LootSpawner",
+          "Position": "-2247.767,-1484.073,866.2586",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "1cae3241-4492-4904-bf9f-fb6cb545cc39",
+          "Name": "LootSpawner",
+          "Position": "-2269.703,-1507.606,866.2589",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "98242e3c-d31c-4767-9635-be2da6c72518",
+          "Name": "LootSpawner",
+          "Position": "-2249.344,-1530.056,866.259",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "6691fa9b-4259-463c-b349-dc5dba3ef3d0",
+          "Name": "LootSpawner",
+          "Position": "-2130.954,-1609.854,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "97b8709b-c0ee-4bee-b0cd-3c6238defb26",
+          "Name": "LootSpawner",
+          "Position": "-2324.597,-1373.943,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "a68f054b-845e-48c5-9165-9f92774d41af",
+          "Name": "LootSpawner",
+          "Position": "-2216,-1323.13,909.9208",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "97dfb18b-bb95-4f9e-81e2-c0bef1b79ef2",
+          "Name": "LootSpawner",
+          "Position": "-2102.507,-1558.601,906.5133",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f0da0fbf-3433-481e-9b85-fcf1373f1273",
+          "Name": "LootSpawner",
+          "Position": "-2392.18,-858.0624,863.6245",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "066bc80d-8ab9-4790-bd5d-48b1142f1400",
+          "Name": "LootSpawner",
+          "Position": "-2641.618,-857.9849,863.6253",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3a04df85-9e6d-4a5a-a128-c88885b38204",
+          "Name": "LootSpawner",
+          "Position": "-2021.954,-479.6926,827.625",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f85d059c-541e-4045-8641-5abdd6bedd46",
+          "Name": "LootSpawner",
+          "Position": "-2001.245,156.7173,827.625",
+          "Rotation": "0,0,0.7071061,0.7071075",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "6ed1e323-969d-4ee8-bcf7-3a3be03fcc6e",
+          "Name": "LootSpawner",
+          "Position": "-1987.857,-957.1101,827.625",
+          "Rotation": "0,0,0.7071061,0.7071075",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "1f3dba65-a736-4d30-8a30-cb7308e5fe82",
+          "Name": "LootSpawner",
+          "Position": "-1931.869,-1237.752,827.625",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "0ebc5345-20ae-4fde-b1a6-e4f55b14c2c4",
+          "Name": "LootSpawner",
+          "Position": "-1680,-1237.752,827.625",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "d918e27d-9a4b-42d3-bfbf-8c18a5b45999",
+          "Name": "LootSpawner",
+          "Position": "-1560,-1276,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "38ce4bd0-0af2-4f3a-9900-f7758683f4fb",
+          "Name": "LootSpawner",
+          "Position": "-2281.941,-2240.303,827.625",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "5ef2f283-e0b3-4fa1-9b3c-e7579dd39458",
+          "Name": "LootSpawner",
+          "Position": "-2441.822,-2234.142,827.625",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "6968d135-e664-4a7e-b1e1-683181192d62",
+          "Name": "LootSpawner",
+          "Position": "-596.0062,-1438.997,866.2594",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "2d1aed2c-2fa4-4fba-9450-54850feedfef",
+          "Name": "LootSpawner",
+          "Position": "-600.5134,-1471.757,866.259",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "69c007b8-43ac-4759-a106-ff22e2ada7fb",
+          "Name": "LootSpawner",
+          "Position": "-615.471,-1418.717,866.2592",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "51446e26-7f4b-411b-8534-4ee48ec99836",
+          "Name": "LootSpawner",
+          "Position": "-567.1905,-1561.96,910.2109",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "e33a0258-687c-4f82-9674-0972db260113",
+          "Name": "LootSpawner",
+          "Position": "-566.5187,-1288.739,906.8427",
+          "Rotation": "-0.5000004,-0.4999993,0.4999997,0.5000007",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "b0f3fbe4-a369-44a2-9fce-c42761b62a20",
+          "Name": "LootSpawner",
+          "Position": "-813.3522,-1661.833,909.4694",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "ad88874f-cd31-4494-9f88-6b2e9e7d2250",
+          "Name": "LootSpawner",
+          "Position": "-661.0186,-1661.325,904.8009",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "21f5da2c-1cc7-4f3a-b54f-e67da864a5dd",
+          "Name": "LootSpawner",
+          "Position": "-811.2573,-1224,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "7f50e9b9-6e10-4ffd-8c78-3f647c826643",
+          "Name": "LootSpawner",
+          "Position": "-610.4985,-1256,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "8df442b7-8e12-46de-8d76-6f90dd629a59",
+          "Name": "LootSpawner",
+          "Position": "-616.2422,-1620,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "584a8912-0bf0-4bae-a284-e106b1b85717",
+          "Name": "LootSpawner",
+          "Position": "-623.9999,-1364,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "4a840dac-832c-4ef2-8a1c-953a8fd9e2bc",
+          "Name": "LootSpawner",
+          "Position": "-1173.949,-1482.027,866.2584",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "465593e9-6fb0-4cae-a4fa-6e1a514c6d1c",
+          "Name": "LootSpawner",
+          "Position": "-1150.851,-1441.135,866.2584",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "9e6280ef-f2cb-4abc-a8d2-536c8328e952",
+          "Name": "LootSpawner",
+          "Position": "-1174.355,-1422.748,866.2587",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "428d8778-867b-463a-965f-efc48b01815e",
+          "Name": "LootSpawner",
+          "Position": "-1000.549,-1533.421,911.4403",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "b1368c7f-0803-4e2a-b68a-ae6d408b1cdf",
+          "Name": "LootSpawner",
+          "Position": "-1139.481,-1533.256,908.7393",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "2eb9d34c-d12a-4625-baea-7c4c1a94edf2",
+          "Name": "LootSpawner",
+          "Position": "-1193.162,-1277.387,905.3229",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "e8d62d69-ab34-4600-a290-ef27fa1ccc53",
+          "Name": "LootSpawner",
+          "Position": "-921.8926,-1499.131,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3134de84-637f-4771-b4dd-957ee9a4d284",
+          "Name": "LootSpawner",
+          "Position": "-1167.644,-1237.763,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "48bb37f3-6361-42c3-8dd7-6a10dc2289ae",
+          "Name": "LootSpawner",
+          "Position": "-1300,-1512,866.2584",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "bb36d392-2721-49bd-9ee6-00b28bf79fe0",
+          "Name": "LootSpawner",
+          "Position": "-1344,-1516,866.2584",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c46fa634-685b-45d8-b0f3-78234a4b5ad0",
+          "Name": "LootSpawner",
+          "Position": "-1324,-1488,866.2587",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "2c7e201a-2dca-4538-8a5d-ef40f34a161d",
+          "Name": "LootSpawner",
+          "Position": "-1584,-1512,866.2584",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "fadc8770-44a2-433d-9222-1df349f8a4c6",
+          "Name": "LootSpawner",
+          "Position": "-1436,-1232,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "43294c6c-138f-400d-967c-64b269a4acdc",
+          "Name": "LootSpawner",
+          "Position": "-1256,-1232,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "bea84f6c-e441-4890-878a-19b0cc30542d",
+          "Name": "LootSpawner",
+          "Position": "-1648,-1512,866.2584",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "1c1b7e64-bd18-4479-bfb0-dca76dffb39b",
+          "Name": "LootSpawner",
+          "Position": "-1844,-1512,866.2584",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "05cb6139-1278-4cfb-8b8a-6759d336f68b",
+          "Name": "LootSpawner",
+          "Position": "-1752,-1344,866.2587",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3617e9ae-7630-42a0-912b-a0791330bec0",
+          "Name": "LootSpawner",
+          "Position": "-1740,-1396,866.2584",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "9a1338ed-2138-4621-a722-55c2efb2fcbd",
+          "Name": "LootSpawner",
+          "Position": "-1768,-1388,866.2584",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c27b76c7-6481-4c9a-a9dd-0bb1ffd5cd28",
+          "Name": "LootSpawner",
+          "Position": "-1832,-1224,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "4285d090-5bea-4bd1-b151-559ebae35b2f",
+          "Name": "LootSpawner",
+          "Position": "-2056,-1436,863.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "8b68b980-9b4b-45ce-9172-4c39fe7ddf7f",
+          "Name": "LootSpawner",
+          "Position": "-2064,-1416,866.2587",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "1f9e7bf8-e205-4d5a-9ff1-da2f171e0f34",
+          "Name": "LootSpawner",
+          "Position": "-2064,-1388,866.2587",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "a985f8e4-29c6-40c4-a0d1-55b1ca8fa0f3",
+          "Name": "LootSpawner",
+          "Position": "-1916,-1436,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f77281ab-1a09-427e-944e-1c7333fb7214",
+          "Name": "LootSpawner",
+          "Position": "-1916,-1516,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "5c06acc7-8a18-4450-a8ed-2dde5f3f8014",
+          "Name": "LootSpawner",
+          "Position": "-2068,-1636,866.2584",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "275a46b0-2eb0-4f3c-8dec-0d3e00fdaf61",
+          "Name": "LootSpawner",
+          "Position": "-2068,-1572,866.2584",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "e4c1e398-db3c-45cf-b934-613ccd8b0793",
+          "Name": "LootSpawner",
+          "Position": "-967.9999,-1660,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "62a6808f-f2d5-48db-b0d0-4841867efc80",
+          "Name": "LootSpawner",
+          "Position": "-1116,-1660.554,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "6e5c1d4e-c259-4173-8f13-990c81854653",
+          "Name": "LootSpawner",
+          "Position": "-1260,-1660,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3115ff26-cff4-469d-b129-542064c7d420",
+          "Name": "LootSpawner",
+          "Position": "-1452,-1660.554,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "5b0c58a3-b599-49a7-9581-e7c264db3a22",
+          "Name": "LootSpawner",
+          "Position": "-1608,-1660,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "562b1e8d-13e2-424f-b3d6-a9a0a918c7bc",
+          "Name": "LootSpawner",
+          "Position": "-1732,-1660.554,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "277e71a2-cd53-4270-ad7b-2d60fd336b25",
+          "Name": "LootSpawner",
+          "Position": "-2044,-1660,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "0f361950-ca94-485b-a6c2-654dfc0bf90d",
+          "Name": "LootSpawner",
+          "Position": "-951.9998,-1548,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "7f3cc28c-6f70-426c-a8e4-92c7c3d402ac",
+          "Name": "LootSpawner",
+          "Position": "-1180,-1548,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "1107f834-d4e2-431b-8705-c0e788a7fbde",
+          "Name": "LootSpawner",
+          "Position": "-1316,-1548,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "01c0127b-f7dd-48b6-9bf0-a1d3b9559741",
+          "Name": "LootSpawner",
+          "Position": "-1592,-1548,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "959c8dee-7d84-462d-a0b0-37e9a5841e4f",
+          "Name": "LootSpawner",
+          "Position": "-1828,-1548,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "977bc892-41f2-4b93-815c-a2dcebce535e",
+          "Name": "LootSpawner",
+          "Position": "-2088,-1608,911.625",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "39ea4985-247a-4230-9dea-c663361cc93a",
+          "Name": "LootSpawner",
+          "Position": "-2020,-2268,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3177a7ff-f5ce-4409-a5f9-b7dec31be6ee",
+          "Name": "LootSpawner",
+          "Position": "-2600,-2268,911.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f8c9647f-a7bf-4142-a645-7e73e65c14c6",
+          "Name": "LootSpawner",
+          "Position": "-2112,-2268,911.4403",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "4faac88e-001f-48cc-afa6-77f7e01ad900",
+          "Name": "LootSpawner",
+          "Position": "-1944,-1972,911.4403",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "bda69212-d15f-42ab-8924-21c2f35f91c9",
+          "Name": "LootSpawner",
+          "Position": "-1957.715,-2013.702,863.6251",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "e58551e1-4620-4720-8b3c-48ecc520395f",
+          "Name": "LootSpawner",
+          "Position": "-1959.88,-2152.136,863.6249",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f98d8ca9-238e-4842-968b-a39444c11f7f",
+          "Name": "LootSpawner",
+          "Position": "-2453.82,-1913.091,863.6248",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "aa3413bd-5018-48a8-8cca-a3f64818663d",
+          "Name": "LootSpawner",
+          "Position": "-2422.901,-1927.558,863.6248",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "dc5ab744-b903-48f6-bfda-b5b2b57fe0bd",
+          "Name": "LootSpawner",
+          "Position": "-2389.318,-1915.351,863.6251",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "49f8c237-4cd6-4801-97e8-8b2f24706d5f",
+          "Name": "LootSpawner",
+          "Position": "-2643.32,-2112,866.2587",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "fbb8da3e-8cbd-41d0-9784-29bc0b2558cf",
+          "Name": "LootSpawner",
+          "Position": "-2621.991,-2086.405,866.2587",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "17f2c6d7-3c78-4f66-af30-e8db141d38f1",
+          "Name": "LootSpawner",
+          "Position": "-2625.652,-2231.355,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "48332b52-0bb7-4999-9ee7-1e85cbdb3df3",
+          "Name": "LootSpawner",
+          "Position": "-2081.882,-2050.109,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "e186cfec-c9b5-46d0-9f6c-4aa7f5d21644",
+          "Name": "LootSpawner",
+          "Position": "-2082.379,-2115.391,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "2fe2d848-0632-4a5d-b37d-dde7deec32f9",
+          "Name": "LootSpawner",
+          "Position": "-2325.952,-1918.512,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "6bfc0752-2e44-49da-928e-070a25eb3e9e",
+          "Name": "LootSpawner",
+          "Position": "-2510.143,-2236.991,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "b8e2dc8a-97d7-47a9-abba-c4b04142fab0",
+          "Name": "LootSpawner",
+          "Position": "-2152.521,-2242.793,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "4fb775ca-b9e5-40a0-a816-c6de77c2bd90",
+          "Name": "LootSpawner",
+          "Position": "-2524,-1900,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "94770164-eec9-42f0-9c36-26746d6dcd68",
+          "Name": "LootSpawner",
+          "Position": "-2336,-1900,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "a3e537de-f17c-45bc-8b17-6f1c968830fd",
+          "Name": "LootSpawner",
+          "Position": "-2120,-1900,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c8eb53a3-ad86-432d-99df-7e0f7edaf653",
+          "Name": "LootSpawner",
+          "Position": "-2012,-1900,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "864d7f88-879b-4e1c-8eae-26232a7e8d44",
+          "Name": "LootSpawner",
+          "Position": "-2204,-1260,827.625",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "d6f7f994-467c-4129-9282-8e73ca4c18b2",
+          "Name": "LootSpawner",
+          "Position": "-1944,-1084,906.5133",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "609e9670-5c2d-478a-ada4-a70edad519e5",
+          "Name": "LootSpawner",
+          "Position": "-2098.677,-1092.638,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "6e92a728-d5fd-4440-8ca2-4af22ad74d55",
+          "Name": "LootSpawner",
+          "Position": "-2104.521,-989.7465,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "9305aacf-1564-445b-b9c9-cbe0efd7f637",
+          "Name": "LootSpawner",
+          "Position": "-2231.646,-929.1975,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "95cc7db7-cc31-44fe-9e70-7880c6cc98e1",
+          "Name": "LootSpawner",
+          "Position": "-2182.331,-1118.412,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f29f2e24-d391-422a-8d7a-fc098b5f2b3a",
+          "Name": "LootSpawner",
+          "Position": "-2044,-903.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "cb89b8eb-9e73-415c-9ec5-6749a32d94b6",
+          "Name": "LootSpawner",
+          "Position": "-2288,-1028,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3dade73c-95c9-4a24-8762-54fbc602055a",
+          "Name": "LootSpawner",
+          "Position": "-2323.205,-865.6436,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "d2111143-22ec-4b62-b16a-2279f8869926",
+          "Name": "LootSpawner",
+          "Position": "-1968.407,-1154.691,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "95c3d0e2-ff57-4841-a9bf-be4343df8559",
+          "Name": "LootSpawner",
+          "Position": "-2126.371,-1278.134,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "472f0ed3-d192-4030-b92f-a965081b867d",
+          "Name": "LootSpawner",
+          "Position": "-1968,-695.9998,867.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "91f09ee5-45bf-4924-871a-8f5b9ea81bd8",
+          "Name": "LootSpawner",
+          "Position": "-1968,-739.9998,867.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "4b2b2fb2-f53a-4973-bb85-a365cde99a8f",
+          "Name": "LootSpawner",
+          "Position": "-1988,-715.9998,867.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f8b196ab-3115-48d2-95c1-705823d2dc66",
+          "Name": "LootSpawner",
+          "Position": "-2264,-403.9998,867.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "66455f28-acc6-4ec0-a659-6077e07a75e3",
+          "Name": "LootSpawner",
+          "Position": "-2264,-359.9998,867.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "99514d8e-7d7e-43ee-b4c1-ce59549884ee",
+          "Name": "LootSpawner",
+          "Position": "-2284,-379.9998,867.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "1b0335a2-a813-48d6-86b8-c869a6f5d159",
+          "Name": "LootSpawner",
+          "Position": "-2636,-363.9998,867.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "4377f8bd-0b91-4de1-af76-bfb0953dd40f",
+          "Name": "LootSpawner",
+          "Position": "-2636,-311.9998,867.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "92cd03e9-152e-424c-99d5-1ef6c170f150",
+          "Name": "LootSpawner",
+          "Position": "-2640,-331.9998,867.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "0f154a23-ba56-4e50-bc21-d765712616c2",
+          "Name": "LootSpawner",
+          "Position": "-1207.443,-1263.705,912.2228",
+          "Rotation": "-0.4999994,-0.5000002,0.5000007,0.4999999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "054bf016-f94f-4006-862a-88a415b93a56",
+          "Name": "LootSpawner",
+          "Position": "-1207.289,-1457.105,911.8286",
+          "Rotation": "-0.4999994,-0.5000002,0.5000007,0.4999999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "b200c72e-76ec-4f00-b6e1-92650bf8b44b",
+          "Name": "LootSpawner",
+          "Position": "-1540,-1532.854,903.4656",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "d591d33a-9d76-4df4-a7ec-0c8df7a4d48c",
+          "Name": "LootSpawner",
+          "Position": "-1608.586,-1271.646,903.9304",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "0afe1f87-489c-4bd7-9d67-3727e56e3ed4",
+          "Name": "LootSpawner",
+          "Position": "-1864,-1271.646,903.9304",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "bc157ee2-e333-4ec7-9698-5f4c316d3816",
+          "Name": "LootSpawner",
+          "Position": "-1804,-1532.854,903.4656",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "85a34a0f-fd5b-4961-be7f-b3c2e7c5ac91",
+          "Name": "LootSpawner",
+          "Position": "-1624,-1444,903.4656",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "23cee1bd-45ca-4aba-8aac-b60fa592b0f4",
+          "Name": "LootSpawner",
+          "Position": "-2664,-1444,903.625",
+          "Rotation": "0.4999999,-0.4999999,0.5000001,-0.5000001",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "20a691f1-831b-4502-9d07-a13a79a19e4a",
+          "Name": "LootSpawner",
+          "Position": "-2664,-1304,907.625",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "84700b14-119c-4527-8226-23a8956213ab",
+          "Name": "LootSpawner",
+          "Position": "-2664,-923.9998,903.625",
+          "Rotation": "0.4999999,-0.4999999,0.5000001,-0.5000001",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "cfe75452-9b47-497d-ac24-bc2a4e46b37d",
+          "Name": "LootSpawner",
+          "Position": "-2359.589,-923.9998,903.625",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "07a7bdbb-229b-439e-bd99-eca9c4f92abf",
+          "Name": "LootSpawner",
+          "Position": "-2452,-843.9998,911.85",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "977ef6e7-4697-47f7-8513-bb070bf99744",
+          "Name": "LootSpawner",
+          "Position": "-2576,-843.9998,911.85",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "ca5668d0-2b8a-4036-9261-a4c83258b40a",
+          "Name": "LootSpawner",
+          "Position": "-2327.024,-735.9998,903.625",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c87d70ef-ea53-4504-91b4-a9cf1c577651",
+          "Name": "LootSpawner",
+          "Position": "-2328,-603.9998,903.625",
+          "Rotation": "-0.4999996,-0.5000004,0.5000004,0.4999996",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "b838d747-31f4-43da-af1f-92ae045a0c51",
+          "Name": "LootSpawner",
+          "Position": "-2328,-351.9998,903.625",
+          "Rotation": "-0.4999996,-0.5000004,0.5000004,0.4999996",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "fdb9fbfe-0248-451c-942d-34acdab88a94",
+          "Name": "LootSpawner",
+          "Position": "-2327.024,-483.9998,903.625",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "95a6e37d-afec-4b1d-a940-6e1c1eddb663",
+          "Name": "LootSpawner",
+          "Position": "-2328,-103.9998,903.625",
+          "Rotation": "-0.4999996,-0.5000004,0.5000004,0.4999996",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "7f94fabd-681a-4ab4-b240-918883fcaa8a",
+          "Name": "LootSpawner",
+          "Position": "-2327.024,-235.9998,903.625",
+          "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "d74d71da-4c0d-44b7-91bd-7ec4e9462b83",
+          "Name": "LootSpawner",
+          "Position": "-2408,-827.9998,903.625",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "86375ac9-6d2a-41b3-889d-1beb5d32a82b",
+          "Name": "LootSpawner",
+          "Position": "-2604,-827.9998,903.625",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "21e258c8-b758-49d1-8719-d80582a36eb0",
+          "Name": "LootSpawner",
+          "Position": "-2665.197,-143.9998,903.625",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "382f34a2-bea4-47d8-bb7e-334fd91c2541",
+          "Name": "LootSpawner",
+          "Position": "-2665.197,-395.9998,903.625",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "9a14efbf-597d-4a6a-a941-000e8d0481bf",
+          "Name": "LootSpawner",
+          "Position": "-2665.197,160.0002,903.625",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "7d96bf03-fff7-4082-8aa3-8fac67215e84",
+          "Name": "LootSpawner",
+          "Position": "-2312,-667.9998,903.625",
+          "Rotation": "0.4999999,-0.4999999,0.5000001,-0.5000001",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "68eee086-4096-469c-9f4b-8c964f68ee11",
+          "Name": "LootSpawner",
+          "Position": "-2311.024,-799.9998,903.625",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "0da49656-9bd1-4f16-ab17-99a9d1fca859",
+          "Name": "LootSpawner",
+          "Position": "-2311.024,-551.9998,903.625",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "66156765-589f-4699-8bf6-df2f0fbdfabe",
+          "Name": "LootSpawner",
+          "Position": "-2312,-419.9998,903.625",
+          "Rotation": "0.4999999,-0.4999999,0.5000001,-0.5000001",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "e522b0ae-ce41-4ced-8cd5-368171969bcf",
+          "Name": "LootSpawner",
+          "Position": "-2311.024,-299.9998,903.625",
+          "Rotation": "0.5,-0.5,0.5,-0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "82276f74-cfa8-419a-ba05-e8abc307a081",
+          "Name": "LootSpawner",
+          "Position": "-2240,-75.12482,903.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "7e64e1bb-b288-4cf7-b148-53b8d7f14c72",
+          "Name": "LootSpawner",
+          "Position": "-2134.279,-453.2898,911.7083",
+          "Rotation": "-0.4999996,-0.5000004,0.5000004,0.4999996",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f7f01fee-c230-444b-85e6-3e4d64896c69",
+          "Name": "LootSpawner",
+          "Position": "-2044.927,-822.9998,906.4546",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "d2ac2dfe-7128-486d-9786-b5715cfd73ca",
+          "Name": "LootSpawner",
+          "Position": "-2236.778,-822.9996,907.7778",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "267465ef-4c6e-494f-a434-49690515a8b8",
+          "Name": "LootSpawner",
+          "Position": "-2035.497,-586.642,909.8676",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "353f591d-382b-4949-a0f9-421b40629b41",
+          "Name": "LootSpawner",
+          "Position": "-2134.784,-147.9998,908.5671",
+          "Rotation": "-0.4999996,-0.5000004,0.5000004,0.4999996",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "4c3d3569-0130-41d5-8b3d-ea07d120da9b",
+          "Name": "LootSpawner",
+          "Position": "-1942.8,-639.9998,908.5671",
+          "Rotation": "-0.4999996,-0.5000004,0.5000004,0.4999996",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "127ece33-3ee3-409c-9358-8014ceb39dc4",
+          "Name": "LootSpawner",
+          "Position": "-1942.295,-779.9998,911.7083",
+          "Rotation": "-0.4999996,-0.5000004,0.5000004,0.4999996",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "b5792bb9-7ed0-4879-b66b-5cc1e3a1bd65",
+          "Name": "LootSpawner",
+          "Position": "-1942.295,-915.9998,911.7083",
+          "Rotation": "-0.4999996,-0.5000004,0.5000004,0.4999996",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "0d190fa0-a1be-468a-bdd9-1e9562d2d5a4",
+          "Name": "LootSpawner",
+          "Position": "-1970.837,-603.624,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "1fd271ca-37af-4d02-b4b2-bd464ffeb69a",
+          "Name": "LootSpawner",
+          "Position": "-1973.505,-807.5668,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c0f14df9-7cbd-495e-b865-f610f0b1ef9c",
+          "Name": "LootSpawner",
+          "Position": "-2296.718,-99.36041,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "2cbcc2c9-0dcb-4b18-9130-5d6d069b196a",
+          "Name": "LootSpawner",
+          "Position": "-2154.327,-97.46521,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "a40efe45-9a1e-451a-b32c-70695b1c768f",
+          "Name": "LootSpawner",
+          "Position": "-2080,-59.99976,903.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "62d03d07-45f5-4b67-862d-e6ea5a02356d",
+          "Name": "LootSpawner",
+          "Position": "-2212,-60.97522,903.625",
+          "Rotation": "-0.7071066,0,0,0.7071069",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "27d1ca33-c07d-40e6-a923-38fca7432672",
+          "Name": "LootSpawner",
+          "Position": "-1996,-59.99976,903.625",
+          "Rotation": "-0.7071068,0,0,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "73ea78d2-deeb-4369-bf3b-1be7f5f01faf",
+          "Name": "LootSpawner",
+          "Position": "-2032,213.0543,903.625",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "8cdb6373-9bc4-44e9-b23a-1c8d9a69f2bb",
+          "Name": "LootSpawner",
+          "Position": "-2164,212.0789,903.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f3ad8c0a-996c-456a-a43e-e527a780a4fe",
+          "Name": "LootSpawner",
+          "Position": "-2248,212.0789,903.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "46cc0702-20f2-4090-8456-05b5cb4cf52d",
+          "Name": "LootSpawner",
+          "Position": "-2500,213.0543,903.625",
+          "Rotation": "0.000000705258,-0.7071066,0.7071069,-0.0000007052583",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "09d0ee66-a5b2-48a2-8252-7fff25f4416c",
+          "Name": "LootSpawner",
+          "Position": "-598.7825,-1676,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "bcf04ed4-3976-4c98-b602-308a048ff6e0",
+          "Name": "LootSpawner",
+          "Position": "-1780,-1676.177,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "68bc6fff-cc19-469e-bcc2-845d2fc56287",
+          "Name": "LootSpawner",
+          "Position": "-1264,-1676.177,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "e35fc4b7-3bff-4d5f-a69f-95c8992dfd22",
+          "Name": "LootSpawner",
+          "Position": "-1008,-1676,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3c5c7e04-a144-46ad-b69d-9d337a33f472",
+          "Name": "LootSpawner",
+          "Position": "-843.9999,-1676.177,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c0b27330-308f-47c7-976f-56a70f0ded6a",
+          "Name": "LootSpawner",
+          "Position": "-1572,-1676,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "c0b099de-69a7-40c0-ad23-dbc0dce5944e",
+          "Name": "LootSpawner",
+          "Position": "-307.9999,-1676,911.625",
+          "Rotation": "0.0000007052582,-0.7071068,0.7071068,-0.0000007052582",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "3ffe5e18-281a-480e-acc9-0c3932c607cd",
+          "Name": "LootSpawner",
+          "Position": "-283.9999,-1692,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "959b105b-5b2b-47a8-9abf-8b2928af8613",
+          "Name": "LootSpawner",
+          "Position": "-579.9999,-1692,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "cae12a85-fc26-46b5-8bb0-05fa76b8761a",
+          "Name": "LootSpawner",
+          "Position": "-891.9999,-1692,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "76f99806-ea69-4f02-b49d-2975005c68a8",
+          "Name": "LootSpawner",
+          "Position": "-1104,-1692,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "9b7319a2-0fb6-4b8b-996b-69e69b0d1c41",
+          "Name": "LootSpawner",
+          "Position": "-1360,-1692,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "a0588279-a520-4498-82df-56d613bd5d40",
+          "Name": "LootSpawner",
+          "Position": "-1600,-1692,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "4eb5fbf6-954f-4a33-b2c5-f3bfb9f996d1",
+          "Name": "LootSpawner",
+          "Position": "-1832,-1692,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "df08d990-76d3-488f-82ae-c31b5908fb13",
+          "Name": "LootSpawner",
+          "Position": "-2072,-1692,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "5bbd3275-b5d4-4f99-ad7d-2d0d9bba03b7",
+          "Name": "LootSpawner",
+          "Position": "-2348,-1507.606,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "839cf266-cedc-4499-a944-b9ddfdfc2a98",
+          "Name": "LootSpawner",
+          "Position": "-2652,-1373.943,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "17801827-561d-4756-b374-72a4254b2fc8",
+          "Name": "LootSpawner",
+          "Position": "-2652,-1456,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "9e371661-44b7-42ef-be12-59d9f5cd6bad",
+          "Name": "LootSpawner",
+          "Position": "-2652,-1744,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "37632b06-83a6-4d86-ac6b-001bff0bff34",
+          "Name": "LootSpawner",
+          "Position": "-2652,-1844,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "45977997-9fdb-4f3c-867e-235d877d2718",
+          "Name": "LootSpawner",
+          "Position": "-2652,-1160,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "0c87cd2d-00ca-4258-bbcc-1d970d27ef26",
+          "Name": "LootSpawner",
+          "Position": "-2652,-963.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "6c23e650-732d-46cc-9ad9-58ce472e282b",
+          "Name": "LootSpawner",
+          "Position": "-1984,-351.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "e4b219d6-0c1f-48c5-b707-b2fde450d83c",
+          "Name": "LootSpawner",
+          "Position": "-2080,-519.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "1b87fe53-003d-4afb-a836-c5c0e705fad3",
+          "Name": "LootSpawner",
+          "Position": "-2084,-351.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "ce7efd8c-5dbb-4829-8bc1-58f9bf2243c6",
+          "Name": "LootSpawner",
+          "Position": "-2344,-363.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "18750bcf-b705-4631-83d6-c2ef7b36a0bb",
+          "Name": "LootSpawner",
+          "Position": "-2344,-311.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "78be941c-1a7b-4fa6-8adf-d97e0414f262",
+          "Name": "LootSpawner",
+          "Position": "-2344,-503.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "0705bfdd-5d94-46b1-aed1-bb36f7d416f2",
+          "Name": "LootSpawner",
+          "Position": "-2344,-451.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "570aa366-0654-40e6-8d9e-63fd59ff56b3",
+          "Name": "LootSpawner",
+          "Position": "-2344,-727.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "2f0d6206-4b10-4a17-b6d8-788a923a65d5",
+          "Name": "LootSpawner",
+          "Position": "-2344,-675.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "10dc07f3-47c1-46c2-8bb1-bd489634431a",
+          "Name": "LootSpawner",
+          "Position": "-2344,-159.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "2f7a0780-9933-4196-bbf3-9e8d78eca1d6",
+          "Name": "LootSpawner",
+          "Position": "-2344,-107.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "751d8cb2-249e-4507-9d9f-befa37b95a30",
+          "Name": "LootSpawner",
+          "Position": "-2652,-159.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "dcf73946-a86d-4d93-9b41-e51667068b35",
+          "Name": "LootSpawner",
+          "Position": "-2652,-107.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "e17063fc-d755-45bf-a7e1-edc5df75eacf",
+          "Name": "LootSpawner",
+          "Position": "-2228,-39.99976,827.625",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "9bc5093c-d106-44fc-849c-88a45b49abe7",
+          "Name": "LootSpawner",
+          "Position": "-2280,-39.99976,827.625",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "79d1ebb2-c6f5-4377-a703-e6f5f635b152",
+          "Name": "LootSpawner",
+          "Position": "-2628,-511.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f0303f6d-bb21-4065-ae82-f3781311cc98",
+          "Name": "LootSpawner",
+          "Position": "-2276,-223.9998,827.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "575c29a5-1960-4124-980e-c822bc6a118e",
+          "Name": "LootSpawner",
+          "Position": "-2276,-1620,827.625",
+          "Rotation": "0,0,0.9659257,-0.2588195",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f8b85cd0-4ba5-46ef-b094-cb0542659e32",
+          "Name": "LootSpawner",
+          "Position": "-2548,-1852,827.625",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "bbbb31d4-0989-475d-a70a-41973e8ac62a",
+          "Name": "LootSpawner",
+          "Position": "-1088,-1240,827.625",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "f98f5b87-a9d3-4af3-a7b9-37375d12e221",
+          "Name": "LootSpawner",
+          "Position": "-739.9999,-1240,827.625",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "8f18f8e8-5020-48af-b688-9effe8e1f8c6",
+          "Name": "LootSpawner",
+          "Position": "-1308,-487.9998,699.625",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "a129d52c-790d-427b-a66c-036a42e3e560",
+          "Name": "LootSpawner",
+          "Position": "-915.9999,-487.9998,699.625",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "a6ccc7cd-b045-46a9-aaf5-91c11ebe99c6",
+          "Name": "LootSpawner",
+          "Position": "-915.9999,160.0002,699.625",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "def41433-350d-4f2a-8bbc-44c4654ec5c9",
+          "Name": "LootSpawner",
+          "Position": "-1536,160.0002,699.625",
+          "Rotation": "0,0,1,-0.0000009973857",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "cb69f0ce-c6d9-4411-b534-78652bdcaa45",
+          "Name": "LootSpawner",
+          "Position": "-1451.104,-1710.821,865.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "61d8d9bf-92f6-49b9-99ff-ad7e79871c39",
+          "Name": "LootSpawner",
+          "Position": "-463.9999,-1710.821,865.625",
+          "Rotation": "0,0,0.7071068,-0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
+            }
+          ]
+        },
+        {
+          "Id": "01e720f2-8f46-46e6-82e2-6c66fd6e122d",
+          "Name": "LootSpawner",
+          "Position": "-2677.856,-237.9736,830.6799",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "LootSpawner",
+              "ChanceToSpawn": 0.5,
+              "IsContainer": false,
+              "LevelType": "None",
+              "LootPrefab": null
             }
           ]
         }
@@ -382,6 +6314,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-13T21:37:27.9525597-06:00",
+  "LastSaved": "2024-02-14T03:20:07.9219268-06:00",
   "__references": []
 }

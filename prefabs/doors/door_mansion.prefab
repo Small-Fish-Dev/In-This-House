@@ -1,0 +1,50 @@
+{
+  "RootObject": {
+    "Id": "82da5e1a-81ba-4d1d-8136-e5af0d531bda",
+    "Name": "door_mansion",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Door",
+        "_model": {
+          "_type": "component",
+          "go": "82da5e1a-81ba-4d1d-8136-e5af0d531bda",
+          "component_type": "ModelRenderer"
+        },
+        "_usable": {
+          "_type": "component",
+          "go": "82da5e1a-81ba-4d1d-8136-e5af0d531bda",
+          "component_type": "Usable"
+        }
+      },
+      {
+        "__type": "Usable",
+        "OnUsed": null,
+        "StartLocked": false,
+        "UseString": "interact"
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/furniture/mansion_furniture/mansion_door.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "BoxCollider",
+        "Center": "27.60008,-2.5,55.99994",
+        "IsTrigger": false,
+        "Scale": "53.39997,8.199919,111.9999",
+        "Static": false,
+        "Surface": null
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

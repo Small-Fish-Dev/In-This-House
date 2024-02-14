@@ -9,6 +9,7 @@ public sealed partial class PlayerController : Component
 	[Property] public GameObject skiddingParticlesPrefab { get; private set; }
 	[Property] private CameraComponent _camera;
 
+	private Player _player; // cyclical references, cope about it.
 	private CharacterController _controller;
 	private Sandbox.Citizen.CitizenAnimationHelper _animator;
 
@@ -34,6 +35,8 @@ public sealed partial class PlayerController : Component
 	public float CollisionRadius => IsCrouching ? 22f : 12f;
 	public float CollisionHeight => IsCrouching ? 36f : 72f;
 	public Capsule CollisionCapsule => new Capsule( Vector3.Up * CollisionRadius, Vector3.Up * (CollisionHeight - CollisionRadius), CollisionRadius );
+	public Vector3 EyePosition { get; private set; }
+	public Rotation EyeRotation { get; private set; }
 
 	static string[] ignoreTags = new[] { "player", "npc", "nocollide", "loot" };
 	float baseSkiddingVolume = 0.3f;
@@ -43,6 +46,7 @@ public sealed partial class PlayerController : Component
 
 	protected override void OnStart()
 	{
+		_player = Components.Get<Player>();
 		_controller = Components.Get<CharacterController>();
 		_animator = Components.Get<Sandbox.Citizen.CitizenAnimationHelper>();
 		_camera = Scene.Camera;
@@ -87,8 +91,11 @@ public sealed partial class PlayerController : Component
 		Model.SceneModel.GetBoneLocalTransform( "head" );
 
 		Eyes.Transform.Position = eyesAtx.Value.Position;
-		_camera.Transform.Position = eyesAtx.Value.Position + eyesAtx.Value.Left * 3;
-		_camera.Transform.Rotation = lookDir;
+		EyePosition = eyesAtx.Value.Position + eyesAtx.Value.Left * 3;
+		EyeRotation = lookDir;
+
+		_camera.Transform.Position = EyePosition;
+		_camera.Transform.Rotation = EyeRotation;
 		_camera.FieldOfView = Screen.CreateVerticalFieldOfView( Preferences.FieldOfView );
 	}
 

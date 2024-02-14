@@ -8,7 +8,7 @@ public class InteractionRequest
 
 	public InteractionRequest() { }
 
-	public InteractionRequest( Usable usableEntity, PlayerController user, Vector3? hitPoint = null )
+	public InteractionRequest( Usable usableEntity, Player user, Vector3? hitPoint = null )
 	{
 		if ( !usableEntity.IsValid() )
 			throw new ArgumentNullException( nameof( usableEntity ) );
@@ -25,7 +25,7 @@ public class InteractionRequest
 			HitPoint = hitPoint.Value;
 		}
 
-		usableEntity.User?.CancelInteraction();
+		usableEntity.User?.Controller.CancelInteraction();
 		usableEntity.User = user;
 	}
 

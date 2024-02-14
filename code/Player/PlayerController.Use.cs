@@ -12,8 +12,6 @@ partial class PlayerController
 		CurrentInteractionRequest is not null && CurrentInteractionRequest.IsValid;
 	public float UseRange => 100f;
 
-	private Vector3 EyePosition => Eyes.Transform.Position;
-
 	private bool UpdateUsableEntity( float rayRadius = 0 )
 	{
 		var trace = Scene.Trace.Ray( EyePosition, EyePosition + InputAngles.Forward * (UseRange - rayRadius) )
@@ -58,7 +56,7 @@ partial class PlayerController
 		{
 			if ( CurrentUsable.Locked )
 			{
-				if ( HasUpgrade( "Lock Breaker" ) )
+				if ( _player.HasUpgrade( "Lock Breaker" ) )
 				{
 					// Sound.FromWorld( "sounds/lockpicking/lockfall.sound", CurrentUsable.Lock.Lock.Position );
 					CurrentUsable.Lock.Unlock();
@@ -72,7 +70,7 @@ partial class PlayerController
 			// Grab if no one uses it
 			else
 			{
-				if ( CurrentUsable.CheckUpgrades( this ) )
+				if ( CurrentUsable.CheckUpgrades( _player ) )
 					EnqueueInteraction();
 			}
 		}
@@ -93,7 +91,7 @@ partial class PlayerController
 
 	private void EnqueueInteraction()
 	{
-		CurrentInteractionRequest = new InteractionRequest( CurrentUsable, this, UsableTouchPosition );
+		CurrentInteractionRequest = new InteractionRequest( CurrentUsable, _player, UsableTouchPosition );
 	}
 
 	private void FinishInteraction()
