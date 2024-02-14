@@ -1,0 +1,19 @@
+@using Sandbox.UI;
+
+@namespace ITH.UI
+@inherits Panel
+@attribute [StyleSheet]
+
+<root class="@(Active ? "active" : "")">
+	<span class="title">TIME</span>
+	@SecondsFormatted
+</root>
+
+@code {
+	public bool Active { get; set; }
+	public Func<float> Seconds { get; set; }
+
+	private string SecondsFormatted => TimeSpan.FromSeconds(Seconds?.Invoke() ?? 0).ToString(@"mm\:ss");
+
+	protected override int BuildHash() => HashCode.Combine(Seconds?.Invoke() ?? 0, Active);
+}

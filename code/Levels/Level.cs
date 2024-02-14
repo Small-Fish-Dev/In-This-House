@@ -1,3 +1,5 @@
+using ITH.UI;
+
 namespace ITH;
 
 public enum LevelType
@@ -29,28 +31,48 @@ public sealed class Level : Component
 	{
 		Map = GameObject.Components.Get<MapInstance>( FindMode.EverythingInSelfAndChildren );
 		Spawns = GameObject.Components.GetAll<SpawnPoint>( FindMode.EnabledInSelfAndDescendants ).ToList();
-		OnLevelChanged += HandleLevelChanged;
 	}
 
 	protected override void OnDestroy()
 	{
-		OnLevelChanged -= HandleLevelChanged;
-		OnLevelChanged = null;
 	}
 
 	protected override void OnUpdate()
 	{
 	}
 
-	private void HandleLevelChanged( Level upcomingLevel )
+	public async Task Start()
 	{
-		var isEnabled = upcomingLevel.Id == Id;
-		foreach ( var child in GameObject.GetAllObjects( true ) )
+		SetEnabled( true );
+		foreach ( var client in MansionGame.Instance.Clients.Values )
 		{
-			child.Enabled = isEnabled;
+			if ( client.Pawn.Components.TryGet<PlayerController>( out var player ) )
+			{
+				var sp = Random.Shared.FromList( Spawns );
+				player.Respawn( sp.Transform.Position );
+			}
 		}
 
-		Map.GameObject.Enabled = upcomingLevel.Id == Id;
-		Log.Info( $"{Id} : {Map.Enabled}" );
+		await Task.CompletedTask;
+	}
+
+	public async Task End()
+	{
+
+		BlackScreen.Start();
+		await GameTask.DelayRealtimeSeconds( 1f );
+		MansionGame.Instance.SetTimerStatus( true );
+		SetEnabled( false );
+
+		await Task.CompletedTask;
+	}
+
+	private void SetEnabled( bool enabled )
+	{
+		foreach ( var child in GameObject.GetAllObjects( true ) )
+		{
+			child.Enabled = enabled;
+		}
+		Map.GameObject.Enabled = enabled;
 	}
 }

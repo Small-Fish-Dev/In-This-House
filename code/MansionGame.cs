@@ -3,6 +3,13 @@ namespace ITH;
 public sealed partial class MansionGame : Component, Component.INetworkListener
 {
 	public static MansionGame Instance;
+	[Sync] public TimeUntil TimeOut { get; set; }
+	[Sync] public bool TimerActive { get; set; }
+
+	public int Seed { get; set; } = 0;
+	public Random Random { get; set; } = new Random();
+
+	public float TimePerLevel => 180.0f;
 
 	/// <summary>
 	/// Create a server (if we're not joining one)
@@ -34,9 +41,8 @@ public sealed partial class MansionGame : Component, Component.INetworkListener
 
 		Levels = Scene.GetAllComponents<Level>().ToList();
 
-		// HACK: IM SORRY
-		CurrentLevel = Levels.First( x => x.Id == LevelType.Shop );
 		Instance = this;
+		SetLevel( LevelType.Shop );
 	}
 
 	protected override void OnDestroy()
@@ -86,5 +92,39 @@ public sealed partial class MansionGame : Component, Component.INetworkListener
 		player.Name = $"Player - {channel.DisplayName}";
 		client.Pawn = player;
 		player.NetworkSpawn( channel );
+
+	}
+
+	protected override void OnFixedUpdate()
+	{
+		if ( !Networking.IsHost )
+			return;
+
+		if ( TimerActive && TimeOut )
+		{
+			SetTimerStatus( false );
+			RestartGame();
+		}
+	}
+
+	public void SetTimerStatus( bool enabled, float time = 0f )
+	{
+		TimerActive = enabled;
+		TimeOut = time == 0f ? TimePerLevel : time;
+	}
+
+	public void RestartGame()
+	{
+		ResetRandomSeed();
+		Instance.SetLevel( LevelType.Shop );
+	}
+
+	public void ResetRandomSeed()
+	{
+		if ( !Networking.IsHost )
+			return;
+
+		Seed = DateTime.UtcNow.Ticks.GetHashCode();
+		Random = new Random( Seed );
 	}
 }

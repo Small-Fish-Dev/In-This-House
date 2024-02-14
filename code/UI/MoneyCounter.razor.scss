@@ -1,0 +1,57 @@
+MoneyCounter {
+    position: absolute;
+    right: 0px;
+    // TODO: the stupid versionoverlay thing is in the way. move this back to 30px when its gone. (show_versionoverlay 0 to remove it locally)
+    top: 124px;
+    padding-left: 40px;
+    padding-right: 10px;
+    padding-top: 5px;
+    font-size: 50px;
+    color: white;
+    flex-direction: row-reverse;
+    z-index: 3;
+    background: linear-gradient(to left, rgba(black, 0.5) 0%, rgba(black, 0.2) 75%, rgba(black, 0) 100%);
+
+    .container {
+        flex-direction: row;
+        text-shadow: 4px 4px 0px black;
+    }
+
+    .currency {
+        padding-right: 5px;
+        font-size: 32px;
+        top: 8px;
+        color: rgba(50, 205, 50, 1);
+    }
+
+    .changes {
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+
+    .change {
+        position: absolute;
+        right: 10px;
+        color: white;
+        transition: all 0.2s ease-in-out;
+        transform: scale(1) translateY(0%);
+        font-size: 24px;
+        text-shadow: 2px 2px 0px rgba(black, 0.8);
+
+        .sign {
+            font-size: 18px;
+            padding-right: 2px;
+            top: 2px;
+        }
+
+        &:outro {
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: all 1s ease-in-out;
+        }
+
+        &:intro {
+            transform: scale(0);
+        }
+    }
+}

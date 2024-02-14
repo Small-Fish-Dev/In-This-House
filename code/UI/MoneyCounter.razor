@@ -1,0 +1,104 @@
+@using Sandbox.UI;
+
+@namespace ITH.UI
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	<div class="container">
+		<label class="currency">$</label>
+		<label @ref=money>0</label>
+	</div>
+	<div class="changes" @ref=changes />
+</root>
+
+@code {
+	public Player Player { get; set; }
+
+	private static MoneyCounter instance;
+	const float DELAY = 2f;
+
+	Panel changes;
+	Panel change;
+	Label signLabel;
+	Label amountLabel;
+	TimeSince changed;
+
+	Label money;
+	float oldMoney;
+	float TargetMoney = 0;
+
+	int? initialMoney;
+	int currentTotal;
+
+	public static void Update()
+	{
+		if (instance == null)
+			return;
+
+		instance.change.Delete();
+
+		instance.signLabel = null;
+		instance.amountLabel = null;
+		instance.change = null;
+
+		instance.initialMoney = null;
+		instance.TargetMoney = instance.Player?.Money ?? 0;
+		instance.currentTotal = 0;
+	}
+
+	public MoneyCounter()
+	{
+		instance = this;
+	}
+
+	public override void Tick()
+	{
+		if (change != null && !change.IsDeleting && changed >= DELAY)
+			Update();
+
+		if (Player == null || money == null)
+			return;
+
+		oldMoney = MathX.LerpTo(oldMoney, TargetMoney, 10f * Time.Delta);
+		money.Text = $"{(int)(oldMoney + 0.5f):n0}";
+	}
+
+	[Event("MoneyChanged")]
+	private async void moneyChanged(Player player, int oldValue, int newValue)
+	{
+		if (player != Player || changes == null)
+			return;
+
+		if (initialMoney == null)
+			initialMoney = player.Money;
+
+		currentTotal += newValue - oldValue;
+		if (currentTotal == 0)
+		{
+			Update();
+			return;
+		}
+
+		var sign = currentTotal < 0
+		? "-"
+		: "+";
+
+		change ??= changes.AddChild<Panel>("change");
+		changed = 0;
+
+		signLabel ??= change.AddChild<Label>("sign");
+		signLabel.Text = $"{sign}$";
+		signLabel.Style.FontColor = currentTotal < 0
+		? new Color32(205, 50, 50)
+		: new Color32(50, 205, 50);
+
+		amountLabel ??= change.AddChild<Label>();
+		amountLabel.Text = $"{Math.Abs(currentTotal):n0}";
+	}
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine(Player?.Network.OwnerId, Player?.Money ?? 0);
+	}
+}

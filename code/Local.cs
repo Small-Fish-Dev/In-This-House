@@ -6,5 +6,7 @@ namespace ITH;
 public static class Local
 {
 	public static GameObject Pawn;
+	public static Player Player;
+	public static PlayerController PlayerController;
 	public static Client Client;
 }

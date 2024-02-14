@@ -1,7 +1,7 @@
 namespace ITH;
 
 [Icon( "6mp" )]
-public partial class LootContainer : Component, Component.ExecuteInEditor
+public partial class LootContainer : Component
 {
 	[Sync] public bool Spitting { get; set; }
 	[Property] private Usable _usable;
@@ -17,17 +17,8 @@ public partial class LootContainer : Component, Component.ExecuteInEditor
 		[LevelType.Bathrooms] = "models/containers/medicine_cabinet/medicine_cabinet.vmdl"
 	};
 
-	protected override void OnEnabled()
-	{
-		if ( !Scene.IsEditor )
-			return;
-	}
-
 	protected override void OnStart()
 	{
-		// if ( Scene.IsEditor )
-		// 	return;
-
 		_usable ??= Components.Get<Usable>();
 		_model = Components.Get<SkinnedModelRenderer>();
 
@@ -45,7 +36,6 @@ public partial class LootContainer : Component, Component.ExecuteInEditor
 
 		_model.Model = Model.Load( model );
 		_usable.OnUsed += Use;
-		SpitLoot();
 	}
 
 	protected override void OnUpdate()

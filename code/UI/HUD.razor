@@ -4,8 +4,30 @@
 @inherits PanelComponent
 @attribute [StyleSheet]
 
+
+@{
+	// TODO: Spectating!!!!!!!! :(
+	var activePlayer = Local.Player;
+}
+
 <root>
-	
+	<Timer Active="@(MansionGame.Instance.TimerActive)" @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
+	<MoneyCounter Player=@(activePlayer)/>
+	<Crosshair>
+		<Top>
+			<!--Some text on the top-->
+		</Top>
+		<Middle>
+			X
+		</Middle>
+		<Bottom>
+			<!--Some text on the bottom-->
+			@* @if (isPlayer)
+			{
+				<InteractionTip @Player=@activePlayer />
+			} *@
+		</Bottom>
+	</Crosshair>
 </root>
 
 
@@ -21,4 +43,10 @@
 	{
 		Instance = null;
 	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(Time.Now);
+	}
+
 }

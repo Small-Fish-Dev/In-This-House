@@ -303,6 +303,60 @@
           ]
         }
       ]
+    },
+    {
+      "Id": "e4837119-3d7b-4821-b7e2-9dfab56bc82b",
+      "Name": "Cube",
+      "Position": "522.0126,257.9628,3025.138",
+      "Scale": "12.17295,11.16824,1",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "0a27face-a53b-48d0-9f68-46635b96d4fe",
+      "Name": "HUD",
+      "Position": "676.8833,260.6283,3170.773",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ScreenPanel",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "HUD"
+        }
+      ]
+    },
+    {
+      "Id": "a1fcbfd1-61f8-4b22-beef-f8d49395fdfb",
+      "Name": "LegacyEventSystem",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "LegacyEventSystem"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -328,6 +382,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-11T18:32:10.3153263-06:00",
+  "LastSaved": "2024-02-13T21:37:27.9525597-06:00",
   "__references": []
 }

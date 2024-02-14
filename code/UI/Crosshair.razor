@@ -1,0 +1,20 @@
+@using Sandbox.Razor
+@using Sandbox.UI;
+
+@namespace ITH.UI
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	<div class="top">@Top</div>
+	<div class="middle">@Middle</div>
+	<div class="bottom">@Bottom</div>
+</root>
+
+@code {
+
+	public RenderFragment Top { get; set; }
+	public RenderFragment Middle { get; set; }
+	public RenderFragment Bottom { get; set; }
+
+}
