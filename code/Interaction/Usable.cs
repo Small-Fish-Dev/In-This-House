@@ -16,6 +16,16 @@ public sealed class Usable : Component
 
 	public Vector3 GetBoundsCenter()
 	{
+		if ( Components.TryGet<ModelRenderer>( out var modelRenderer ) )
+		{
+			return modelRenderer.Bounds.Center;
+		}
+
+		if ( Components.TryGet<SkinnedModelRenderer>( out var skinnedModelRenderer ) )
+		{
+			return skinnedModelRenderer.Bounds.Center;
+		}
+
 		if ( Components.TryGet<Collider>( out var collider ) )
 		{
 			return collider.KeyframeBody.GetBounds().Center;
