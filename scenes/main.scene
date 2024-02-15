@@ -6233,6 +6233,282 @@
               "LootPrefab": null
             }
           ]
+        },
+        {
+          "Id": "8d011df7-fad4-4a6e-9253-86605feb53f9",
+          "Name": "Door (9)",
+          "Position": "-2572.29,151.8152,833.625",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "e490d665-b9e8-4349-a0c5-94e05fc4ba4b",
+          "Name": "Door (10)",
+          "Position": "-1515.834,-453.2266,699.625",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "06233693-b53f-4dd0-ae66-d771b573b547",
+          "Name": "Door (11)",
+          "Position": "-526.7732,-287.8337,699.625",
+          "Rotation": "0,0,0.7071074,0.7071062",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "b6a35462-0de9-46c6-bbed-9978d3b941d2",
+          "Name": "Door (12)",
+          "Position": "-1243.834,-188.3855,699.625",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "a9549268-6c68-44d3-9821-8b1c095b8368",
+          "Name": "Door (13)",
+          "Position": "-526.7732,-671.8337,699.625",
+          "Rotation": "0,0,0.7071074,0.7071062",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "6acbb0f7-f224-4000-9d36-cb2155c67852",
+          "Name": "Door (14)",
+          "Position": "-875.8339,-581.2266,699.625",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "cc54d50f-736c-4ea0-a899-2a3a41e1831d",
+          "Name": "Door (15)",
+          "Position": "-785.2267,-840.1658,699.625",
+          "Rotation": "0,0,0.7071056,-0.707108",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "ae6cbc58-e915-43f6-9f3f-08a5336874b0",
+          "Name": "Door (16)",
+          "Position": "-785.2267,-1096.166,699.625",
+          "Rotation": "0,0,0.7071056,-0.707108",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "08954206-a434-44d7-984a-b65f4e16ad26",
+          "Name": "Door (17)",
+          "Position": "-875.8339,-709.2266,699.625",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "74c8a045-96ef-471a-bc66-21b968035fa2",
+          "Name": "Door (18)",
+          "Position": "-1286.773,-31.83374,699.625",
+          "Rotation": "0,0,0.7071074,0.7071062",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "df5bbf56-beee-4e88-be4b-f634f1ee01a7",
+          "Name": "Door (19)",
+          "Position": "-1143.773,-31.83374,699.625",
+          "Rotation": "0,0,0.7071074,0.7071062",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "3226afd5-244d-4379-b6d0-be06cef7a6c1",
+          "Name": "Door (20)",
+          "Position": "-1422.773,-1047.834,699.625",
+          "Rotation": "0,0,0.7071074,0.7071062",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "fadeaba6-510e-44f6-a741-f7848ef4789c",
+          "Name": "Door (21)",
+          "Position": "264.1661,-188.2266,699.625",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "fc48fe36-e001-4f02-9ede-0c9f287a8b91",
+          "Name": "Door (22)",
+          "Position": "774.1661,-188.2266,699.625",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "c1dbbd37-6b9f-449a-95ff-c60ad3f0eca0",
+          "Name": "Door (23)",
+          "Position": "898.1661,-37.22656,699.625",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "755b641c-add8-4146-890b-1ef5c5ab7da1",
+          "Name": "Door (24)",
+          "Position": "516.1661,-37.22656,699.625",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "986da587-7917-4ab6-ba21-454bd524f543",
+          "Name": "Door (25)",
+          "Position": "260.1661,-37.22656,699.625",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "98b6bbcf-01d4-42f0-9a52-6542b26d7d67",
+          "Name": "Door (26)",
+          "Position": "-779.8339,-1669.227,827.625",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "6eb80ea9-9fe4-40d0-9cd1-6454ad4e361d",
+          "Name": "Door (27)",
+          "Position": "-878.7732,-1631.834,827.625",
+          "Rotation": "0,0,0.7071074,0.7071062",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "3586a872-dacb-44fc-b066-80d87838ad0d",
+          "Name": "Door (28)",
+          "Position": "-1099.834,-1541.227,827.625",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "e3b7de99-7ec9-48d8-8fde-8d444fe5e855",
+          "Name": "Door (29)",
+          "Position": "-1198.773,-1375.834,827.625",
+          "Rotation": "0,0,0.7071074,0.7071062",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "1e1a11f2-40aa-46d8-8c94-a140904d17fe",
+          "Name": "Door (30)",
+          "Position": "-1614.773,-1375.834,827.625",
+          "Rotation": "0,0,0.7071074,0.7071062",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "34a2049a-2883-4835-ba7c-8963760e68a1",
+          "Name": "Door (31)",
+          "Position": "-1870.773,-1375.834,827.625",
+          "Rotation": "0,0,0.7071074,0.7071062",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "1da4ab3c-a6a0-46ef-94db-d07356dd84d2",
+          "Name": "Door (32)",
+          "Position": "-1428.166,-1538.773,827.625",
+          "Rotation": "0,0,1,-0.0000008781764",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "c72e783b-9cb5-4ecf-a44c-1759830d6005",
+          "Name": "Door (33)",
+          "Position": "-1684.166,-1538.773,827.625",
+          "Rotation": "0,0,1,-0.0000008781764",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "26b403bc-f6ad-4864-a3af-86eb0d9655e4",
+          "Name": "Door (34)",
+          "Position": "-1940.166,-1538.773,827.625",
+          "Rotation": "0,0,1,-0.0000008781764",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "b13920cb-24d9-420d-a948-28d5e7bf7a59",
+          "Name": "Door (35)",
+          "Position": "-2228.166,-1890.773,827.625",
+          "Rotation": "0,0,1,-0.0000008781764",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "b98ce8bd-d3b1-4e26-b1b3-041ca80289c9",
+          "Name": "Door (36)",
+          "Position": "-2350.773,-1151.834,827.625",
+          "Rotation": "0,0,0.7071074,0.7071062",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "c6d25b53-3f01-441f-adee-f53fcc1ca724",
+          "Name": "Door (37)",
+          "Position": "-2126.773,-287.8337,827.625",
+          "Rotation": "0,0,0.7071074,0.7071062",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "f04acc16-615e-4ec3-981c-6c25bdbccb97",
+          "Name": "Door (38)",
+          "Position": "-2100.166,-834.773,827.625",
+          "Rotation": "0,0,1,-0.0000008781764",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "cf65b0f8-900c-49c8-9dc9-b5709ca65873",
+          "Name": "Door (39)",
+          "Position": "-2484.166,-834.773,827.625",
+          "Rotation": "0,0,1,-0.0000008781764",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
+        },
+        {
+          "Id": "3c8c8eea-ba71-4698-bfdc-9915dad5f7f5",
+          "Name": "Door (40)",
+          "Position": "-1876.166,-1666.787,827.625",
+          "Rotation": "0,0,1,-0.0000008781764",
+          "Tags": "usable",
+          "Enabled": true,
+          "__Prefab": "prefabs/doors/door_mansion.prefab"
         }
       ]
     },
@@ -6314,6 +6590,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-14T03:20:07.9219268-06:00",
+  "LastSaved": "2024-02-14T23:34:52.0178968-06:00",
   "__references": []
 }

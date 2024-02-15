@@ -14,8 +14,9 @@ partial class PlayerController
 
 	private bool UpdateUsableEntity( float rayRadius = 0 )
 	{
-		var trace = Scene.Trace.Ray( EyePosition, EyePosition + InputAngles.Forward * (UseRange - rayRadius) )
-			.WithTag( ITH.Tag.Usable );
+		// TODO: Do we want to keep the .WithTag(ITH.Tag.Usable)? i dunno if specifying tags improves performance
+		// but its nice to not worry about needing a tag and just requiring a component like below.
+		var trace = Scene.Trace.Ray( EyePosition, EyePosition + InputAngles.Forward * (UseRange - rayRadius) );
 		if ( rayRadius != 0 )
 			trace = trace.Size( rayRadius );
 
@@ -58,7 +59,7 @@ partial class PlayerController
 			{
 				if ( _player.HasUpgrade( "Lock Breaker" ) )
 				{
-					// Sound.FromWorld( "sounds/lockpicking/lockfall.sound", CurrentUsable.Lock.Lock.Position );
+					Sound.Play( "sounds/lockpicking/lockfall.sound", CurrentUsable.Lock.Transform.Position );
 					CurrentUsable.Lock.Unlock();
 				}
 				else
@@ -91,6 +92,7 @@ partial class PlayerController
 
 	private void EnqueueInteraction()
 	{
+		Log.Error( 'a' );
 		CurrentInteractionRequest = new InteractionRequest( CurrentUsable, _player, UsableTouchPosition );
 	}
 

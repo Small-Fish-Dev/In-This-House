@@ -1,19 +1,20 @@
 {
   "RootObject": {
-    "Id": "82da5e1a-81ba-4d1d-8136-e5af0d531bda",
+    "Id": "819cd102-c6c8-4ee0-93d8-0271c111038f",
     "Name": "door_mansion",
+    "Tags": "usable",
     "Enabled": true,
     "Components": [
       {
         "__type": "Door",
         "_model": {
           "_type": "component",
-          "go": "82da5e1a-81ba-4d1d-8136-e5af0d531bda",
+          "go": "819cd102-c6c8-4ee0-93d8-0271c111038f",
           "component_type": "ModelRenderer"
         },
         "_usable": {
           "_type": "component",
-          "go": "82da5e1a-81ba-4d1d-8136-e5af0d531bda",
+          "go": "819cd102-c6c8-4ee0-93d8-0271c111038f",
           "component_type": "Usable"
         }
       },
