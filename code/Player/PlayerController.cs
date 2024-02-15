@@ -60,7 +60,6 @@ public sealed partial class PlayerController : Component
 	protected override void OnFixedUpdate()
 	{
 		UpdateMovement();
-		UpdateUse();
 	}
 
 	protected override void OnUpdate()

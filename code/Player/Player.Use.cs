@@ -1,8 +1,8 @@
 namespace ITH;
 
-partial class PlayerController
+partial class Player
 {
-	private InteractionRequest CurrentInteractionRequest;
+	public InteractionRequest CurrentInteractionRequest { get; private set; }
 	public Usable CurrentUsable { get; private set; }
 	public Vector3 UsableTouchPosition { get; private set; }
 	public bool HasActiveInteractionRequest =>
@@ -16,7 +16,7 @@ partial class PlayerController
 	{
 		// TODO: Do we want to keep the .WithTag(ITH.Tag.Usable)? i dunno if specifying tags improves performance
 		// but its nice to not worry about needing a tag and just requiring a component like below.
-		var trace = Scene.Trace.Ray( EyePosition, EyePosition + InputAngles.Forward * (UseRange - rayRadius) );
+		var trace = Scene.Trace.Ray( Controller.EyePosition, Controller.EyePosition + Controller.InputAngles.Forward * (UseRange - rayRadius) );
 		if ( rayRadius != 0 )
 			trace = trace.Size( rayRadius );
 
@@ -44,7 +44,7 @@ partial class PlayerController
 
 		// Cancel and return if we're unable to interact with anything (stunned, tied up or what not)
 		// Also cancel if the player isn't holding use
-		if ( CommandsLocked || !Input.Down( GameInputActions.Use ) )
+		if ( Controller.CommandsLocked || !Input.Down( GameInputActions.Use ) )
 		{
 			return;
 		}
@@ -57,21 +57,21 @@ partial class PlayerController
 		{
 			if ( CurrentUsable.Locked )
 			{
-				if ( _player.HasUpgrade( "Lock Breaker" ) )
+				if ( HasUpgrade( "Lock Breaker" ) )
 				{
 					Sound.Play( "sounds/lockpicking/lockfall.sound", CurrentUsable.Lock.Transform.Position );
 					CurrentUsable.Lock.Unlock();
 				}
 				else
 				{
-					CurrentUsable.Lock.Lockpick( this );
+					CurrentUsable.Lock.Lockpick( Controller );
 					Model.Set( "lockpicking", true );
 				}
 			}
 			// Grab if no one uses it
 			else
 			{
-				if ( CurrentUsable.CheckUpgrades( _player ) )
+				if ( CurrentUsable.CheckUpgrades( this ) )
 					EnqueueInteraction();
 			}
 		}
@@ -84,7 +84,7 @@ partial class PlayerController
 
 		// Remove the invalid or complete interaction request
 		if ( !HasActiveInteractionRequest
-				|| CurrentInteractionRequest.HitPoint.Distance( EyePosition ) > UseRange + 10 )
+				|| CurrentInteractionRequest.HitPoint.Distance( Controller.EyePosition ) > UseRange + 10 )
 		{
 			CancelInteraction();
 		}
@@ -93,7 +93,7 @@ partial class PlayerController
 	private void EnqueueInteraction()
 	{
 		Log.Error( 'a' );
-		CurrentInteractionRequest = new InteractionRequest( CurrentUsable, _player, UsableTouchPosition );
+		CurrentInteractionRequest = new InteractionRequest( CurrentUsable, this, UsableTouchPosition );
 	}
 
 	private void FinishInteraction()

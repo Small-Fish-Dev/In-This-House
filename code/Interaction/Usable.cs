@@ -13,4 +13,14 @@ public sealed class Usable : Component
 	public Player User { get; set; }
 	public string LockText { get; set; }
 	public bool CheckUpgrades( Player player ) => true;
+
+	public Vector3 GetBoundsCenter()
+	{
+		if ( Components.TryGet<Collider>( out var collider ) )
+		{
+			return collider.KeyframeBody.GetBounds().Center;
+		}
+
+		return Transform.Position;
+	}
 }

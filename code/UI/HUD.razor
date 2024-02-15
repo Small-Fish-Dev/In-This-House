@@ -13,6 +13,7 @@
 <root>
 	<Timer Active="@(MansionGame.Instance.TimerActive)" @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
 	<MoneyCounter Player=@(activePlayer)/>
+	<Interactions Player=@activePlayer />
 	<Crosshair>
 		<Top>
 			<!--Some text on the top-->

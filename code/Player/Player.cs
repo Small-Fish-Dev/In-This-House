@@ -4,6 +4,7 @@ public sealed partial class Player : Component
 {
 	[Property] public ContainerComponent Inventory { get; private set; }
 	[Property] public PlayerController Controller { get; private set; }
+	[Property] public SkinnedModelRenderer Model { get; private set; }
 	[Sync] public int Money { get; private set; }
 	public static Action<Player, int, int> OnMoneyChanged;
 
@@ -22,6 +23,11 @@ public sealed partial class Player : Component
 	protected override void OnDestroy()
 	{
 		OnMoneyChanged = null;
+	}
+
+	protected override void OnFixedUpdate()
+	{
+		UpdateUse();
 	}
 
 	public void SetMoney( int value )

@@ -240,7 +240,6 @@
         {
           "Id": "c55dbb5b-e083-4308-87ff-baab7345676a",
           "Name": "Mansion_Map",
-          "Enabled": true,
           "Components": [
             {
               "__type": "MapInstance",
@@ -249,8 +248,7 @@
               "OnMapUnloaded": null,
               "UseMapFromLaunch": false
             }
-          ],
-          "Children": []
+          ]
         },
         {
           "Id": "3552cf5a-b0d1-4239-a9bf-f939a40da1c8",
@@ -6590,6 +6588,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-14T23:34:52.0178968-06:00",
+  "LastSaved": "2024-02-14T23:46:22.9960281-06:00",
   "__references": []
 }

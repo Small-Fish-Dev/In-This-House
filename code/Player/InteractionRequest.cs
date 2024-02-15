@@ -25,7 +25,7 @@ public class InteractionRequest
 			HitPoint = hitPoint.Value;
 		}
 
-		usableEntity.User?.Controller.CancelInteraction();
+		usableEntity.User?.CancelInteraction();
 		usableEntity.User = user;
 	}
 

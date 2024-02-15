@@ -2,8 +2,8 @@ namespace ITH;
 
 partial class PlayerController
 {
-	[Sync] private Vector3 InputDirection { get; set; }
-	[Sync] private Angles InputAngles { get; set; }
+	[Sync] public Vector3 InputDirection { get; private set; }
+	[Sync] public Angles InputAngles { get; private set; }
 	[Sync] public Vector3 Velocity { get; private set; }
 	[Sync] public bool IsCrouching { get; private set; }
 	[Sync] public bool IsRunning { get; private set; }
