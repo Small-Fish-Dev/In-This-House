@@ -9,7 +9,7 @@ public sealed partial class MansionGame : Component, Component.INetworkListener
 	public int Seed { get; set; } = 0;
 	public Random Random { get; set; } = new Random();
 
-	public float TimePerLevel => 180.0f;
+	public float TimePerLevel => 1800000.0f;
 
 	/// <summary>
 	/// Create a server (if we're not joining one)

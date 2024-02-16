@@ -43,6 +43,7 @@ public sealed class Level : Component
 
 	public async Task Start()
 	{
+		Log.Info( $"Starting level: {this}" );
 		SetEnabled( true );
 		foreach ( var lootSpawner in GameObject.Components.GetAll<LootSpawner>( FindMode.EnabledInSelfAndDescendants ) )
 		{

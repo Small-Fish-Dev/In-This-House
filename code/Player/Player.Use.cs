@@ -14,6 +14,9 @@ partial class Player
 
 	private bool UpdateUsableEntity( float rayRadius = 0 )
 	{
+		CurrentUsable = null;
+		UsableTouchPosition = Vector3.Zero;
+
 		// TODO: Do we want to keep the .WithTag(ITH.Tag.Usable)? i dunno if specifying tags improves performance
 		// but its nice to not worry about needing a tag and just requiring a component like below.
 		var trace = Scene.Trace.Ray( Controller.EyePosition, Controller.EyePosition + Controller.InputAngles.Forward * (UseRange - rayRadius) );
@@ -31,12 +34,10 @@ partial class Player
 			return true;
 		}
 
-		CurrentUsable = null;
-		UsableTouchPosition = Vector3.Zero;
 		return false;
 	}
 
-	private void UpdateUse()
+	public void UpdateUse()
 	{
 		// Do a pass with a thin ray, then with a 24 unit thick ray if failed
 		if ( !UpdateUsableEntity() )
@@ -64,7 +65,7 @@ partial class Player
 				}
 				else
 				{
-					CurrentUsable.Lock.Lockpick( Controller );
+					CurrentUsable.Lock.Lockpick( this );
 					Model.Set( "lockpicking", true );
 				}
 			}
@@ -92,7 +93,6 @@ partial class Player
 
 	private void EnqueueInteraction()
 	{
-		Log.Error( 'a' );
 		CurrentInteractionRequest = new InteractionRequest( CurrentUsable, this, UsableTouchPosition );
 	}
 

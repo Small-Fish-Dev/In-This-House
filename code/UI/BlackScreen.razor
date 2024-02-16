@@ -80,7 +80,7 @@
 	[Broadcast]
 	public static void Start(float blackDuration = 2, float startingTransition = 1f, float endingTransition = 1f)
 	{
-		HUD.Instance?.Panel?.AddChild(new BlackScreen(blackDuration, startingTransition, endingTransition));
+		HUD.Instance?.AddChild(new BlackScreen(blackDuration, startingTransition, endingTransition));
 	}
 }
 

@@ -1,0 +1,34 @@
+@using Sandbox.UI;
+
+@namespace ITH.UI
+@inherits Panel
+@attribute [StyleSheet]
+
+<root class="@(useString != string.Empty ? "visible" : "")">
+	@if (useString != string.Empty)
+	{
+		@if (Player.CurrentUsable.CanUse)
+		{
+			<span>@((Player.CurrentUsable.InteractionDuration == 0f || Player.CurrentUsable.Locked) ? "Press" : "Hold")</span>
+			<inputglyph action="use" />
+			<span>to @(Player.CurrentUsable.Locked ? Player.CurrentUsable.LockText : useString).</span>
+		}
+		else
+		{
+			<span>@(useString)</span>
+		}
+	}
+</root>
+
+@code {
+	public Player Player { get; set; }
+
+	string useString => Player?.CurrentUsable != null
+	? Player.CurrentUsable?.UseString ?? string.Empty
+	: string.Empty;
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine(Time.Now);
+	}
+}

@@ -30,6 +30,14 @@ public sealed partial class Player : Component
 		UpdateUse();
 	}
 
+	protected override void OnUpdate()
+	{
+	}
+
+	protected override void OnPreRender()
+	{
+	}
+
 	public void SetMoney( int value )
 	{
 		OnMoneyChanged?.Invoke( this, Money, value );

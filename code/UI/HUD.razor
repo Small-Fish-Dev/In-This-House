@@ -23,10 +23,7 @@
 		</Middle>
 		<Bottom>
 			<!--Some text on the bottom-->
-			@* @if (isPlayer)
-			{
-				<InteractionTip @Player=@activePlayer />
-			} *@
+			<InteractionTip Player=@activePlayer />
 		</Bottom>
 	</Crosshair>
 </root>
@@ -48,6 +45,15 @@
 	protected override int BuildHash()
 	{
 		return System.HashCode.Combine(Time.Now);
+	}
+
+	/// <summary>
+	/// For your convenience since HUD is a PanelComponent not a Panel.
+	/// </summary>
+	/// <param name="panel"></param>
+	public void AddChild(Panel panel)
+	{
+		Panel.AddChild(panel);
 	}
 
 }

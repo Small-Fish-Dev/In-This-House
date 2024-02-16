@@ -75,6 +75,7 @@ public sealed class Door : Component
 
 	protected override void OnFixedUpdate()
 	{
+		_usable.UseString = (State == DoorState.Open || State == DoorState.Opening) ? "close the door" : "open the door";
 		// No need to update if we are static.
 		if ( State == DoorState.Open || State == DoorState.Closed || !Networking.IsHost )
 			return;

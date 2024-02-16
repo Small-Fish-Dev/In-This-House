@@ -207,7 +207,7 @@
             {
               "__type": "Usable",
               "OnUsed": null,
-              "StartLocked": false,
+              "StartLocked": true,
               "UseString": "interact"
             },
             {
@@ -6511,32 +6511,6 @@
       ]
     },
     {
-      "Id": "e4837119-3d7b-4821-b7e2-9dfab56bc82b",
-      "Name": "Cube",
-      "Position": "522.0126,257.9628,3025.138",
-      "Scale": "12.17295,11.16824,1",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "ModelRenderer",
-          "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
-          "MaterialOverride": null,
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "BoxCollider",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false,
-          "Surface": null
-        }
-      ]
-    },
-    {
       "Id": "0a27face-a53b-48d0-9f68-46635b96d4fe",
       "Name": "HUD",
       "Position": "676.8833,260.6283,3170.773",
@@ -6588,6 +6562,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-15T02:34:35.7383513-06:00",
+  "LastSaved": "2024-02-15T20:04:09.0218941-06:00",
   "__references": []
 }
