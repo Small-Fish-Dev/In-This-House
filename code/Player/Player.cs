@@ -17,6 +17,7 @@ public sealed partial class Player : Component
 			return;
 
 		Local.Player = this;
+
 		SetMoney( 500 );
 	}
 

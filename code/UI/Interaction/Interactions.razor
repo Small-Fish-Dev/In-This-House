@@ -4,9 +4,9 @@
 @inherits Panel
 
 <root>
-	@if ( Player.CurrentInteractionRequest?.IsActive ?? false )
+	@if (player?.CurrentInteractionRequest?.IsActive ?? false)
 	{
-		<SingleInteraction @Request=@Player.CurrentInteractionRequest/>
+		<SingleInteraction @Request=@player?.CurrentInteractionRequest/>
 	}
 </root>
 
@@ -19,12 +19,17 @@
 </style>
 
 @code {
+	static Player player => HUD.Instance.ActivePlayer;
 
-	public Player Player { get; set; }
+	protected override int BuildHash()
+	{
+		if (player is null)
+			return 0;
 
-	protected override int BuildHash() => HashCode.Combine(
-		Player.CurrentInteractionRequest,
-		Player.CurrentInteractionRequest is null ? 0 : (float)Player.CurrentInteractionRequest.Complete
+		return HashCode.Combine(
+		player.CurrentInteractionRequest,
+		player.CurrentInteractionRequest is null ? 0 : (float)player.CurrentInteractionRequest.Complete
 		);
+	}
 
 }

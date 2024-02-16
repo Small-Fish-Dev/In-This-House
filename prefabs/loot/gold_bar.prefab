@@ -1,0 +1,49 @@
+{
+  "RootObject": {
+    "Id": "b678cf03-11c8-4d6d-a219-16b271efeb83",
+    "Name": "gold_bar",
+    "Tags": "usable",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Loot",
+        "_usable": null,
+        "Description": null,
+        "DisplayFront": false,
+        "LevelCanAppearOn": "Mansion",
+        "MonetaryValue": 0,
+        "Name": "Gold bar",
+        "Rarity": "Broken",
+        "WhereCanSpawn": "Ground"
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/items/gold_bar/gold_bar.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Usable",
+        "OnUsed": null,
+        "StartLocked": false,
+        "UseString": "interact"
+      },
+      {
+        "__type": "BoxCollider",
+        "Center": "0,0,1.3",
+        "IsTrigger": false,
+        "Scale": "16.4,6.400038,3.299994",
+        "Static": false,
+        "Surface": null
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

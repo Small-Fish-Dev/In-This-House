@@ -1,6 +1,6 @@
 namespace ITH;
 
-public sealed partial class MansionGame : Component, Component.INetworkListener
+public sealed partial class MansionGame : Component, Component.INetworkListener, Component.ExecuteInEditor
 {
 	public static MansionGame Instance;
 	[Sync] public TimeUntil TimeOut { get; set; }
@@ -23,6 +23,10 @@ public sealed partial class MansionGame : Component, Component.INetworkListener
 	protected override void OnAwake()
 	{
 		PrefabLibrary.Init();
+		if ( Scene.IsEditor )
+		{
+			return;
+		}
 
 		spawnPoints ??= new();
 		if ( spawnPoints.Count <= 0 )
@@ -48,15 +52,16 @@ public sealed partial class MansionGame : Component, Component.INetworkListener
 	protected override void OnDestroy()
 	{
 		// Need this for the editor, it doesnt clear statics automatically
-		PrefabLibrary.Shutdown();
+		// PrefabLibrary.Shutdown();
+
 		Instance = null;
+		Local.DestroyAll();
 	}
 
 	protected override async Task OnLoad()
 	{
 		if ( Scene.IsEditor )
 			return;
-
 
 		if ( StartServer && !GameNetworkSystem.IsActive )
 		{

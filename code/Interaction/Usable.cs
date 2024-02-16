@@ -5,7 +5,7 @@ public sealed class Usable : Component
 	[Property] public string UseString = "interact";
 	[Property] public bool StartLocked;
 	[Property] public Action<Player> OnUsed;
-	public Lock? Lock => GameObject.Components.Get<Lock>();
+	public Lock? Lock { get; private set; }
 	public float InteractionDuration { get; set; } = 1.0f;
 	public bool ShouldCenterInteractionHint => true;
 	public bool CanUse { get; set; }
@@ -13,6 +13,16 @@ public sealed class Usable : Component
 	public Player User { get; set; }
 	public string LockText { get; set; }
 	public bool CheckUpgrades( Player player ) => true;
+
+	protected override void OnStart()
+	{
+		base.OnStart();
+		var hasLockAlready = Components.Get<Lock>() != null;
+		if ( StartLocked && !hasLockAlready )
+		{
+			Lock = GameObject.Components.Create<Lock>();
+		}
+	}
 
 	public Vector3 GetBoundsCenter()
 	{

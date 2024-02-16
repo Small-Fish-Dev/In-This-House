@@ -75,7 +75,10 @@ public sealed class Door : Component
 
 	protected override void OnFixedUpdate()
 	{
+		// TODO: I do think it was better before when this was handled via a getter instead of every-tick logic. 
+		// Maybe make Usable abstract and inherit from it like before? It's probably not a problem, probably.
 		_usable.UseString = (State == DoorState.Open || State == DoorState.Opening) ? "close the door" : "open the door";
+
 		// No need to update if we are static.
 		if ( State == DoorState.Open || State == DoorState.Closed || !Networking.IsHost )
 			return;

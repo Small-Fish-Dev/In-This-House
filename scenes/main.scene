@@ -217,6 +217,9 @@
                 "go": "ff303968-7de2-409c-9c72-744217a167d8",
                 "component_type": "Usable"
               }
+            },
+            {
+              "__type": "Lock"
             }
           ]
         }
@@ -240,6 +243,7 @@
         {
           "Id": "c55dbb5b-e083-4308-87ff-baab7345676a",
           "Name": "Mansion_Map",
+          "Enabled": true,
           "Components": [
             {
               "__type": "MapInstance",
@@ -248,7 +252,8 @@
               "OnMapUnloaded": null,
               "UseMapFromLaunch": false
             }
-          ]
+          ],
+          "Children": []
         },
         {
           "Id": "3552cf5a-b0d1-4239-a9bf-f939a40da1c8",
@@ -313,8 +318,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -329,8 +333,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -345,8 +348,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -361,8 +363,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -377,8 +378,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -393,8 +393,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -409,8 +408,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -425,8 +423,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -441,8 +438,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -457,8 +453,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -473,8 +468,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -489,8 +483,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -505,8 +498,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -521,8 +513,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -537,8 +528,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -553,8 +543,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -569,8 +558,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -585,8 +573,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -601,8 +588,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -617,8 +603,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -633,8 +618,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -649,8 +633,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -665,15 +648,14 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
         {
           "Id": "d3ca19d4-3605-4c11-b2fa-1f724fa528ae",
           "Name": "LootSpawner",
-          "Position": "105.3431,32.25537,785.0123",
+          "Position": "103.856,16.37319,786.0037",
           "Rotation": "-0.4999995,-0.5000003,0.5000005,0.4999997",
           "Enabled": true,
           "Components": [
@@ -681,11 +663,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 55,
               "IsContainer": false,
-              "LevelType": "Mansion",
-              "LootPrefab": {
-                "_type": "gameobject",
-                "prefab": "prefabs/loot/thin_painting.prefab"
-              }
+              "LevelType": "Mansion"
             }
           ]
         },
@@ -700,8 +678,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -716,8 +693,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -732,8 +708,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -748,8 +723,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -764,8 +738,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -780,8 +753,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -796,8 +768,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -812,8 +783,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -828,8 +798,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -844,8 +813,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -860,8 +828,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -876,8 +843,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -892,8 +858,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -908,8 +873,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -924,8 +888,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -940,8 +903,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -956,8 +918,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -972,8 +933,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -988,8 +948,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1004,8 +963,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1020,8 +978,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1036,8 +993,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1052,8 +1008,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1068,8 +1023,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1084,8 +1038,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1099,8 +1052,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1115,8 +1067,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1131,8 +1082,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1147,8 +1097,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1163,8 +1112,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1179,8 +1127,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1195,8 +1142,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1211,8 +1157,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1227,8 +1172,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1243,8 +1187,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1259,8 +1202,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1275,8 +1217,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1291,8 +1232,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1307,8 +1247,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1323,8 +1262,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1339,8 +1277,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1355,8 +1292,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1371,8 +1307,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1387,8 +1322,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1403,8 +1337,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1419,8 +1352,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1435,8 +1367,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1451,8 +1382,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1467,8 +1397,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1483,8 +1412,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1499,8 +1427,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1515,8 +1442,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1531,8 +1457,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1547,8 +1472,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1563,8 +1487,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1579,8 +1502,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1595,8 +1517,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1611,8 +1532,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1627,8 +1547,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1643,8 +1562,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1659,8 +1577,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1675,8 +1592,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1691,8 +1607,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1707,8 +1622,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1723,8 +1637,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1739,8 +1652,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1755,8 +1667,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1771,8 +1682,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1787,8 +1697,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1803,8 +1712,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1819,8 +1727,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1835,8 +1742,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1851,8 +1757,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1867,8 +1772,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1883,8 +1787,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1899,8 +1802,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1915,8 +1817,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1931,8 +1832,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1947,8 +1847,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1963,8 +1862,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1979,8 +1877,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -1995,8 +1892,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2011,8 +1907,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2027,8 +1922,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2043,8 +1937,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2059,8 +1952,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2075,8 +1967,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2091,8 +1982,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2107,8 +1997,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2123,8 +2012,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2139,8 +2027,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2155,8 +2042,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2171,8 +2057,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2187,8 +2072,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2203,8 +2087,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2219,8 +2102,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2235,8 +2117,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2251,8 +2132,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2267,8 +2147,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2283,8 +2162,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2299,8 +2177,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2315,8 +2192,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2331,8 +2207,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2347,8 +2222,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2363,8 +2237,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2379,8 +2252,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2395,8 +2267,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2411,8 +2282,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2427,8 +2297,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2443,8 +2312,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2459,8 +2327,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2475,8 +2342,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2491,8 +2357,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2507,8 +2372,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2523,8 +2387,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2539,8 +2402,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2555,8 +2417,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2571,8 +2432,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2587,8 +2447,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2603,8 +2462,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2619,8 +2477,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2635,8 +2492,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2651,8 +2507,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2667,8 +2522,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2683,8 +2537,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2699,8 +2552,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2715,8 +2567,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2731,8 +2582,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2747,8 +2597,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2763,8 +2612,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2779,8 +2627,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2795,8 +2642,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2811,8 +2657,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2827,8 +2672,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2843,8 +2687,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2859,8 +2702,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2875,8 +2717,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2891,8 +2732,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2907,8 +2747,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2923,8 +2762,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2939,8 +2777,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2955,8 +2792,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2971,8 +2807,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -2987,8 +2822,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3003,8 +2837,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3019,8 +2852,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3035,8 +2867,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3051,8 +2882,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3066,8 +2896,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3082,8 +2911,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3098,8 +2926,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3114,8 +2941,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3130,8 +2956,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3146,8 +2971,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3161,8 +2985,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3176,8 +2999,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3192,8 +3014,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3208,8 +3029,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3224,8 +3044,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3240,8 +3059,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3256,8 +3074,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3272,8 +3089,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3288,8 +3104,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3304,8 +3119,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3320,8 +3134,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3336,8 +3149,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3352,8 +3164,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3368,8 +3179,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3384,8 +3194,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3400,8 +3209,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3416,8 +3224,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3432,8 +3239,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3448,8 +3254,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3464,8 +3269,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3480,8 +3284,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3496,8 +3299,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3512,8 +3314,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3528,8 +3329,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3544,8 +3344,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3560,8 +3359,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3576,8 +3374,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3592,8 +3389,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3608,8 +3404,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3624,8 +3419,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3640,8 +3434,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3656,8 +3449,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3672,8 +3464,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3688,8 +3479,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3704,8 +3494,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3720,8 +3509,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3736,8 +3524,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3752,8 +3539,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3768,8 +3554,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3784,8 +3569,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3800,8 +3584,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3816,8 +3599,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3832,8 +3614,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3848,8 +3629,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3864,8 +3644,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3880,8 +3659,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3896,8 +3674,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3912,8 +3689,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3928,8 +3704,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3944,8 +3719,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3960,8 +3734,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3976,8 +3749,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -3992,8 +3764,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4008,8 +3779,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4024,8 +3794,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4040,8 +3809,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4056,8 +3824,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4072,8 +3839,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4088,8 +3854,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4104,8 +3869,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4120,8 +3884,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4136,8 +3899,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4152,8 +3914,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4168,8 +3929,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4184,8 +3944,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4200,8 +3959,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4216,8 +3974,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4232,8 +3989,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4248,8 +4004,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4264,8 +4019,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4280,8 +4034,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4296,8 +4049,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4312,8 +4064,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4328,8 +4079,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4343,8 +4093,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4359,8 +4108,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4375,8 +4123,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4391,8 +4138,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4407,8 +4153,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4423,8 +4168,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4439,8 +4183,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4455,8 +4198,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4471,8 +4213,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4487,8 +4228,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4503,8 +4243,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4519,8 +4258,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4535,8 +4273,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4551,8 +4288,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4567,8 +4303,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4583,8 +4318,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4599,8 +4333,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4615,8 +4348,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4631,8 +4363,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4647,8 +4378,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4663,8 +4393,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4679,8 +4408,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4695,8 +4423,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4711,8 +4438,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4727,8 +4453,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4743,8 +4468,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4759,8 +4483,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4775,8 +4498,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4791,8 +4513,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4807,8 +4528,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4823,8 +4543,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4839,8 +4558,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4855,8 +4573,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4871,8 +4588,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4887,8 +4603,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4903,8 +4618,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4919,8 +4633,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4935,8 +4648,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4951,8 +4663,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4967,8 +4678,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4983,8 +4693,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -4999,8 +4708,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5015,8 +4723,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5031,8 +4738,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5047,8 +4753,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5063,8 +4768,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5079,8 +4783,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5095,8 +4798,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5111,8 +4813,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5127,8 +4828,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5143,8 +4843,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5159,8 +4858,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5175,8 +4873,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5191,8 +4888,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5207,8 +4903,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5223,8 +4918,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5239,8 +4933,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5255,8 +4948,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5271,8 +4963,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5287,8 +4978,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5303,8 +4993,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5319,8 +5008,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5335,8 +5023,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5351,8 +5038,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5367,8 +5053,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5383,8 +5068,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5399,8 +5083,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5415,8 +5098,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5431,8 +5113,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5447,8 +5128,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5463,8 +5143,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5479,8 +5158,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5495,8 +5173,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5511,8 +5188,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5527,8 +5203,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5543,8 +5218,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5559,8 +5233,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5575,8 +5248,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5591,8 +5263,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5607,8 +5278,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5623,8 +5293,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5639,8 +5308,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5655,8 +5323,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5671,8 +5338,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5687,8 +5353,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5703,8 +5368,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5719,8 +5383,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5735,8 +5398,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5751,8 +5413,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5767,8 +5428,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5783,8 +5443,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5799,8 +5458,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5815,8 +5473,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5831,8 +5488,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5847,8 +5503,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5863,8 +5518,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5879,8 +5533,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5895,8 +5548,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5911,8 +5563,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5927,8 +5578,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5943,8 +5593,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5959,8 +5608,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5975,8 +5623,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -5991,8 +5638,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6006,8 +5652,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6021,8 +5666,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6037,8 +5681,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6053,8 +5696,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6069,8 +5711,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6084,8 +5725,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6100,8 +5740,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6116,8 +5755,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6132,8 +5770,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6148,8 +5785,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6164,8 +5800,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6180,8 +5815,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6196,8 +5830,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6212,8 +5845,7 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
         },
@@ -6227,18 +5859,9 @@
               "__type": "LootSpawner",
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
-              "LevelType": "None",
-              "LootPrefab": null
+              "LevelType": "None"
             }
           ]
-        },
-        {
-          "Id": "8d011df7-fad4-4a6e-9253-86605feb53f9",
-          "Name": "Door (9)",
-          "Position": "-2572.29,151.8152,833.625",
-          "Tags": "usable",
-          "Enabled": true,
-          "__Prefab": "prefabs/doors/door_mansion.prefab"
         },
         {
           "Id": "e490d665-b9e8-4349-a0c5-94e05fc4ba4b",
@@ -6537,6 +6160,23 @@
           "__type": "LegacyEventSystem"
         }
       ]
+    },
+    {
+      "Id": "06fcdc9d-34ef-4f27-9eb4-6c241454df4a",
+      "Name": "Object",
+      "Position": "286.3249,77.38083,757.3047",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/items/gold_bar/gold_bar.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": true
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -6562,6 +6202,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-15T20:04:09.0218941-06:00",
+  "LastSaved": "2024-02-16T04:03:37.8941608-06:00",
   "__references": []
 }

@@ -26,6 +26,7 @@ public sealed class Level : Component
 	[Property] public MapInstance Map { get; private set; }
 	[Sync] public NetList<GameObject> Monsters { get; set; }
 	[Sync] public TimeSince SinceStarted { get; set; } = 0f;
+	public static Level Current;
 
 	protected override void OnAwake()
 	{
@@ -59,6 +60,7 @@ public sealed class Level : Component
 			}
 		}
 
+		Current = this;
 		await Task.CompletedTask;
 	}
 

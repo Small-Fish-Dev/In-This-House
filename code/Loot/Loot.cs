@@ -13,6 +13,12 @@ public enum LootRarity
 	Flawless
 }
 
+public enum LootSpawnPosition
+{
+	Wall,
+	Ground
+}
+
 [Icon( "currency_exchange" )]
 public partial class Loot : Component
 {
@@ -20,6 +26,7 @@ public partial class Loot : Component
 	[Property] public string Description { get; private set; }
 	[Property] public LootRarity Rarity { get; set; }
 	[Property] public LevelType LevelCanAppearOn { get; private set; }
+	[Property] public LootSpawnPosition WhereCanSpawn { get; private set; }
 	[Property] public int MonetaryValue { get; private set; }
 	[Property] public bool DisplayFront { get; private set; }
 	[Property] private Usable _usable { get; set; }

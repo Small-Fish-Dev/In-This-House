@@ -3,7 +3,6 @@ namespace Sandbox;
 
 public static class GameInputActions
 {
-
 	public const string Forward = "Forward";
 	public const string Back = "Back";
 	public const string Left = "Left";

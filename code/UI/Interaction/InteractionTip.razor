@@ -7,11 +7,11 @@
 <root class="@(useString != string.Empty ? "visible" : "")">
 	@if (useString != string.Empty)
 	{
-		@if (Player.CurrentUsable.CanUse)
+		@if (player.CurrentUsable.CanUse)
 		{
-			<span>@((Player.CurrentUsable.InteractionDuration == 0f || Player.CurrentUsable.Locked) ? "Press" : "Hold")</span>
+			<span>@((player.CurrentUsable.InteractionDuration == 0f || player.CurrentUsable.Locked) ? "Press" : "Hold")</span>
 			<inputglyph action="use" />
-			<span>to @(Player.CurrentUsable.Locked ? Player.CurrentUsable.LockText : useString).</span>
+			<span>to @(player.CurrentUsable.Locked ? player.CurrentUsable.LockText : useString).</span>
 		}
 		else
 		{
@@ -21,10 +21,10 @@
 </root>
 
 @code {
-	public Player Player { get; set; }
+	static Player player => HUD.Instance.ActivePlayer;
 
-	string useString => Player?.CurrentUsable != null
-	? Player.CurrentUsable?.UseString ?? string.Empty
+	string useString => player?.CurrentUsable != null
+	? player?.CurrentUsable?.UseString ?? string.Empty
 	: string.Empty;
 
 	protected override int BuildHash()

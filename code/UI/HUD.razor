@@ -4,16 +4,10 @@
 @inherits PanelComponent
 @attribute [StyleSheet]
 
-
-@{
-	// TODO: Spectating!!!!!!!! :(
-	var activePlayer = Local.Player;
-}
-
 <root>
 	<Timer Active="@(MansionGame.Instance.TimerActive)" @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
-	<MoneyCounter Player=@(activePlayer)/>
-	<Interactions Player=@activePlayer />
+	<MoneyCounter /> 
+	<Interactions />
 	<Crosshair>
 		<Top>
 			<!--Some text on the top-->
@@ -23,7 +17,7 @@
 		</Middle>
 		<Bottom>
 			<!--Some text on the bottom-->
-			<InteractionTip Player=@activePlayer />
+			<InteractionTip />
 		</Bottom>
 	</Crosshair>
 </root>
@@ -31,7 +25,8 @@
 
 @code {
 	public static HUD Instance;
-
+	public Player ActivePlayer => Local.Spectated ?? Local.Player;
+	
 	public HUD()
 	{
 		Instance = this;

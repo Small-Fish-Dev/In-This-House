@@ -9,6 +9,7 @@ public sealed class LegacyEventSystem : Component
 	public Action Update;
 	public Action FixedUpdate;
 	public Action PreRender;
+	public Action InventoryChanged;
 
 	protected override void OnAwake()
 	{

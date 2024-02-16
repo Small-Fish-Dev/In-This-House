@@ -17,9 +17,8 @@ partial class Player
 		CurrentUsable = null;
 		UsableTouchPosition = Vector3.Zero;
 
-		// TODO: Do we want to keep the .WithTag(ITH.Tag.Usable)? i dunno if specifying tags improves performance
-		// but its nice to not worry about needing a tag and just requiring a component like below.
-		var trace = Scene.Trace.Ray( Controller.EyePosition, Controller.EyePosition + Controller.InputAngles.Forward * (UseRange - rayRadius) );
+		var trace = Scene.Trace.Ray( Controller.EyePosition, Controller.EyePosition + Controller.InputAngles.Forward * (UseRange - rayRadius) )
+		.WithTag( ITH.Tag.Usable );
 		if ( rayRadius != 0 )
 			trace = trace.Size( rayRadius );
 

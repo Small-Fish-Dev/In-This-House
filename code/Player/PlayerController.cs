@@ -54,6 +54,7 @@ public sealed partial class PlayerController : Component
 		if ( !IsProxy )
 		{
 			Local.Pawn = GameObject;
+			Local.PlayerController = this;
 		}
 	}
 
@@ -154,13 +155,25 @@ public sealed partial class PlayerController : Component
 		{
 			skiddingSound.Enabled = false;
 			skiddingSound.StopSound();
-
 			// skidParticle.Enabled = false;
 		}
 
 		skiddingSound.Volume = skiddingVolume;
 
-		Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
+		if ( !CommandsLocked )
+		{
+			if ( Input.Pressed( GameInputActions.Jump ) && _controller.IsOnGround )
+			{
+				_controller.Punch( Vector3.Up );
+				Velocity += Vector3.Up * JumpHeight;
+			}
+		}
+
+		if ( !_controller.IsOnGround )
+			Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
+		else
+			Velocity = Velocity.WithZ( 0 );
+
 
 		_controller.Velocity = Velocity;
 		_controller.Move();
