@@ -1,0 +1,157 @@
+Inventory {
+    position: absolute;
+    transition: transform 0.2s ease-in-out;
+    transform: translateY(100%);
+    width: 500px;
+    height: 500px;
+    bottom: 0px;
+    left: 0px;
+    padding: 20px;
+    color: white;
+    pointer-events: none;
+
+    .title {
+        font-size: 64px;
+        text-shadow: 4px 4px 0px rgba(black, 0.8);
+        top: 25px;
+        left: 55px;
+    }
+
+    &.visible {
+        transform: translateY(0%);
+        pointer-events: all;
+    }
+
+    .tooltip {
+        position: absolute;
+        left: 100%;
+        bottom: 20px;
+        margin-left: 10px;
+        transition: transform 0.2s ease-in-out;
+        background-color: transparent;
+        transform: translateY(200%);
+        font-size: 24px;
+        text-shadow: 2px 2px 0px rgba(black, 0.8);
+        flex-direction: row;
+        padding: 10px;
+        border-image: url(ui/scroll_border.png) fill;
+        border-image-tint: darken(white, 0.35);
+        align-items: center;
+
+        .container {
+            max-width: 500px;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .currency {
+            padding-right: 5px;
+            font-size: 16px;
+            top: 3px;
+            color: rgba(50, 205, 50, 1);
+        }
+
+        .description {
+            margin-top: 8px;
+            color: rgba(215, 215, 215, 1);
+        }
+
+        .icon {
+            margin-left: 20px;
+            height: 100px;
+            aspect-ratio: 1;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            filter: border-wrap(2px black);
+            z-index: 2;
+        }
+
+        &.visible {
+            transform: translateY(0%);
+            pointer-events: all;
+        }
+    }
+
+    .background {
+        width: 100%;
+        height: 100%;
+        background-image: url(ui/inventory.png);
+        background-size: 100%;
+        image-rendering: pixelated;
+    }
+
+    .items {
+        position: absolute;
+        top: 28%;
+        left: 5.5%;
+        width: 95%;
+        height: 67%;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .item {
+            margin-right: 2.6%;
+            margin-bottom: 2%;
+            width: 16.5%;
+            height: 22.5%;
+            flex-shrink: 0;
+            flex-grow: 0;
+            background-color: rgba(black, 0.5);
+            text-shadow: 2px 2px 0px rgba(black, 0.8);
+
+            .amount {
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+                font-size: 20px;
+                text-stroke: 4px black;
+                pointer-events: none;
+            }
+
+            .icon {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-size: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                filter: border-wrap(2px black);
+            }
+
+            &:hover {
+                background-color: rgba(white, 0.1);
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.drag {
+    position: absolute;
+    width: 100px;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    border-image: url(ui/scroll_border.png) fill;
+    border-image-tint: darken(white, 0.25);
+    opacity: 1;
+    transition: transform 0.1s linear;
+    transform-origin: top left;
+
+    &:intro {
+        transform: scale(0) translate(-50%, -50%);
+    }
+
+    &:outro {
+        transform: scale(0) translate(-50%, -50%);
+    }
+
+    .icon {
+        width: 100%;
+        height: 100%;
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: border-wrap(2px black);
+    }
+}

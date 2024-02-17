@@ -36,4 +36,5 @@ public static class GameInputActions
 	public const string Slot8 = "Slot8";
 	public const string Slot9 = "Slot9";
 	public const string Slot0 = "Slot0";
+	public const string Ping = "Ping";
 }

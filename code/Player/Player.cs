@@ -33,6 +33,10 @@ public sealed partial class Player : Component
 
 	protected override void OnUpdate()
 	{
+		if ( Input.Released( GameInputActions.Ping ) )
+		{
+
+		}
 	}
 
 	protected override void OnPreRender()
@@ -43,6 +47,30 @@ public sealed partial class Player : Component
 	{
 		OnMoneyChanged?.Invoke( this, Money, value );
 		Money = value;
+	}
+
+	private bool Drop( ItemEntry? item )
+	{
+		if ( !item.HasValue )
+			return false;
+
+		// TODO: this is fucky im sorry
+
+		var toDrop = Inventory.Loots.First( x => x.Key.HasValue && x.Key.Value.Equals( item.Value ) ).Key;
+
+		Inventory.Remove( toDrop.Value );
+
+		var go = toDrop.Value.GameObject;
+
+		go.Transform.Position = Controller.EyePosition + Controller.EyeRotation.Forward * 10;
+		go.Tags.Add( ITH.Tag.Loot );
+		go.Enabled = true;
+
+
+		var rb = go.Components.GetOrCreate<Rigidbody>();
+		rb.Enabled = true;
+		rb.ApplyForce( Controller.EyeRotation.Forward * 10 );
+		return true;
 	}
 
 	// TODO:

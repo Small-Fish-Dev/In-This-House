@@ -2,6 +2,7 @@ namespace ITH;
 
 public struct ItemEntry : IEquatable<ItemEntry>
 {
+	public GameObject GameObject;
 	public Loot Loot;
 	public string Name => $"{Loot.Rarity} {Loot?.Name ?? "unknown"}";
 	public int Price => (int)((Loot?.MonetaryValue ?? 0) * Loot.RarityMap[Loot.Rarity]);

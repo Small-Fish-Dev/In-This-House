@@ -33,7 +33,7 @@ public partial class Loot : Component
 	public int SellPrice { get; private set; }
 	public string FullName => $"{Rarity} {Name}";
 	private Player _picker;
-	private bool _deleting;
+	private bool _disabling;
 
 	protected override void OnStart()
 	{
@@ -45,10 +45,8 @@ public partial class Loot : Component
 		_usable.UseString = $"take the {FullName}";
 	}
 
-	protected override void OnFixedUpdate()
+	protected override void OnUpdate()
 	{
-		base.OnFixedUpdate();
-
 		if ( _picker == null )
 		{
 			Transform.Scale = Vector3.Lerp( Transform.Scale, 1f, 5f * Time.Delta );
@@ -56,41 +54,48 @@ public partial class Loot : Component
 		}
 
 		Transform.Scale = Vector3.Lerp( Transform.Scale, 0.01f, 5f * Time.Delta );
-		if ( Transform.Scale.AlmostEqual( 0.01f ) && !_deleting )
+		Log.Info( Transform.Scale.Length );
+		if ( Transform.Scale.Length <= 0.5f && !_disabling )
 		{
-			_deleting = true;
+			_disabling = true;
 
-			var item = new ItemEntry { Loot = this };
+			var item = new ItemEntry { GameObject = GameObject, Loot = this };
 			if ( _picker.Inventory.Add( item ) )
 			{
+				Log.Info( $"You picked up: {FullName}" );
 				// Eventlog.Send( $"You picked up <gray>1x {item.Name}.", To.Single( picker ) );
-				Destroy();
+				GameObject.Enabled = false;
+
+				_disabling = false;
+				_picker = null;
+				Transform.Scale = Vector3.One;
 			}
 			else
 			{
 				// Eventlog.Send( $"<red>No space for <gray>1x {item.Name}.", To.Single( picker ) );
 				_picker = null;
-				_deleting = false;
+				_disabling = false;
 			}
 		}
 	}
 
 	private void Use( Player user )
 	{
-		Log.Info( user );
 		_picker = user;
 		var controller = user.Controller;
 
 		var normal = (controller.EyePosition - Transform.Position).Normal;
-		var force = 100f + Transform.Position.Distance( controller.EyePosition );
-		if ( Components.TryGet<Rigidbody>( out var rigidbody, FindMode.EverythingInSelf ) )
+		var force = 512 + Transform.Position.Distance( controller.EyePosition );
+
+		// TODO: For some reason this effect just doesn't look as good as it did in the entity system.
+		// MassOverride seems to have no effect? Paintings barely move towards us but ground objects do quite fast.
+		var rigidbody = Components.GetOrCreate<Rigidbody>( FindMode.EverythingInSelf );
 		{
 			rigidbody.Enabled = true;
-			rigidbody.ApplyImpulse( force * (normal + Vector3.Up * 0.5f) );
+			rigidbody.MassOverride = 1f;
+			rigidbody.ApplyImpulse( force * (normal + Vector3.Up * 1.5f) );
 		}
 
-		user.Inventory.Add( new ItemEntry() { Loot = this }, 1 );
-		Log.Info( $"You picked up: {FullName}" );
 		// Particles.Create( "particles/smoke/smoke_steal.vpcf", Transform.Position );
 		Sound.Play( "sounds/grab/grab.sound", Transform.Position );
 	}

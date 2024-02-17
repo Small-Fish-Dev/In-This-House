@@ -5,7 +5,8 @@
 @attribute [StyleSheet]
 
 <root>
-	<Timer Active="@(MansionGame.Instance.TimerActive)" @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/>
+	@* <Timer Active="@(MansionGame.Instance.TimerActive)" @Seconds=@( () => (float)MansionGame.Instance.TimeOut )/> *@
+	<Inventory/>
 	<MoneyCounter /> 
 	<Interactions />
 	<Crosshair>

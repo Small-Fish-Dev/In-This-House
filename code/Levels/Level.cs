@@ -47,7 +47,7 @@ public sealed class Level : Component
 		Log.Info( $"Starting level: {this}" );
 		Current = this;
 		// await GameTask.RunInThreadAsync( () => SetEnabled( true ) );
-		await SetEnabled( true );
+		SetEnabled( true );
 
 		foreach ( var lootSpawner in GameObject.Components.GetAll<LootSpawner>( FindMode.EnabledInSelfAndDescendants ) )
 		{
@@ -72,18 +72,21 @@ public sealed class Level : Component
 		BlackScreen.Start();
 		await GameTask.DelayRealtimeSeconds( 1f );
 		MansionGame.Instance.SetTimerStatus( true );
-		await SetEnabled( false );
+		SetEnabled( false );
 
 		await Task.CompletedTask;
 	}
 
-	private async Task SetEnabled( bool enabled )
+	private void SetEnabled( bool enabled )
 	{
-		foreach ( var child in GameObject.GetAllObjects( true ) )
+		foreach ( var child in GameObject.GetAllObjects( !enabled ) )
 		{
+			if ( child == GameObject )
+				continue;
+
 			child.Enabled = enabled;
 		}
+
 		Map.GameObject.Enabled = enabled;
-		await Task.CompletedTask;
 	}
 }
