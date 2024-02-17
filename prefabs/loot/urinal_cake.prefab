@@ -1,18 +1,18 @@
 {
   "RootObject": {
     "Id": "efe0278b-6be6-499c-9759-85c9f79282ff",
-    "Name": "gold_bar",
+    "Name": "urinal_cake",
     "Tags": "usable",
     "Enabled": true,
     "Components": [
       {
         "__type": "Loot",
         "_usable": null,
-        "Description": "A solid gold bar. Theres an incantation circle scribed on the bottom of it, and it has something written in latin on the top. Age has made it illegable to read. Holding it makes my hands shake.",
+        "Description": "These creatures here. They remind me of the painting from the mansion. No distinct features. Menacing aura. It\\u0027s like they can sense you. I dont know what will happen if they take me......but they will. I cant escape it.",
         "DisplayFront": false,
         "LevelCanAppearOn": "Mansion",
-        "MonetaryValue": 100,
-        "Name": "Gold bar",
+        "MonetaryValue": 70,
+        "Name": "Urinal Cake",
         "Rarity": "Broken",
         "WhereCanSpawn": "Ground"
       },
@@ -21,7 +21,7 @@
         "BodyGroups": 18446744073709551615,
         "MaterialGroup": null,
         "MaterialOverride": null,
-        "Model": "models/items/gold_bar/gold_bar.vmdl",
+        "Model": "models/items/urinal_cake/urinal_cake.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
@@ -34,7 +34,7 @@
       {
         "__type": "ModelCollider",
         "IsTrigger": false,
-        "Model": "models/items/gold_bar/gold_bar.vmdl",
+        "Model": "models/items/urinal_cake/urinal_cake.vmdl",
         "Static": false,
         "Surface": null
       }
