@@ -8,45 +8,38 @@ public sealed class LootSpawner : Component
 	[Property] public LevelType LevelType { get; set; } = LevelType.None;
 	private LootSpawnPosition _spawnType;
 	public GameObject? LootSpawned { get; set; }
-	private static List<PrefabDefinition> _allLoot;
 
 	protected override void OnStart()
 	{
+		if ( !Networking.IsHost )
+			return;
+
 		_spawnType = LootSpawnPosition.Ground;
 
-		var tr = Scene.Trace.Ray( Transform.Position + Vector3.Up * 2, Transform.Position + Vector3.Down * 5 ).IgnoreGameObjectHierarchy( GameObject ).Run();
+		var tr = Scene.Trace.Ray( Transform.Position, Transform.Position + Vector3.Down * 5 ).Run();
 		if ( !tr.Hit )
 		{
 			_spawnType = LootSpawnPosition.Wall;
 		}
-
-		_allLoot ??= PrefabLibrary.FindByComponent<Loot>().ToList();
-		foreach ( var x in _allLoot )
-		{
-			Log.Info( x.Name );
-		}
-
-		bool lootPredicate( PrefabDefinition prefab )
-		{
-			var loot = prefab.GetComponent<Loot>();
-			var spawnType = loot.Get<LootSpawnPosition>( "WhereCanSpawn" );
-			var levelCanSpawn = loot.Get<LevelType>( "LevelCanAppearOn" );
-			// Log.Info( $"{loot}, {spawnType}, {levelCanSpawn}" );
-			return spawnType == _spawnType && levelCanSpawn == Level.Current.Id;
-		}
-
-		var spawnable = _allLoot.Where( lootPredicate ).ToList();
-		LootPrefab = Game.Random.FromList( spawnable ).Prefab;
+		Log.Info( tr.Hit );
 	}
-
 
 	public void SpawnLoot()
 	{
 		if ( !Networking.IsHost )
 			return;
 
-		var chance = Random.Shared.Float();
+		bool lootPredicate( PrefabDefinition prefab )
+		{
+			var loot = prefab.GetComponent<Loot>();
+			var spawnType = loot.Get<LootSpawnPosition>( "WhereCanSpawn" );
+			return spawnType == _spawnType;
+		}
 
+		var interestedLoot = LootManager.Instance.MansionLoot.Where( lootPredicate ).ToArray();
+		LootPrefab = Game.Random.FromArray( interestedLoot ).Prefab;
+
+		var chance = Random.Shared.Float();
 		if ( chance <= ChanceToSpawn * MansionGame.Instance.Clients.Count() * 0.25f )
 		{
 			if ( IsContainer )
@@ -65,7 +58,6 @@ public sealed class LootSpawner : Component
 
 			LootSpawned = SceneUtility.GetPrefabScene( LootPrefab ).Clone( Transform.Position, Transform.Rotation );
 			LootSpawned.NetworkSpawn();
-			Log.Info( LootSpawned );
 
 			if ( LootSpawned is null )
 				Log.Error( $"{this} Couldn't spawn item! item: {LootPrefab}" );

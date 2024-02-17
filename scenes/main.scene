@@ -2,6 +2,17 @@
   "Id": "959958c2-6375-4900-bfbd-131bee0bdc8a",
   "GameObjects": [
     {
+      "Id": "44a67036-6d81-4971-8ea0-0c4c93e26c54",
+      "Name": "LootManager",
+      "Position": "-50.56744,-173.8506,863.9101",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "LootManager"
+        }
+      ]
+    },
+    {
       "Id": "e8fad278-0314-4256-bfa1-edbb81b750b9",
       "Name": "Main Camera",
       "Position": "3.998227,-0.0003744481,63.23682",
@@ -37,6 +48,7 @@
     {
       "Id": "f1cd42cc-bd7d-43b3-86c5-0b11c55040df",
       "Name": "2D Skybox",
+      "Tags": "skybox",
       "Enabled": true,
       "Components": [
         {
@@ -243,7 +255,6 @@
         {
           "Id": "c55dbb5b-e083-4308-87ff-baab7345676a",
           "Name": "Mansion_Map",
-          "Enabled": true,
           "Components": [
             {
               "__type": "MapInstance",
@@ -252,8 +263,7 @@
               "OnMapUnloaded": null,
               "UseMapFromLaunch": false
             }
-          ],
-          "Children": []
+          ]
         },
         {
           "Id": "3552cf5a-b0d1-4239-a9bf-f939a40da1c8",
@@ -6160,23 +6170,6 @@
           "__type": "LegacyEventSystem"
         }
       ]
-    },
-    {
-      "Id": "06fcdc9d-34ef-4f27-9eb4-6c241454df4a",
-      "Name": "Object",
-      "Position": "286.3249,77.38083,757.3047",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/items/gold_bar/gold_bar.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": true
-        }
-      ]
     }
   ],
   "SceneProperties": {
@@ -6202,6 +6195,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-16T04:03:37.8941608-06:00",
+  "LastSaved": "2024-02-16T19:06:47.4031846-06:00",
   "__references": []
 }

@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "b678cf03-11c8-4d6d-a219-16b271efeb83",
+    "Id": "bb181197-4dd3-4dbc-a0d1-dde7192ab06e",
     "Name": "gold_bar",
     "Tags": "usable",
     "Enabled": true,
@@ -8,7 +8,7 @@
       {
         "__type": "Loot",
         "_usable": null,
-        "Description": null,
+        "Description": "fuck",
         "DisplayFront": false,
         "LevelCanAppearOn": "Mansion",
         "MonetaryValue": 0,

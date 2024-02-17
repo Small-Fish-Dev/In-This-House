@@ -45,7 +45,9 @@ public sealed class Level : Component
 	public async Task Start()
 	{
 		Log.Info( $"Starting level: {this}" );
-		SetEnabled( true );
+		Current = this;
+		await GameTask.RunInThreadAsync( () => SetEnabled( true ) );
+
 		foreach ( var lootSpawner in GameObject.Components.GetAll<LootSpawner>( FindMode.EnabledInSelfAndDescendants ) )
 		{
 			lootSpawner.SpawnLoot();
@@ -60,7 +62,6 @@ public sealed class Level : Component
 			}
 		}
 
-		Current = this;
 		await Task.CompletedTask;
 	}
 
@@ -75,12 +76,13 @@ public sealed class Level : Component
 		await Task.CompletedTask;
 	}
 
-	private void SetEnabled( bool enabled )
+	private async Task SetEnabled( bool enabled )
 	{
 		foreach ( var child in GameObject.GetAllObjects( true ) )
 		{
 			child.Enabled = enabled;
 		}
 		Map.GameObject.Enabled = enabled;
+		await Task.CompletedTask;
 	}
 }
