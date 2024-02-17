@@ -9,11 +9,18 @@ public sealed class LootSpawner : Component, Component.ExecuteInEditor
 	[Property] public LootSpawnPosition SpawnPosition { get; private set; }
 	public GameObject? LootSpawned { get; set; }
 
+	[Property]
+	bool SboxMomentDetermineSpawnPositionType { get; set; } = false;
+
 	// sbox moment
 	protected override void OnEnabled()
 	{
 		if ( !Scene.IsEditor )
 			return;
+
+		if ( !SboxMomentDetermineSpawnPositionType )
+			return;
+
 
 		SpawnPosition = LootSpawnPosition.Ground;
 
