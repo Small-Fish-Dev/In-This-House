@@ -6,7 +6,6 @@ public sealed class LootManager : Component
 
 	private List<PrefabDefinition> loot;
 	public IReadOnlyList<PrefabDefinition> Loot => loot;
-	public List<PrefabDefinition> MansionLoot { get; private set; }
 
 	public LootManager()
 	{
@@ -21,7 +20,6 @@ public sealed class LootManager : Component
 	protected override void OnAwake()
 	{
 		loot = PrefabLibrary.FindByComponent<Loot>().ToList();
-		MansionLoot = loot.Where( x => x.GetComponent<Loot>().Get<LevelType>( "LevelCanAppearOn" ) == LevelType.Mansion ).ToList();
 	}
 
 	// public Loot[] GetAll( Func<Loot, bool> predicate )

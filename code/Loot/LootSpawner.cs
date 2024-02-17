@@ -1,27 +1,30 @@
 namespace ITH;
 
-public sealed class LootSpawner : Component
+public sealed class LootSpawner : Component, Component.ExecuteInEditor
 {
 	private PrefabFile LootPrefab { get; set; }
 	[Property] public bool IsContainer { get; private set; }
 	[Property] public float ChanceToSpawn { get; set; } = 0.5f;
 	[Property] public LevelType LevelType { get; set; } = LevelType.None;
-	private LootSpawnPosition _spawnType;
+	[Property] public LootSpawnPosition SpawnPosition { get; private set; }
 	public GameObject? LootSpawned { get; set; }
 
-	protected override void OnStart()
+	// sbox moment
+	protected override void OnEnabled()
 	{
-		if ( !Networking.IsHost )
+		if ( !Scene.IsEditor )
 			return;
 
-		_spawnType = LootSpawnPosition.Ground;
+		SpawnPosition = LootSpawnPosition.Ground;
 
-		var tr = Scene.Trace.Ray( Transform.Position, Transform.Position + Vector3.Down * 5 ).Run();
+		var trace = new PhysicsTraceBuilder();
+		trace.Ray( Transform.Position + Vector3.Up * 2, Transform.Position + Vector3.Down * 32 );
+
+		var tr = Scene.PhysicsWorld.RunTrace( trace );
 		if ( !tr.Hit )
 		{
-			_spawnType = LootSpawnPosition.Wall;
+			SpawnPosition = LootSpawnPosition.Wall;
 		}
-		Log.Info( tr.Hit );
 	}
 
 	public void SpawnLoot()
@@ -32,11 +35,12 @@ public sealed class LootSpawner : Component
 		bool lootPredicate( PrefabDefinition prefab )
 		{
 			var loot = prefab.GetComponent<Loot>();
+			var levelCanSpawn = loot.Get<LevelType>( "LevelCanAppearOn" );
 			var spawnType = loot.Get<LootSpawnPosition>( "WhereCanSpawn" );
-			return spawnType == _spawnType;
+			return spawnType == SpawnPosition && Level.Current.Id == levelCanSpawn;
 		}
 
-		var interestedLoot = LootManager.Instance.MansionLoot.Where( lootPredicate ).ToArray();
+		var interestedLoot = LootManager.Instance.Loot.Where( lootPredicate ).ToArray();
 		LootPrefab = Game.Random.FromArray( interestedLoot ).Prefab;
 
 		var chance = Random.Shared.Float();
@@ -85,6 +89,7 @@ public sealed class LootSpawner : Component
 		// }
 
 		Gizmo.Draw.Text( "LootSpawner", new global::Transform( Vector3.Zero, Rotation.Identity, 1 ) );
+		Gizmo.Draw.Text( SpawnPosition.ToString(), new global::Transform( Vector3.Zero + Vector3.Down * 5, Rotation.Identity, 1 ) );
 
 		if ( Gizmo.Control.Sphere( null, 6, out _, Color.Green ) )
 		{
