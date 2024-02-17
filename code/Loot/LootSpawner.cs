@@ -18,7 +18,7 @@ public sealed class LootSpawner : Component, Component.ExecuteInEditor
 		SpawnPosition = LootSpawnPosition.Ground;
 
 		var trace = new PhysicsTraceBuilder();
-		trace.Ray( Transform.Position + Vector3.Up * 2, Transform.Position + Vector3.Down * 32 );
+		trace.Ray( Transform.Position + Vector3.Up * 10, Transform.Position + Vector3.Down * 12 );
 
 		var tr = Scene.PhysicsWorld.RunTrace( trace );
 		if ( !tr.Hit )

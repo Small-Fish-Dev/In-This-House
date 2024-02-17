@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "d6aee769-c784-4a68-bf00-3a178d549754",
+    "Id": "81a77d46-7d8d-4ad2-ae5c-0e583b021837",
     "Name": "wide_painting",
     "Tags": "usable",
     "Enabled": true,
@@ -11,9 +11,8 @@
         "Description": "A strange painting of three men. Theres no distinct features about them, and the painting gives me chills down my spine if I look at it too long. Theres a menacing aura to it.",
         "DisplayFront": false,
         "LevelCanAppearOn": "Mansion",
-        "MonetaryValue": 0,
+        "MonetaryValue": 35,
         "Name": "Painting",
-        "Rarity": "Broken",
         "WhereCanSpawn": "Wall"
       },
       {

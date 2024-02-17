@@ -47,7 +47,7 @@ public sealed class Level : Component
 		Log.Info( $"Starting level: {this}" );
 		Current = this;
 		// await GameTask.RunInThreadAsync( () => SetEnabled( true ) );
-		SetEnabled( true );
+		await SetEnabled( true );
 
 		foreach ( var lootSpawner in GameObject.Components.GetAll<LootSpawner>( FindMode.EnabledInSelfAndDescendants ) )
 		{
@@ -69,10 +69,10 @@ public sealed class Level : Component
 	public async Task End()
 	{
 		// TODO: I just have this off because of dev time lol
-		// BlackScreen.Start();
-		// await GameTask.DelayRealtimeSeconds( 1f );
+		BlackScreen.Start();
+		await GameTask.DelayRealtimeSeconds( 1f );
 		MansionGame.Instance.SetTimerStatus( true );
-		SetEnabled( false );
+		await SetEnabled( false );
 
 		await Task.CompletedTask;
 	}

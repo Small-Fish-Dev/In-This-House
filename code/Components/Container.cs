@@ -36,6 +36,11 @@ public sealed partial class ContainerComponent : Component
 	/// </summary>
 	public Dictionary<ItemEntry?, int> Loots { get; private set; }
 
+	protected override void OnAwake()
+	{
+		Loots = new();
+	}
+
 	/// <summary>
 	/// Adds some amount of items to the list.
 	/// </summary>

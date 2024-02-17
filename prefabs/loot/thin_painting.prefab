@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "d6aee769-c784-4a68-bf00-3a178d549754",
+    "Id": "babef640-cc8d-4083-b789-3c214dbdabbf",
     "Name": "thin_painting",
     "Tags": "usable",
     "Enabled": true,
@@ -8,12 +8,11 @@
       {
         "__type": "Loot",
         "_usable": null,
-        "Description": "A painting of a man. He has a very distinct look to him almost like a general. A thousand yard stare. You can tell he\u0027s been through a lot.",
+        "Description": "This is a painting of Sir Luke and his wife Margaret. The painting was made by Leonardo da Vinci in the 15th century.\u0022",
         "DisplayFront": false,
         "LevelCanAppearOn": "Mansion",
-        "MonetaryValue": 25,
+        "MonetaryValue": 40,
         "Name": "Painting",
-        "Rarity": "Broken",
         "WhereCanSpawn": "Wall"
       },
       {
@@ -21,7 +20,7 @@
         "BodyGroups": 18446744073709551615,
         "MaterialGroup": null,
         "MaterialOverride": null,
-        "Model": "models/items/paintings/square_painting.vmdl",
+        "Model": "models/items/paintings/thin_painting.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
@@ -39,7 +38,7 @@
       {
         "__type": "ModelCollider",
         "IsTrigger": false,
-        "Model": "models/items/paintings/square_painting.vmdl",
+        "Model": "models/items/paintings/thin_painting.vmdl",
         "Static": false,
         "Surface": null
       },

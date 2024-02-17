@@ -4374,7 +4374,7 @@
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
               "LevelType": "None",
-              "SpawnPosition": "Ground"
+              "SpawnPosition": "Wall"
             }
           ]
         },
@@ -4774,7 +4774,7 @@
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
               "LevelType": "None",
-              "SpawnPosition": "Ground"
+              "SpawnPosition": "Wall"
             }
           ]
         },
@@ -4790,7 +4790,7 @@
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
               "LevelType": "None",
-              "SpawnPosition": "Ground"
+              "SpawnPosition": "Wall"
             }
           ]
         },
@@ -4822,7 +4822,7 @@
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
               "LevelType": "None",
-              "SpawnPosition": "Ground"
+              "SpawnPosition": "Wall"
             }
           ]
         },
@@ -4902,7 +4902,7 @@
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
               "LevelType": "None",
-              "SpawnPosition": "Ground"
+              "SpawnPosition": "Wall"
             }
           ]
         },
@@ -4918,7 +4918,7 @@
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
               "LevelType": "None",
-              "SpawnPosition": "Ground"
+              "SpawnPosition": "Wall"
             }
           ]
         },
@@ -4950,7 +4950,7 @@
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
               "LevelType": "None",
-              "SpawnPosition": "Ground"
+              "SpawnPosition": "Wall"
             }
           ]
         },
@@ -5062,7 +5062,7 @@
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
               "LevelType": "None",
-              "SpawnPosition": "Ground"
+              "SpawnPosition": "Wall"
             }
           ]
         },
@@ -5078,7 +5078,7 @@
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
               "LevelType": "None",
-              "SpawnPosition": "Ground"
+              "SpawnPosition": "Wall"
             }
           ]
         },
@@ -5094,7 +5094,7 @@
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
               "LevelType": "None",
-              "SpawnPosition": "Ground"
+              "SpawnPosition": "Wall"
             }
           ]
         },
@@ -5110,7 +5110,7 @@
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
               "LevelType": "None",
-              "SpawnPosition": "Ground"
+              "SpawnPosition": "Wall"
             }
           ]
         },
@@ -5126,7 +5126,7 @@
               "ChanceToSpawn": 0.5,
               "IsContainer": false,
               "LevelType": "None",
-              "SpawnPosition": "Ground"
+              "SpawnPosition": "Wall"
             }
           ]
         },
@@ -6568,6 +6568,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-16T19:27:28.1804386-06:00",
+  "LastSaved": "2024-02-17T04:01:21.4115044-06:00",
   "__references": []
 }

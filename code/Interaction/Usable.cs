@@ -8,7 +8,7 @@ public sealed class Usable : Component
 	public Lock? Lock { get; private set; }
 	public float InteractionDuration { get; set; } = 1.0f;
 	public bool ShouldCenterInteractionHint => true;
-	public bool CanUse { get; set; }
+	public bool CanUse { get; set; } = true; //default to true ffs
 	public bool Locked => Lock?.Locked ?? false;
 	public Player User { get; set; }
 	public string LockText { get; set; }
