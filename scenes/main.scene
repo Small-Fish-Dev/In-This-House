@@ -38,6 +38,13 @@
           "__type": "AudioListener"
         },
         {
+          "__type": "Tonemapping",
+          "ExposureCompensation": 0,
+          "MaximumExposure": 0.67,
+          "MinimumExposure": 0.34,
+          "Rate": 1
+        },
+        {
           "__type": "Dithering"
         },
         {
@@ -255,7 +262,6 @@
         {
           "Id": "c55dbb5b-e083-4308-87ff-baab7345676a",
           "Name": "Mansion_Map",
-          "Enabled": true,
           "Components": [
             {
               "__type": "MapInstance",
@@ -264,8 +270,7 @@
               "OnMapUnloaded": null,
               "UseMapFromLaunch": false
             }
-          ],
-          "Children": []
+          ]
         },
         {
           "Id": "3552cf5a-b0d1-4239-a9bf-f939a40da1c8",
@@ -6973,6 +6978,6 @@
   },
   "Title": "main",
   "Description": "",
-  "LastSaved": "2024-02-17T04:55:29.8059119-06:00",
+  "LastSaved": "2024-02-19T23:02:34.0505984-06:00",
   "__references": []
 }
