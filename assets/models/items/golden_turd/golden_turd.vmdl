@@ -32,6 +32,10 @@
 								from = "cylinder.001.vmat"
 								to = "models/items/golden_turd/golden_turd.vmat"
 							},
+							{
+								from = "cylinder.vmat"
+								to = "models/items/golden_turd/golden_turd.vmat"
+							},
 						]
 						use_global_default = false
 						global_default_material = ""
@@ -72,6 +76,7 @@
 							exception_list = 
 							[
 								"Cylinder_001",
+								"Cylinder",
 							]
 						}
 					},

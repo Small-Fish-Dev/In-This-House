@@ -62,15 +62,8 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"Cylinder",
-								"Cylinder_001",
-								"Cylinder_003",
-								"Cylinder_004",
-								"Cylinder_005",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]

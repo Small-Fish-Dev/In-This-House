@@ -120,6 +120,8 @@
 								"Cube",
 								"Cylinder",
 								"Cube_001",
+								"Cube_004",
+								"Cube_003",
 							]
 						}
 					},
@@ -140,6 +142,7 @@
 							exception_list = 
 							[
 								"Cube_002",
+								"cloth",
 							]
 						}
 					},

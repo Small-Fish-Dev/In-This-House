@@ -62,21 +62,8 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"Cube_003",
-								"Cube_006",
-								"Cube_008",
-								"Plane",
-								"Plane_001",
-								"Plane_002",
-								"Plane_003",
-								"Plane_004",
-								"Plane_005",
-								"Plane_006",
-								"Plane_007",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]

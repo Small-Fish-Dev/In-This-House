@@ -1,22 +1,17 @@
 {
   "publish": {
-    "Allowed": true,
-    "Enabled": true,
+    "Enabled": false,
     "ProjectConfig": {
       "Title": "Retro Urinal",
       "Type": "model",
       "Org": "fish",
       "Ident": "urinals",
-      "Tags": "retro urinal bathroom",
       "Schema": 0,
-      "HasAssets": false,
-      "AssetsPath": null,
+      "IncludeSourceFiles": false,
       "Resources": null,
-      "MenuResources": null,
-      "HasCode": false,
-      "CodePath": null,
       "PackageReferences": null,
       "EditorReferences": null,
+      "IsWhitelistDisabled": false,
       "Metadata": {
         "SingleAssetSource": "models/furniture/bathrooms_furniture/urinals.vmdl"
       }

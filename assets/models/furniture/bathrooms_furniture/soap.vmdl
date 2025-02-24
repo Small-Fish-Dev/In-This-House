@@ -32,6 +32,10 @@
 								from = "cube.001.vmat"
 								to = "models/furniture/bathrooms_furniture/soap.vmat"
 							},
+							{
+								from = "cube.vmat"
+								to = "models/furniture/bathrooms_furniture/soap.vmat"
+							},
 						]
 						use_global_default = false
 						global_default_material = ""
@@ -72,6 +76,7 @@
 							exception_list = 
 							[
 								"Cube_001",
+								"Cube",
 							]
 						}
 					},

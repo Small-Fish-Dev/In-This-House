@@ -76,6 +76,7 @@
 							exception_list = 
 							[
 								"Cube_001",
+								"Cube",
 							]
 						}
 					},

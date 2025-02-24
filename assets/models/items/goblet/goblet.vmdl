@@ -32,6 +32,10 @@
 								from = "cylinder.002.vmat"
 								to = "models/items/goblet/goblet.vmat"
 							},
+							{
+								from = "cylinder.001.vmat"
+								to = "models/items/goblet/goblet.vmat"
+							},
 						]
 						use_global_default = false
 						global_default_material = ""
@@ -72,6 +76,7 @@
 							exception_list = 
 							[
 								"Cylinder_002",
+								"Cylinder_001",
 							]
 						}
 					},

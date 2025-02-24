@@ -67,11 +67,13 @@
 							exclude_by_default = true
 							exception_list = 
 							[
-								"Cube_001",
 								"Cube_003",
 								"Cube_006",
 								"Cube_007",
 								"Cube_008",
+								"Cube_002",
+								"Cube",
+								"Cube_005",
 								"Cube_004",
 							]
 						}
@@ -92,8 +94,8 @@
 							exclude_by_default = true
 							exception_list = 
 							[
-								"Cube_005",
 								"Cylinder",
+								"Cube_001",
 							]
 						}
 					},

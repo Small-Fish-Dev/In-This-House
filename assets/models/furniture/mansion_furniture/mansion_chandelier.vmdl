@@ -116,15 +116,12 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
+							exclude_by_default = false
 							exception_list = 
 							[
-								"Cylinder_009",
-								"Cylinder_010",
-								"Cylinder_011",
-								"Cylinder",
-								"Cylinder_012",
-								"Cylinder_013",
+								"longest",
+								"longer",
+								"short",
 							]
 						}
 					},
@@ -145,6 +142,7 @@
 							exception_list = 
 							[
 								"Cylinder_005",
+								"short",
 							]
 						}
 					},
@@ -165,6 +163,7 @@
 							exception_list = 
 							[
 								"Cylinder_007",
+								"longer",
 							]
 						}
 					},
@@ -185,6 +184,7 @@
 							exception_list = 
 							[
 								"Cylinder_008",
+								"longest",
 							]
 						}
 					},
